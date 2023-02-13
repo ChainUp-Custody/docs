@@ -65,6 +65,24 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+    <div class="header">
+        <div class="header-left">
+            <%= image_tag "logo.png", class: 'logo' %>
+            <div class="header-line"></div>
+            <ul class="header-nav">
+                <li class="header-nav__item">
+                    <a href="/API-MPC/zh/index.html">API-MPC</a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="/API-WaaS-V2/zh/index.html">API-WaaS-V2</a>
+                </li>
+                <li class="header-nav__item active">
+                    <a href="/API-WAPI/zh/index.html">API-WAPI</a>
+                </li>
+            </ul>
+        </div>
+        <a class="switch-language" href="/API-WaaS-V2/en/index.html">English</a>
+    </div>
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -72,7 +90,6 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>

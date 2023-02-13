@@ -54,12 +54,12 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: 48px;
   left: 0;
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -69,13 +69,6 @@ html, body {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
     }
-  }
-
-  // This is the logo at the top of the ToC
-  .logo {
-    display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
   }
 
   &>.search {
@@ -171,7 +164,7 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .toc-list-h3 {
@@ -180,7 +173,7 @@ html, body {
 
   .toc-h3 {
     padding-left: $nav-padding + $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .toc-footer {
@@ -206,7 +199,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: $nav-padding;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
@@ -232,7 +225,7 @@ html, body {
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
-  top: 0;
+  top: 48px;
   left: 0;
   z-index: 100;
   color: #000;
@@ -264,6 +257,7 @@ html, body {
   min-height: 100%;
 
   padding-bottom: 1px; // prevent margin overflow
+  padding-top: 48px;
 
   // The dark box is what gives the code samples their dark background.
   // It sits essentially under the actual content block, which has a
@@ -361,8 +355,6 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
   }
 
@@ -376,7 +368,6 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
@@ -429,16 +420,11 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
       vertical-align: bottom;
     }
 
     td {
       padding: 10px;
-    }
-
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
     }
 
     tr:nth-child(odd)>td {
@@ -487,13 +473,17 @@ html, body {
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    border-radius: 4px;
+    color: #2762FF;
 
     &.warning {
       background-color: $aside-warning-bg;
+      color: #FD8E08;
     }
 
     &.success {
       background-color: $aside-success-bg;
+      color: #00B856;
     }
   }
 
@@ -553,7 +543,7 @@ html, body {
     a {
       color: #fff;
       text-decoration: none;
-      border-bottom: dashed 1px #ccc;
+      border-bottom: dashed 1px #2762FF;
     }
   }
 
@@ -648,4 +638,85 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+.header {
+  height: 48px;
+  display: flex;
+  background: #191F2F;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 2px solid #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .logo {
+    display: block;
+    max-width: 100%;
+    height: 24px;
+  }
+}
+
+.header-line {
+  margin-left: 28px;
+  margin-right: 44px;
+  width: 1px;
+  height: 18px;
+  background: #333949;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+  padding: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav__item {
+  color: #666F82;
+  margin-right: 36px;
+  font-size: 14px;
+  height: 100%;
+  line-height: 46px;
+  &.active {
+    color: #CED0D7;
+    position: relative;
+    &:after {
+      content: '';
+      width: 100%;
+      position: absolute;
+      height: 2px;
+      background: #CED0D7;
+      bottom: 0px;
+      left: 0;
+    }
+  }
+  a {
+    color: inherit;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+.switch-language {
+  height: 25px;
+  border: 1px solid #2762FF;
+  line-height: 25px;
+  color: #2762FF;
+  border-radius: 4px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
 }
