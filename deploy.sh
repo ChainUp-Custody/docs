@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit #abort if any command fails
 
-docker pull gengyujian/slate
+docker pull gengyujian/slate --platform linux/amd64
 
 # build API-MPC/zh
 docker run --rm --name slate -v $(pwd)/build/API-MPC/zh:/srv/slate/build -v $(pwd)/API-MPC/zh/index.html.md.erb:/srv/slate/source/index.html.md.erb -v $(pwd)/API-MPC/zh/includes:/srv/slate/source/includes gengyujian/slate build
