@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit #abort if any command fails
 
-#docker pull gengyujian/slate
-
 # build API-MPC/zh
 docker run --rm --name slate -v $(pwd)/build/API-MPC/zh:/srv/slate/build -v $(pwd)/API-MPC/zh/index.html.md.erb:/srv/slate/source/index.html.md.erb -v $(pwd)/API-MPC/zh/includes:/srv/slate/source/includes gengyujian/slate build
 # build API-MPC/en
@@ -20,4 +18,4 @@ docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(p
 
 sudo cp $(pwd)/index.html $(pwd)/build
 
-# docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(pwd)/API-WAPI/en/index.html.md.erb:/srv/slate/source/index.html.md.erb -v $(pwd)/API-WAPI/en/includes:/srv/slate/source/includes gengyujian/slate serve
+# docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source gengyujian/slate serve

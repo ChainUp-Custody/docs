@@ -10,7 +10,7 @@
 
 ChainUp Custody是ChainUp集团依托3年时间所服务的300多家交易所经验，将底层区块链钱包封装成的一套完整的Custody服务，包含资产托管、节点服务、主链币种开发、热门币种一键接入、共管钱包、借贷理财等多种功能服务。
 
-ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、低成本的集成Custody服务（多达200条主链不限代币的收币、发币等功能）；同时三方合作伙伴亦可通过web端可视化界面 [ChainUp Custody](https://custody.chainup.com "ChainUp Custody") 进行资产管理，更有丰富的金融产品供您使用。
+ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、低成本的集成Custody服务（多达200条主链不限代币的收币、发币等功能）；同时三方合作伙伴亦可通过web端可视化界面（custody.chainup.com ）进行资产管理，更有丰富的金融产品供您使用。
 
 目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；接入ChainUp Custody的客户，可享受联盟成员之间转账【0手续费】、【秒级到账】等多种优势。
 
@@ -41,7 +41,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 ###  下载Custody钱包
 
-方式一：手机浏览器打开链接：<https://custody.chainup.com/download>
+方式一：手机浏览器打开链接：https://custody.chainup.com/download
 
 方式二：使用手机扫码打开链接下载：
 
@@ -297,11 +297,11 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 SDK：支持java与PHP
 
-java SDK地址：`https://github.com/HiCoinCom/java-sdk`
+java SDK地址：https://github.com/HiCoinCom/java-sdk
 
-PHP SDK地址：`https://github.com/HiCoinCom/php-sdk`
+PHP SDK地址：https://github.com/HiCoinCom/php-sdk
 
-API：`请查看相关文档`
+API：请查看相关文档
 
 
 
@@ -321,13 +321,13 @@ API：`请查看相关文档`
 
 #### 域名及API密钥（API方式）
 
-| 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>                     |
-| :---------------------------- | ------------------------------------------------- |
-|                               |                                                   |
-| app_id:                       | 请创建钱包后获取                                  |
-| rsa_wallet_pub:               | Custody系统公钥；请创建钱包后从Custody系统获取    |
-| rsa_third_prv:                | 客户私钥；自主生成、保存                          |
-| rsa_third_pub:                | 客户公钥；自主生成；请创建钱包后配置到Custody系统 |
+| 生产环境域名(不支持测试环境): |                                                           |
+| :---------------------------- | --------------------------------------------------------- |
+|                               | [https://openapi.hicoin.vip](https://openapi.hicoin.vip/) |
+| app_id:                       | 请创建钱包后获取                                          |
+| rsa_wallet_pub:               | Custody系统公钥；请创建钱包后从Custody系统获取            |
+| rsa_third_prv:                | 客户私钥；自主生成、保存                                  |
+| rsa_third_pub:                | 客户公钥；自主生成；请创建钱包后配置到Custody系统         |
 
 
 
@@ -403,12 +403,22 @@ API：`请查看相关文档`
 
 
 
+
+
+## 附录 
+
+
+
+### 附 1:加解密方式
+
+
+
+
 > 请求参数加密示例:
 
 ```java
 
 // 原始请求参数
-
 String originReqData = '{"charset":"utf-8","symbol":"eth","sign":"","time":"1586420916306","app_id":"baaceb1e506e1b5d7d1f0a3b1622583b","version":"2.0"}'
 
 // encryptByPrivate方法封装在下列公共类RSAHelper.java中
@@ -416,10 +426,12 @@ String encryptReqData = RSAHelper.encryptByPrivate(originReqData, "第三方自�
 
 //http post
 String httpBuildParams = "app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=" + encryptReqData
-
 ```
 
-## 附录 
+
+
+
+
 
 > 响应数据解密示例:
 
@@ -434,13 +446,9 @@ String originResp= '{"data":"jwtkGrhh2EVJS8xe93MpUYd-SQ-TyK0Bx5sXjE4hygFNg4wmcti
 String decryptRespData = RSAHelper.decryptByPublic( encryptRespData, "托管平台提供的公钥" )
 ```
 
-
-### 附 1:加解密方式
-
-> 公共类RSAHelper.java:
+> 响应数据解密示例:
 
 ```java
-
 import java.io.ByteArrayOutputStream;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -734,7 +742,6 @@ public class RSAHelper {
              *  私钥加密（分段加密）
              *  emptyStr    需要加密字符串
              */
-             
             public function encrypt($str) {
                 $crypted = array();
         //        $data = json_encode($str);
@@ -818,11 +825,17 @@ public class RSAHelper {
 
 
 
+
+
+
+
+
+
 ### 附 2:接口错误码表 - 表格
 
 | code    | msg                                                  |
 | ------- | ---------------------------------------------------- |
-| 0       | 成功                                               |
+| 0       | `成功`                                               |
 | 100001  | 系统错误                                             |
 | 100004  | 请求参数不合法(提现二次确认接口回调失败)             |
 | 100005  | 签名校验失败                                         |
@@ -874,28 +887,27 @@ public class RSAHelper {
 
 **SDK**：支持java、PHP和node
 
-java SDK地址：`https://github.com/HiCoinCom/java-sdk`
+java SDK地址：https://github.com/HiCoinCom/java-sdk
 
-PHP SDK地址：`https://github.com/HiCoinCom/php-sdk`
+PHP SDK地址：https://github.com/HiCoinCom/php-sdk
 
 node SDK地址：`https://github.com/HiCoinCom/js-sdk`
 
 **API**：请查看API接口
 
 
-
 ## 统一说明
 
-### 请求参数统一格式
+**请求参数统一格式**
 
-| Param  | 类型   | 是否必须 | 说明                                                    |
-| :----- | :----- | :------- | :------------------------------------------------------ |
-| app_id | String | 必须     | 商户唯一标识                                            |
-| data   | String | 可选     | 加密之后的字符串，具体加密信息见各接口 请求参数数据结构 |
+| Param  | 类型   | 是否必须       | 说明                                                    |
+| :----- | :----- |:-----------| :------------------------------------------------------ |
+| app_id | String | 必须         | 商户唯一标识                                            |
+| data   | String | 可选         | 加密之后的字符串，具体加密信息见各接口 请求参数数据结构 |
 
 
 
-### 请求接口示例
+**请求接口示例**
 
 `POST/api/v2/user/createUser`
 
@@ -914,11 +926,11 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 响应参数统一格式
+**响应参数统一格式**
 
-| Param | 类型   | 是否必须 | 说明                                                      |
-| ----- | ------ | -------- | --------------------------------------------------------- |
-| data  | String | 可选     | 加密之后的字符串，具体加密信息见 `响应结果data解密后格式` |
+| Param | 类型   | 是否必须 | 说明                                                    |
+| ----- | ------ | -------- | ------------------------------------------------------- |
+| data  | String | 可选     | 加密之后的字符串，具体加密信息见 响应结果data解密后格式 |
 
 
 
@@ -931,13 +943,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 响应结果data解密后格式
+**响应结果data解密后格式**
 
-| Param | 类型   | 是否必须 | 说明                                                     |
-| :---- | :----- | :------- | :------------------------------------------------------- |
-| code  | String | 是       | 状态码，例：100002                                       |
-| msg   | String | 是       | 响应结果说明，例：请求参数错误                           |
-| data  | String | 否       | 具体响应数据，数据结构定义见各接口  **响应参数数据结构** |
+| Param | 类型   | 是否必须 | 说明                                                 |
+| :---- | :----- | :------- | :--------------------------------------------------- |
+| code  | String | 是       | 状态码，例：100002                                   |
+| msg   | String | 是       | 响应结果说明，例：请求参数错误                       |
+| data  | String | 否       | 具体响应数据，数据结构定义见各接口  响应参数数据结构 |
 
 
 
@@ -964,7 +976,6 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 `POST/api/v2/user/createUser`
 
 
-
 #### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
@@ -976,7 +987,12 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | mobile  | String | 必填     | 手机号                            |
 
 
+> 响应结果示例：
 
+```JAVA
+
+{"code":"0","data":{"uid":3529218},"msg":"成功"}
+```
 
 
 #### 响应参数data解密之后数据结构:
@@ -985,12 +1001,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | ----- | ---- | -------- | ------------------------ |
 | uid   | int  | 是       | 用户在钱包服务的唯一标识 |
 
-> 响应结果示例：
 
-```JAVA
-
-{"code":"0","data":{"uid":3529218},"msg":"成功"}
-```
 
 
 
@@ -1004,13 +1015,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST /api/v2/user/registerEmail`
 
 
 
-#### 请求参数data解密之后数据结构:
+**请求参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明                                         |
 | ------- | ------ | -------- | -------------------------------------------- |
@@ -1031,7 +1042,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param | 类型 | 是否必须 | 说明                     |
 | ----- | ---- | -------- | ------------------------ |
@@ -1047,13 +1058,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/api/v2/account/getDepositAddress`
 
 
 
-#### 请求参数data解密之后数据结构:
+**请求参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1072,7 +1083,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明                     |
 | ------- | ------ | -------- | ------------------------ |
@@ -1093,13 +1104,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/user/info`
 
 
 
-#### 请求参数data解密之后数据结构:
+**请求参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明                                         |
 | ------- | ------ | -------- | -------------------------------------------- |
@@ -1111,15 +1122,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | email   | string | 可选     | 邮箱，手机和邮箱需要保证其中之一不能为空     |
 
 
-> 响应数据解密后示例:	
-
-```java
-
-{"code":"0","data":{"uid":3529218,"nickname":""},"msg":"成功"}
-```
-
-
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param    | 类型   | 是否必须 | 说明                     |
 | -------- | ------ | -------- | ------------------------ |
@@ -1128,7 +1131,12 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
+> 响应数据解密后示例:	
 
+```java
+
+{"code":"0","data":{"uid":3529218,"nickname":""},"msg":"成功"}
+```
 
 
 
@@ -1140,19 +1148,40 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/user/getCoinList`
 
 
 
-#### 请求参数data解密之后数据结构:
+**请求参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
 | time    | long   | 必填     | 当前时间戳                        |
 | charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
 | version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
+
+
+
+
+**响应参数data解密之后数据结构:**
+
+| Param                | 类型   | 是否必须 | 说明                                                         |
+| -------------------- | ------ | -------- | ------------------------------------------------------------ |
+| symbol               | String | 是       | 币种（调用提币的接口，及任何查询接口时务必使用此字段返回的值） |
+| icon                 | String | 是       | 币种icon                                                     |
+| real_symbol          | String | 是       | 币种链上名称                                                 |
+| decimals             | String | 是       | 精度                                                         |
+| name                 | string | 是       | 币种全称                                                     |
+| base_symbol          | string | 是       | 主链币币名                                                   |
+| contract_address     | string | 是       | 合约地址                                                     |
+| deposit_confirmation | string | 是       | 币种充值确认数                                               |
+| explorer             | string | 是       | 区块浏览器                                                   |
+| address_regex        | string | 是       | 地址正则                                                     |
+| address_tag_regex    | string | 是       | tag正则                                                      |
+| support_memo         | string | 是       | 是否支持memo，0不支持1支持                                   |
+| support_token        | string | 是       | 是否支持token币，0不支持1支持,主链币才有值,代币为空          |
 
 
 
@@ -1183,27 +1212,6 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 ```
 
 
-#### 响应参数data解密之后数据结构:
-
-| Param                | 类型   | 是否必须 | 说明                                                         |
-| -------------------- | ------ | -------- | ------------------------------------------------------------ |
-| symbol               | String | 是       | 币种（调用提币的接口，及任何查询接口时务必使用此字段返回的值） |
-| icon                 | String | 是       | 币种icon                                                     |
-| real_symbol          | String | 是       | 币种链上名称                                                 |
-| decimals             | String | 是       | 精度                                                         |
-| name                 | string | 是       | 币种全称                                                     |
-| base_symbol          | string | 是       | 主链币币名                                                   |
-| contract_address     | string | 是       | 合约地址                                                     |
-| deposit_confirmation | string | 是       | 币种充值确认数                                               |
-| explorer             | string | 是       | 区块浏览器                                                   |
-| address_regex        | string | 是       | 地址正则                                                     |
-| address_tag_regex    | string | 是       | tag正则                                                      |
-| support_memo         | string | 是       | 是否支持memo，0不支持1支持                                   |
-| support_token        | string | 是       | 是否支持token币，0不支持1支持,主链币才有值,代币为空          |
-
-
-
-
 
 ### 获取指定用户的账户信息
 
@@ -1213,13 +1221,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/account/getByUidAndSymbol`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1233,7 +1241,6 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 > 响应数据解密后示例:	
-> 
 ```JAVA
 
 {"code":"0","data":{"normal_balance":"2.99400066","deposit_address":"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd","lock_balance":"0"},"msg":"成功"}
@@ -1241,7 +1248,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param           | 类型   | 是否必须 | 说明               |
 | --------------- | ------ | -------- | ------------------ |
@@ -1258,13 +1265,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/account/getCompanyBySymbol`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1276,14 +1283,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 > 响应数据解密后示例:	
-
 ```java
 
 {"code":"0","data":{"symbol":"ETH","balance":"64.97599802"},"msg":"成功"}
 ```
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明         |
 | ------- | ------ | -------- | ------------ |
@@ -1299,12 +1305,14 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 ### 同步充值记录
 
 
-#### HTTP请求
+
+**HTTP请求**
 
 `GET/api/v2/billing/syncDepositList`
 
 
-#### 请求参数data解密之后数据结构: 
+
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1314,8 +1322,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | max_id  | int    | 必填     | 返回大于id的100条充值记录数据     |
 
 
-> 响应数据解密后示例:
-
+>响应数据解密后示例:
 ```Java
 {
     "code":"0",
@@ -1369,7 +1376,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param         | 类型   | 是否必须 | 说明                                                         |
 | ------------- | ------ | -------- | ------------------------------------------------------------ |
@@ -1393,13 +1400,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/billing/depositList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                                |
 | ------- | ------ | -------- | ----------------------------------- |
@@ -1410,10 +1417,9 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:
-
-
+>响应数据解密后示例:
 ```java
+
 {
 "code": "0",
         "msg": "suc",
@@ -1448,7 +1454,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param         | 类型   | 是否必须 | 说明                                                         |
 | ------------- | ------ | -------- | ------------------------------------------------------------ |
@@ -1479,7 +1485,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 充值通知：
 
@@ -1502,7 +1508,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数:
+**响应参数:**
 
 返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
 
@@ -1518,13 +1524,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET//api/v2/billing/syncMinerFeeList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                                     |
 | ------- | ------ | -------- | ---------------------------------------- |
@@ -1536,7 +1542,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:
+>响应数据解密后示例:
 
 ```java
 
@@ -1566,7 +1572,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param            | 类型   | 是否必须 | 说明                                                         |
 | ---------------- | ------ | -------- | ------------------------------------------------------------ |
@@ -1600,13 +1606,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/api/v2/billing/withdraw`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param      | 类型   | 是否必须 | 说明                                                   |
 | ---------- | ------ | -------- | ------------------------------------------------------ |
@@ -1630,7 +1636,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 
 
@@ -1653,7 +1659,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param      | 类型   | 是否必须 | 说明                                               |
 | ---------- | ------ | -------- | -------------------------------------------------- |
@@ -1669,7 +1675,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:
+>  响应数据解密后示例:
 
 ```java
 {"check_sum":"1234","time":"12345678"}
@@ -1677,7 +1683,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param     | 类型   | 是否必须 | 说明                  |
 | --------- | ------ | -------- | --------------------- |
@@ -1701,7 +1707,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 提现通知：
 
@@ -1729,7 +1735,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数:
+**响应参数:**
 
 返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
 
@@ -1747,13 +1753,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/billing/syncWithdrawList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1798,7 +1804,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param               | 类型   | 是否必须 | 说明                                                         |
 | ------------------- | ------ | -------- | ------------------------------------------------------------ |
@@ -1831,13 +1837,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `GET/api/v2/billing/withdrawList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                                            |
 | ------- | ------ | -------- | ----------------------------------------------- |
@@ -1882,7 +1888,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param               | 类型   | 是否必须 | 说明                                                         |
 | ------------------- | ------ | -------- | ------------------------------------------------------------ |
@@ -1921,13 +1927,13 @@ Custody内部商户互相转账
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/api/v2/account/transfer`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param      | 类型   | 是否必须 | 说明                              |
 | ---------- | ------ | -------- | --------------------------------- |
@@ -1958,7 +1964,7 @@ Custody内部商户互相转账
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param   | 类型   | 是否必须 | 说明         |
 | ------- | ------ | -------- | ------------ |
@@ -1978,13 +1984,13 @@ Custody内部商户互相转账
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/same-with-withdraw-check-sum`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param      | 类型   | 是否必须 | 说明                                         |
 | ---------- | ------ | -------- | -------------------------------------------- |
@@ -2017,7 +2023,7 @@ Custody内部商户互相转账
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param     | 类型   | 是否必须 | 说明                                         |
 | --------- | ------ | -------- | -------------------------------------------- |
@@ -2032,13 +2038,13 @@ Custody内部商户互相转账
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/api/v2/account/transferList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param    | 类型   | 是否必须 | 说明                                           |
 | -------- | ------ | -------- | ---------------------------------------------- |
@@ -2085,7 +2091,7 @@ Custody内部商户互相转账
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 | Param      | 类型   | 是否必须 | 说明                              |
 | ---------- | ------ | -------- | --------------------------------- |
@@ -2108,13 +2114,13 @@ Custody内部商户互相转账
 
 
 
-#### HTTP请求
+**HTTP请求**
 
 `POST/api/v2/account/syncTransferList`
 
 
 
-#### 请求参数data解密之后数据结构: 
+**请求参数data解密之后数据结构:** 
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -2160,6 +2166,6 @@ Custody内部商户互相转账
 
 
 
-#### 响应参数data解密之后数据结构:
+**响应参数data解密之后数据结构:**
 
 无
