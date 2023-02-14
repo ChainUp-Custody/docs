@@ -1,12 +1,11 @@
-# 托管(Custody) 开发文档 V2
 
 欢迎来到**ChainUp Custody**，ChainUp Custody基于深厚的底层钱包技术和安全的区块链钱包架构，将强大的资产托管功通过接口的方式提供给第三方合作伙伴。通过这种方式能帮助合作伙伴在关注于核心业务发展的同时也能确保资产的安全。
 
 您可以通过API提交传输，并接收传输的实时信息;安全检查所有事务类型和消息;与托管钱包的共同管理人制定取款政策;管理你的钱包和子钱包账户、地址簿和网络连接;并利用反洗钱机制等功能。所有转账都反映在ChainUp Custody的开放平台、交易记录、安全策略和对账中心中。
 
-## 一、概述
+# 一、概述
 
-### 1.1 介绍
+## 1.1 介绍
 
 ChainUp Custody是ChainUp集团依托3年时间所服务的300多家交易所经验，将底层区块链钱包封装成的一套完整的Custody服务，包含资产托管、节点服务、主链币种开发、热门币种一键接入、共管钱包、借贷理财等多种功能服务。
 
@@ -16,11 +15,11 @@ ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、�
 
 
 
-### 1.2 愿景 
+## 1.2 愿景
 
 ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融清算体系，共享联盟成员流量，降低联盟成员成本，提升联盟成员资产使用率，构建区块链领域中的开放银行。让区块链联通万物。
 
-[![](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg)](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg)
+[![](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.png)](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.png)
 
 
 
@@ -28,7 +27,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-## 二、接入指引 
+# 二、接入指引
 
 
 
@@ -40,9 +39,9 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 1.创建账号
+## 1.创建账号
 
-####  1.1 下载Custody钱包
+###  1.1 下载Custody钱包
 
 方式一：手机浏览器打开链接：https://custody.chainup.com/download
 
@@ -52,7 +51,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-#### 1.2 注册Custody账号
+### 1.2 注册Custody账号
 
 打开【Custody】应用，注册账号（未注册账号登录即注册），支持邮箱与手机号两种方式
 
@@ -64,7 +63,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-#### 1.3 完成身份认证
+### 1.3 完成身份认证
 
 打开个人中心-【安全设置】，进入身份认证页面
 
@@ -88,9 +87,9 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 2.创建并配置企业钱包
+## 2.创建并配置企业钱包
 
-#### 2.1 登录ChainUp Custody平台
+### 2.1 登录ChainUp Custody平台
 
 浏览器打开[ChainUp Custody平台](https://custody.chainup.com/)， 使用【Custody】应用，首页或云端钱包【扫码】功能扫描二维码登录
 
@@ -104,7 +103,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-#### 2.2 创建钱包
+### 2.2 创建钱包
 
 进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）
 
@@ -112,7 +111,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 [![../_images/api_plan_chuangjianqianbao1.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)
 
-#### 2.2 开启币种
+### 2.2 开启币种
 
 开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）
 
@@ -124,7 +123,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 [![../_images/api_plan_bizhongbianji.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)
 
-#### 2.3 获取API信息
+### 2.3 获取API信息
 
 创建API（目前仅支持一个全功能权限的API）
 
@@ -134,27 +133,27 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 [![../_images/api_plan_apixiangqing.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)
 
-#### 2.4 开发测试
+### 2.4 开发测试
 
 根据平台提供的技术方案与API文档进行系统对接
 
-### 3.商户签约
+## 3.商户签约
 
-#### 3.1 正式签约
+### 3.1 正式签约
 
 支持线上、线下签约
 
-#### 3.2 支付费用
+### 3.2 支付费用
 
 支付系统订阅、安装等费用（具体费用类型以合同为准）
 
-### 4.投入使用
+## 4.投入使用
 
-#### 4.1 协助上线
+### 4.1 协助上线
 
 协助商户正式上线运营
 
-#### 4.2 技术支持
+### 4.2 技术支持
 
 平台提供7*24h技术支持
 
@@ -162,7 +161,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-##  三、对接方案
+#  三、对接方案
 
 为了让客户更便捷、快速的接入Custody，平台基于过往客户的对接经验，梳理了一套比较完善的技术对接方案。具体如下：
 
@@ -177,7 +176,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 1. 获取充币地址
+## 1. 获取充币地址
 
 1. 客户向Custody系统注册用户（建议使用邮箱）
 2. 注册成功后通过Custody系统的UID获取地址
@@ -188,7 +187,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 2.用户充币
+## 2.用户充币
 
 1）用户在客户系统内完成注册
 
@@ -222,7 +221,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 3.用户提币
+## 3.用户提币
 
 1）用户在客户系统发起提币
 
@@ -240,7 +239,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 4.财务对账
+## 4.财务对账
 
 1）客户系统按周期与Custody系统对账（建议按日）
 
@@ -264,13 +263,13 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-## 四、开发前准备 
+# 四、开发前准备
 
-### 1 前期准备
+## 1 前期准备
 
-#### 1.1 开发须知
+### 1.1 开发须知
 
-##### **1）开发方式**
+#### **1）开发方式**
 
 为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API；
 
@@ -284,7 +283,7 @@ API：请查看相关文档
 
 
 
-##### **2）两对公私钥作用（API方式）**
+#### **2）两对公私钥作用（API方式）**
 
 **第一对公私钥：** 开发者在开通资管账号时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台B，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。
 
@@ -292,13 +291,13 @@ API：请查看相关文档
 
 
 
-##### **3）为什么需要进行提现二次确认（API方式）**
+#### **3）为什么需要进行提现二次确认（API方式）**
 
 钱包服务接收到第三方应用请求时，为了确认该请求为第三方应用合法请求，会调用第三方提供的接口来确认。该过程在一定程度上也能避免第三方私钥丢失所造成的影响，也为钱包服务的安全性提供了一套有效屏障。
 
 
 
-##### **4）域名及API密钥（API方式）**
+#### **4）域名及API密钥（API方式）**
 
 | 生产环境域名(不支持测试环境): |                                                           |
 | :---------------------------- | --------------------------------------------------------- |
@@ -323,7 +322,7 @@ API：请查看相关文档
 
 
 
-#### 1.2 资管账号准备
+### 1.2 资管账号准备
 
 开发者准备如下信息：
 
@@ -347,7 +346,7 @@ API：请查看相关文档
 
 
 
-#### 1.3 接口交互过程
+### 1.3 接口交互过程
 
 文档为钱包服务对第三方应用提供的接口。
 
@@ -357,7 +356,7 @@ API：请查看相关文档
 
 
 
-#### 1.4 接口规则
+### 1.4 接口规则
 
 | 传输方式:     | https(测试环境暂时使用 http)                 |
 | :------------ | -------------------------------------------- |
@@ -368,9 +367,9 @@ API：请查看相关文档
 
 
 
-### 2 附录 
+## 2 附录
 
-#### 附 1:加解密方式
+### 附 1:加解密方式
 
 请求参数data与响应字段data的值都是经过rsa加密后再通过 **base64urlsafe** 加密的结果
 
@@ -386,25 +385,13 @@ API：请查看相关文档
 
 **请求参数加密示例:**
 
-```java
-请求参数加密示例:
 
-// 原始请求参数
-String originReqData = '{"charset":"utf-8","symbol":"eth","sign":"","time":"1586420916306","app_id":"baaceb1e506e1b5d7d1f0a3b1622583b","version":"2.0"}'
-
-// encryptByPrivate方法封装在下列公共类RSAHelper.java中
-String encryptReqData = RSAHelper.encryptByPrivate(originReqData, "第三方自己的私钥")
-
-//http post
-String httpBuildParams = "app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=" + encryptReqData
-```
 
 
 
 **响应数据解密示例:**
-
+> 响应数据解密示例:
 ```java
-响应数据解密示例:
 
 // 响应的原始数据
 String originResp= '{"data":"jwtkGrhh2EVJS8xe93MpUYd-SQ-TyK0Bx5sXjE4hygFNg4wmctiahtIYXRpR2j8yDaEF5YzVstnUKbOH2p44FSMjXMQU4qFrhD00WOfW7v4LNALyiQXRb_5sakR0Zf573lGfLRTPlzLtTho3gqu3hMwuAv5e3r2dpb6_jxh1Z9BjkzSsNRX_bjLcHLUOPhMvo6rTUKSa9LQ6QnT8RX0eqzOZPlnCw3TeX_zcWWjxp6fcpKcdODxoI86gHwWRpSd-2qbEbFcaT12CJd9nPXA0KnLPNNHWz8sxQGiAg7Jg_-cN_yBHL9cS15zecTemYGqpOXRkojM1JwLsjM-7txf_dw"}'
@@ -421,7 +408,7 @@ String decryptRespData = RSAHelper.decryptByPublic( encryptRespData, "托管平�
 
 
 
-```JAVA
+```java
 公共类RSAHelper.java:
 
 import java.io.ByteArrayOutputStream;
@@ -775,7 +762,7 @@ PHP签名Demo:
 
 
 
-#### 附 2:接口错误码表 - 表格
+### 附 2:接口错误码表 - 表格
 
 | code    | msg                                                  |
 | ------- | ---------------------------------------------------- |
@@ -807,11 +794,11 @@ PHP签名Demo:
 
 
 
-### 3 常见问题(FAQ)
+## 3 常见问题(FAQ)
 
 
 
-## 五、API文档
+# 五、API文档
 
 为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API；
 
@@ -825,15 +812,15 @@ node SDK地址：https://github.com/HiCoinCom/js-sdk
 
 **API**：请查看API接口
 
-### 
+##
 
-### 获取地址
+## 获取地址
 
 请注意，默认注册用户量为5万个，如果用户超过上限，请联系相关运营人员进行协助
 
 
 
-#### 用户手机注册
+### 用户手机注册
 
 注册成为钱包的用户
 
@@ -843,7 +830,11 @@ node SDK地址：https://github.com/HiCoinCom/js-sdk
 
 `POST/api/v2/user/createUser`
 
+> 请求参数示例:
 
+```java
+app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
+```
 
 **请求参数:**
 
@@ -863,20 +854,24 @@ node SDK地址：https://github.com/HiCoinCom/js-sdk
 | mobile  | String | 必填     | 手机号                            |
 
 
+> 响应示例:
 
-```java
-请求参数示例:	
-
-app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
+```JAVA
+{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
 ```
-
-
 
 **响应参数:**
 
 | Param | 类型   | 是否必须 | 说明                                     |
 | ----- | ------ | -------- | ---------------------------------------- |
 | data  | String | 可选     | 加密之后的字符串，解密之后的格式如下定义 |
+
+
+> 响应数据解密后示例:
+
+```JAVA
+{"code":"0","data":{"uid":3529218},"msg":"成功"}
+```
 
 **响应参数data解密之后:**
 
@@ -886,6 +881,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | msg   | String | 是       | 响应结果说明                   |
 | data  | String | 否       | 具体响应数据，数据结构定义如下 |
 
+
 **data数据结构:**
 
 | Param | 类型 | 是否必须 | 说明                     |
@@ -894,22 +890,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-```JAVA
-响应示例:	
-
-{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
-```
-
-```JAVA
-响应数据解密后示例:
-{"code":"0","data":{"uid":3529218},"msg":"成功"}
-```
 
 
 
 
 
-#### 用户邮箱注册
+
+### 用户邮箱注册
 
 注册成为钱包的用户。满足邮箱格式即可（e.g. [123@111.com](mailto:123@111.com)）
 
@@ -919,7 +906,11 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 `POST /api/v2/user/registerEmail`
 
+>请求参数示例:
 
+```java
+app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
+```
 
 **请求参数:**
 
@@ -938,13 +929,11 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | email   | String | 必填     | 邮箱或虚拟账号，确保其唯一性,最多支持100字符 |
 
 
+> 响应示例:
 
 ```java
-请求参数示例:
-
-app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
+{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
 ```
-
 
 
 **响应参数:**
@@ -953,13 +942,13 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | ----- | ------ | -------- | ---------------------------------------- |
 | data  | String | 可选     | 加密之后的字符串，解密之后的格式如下定义 |
 
-```java
-响应示例:	
 
-{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
+
+> 响应数据解密后示例:
+
+```JAVA
+{"code":"0","data":{"uid":3529218},"msg":"成功"}
 ```
-
-
 
 **响应参数data解密之后:**
 
@@ -968,12 +957,6 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | code  | String | 是       | 状态码                         |
 | msg   | String | 是       | 响应结果说明                   |
 | data  | String | 否       | 具体响应数据，数据结构定义如下 |
-
-```JAVA
-响应数据解密后示例:	
-
-{"code":"0","data":{"uid":3529218},"msg":"成功"}
-```
 
 
 

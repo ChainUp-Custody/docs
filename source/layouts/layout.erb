@@ -70,7 +70,7 @@ under the License.
             <%= image_tag "logo.png", class: 'logo' %>
             <div class="header-line"></div>
             <ul class="header-nav">
-                <% current_page.data.toc_headers.each do |header| %>
+                <% current_page.data.nav_headers.each do |header| %>
                     <%= header %>
                 <% end %>
             </ul>
@@ -100,6 +100,11 @@ under the License.
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
+      <% end %>
+    <% if current_page.data.toc_header %>
+        <p class='top-header'>
+            <%= current_page.data.toc_header %>
+        </p>
       <% end %>
       <ul id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>

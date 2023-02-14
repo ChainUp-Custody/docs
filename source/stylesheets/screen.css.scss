@@ -196,6 +196,12 @@ html, body {
       text-decoration: none;
     }
   }
+
+  .top-header {
+    color: #fff;
+    font-size: 14px;
+    padding-left: 15px;
+  }
 }
 
 .toc-link, .toc-footer li {
@@ -318,9 +324,8 @@ html, body {
 // This is all the stuff with the light background in the left half of the page
 
 .content {
-  // fixes webkit rendering bug for some: see #538
+  padding-top: 50px;
   -webkit-transform: translateZ(0);
-  // to place content above the dark box
   position: relative;
   z-index: 30;
 
@@ -375,7 +380,7 @@ html, body {
   h3 {
     @extend %header-font;
     font-size: 16px;
-    margin-top: 0.5em;
+    margin-top: 50px;
     margin-bottom: 0;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
