@@ -69,6 +69,14 @@ under the License.
         <div class="header-left">
             <%= image_tag "logo.png", class: 'logo' %>
             <div class="header-line"></div>
+            <div class="header-nav-h5">
+                <%= current_page.data.h5_current_header %>
+                <ul class="header-nav-list-h5">
+                    <% current_page.data.nav_headers.each do |header| %>
+                        <%= header %>
+                    <% end %>
+                </ul>
+            </div>
             <ul class="header-nav">
                 <% current_page.data.nav_headers.each do |header| %>
                     <%= header %>
