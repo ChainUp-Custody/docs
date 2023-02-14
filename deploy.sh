@@ -20,4 +20,4 @@ docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(p
 
 sudo cp $(pwd)/index.html $(pwd)/build
 
-docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(pwd)/API-WAPI/en/index.html.md.erb:/srv/slate/source/index.html.md.erb -v $(pwd)/API-WAPI/en/includes:/srv/slate/source/includes gengyujian/slate serve
+# docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(pwd)/API-WAPI/en/index.html.md.erb:/srv/slate/source/index.html.md.erb -v $(pwd)/API-WAPI/en/includes:/srv/slate/source/includes gengyujian/slate serve
