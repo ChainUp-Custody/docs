@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+      - name: docker
+        uses: whoan/docker-build-with-cache-action@v5
+        with:
+          username: gengyujian
+          password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+          image_name: slate
       - name: run deploy.sh
         id: run-deploy
         run: ./deploy.sh
