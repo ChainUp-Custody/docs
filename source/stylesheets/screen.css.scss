@@ -24,6 +24,11 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+body .content>h1[id], body .content>h2[id], body .content>h3[id] {
+  margin-top: 0;
+  padding-top: calc(48px + 1em);
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -263,7 +268,6 @@ html, body {
   min-height: 100%;
 
   padding-bottom: 1px; // prevent margin overflow
-  padding-top: 48px;
 
   // The dark box is what gives the code samples their dark background.
   // It sits essentially under the actual content block, which has a
@@ -360,7 +364,7 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    background-color: #fdfdfd;
+    border-bottom: 1px solid #D8DCE5;
   }
 
   h1:first-child, div:first-child + h1 {
