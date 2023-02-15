@@ -18,7 +18,7 @@ ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、�
 
 
 
-## 愿景 
+## 愿景
 
 ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融清算体系，共享联盟成员流量，降低联盟成员成本，提升联盟成员资产使用率，构建区块链领域中的开放银行。让区块链联通万物。
 
@@ -30,7 +30,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-# 接入指引 
+# 接入指引
 
 
 您需要按照以下流程进行接入ChainUp Custody
@@ -49,7 +49,9 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-![QR码](C:\Users\65813\Downloads\QR码.PNG){: style="width: 150px"}
+<%= image_tag "qrcode.png", style:"width: 150px" %>
+
+
 
 
 
@@ -61,9 +63,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 打开【Custody】应用，注册账号（未注册账号登录即注册），支持邮箱与手机号两种方式
 
-
-
-![登录注册](C:\Users\65813\Downloads\登录注册.png){: style="width: 260px"}
+<%= image_tag "login.png", style:"width: 250px" %>
 
 
 
@@ -71,17 +71,17 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 身份认证信息，仅支持一种身份，且认证后不支持更换
 
-![KYCPERSONAL](C:\Users\65813\Downloads\kyc-个人.jpg){: style="width: 260px"}
+<%= image_tag "pkyc.jpg", style:"width: 250px" %>
 
-
-
-![kyc企业](C:\Users\65813\Downloads\kyc企业.jpg){: style="width: 260px"}
+<%= image_tag "ekyc.jpg", style:"width: 250px" %>
 
 
 
 完成【身份认证】、【谷歌验证】（身份认证需要平台审核，您可以联系项目经理或客服快速审核）
 
-![SECURITY](C:\Users\65813\Downloads\SECURITY.jpg){: style="width: 260px"}
+<%= image_tag "safe.jpg", style:"width: 250px" %>
+
+
 
 
 ## 创建并配置企业钱包
@@ -278,7 +278,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-# 开发前准备 
+# 开发前准备
 
 
 
@@ -406,7 +406,7 @@ API：`请查看相关文档`
 
 
 
-## 附录 
+## 附录
 
 > 请求参数加密示例:
 
@@ -741,7 +741,7 @@ public class RSAHelper {
              *  私钥加密（分段加密）
              *  emptyStr    需要加密字符串
              */
-             
+
             public function encrypt($str) {
                 $crypted = array();
         //        $data = json_encode($str);
@@ -911,7 +911,7 @@ node SDK地址：`https://github.com/HiCoinCom/js-sdk`
 > 请求接口示例：
 
 ```java
-    
+
 POST/api/v2/user/createUser
 
 app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
@@ -929,7 +929,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应结果示例:	
+> 响应结果示例:
 
 ```java
 
@@ -1025,7 +1025,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:	
+> 响应数据解密后示例:
 
 ```JAVA
 
@@ -1070,7 +1070,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 > 响应数据解密后示例:
 
 ```JAVA
-	
+
 {"code":"0","data":{"uid":"3529218","address":"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"},"msg":"成功"}
 ```
 
@@ -1115,7 +1115,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | email   | string | 可选     | 邮箱，手机和邮箱需要保证其中之一不能为空     |
 
 
-> 响应数据解密后示例:	
+> 响应数据解密后示例:
 
 ```java
 
@@ -1160,7 +1160,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:	
+> 响应数据解密后示例:
 
 ```java
 
@@ -1223,7 +1223,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1236,7 +1236,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:	
+> 响应数据解密后示例:
 
 ```JAVA
 
@@ -1268,7 +1268,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1279,7 +1279,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-> 响应数据解密后示例:	
+> 响应数据解密后示例:
 
 ```java
 
@@ -1308,7 +1308,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 `GET/api/v2/billing/syncDepositList`
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1403,7 +1403,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                                |
 | ------- | ------ | -------- | ----------------------------------- |
@@ -1483,7 +1483,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 充值通知：
 
@@ -1528,7 +1528,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                                     |
 | ------- | ------ | -------- | ---------------------------------------- |
@@ -1610,7 +1610,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param      | 类型   | 是否必须 | 说明                                                   |
 | ---------- | ------ | -------- | ------------------------------------------------------ |
@@ -1657,7 +1657,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param      | 类型   | 是否必须 | 说明                                               |
 | ---------- | ------ | -------- | -------------------------------------------------- |
@@ -1694,7 +1694,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 用户提现异步回调通知 
+### 用户提现异步回调通知
 
 
 
@@ -1705,7 +1705,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 提现通知：
 
@@ -1757,7 +1757,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
@@ -1841,7 +1841,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                                            |
 | ------- | ------ | -------- | ----------------------------------------------- |
@@ -1917,7 +1917,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### Custody商户转账 
+### Custody商户转账
 
 
 
@@ -1931,7 +1931,7 @@ Custody内部商户互相转账
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param      | 类型   | 是否必须 | 说明                              |
 | ---------- | ------ | -------- | --------------------------------- |
@@ -1974,7 +1974,7 @@ Custody内部商户互相转账
 
 
 
-### 转账信息异步确认 
+### 转账信息异步确认
 
 
 
@@ -1988,7 +1988,7 @@ Custody内部商户互相转账
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param      | 类型   | 是否必须 | 说明                                         |
 | ---------- | ------ | -------- | -------------------------------------------- |
@@ -2032,7 +2032,7 @@ Custody内部商户互相转账
 
 
 
-### 批量查询转账记录 
+### 批量查询转账记录
 
 
 
@@ -2042,7 +2042,7 @@ Custody内部商户互相转账
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param    | 类型   | 是否必须 | 说明                                           |
 | -------- | ------ | -------- | ---------------------------------------------- |
@@ -2118,7 +2118,7 @@ Custody内部商户互相转账
 
 
 
-#### 请求参数data解密之后数据结构: 
+#### 请求参数data解密之后数据结构:
 
 | Param   | 类型   | 是否必须 | 说明                              |
 | ------- | ------ | -------- | --------------------------------- |
