@@ -1,8 +1,8 @@
-# 托管(Custody) 开发文档 V2
+# MPC钱包 
 
 欢迎来到**ChainUp Custody**，ChainUp Custody基于深厚的底层钱包技术和安全的区块链钱包架构，将强大的资产托管功通过接口的方式提供给第三方合作伙伴。通过这种方式能帮助合作伙伴在关注于核心业务发展的同时也能确保资产的安全。
 
-您可以通过API提交传输，并接收传输的实时信息;安全检查所有事务类型和消息;与托管钱包的共同管理人制定取款政策;管理你的钱包和子钱包账户、地址簿和网络连接;并利用反洗钱机制等功能。所有转账都反映在ChainUp Custody的开放平台、交易记录、安全策略和对账中心中。
+您可以通过API提交传输，并接收传输的实时信息; 安全检查所有事务类型和消息;  管理你的钱包和子钱包账户、地址簿和网络连接;  并利用反洗钱机制等功能。所有转账都反映在ChainUp Custody的开放平台、交易记录、安全策略和对账中心中。
 
 
 
@@ -10,11 +10,11 @@
 
 ## 介绍
 
-ChainUp Custody是ChainUp集团依托3年时间所服务的300多家交易所经验，将底层区块链钱包封装成的一套完整的Custody服务，包含资产托管、节点服务、主链币种开发、热门币种一键接入、共管钱包、借贷理财等多种功能服务。
+ChainUp Custody对于MPC技术的整体实施应用能够保证您的投资资产处于市场上最高级别的安全等级的托管保护之下，用户的私钥将由用户和ChainUp Custody共同管理，该技术使您拥有资产完整控制权，您对资产的管理使用不受时间和地点的限制。方便资产的备份和恢复，消除私钥管理的单点故障问题，同时增加了资产自管的安全性。
 
-ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、低成本的集成Custody服务（多达200条主链不限代币的收币、发币等功能）；同时三方合作伙伴亦可通过web端可视化界面 [ChainUp Custody](https://custody.chainup.com "ChainUp Custody") 进行资产管理，更有丰富的金融产品供您使用。
 
-目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；接入ChainUp Custody的客户，可享受联盟成员之间转账【0手续费】、【秒级到账】等多种优势。
+
+目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；
 
 
 
@@ -33,7 +33,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 # 接入指引 
 
 
-您需要按照以下流程进行接入ChainUp Custody
+您需要按照以下流程进行接入ChainUp Custody - MPC 钱包
 
 [![](https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png)](https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png)
 
@@ -41,7 +41,9 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 ## 创建账号
 
-###  下载Custody钱包
+
+
+#### 下载MPC 钱包
 
 方式一：手机浏览器打开链接：<https://custody.chainup.com/download>
 
@@ -53,13 +55,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-
-
-
-
-
-
-### 注册Custody账号
+#### 注册MPC 账户
 
 打开【Custody】应用，注册账号（未注册账号登录即注册），支持邮箱与手机号两种方式
 
@@ -67,7 +63,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 完成身份认证
+#### 完成身份认证
 
 身份认证信息，仅支持一种身份，且认证后不支持更换
 
@@ -81,204 +77,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 完成【身份认证】、【谷歌验证】（身份认证需要平台审核，您可以联系项目经理或客服快速审核）
 
-
-
 <%= image_tag "safe.jpg", style:"width: 250px" %>
-
-
-
-
-## 创建并配置企业钱包
-
-### 登录ChainUp Custody平台
-
-浏览器打开[ChainUp Custody平台](https://custody.chainup.com/)， 使用【Custody】应用，首页或云端钱包【扫码】功能扫描二维码登录
-
-
-
-
-
-![api_plan_saomadenglu.jpg (2882×1696)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_saomadenglu.jpg)
-
-
-
-
-
-### 创建钱包
-
-进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）
-
-
-
-[![../_images/api_plan_chuangjianqianbao1.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)
-
-### 开启币种
-
-开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）
-
-开通币种后，进入钱包点击【币种管理】，搜索币种
-
-[![../_images/api_plan_bizhongguanli.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg)
-
-进入编辑页面，开启币种
-
-[![../_images/api_plan_bizhongbianji.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)
-
-### 获取API信息
-
-创建API（目前仅支持一个全功能权限的API）
-
-[![../_images/api_plan_apiliebiao.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png)
-
-创建完成，完善公钥信息
-
-[![../_images/api_plan_apixiangqing.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)
-
-### 开发测试
-
-根据平台提供的技术方案与API文档进行系统对接
-
-
-
-## 商户签约
-
-
-
-### 正式签约
-
-支持线上、线下签约
-
-
-
-### 支付费用
-
-支付系统订阅、安装等费用（具体费用类型以合同为准）
-
-
-
-## 投入使用
-
-
-
-### 协助上线
-
-协助商户正式上线运营
-
-
-
-### 技术支持
-
-平台提供7*24h技术支持
-
-
-
-
-
-# 对接方案
-
-为了让客户更便捷、快速的接入Custody，平台基于过往客户的对接经验，梳理了一套比较完善的技术对接方案。具体如下：
-
-整个方案共分四个流程：
-
-1. 获取充币地址
-2. 用户充币
-3. 用户提币
-4. 财务对账
-
-注：若客户项目时间紧迫，可优先开发必须流程【获取充币地址】、【用户充币】、【用户提币】，【财务对账】流程可二期开发。
-
-
-
-## 获取充币地址
-
-1. 客户向Custody系统注册用户（建议使用邮箱）
-2. 注册成功后通过Custody系统的UID获取地址
-
-注：提前获取地址有利于用户注册后高效分配地址；若用户注册后再通过接口获取地址，有可能因为网络等其它原因造成获取失败，导致用户无法正常完成业务。
-
-[![](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png)](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png)
-
-
-
-## 用户充币
-
-1）用户在客户系统内完成注册
-
-2）当用户在前端查看币种充值地址时，客户系统为用户分配币种地址
-
-3）用户向地址充币
-
-4）Custody系统监控区块链地址有充币交易，在Custody系统为客户上账，并主动通知客户系统或客户系统主动获取
-
-5）客户系统确认充币信息有效后给用户上账
-
-6）客户系统通知用户充币成功
-
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_chongzhi.png)
-
-注：Custody系统的异步回调是当每笔订单最终态时才会触发，每日最多发送5次；
-
-定时任务：总计回调五次
-
-通知时间：第一次1s, 第二次2min，第三次8min，第四次32min，第五次128min
-
-
-
-**回调逻辑：**
-
-如果回调成功，更新回调状态；
-
-如果回调失败，继续回调，更新下次回调间隔时间；
-
-当回调失败达到5次，停止回调
-
-
-
-
-
-## 用户提币
-
-1）用户在客户系统发起提币
-
-2）客户系统审核通过后，通知Custody系统
-
-3）Custody系统向客户系统进行提币信息二次确认
-
-4）客户系统确认提币信息有效后Custody系统校验提币信息，校验通过发起支付
-
-5）Custody系统监控提币订单状态，提币完成，主动通知客户系统或客户系统主动获取
-
-6）客户系统通知用户提币成功
-
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_tibi.png)
-
-
-
-
-
-
-
-## 财务对账
-
-1）客户系统按周期与Custody系统对账（建议按日）
-
-2）次日0点获取上一日的所有充币、提币以及消耗的归集矿工费订单
-
-3）客户系统订单与Custody系统内的订单做比对
-
-4）若订单数量、金额、状态等无误则对账成功；否则对账异常，联系ChainUP Custody技术人员协助处理
-
-
-
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_duizhang.png)
-
-注：Custody系统内三方系统共有三种成本支出：归集矿工费、提币矿工费、分润手续费；
-
-1. 归集矿工费：账户类型的币种，充币后地址上的资金会归集到热钱包地址，归集走区块链网络，部分主链区块链交易会消耗矿工费，这部分成本由客户承担；此部分资金支出需要联系我方处理
-2. 提币矿工费：提币到非ChainUP Custody的地址，走区块链网络需要消耗矿工费（部分币种），消耗的矿工费由三方承担；此部分资金支出在提币订单内可以直接查看；
-3. 分润手续费：暂不收取
-
-
 
 
 
@@ -397,12 +196,12 @@ API：`请查看相关文档`
 
 ### 接口规则
 
-| 传输方式:     | https(测试环境暂时使用 http)                 |
-| :------------ | -------------------------------------------- |
-| 签名字段:     | 除了 `sign` 字段，其他所有必填项都需要参与签名 |
+| 传输方式:     | https(测试环境暂时使用 http)                           |
+| :------------ | ------------------------------------------------------ |
+| 签名字段:     | 除了 `sign` 字段，其他所有必填项都需要参与签名         |
 | 响应状态码为: | `0`表示处理`成功`，非 0 表示**请求错误**或**系统异常** |
-| 请求地址:     | 域名+接口地址                                |
-| 加密算法:     | 详见`附 1`                                     |
+| 请求地址:     | 域名+接口地址                                          |
+| 加密算法:     | 详见`附 1`                                             |
 
 
 
@@ -444,7 +243,6 @@ String decryptRespData = RSAHelper.decryptByPublic( encryptRespData, "托管平�
 > 公共类RSAHelper.java:
 
 ```java
-
 import java.io.ByteArrayOutputStream;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -650,7 +448,6 @@ public class RSAHelper {
 ```
 
 ```php
-
 <?php
         class RSA
         {
@@ -822,11 +619,12 @@ public class RSAHelper {
 
 
 
+
 ### 附 2:接口错误码表 - 表格
 
 | code    | msg                                                  |
 | ------- | ---------------------------------------------------- |
-| 0       | 成功                                               |
+| 0       | 成功                                                 |
 | 100001  | 系统错误                                             |
 | 100004  | 请求参数不合法(提现二次确认接口回调失败)             |
 | 100005  | 签名校验失败                                         |
@@ -854,43 +652,19 @@ public class RSAHelper {
 
 
 
-## 常见问题(FAQ)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-# API文档
-
-
-
-为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API；
-
-**SDK**：支持java、PHP和node
-
-java SDK地址：`https://github.com/HiCoinCom/java-sdk`
-
-PHP SDK地址：`https://github.com/HiCoinCom/php-sdk`
-
-node SDK地址：`https://github.com/HiCoinCom/js-sdk`
-
-**API**：请查看API接口
-
-
+# API接口
 
 ## 统一说明
 
-### 请求参数统一格式
+
+
+#### 请求参数统一格式
 
 | Param  | 类型   | 是否必须 | 说明                                                      |
 | :----- | :----- | :------- | :-------------------------------------------------------- |
@@ -899,43 +673,44 @@ node SDK地址：`https://github.com/HiCoinCom/js-sdk`
 
 
 
-### 请求接口示例
+#### 请求接口示例：
 
-`POST/api/v2/user/createUser`
+`POST /api/mpc/sub_wallet/assets`
 
 
 
 > 请求接口示例：
 
 ```java
-    
-POST/api/v2/user/createUser
+POST /api/mpc/sub_wallet/assets
 
-app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK--Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml-DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn-C_-HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q-dLN1MpOlkUKwbmbpb-gEh_s68yl7ox6WSgKfCK4i_uvA
-
-
+app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
 ```
 
 
 
-### 响应参数统一格式
+
+
+#### 响应参数统一格式
 
 | Param | 类型   | 是否必须 | 说明                                                      |
-| ----- | ------ | -------- | --------------------------------------------------------- |
-| data  | String | 可选     | 加密之后的字符串，具体加密信息见 `响应结果data解密后格式` |
+| :---- | :----- | :------- | :-------------------------------------------------------- |
+| data  | String | 必须     | 加密之后的字符串，具体加密信息见 `响应结果data解密后格式` |
 
 
 
-> 响应结果示例:	
+> 响应结果示例：
 
 ```java
+{"data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"}
 
-{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
 ```
 
 
 
-### 响应结果data解密后格式
+#### 响应结果data解密后格式
+
+
 
 | Param | 类型   | 是否必须 | 说明                                                   |
 | :---- | :----- | :------- | :----------------------------------------------------- |
@@ -947,1262 +722,820 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-## 获取地址
+## 钱包
 
+### 获取钱包开通的主链
 
-
-请注意，默认注册用户量为5万个，如果用户超过上限，请联系相关运营人员进行协助
-
-
-
-### 用户手机注册
-
-
-
-注册成为钱包的用户
+获取ChainUp Custody支持的MPC主链币种和开通的MPC主链币种
 
 
 
 #### HTTP请求
 
-`POST/api/v2/user/createUser`
+`GET /api/mpc/wallet/open_coin`
 
 
 
-#### 请求参数data解密之后数据结构:
+#### 请求参数数据结构 
 
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| country | String | 必填     | 国家编号，如：86表示中国          |
-| mobile  | String | 必填     | 手机号                            |
+
+
+无
+
+> 响应结果示例：
+
+```java
+{
+    "open_main_chain":[
+        {
+            "coin_net":"BTC",
+            "symbol":"BTC",
+            "symbol_alias":"BTC"
+        }
+    ],
+    "support_main_chain":[
+        {
+            "coin_net":"BTC",
+            "if_open_chain":true,
+            "symbol":"BTC",
+            "symbol_alias":"BTC"
+        }
+    ]
+}
+```
+
+#### 响应参数数据结构
+
+| Param              | 类型    | 是否必须 | 说明                                    |
+| :----------------- | :------ | :------- | :-------------------------------------- |
+| Param              | 类型    | 是否必须 | 说明                                    |
+| open_main_chain    | Array   | 否       | 钱包开通的主链                          |
+| > coin_net         | String  | 否       | 币种网络，例：ETH                       |
+| > symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20 |
+| > symbol_alias     | String  | 否       | 币种真实币名，例：USDT                  |
+| support_main_chain | Array   | 否       | MPC支持的主链                           |
+| > coin_net         | String  | 否       | 币种网络，例：ETH                       |
+| > symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20 |
+| > symbol_alias     | String  | 否       | 币种真实币名，例：USDT                  |
+| > if_open_chain    | Boolean | 是       | 是否开通主链 false:未开通，true:已开通  |
+
+
+
+
+
+### 创建子钱包（用户）
+
+传入指定的子钱包名称，为钱包创建一个新的子钱包
+
+#### HTTP请求
+
+`POST /api/mpc/sub_wallet/create`
+
+
+
+#### 请求参数数据结构 
+
+| Param           | 类型   | 是否必须 | 说明                                                         |
+| :-------------- | :----- | :------- | :----------------------------------------------------------- |
+| sub_wallet_name | String | 是       | 子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池 |
 
 
 > 响应结果示例：
 
 ```java
 {
-    "code":"0",
-    "data":{
-        "uid":3529218
-    },
-    "msg":"成功"
-}
-```
-
-#### 响应参数data解密之后数据结构:
-
-| Param | 类型 | 是否必须 | 说明                     |
-| ----- | ---- | -------- | ------------------------ |
-| uid   | int  | 是       | 用户在钱包服务的唯一标识 |
-
-
-
-
-
-### 用户邮箱注册
-
-
-
-注册成为钱包的用户。满足邮箱格式即可（e.g. [123@111.com](mailto:123@111.com)）
-
-
-
-#### HTTP请求
-
-`POST /api/v2/user/registerEmail`
-
-
-
-#### 请求参数data解密之后数据结构:
-
-| Param   | 类型   | 是否必须 | 说明                                         |
-| ------- | ------ | -------- | -------------------------------------------- |
-| time    | long   | 必填     | 当前时间戳                                   |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8            |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2             |
-| email   | String | 必填     | 邮箱或虚拟账号，确保其唯一性,最多支持100字符 |
-
-
-
-> 响应数据解密后示例:	
-
-```java
-{
-    "code":"0",
-    "data":{
-        "uid":3529218
-    },
-    "msg":"成功"
+    "sub_wallet_id": 10234122
 }
 ```
 
 
+#### 响应参数数据结构
 
-#### 响应参数data解密之后数据结构:
-
-| Param | 类型 | 是否必须 | 说明                     |
-| ----- | ---- | -------- | ------------------------ |
-| uid   | int  | 是       | 用户在钱包服务的唯一标识 |
-
-
-
-### 获取用户指定币种充币地址
+| Param         | 类型    | 是否必须 | 说明                   |
+| :------------ | :------ | :------- | :--------------------- |
+| sub_wallet_id | Integer | 是       | 子钱包id，例：10234122 |
 
 
 
-获取用户指定币账户地址。如果没有地址，则给用户分配一个地址，此时不应生成账户，账户还是按需生成。
+
+
+
+
+### 获取子钱包（用户）地址
+
+获取指定子钱包及币种下的充币地址
 
 
 
 #### HTTP请求
 
-`POST/api/v2/account/getDepositAddress`
+`POST /api/mpc/sub_wallet/get_address`
 
 
 
-#### 请求参数data解密之后数据结构:
+#### 请求参数数据结构
 
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| uid     | String | 必填     | 用户ID                            |
-| symbol  | String | 必填     | 币种                              |
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| sub_wallet_id | String | 是       | 子钱包id，例：10234122      |
+| symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
 
-> 响应数据解密后示例:
-
+> 响应结果示例：
 ```java
-{
-    "code":"0",
-    "data":{
-        "uid":"3529218",
-        "address":"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"
-    },
-    "msg":"成功"
+{ "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
 }
 ```
 
+#### 响应参数数据结构
 
-
-#### 响应参数data解密之后数据结构:
-
-| Param   | 类型   | 是否必须 | 说明                     |
-| ------- | ------ | -------- | ------------------------ |
-| uid     | int    | 是       | 用户在钱包服务的唯一标识 |
-| address | String | 是       | 币种账户地址             |
+| Param   | 类型   | 是否必须 | 说明                                                         |
+| :------ | :----- | :------- | :----------------------------------------------------------- |
+| address | String | 是       | 充值到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
 
 
 
-## 账户资产
 
 
+### 获取子钱包（用户）资产
 
-### 查询用户信息
-
-
-
-查询用户信息。
-
-
+获取指定子钱包及币种下的账户资产
 
 #### HTTP请求
 
-`GET/api/v2/user/info`
+`GET /api/mpc/sub_wallet/assets`
 
 
 
-#### 请求参数data解密之后数据结构:
+#### 请求参数数据结构 
 
-| Param   | 类型   | 是否必须 | 说明                                         |
-| ------- | ------ | -------- | -------------------------------------------- |
-| time    | long   | 必填     | 当前时间戳                                   |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8            |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2             |
-| country | String | 可选     | 国家编号，mobile不为空时，该字段必填。如：86 |
-| mobile  | String | 可选     | 手机号，手机和邮箱需要保证其中之一不能为空   |
-| email   | string | 可选     | 邮箱，手机和邮箱需要保证其中之一不能为空     |
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
+| sub_wallet_id | String | 是       | 子钱包id，例：10234122      |
 
-
-> 响应数据解密后示例:	
-
+> 响应结果示例：
 ```java
 {
-    "code":"0",
-    "data":{
-        "uid":3529218,
-        "nickname":""
-    },
-    "msg":"成功"
+    "normal_balance":"1.23",
+    "deposit_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
+    "lock_balance":"0.77"
 }
 ```
 
+#### 响应参数数据结构
 
-#### 响应参数data解密之后数据结构:
-
-| Param    | 类型   | 是否必须 | 说明                     |
-| -------- | ------ | -------- | ------------------------ |
-| uid      | int    | 是       | 用户在钱包服务的唯一标识 |
-| nickname | String | 是       | 用户昵称                 |
-
-
+| Param           | 类型   | 是否必须 | 说明                                                         |
+| :-------------- | :----- | :------- | :----------------------------------------------------------- |
+| deposit_address | String | 是       | 充值到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| normal_balance  | String | 是       | 可用余额，例：1.23                                           |
+| lock_balance    | String | 是       | 冻结余额，例：0.77                                           |
 
 
 
 
 
-### 获取支持的币种列表
 
 
+### 修改子钱包（用户）在app客户端展示状态
 
-获取商户的币种列表
-
-
+指定子钱包在app客户端的展示情况，不展示无法在app发起交易
 
 #### HTTP请求
 
-`GET/api/v2/user/getCoinList`
+`POST /api/mpc/sub_wallet/change_show_status`
 
 
 
-#### 请求参数data解密之后数据结构:
+#### 请求参数数据结构 
 
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
+| Param           | 类型   | 是否必须 | 说明                                                      |
+| :-------------- | :----- | :------- | :-------------------------------------------------------- |
+| sub_wallet_ids  | String | 是       | 多个子钱包id的字符串，英文逗号分割，例：10234122,10234123 |
+| app_show_status | String | 是       | 1展示 2不展示                                             |
 
 
 
-> 响应数据解密后示例:	
+#### 响应参数数据结构
 
-```java
-
-{
-  "code":"0",
-  "data":[
-      {
-          "symbol":"BTC",
-          "icon":"http://chainup-oss.oss-cn-beijing.aliyuncs.com/saas/1565681771193.png",
-          "real_symbol":"BTC",
-          "decimals":"8",
-          "name":"Bitcoin",
-          "base_symbol":"BTC",
-          "contract_address":"",
-          "deposit_confirmation":"2",
-          "explorer":"https://btc.com/",
-          "address_regex":"^(1|3)[a-zA-Z0-9]{24,36}$",
-          "address_tag_regex":"",
-          "support_memo":"0",
-          "support_token":"0"
-      }
-   ]
- }
-```
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param                | 类型   | 是否必须 | 说明                                                         |
-| -------------------- | ------ | -------- | ------------------------------------------------------------ |
-| symbol               | String | 是       | 币种（调用提币的接口，及任何查询接口时务必使用此字段返回的值） |
-| icon                 | String | 是       | 币种icon                                                     |
-| real_symbol          | String | 是       | 币种链上名称                                                 |
-| decimals             | String | 是       | 精度                                                         |
-| name                 | string | 是       | 币种全称                                                     |
-| base_symbol          | string | 是       | 主链币币名                                                   |
-| contract_address     | string | 是       | 合约地址                                                     |
-| deposit_confirmation | string | 是       | 币种充值确认数                                               |
-| explorer             | string | 是       | 区块浏览器                                                   |
-| address_regex        | string | 是       | 地址正则                                                     |
-| address_tag_regex    | string | 是       | tag正则                                                      |
-| support_memo         | string | 是       | 是否支持memo，0不支持1支持                                   |
-| support_token        | string | 是       | 是否支持token币，0不支持1支持,主链币才有值,代币为空          |
-
-
-
-
-
-### 获取指定用户的账户信息
-
-
-
-根据币种及用户ID查询用户的账户。另外，若商户开启自动归集后，用户账户将被转移到商户的归集账户中
-
-
-
-#### HTTP请求
-
-`GET/api/v2/account/getByUidAndSymbol`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| vesion  | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| uid     | String | 必填     | 用户ID                            |
-| symbol  | String | 必填     | 币种                              |
-
-
-
-
-> 响应数据解密后示例:	
-
-```java
-{
-    "code":"0",
-    "data":{
-        "normal_balance":"2.99400066",
-        "deposit_address":"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd",
-        "lock_balance":"0"
-    },
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param           | 类型   | 是否必须 | 说明               |
-| --------------- | ------ | -------- | ------------------ |
-| normal_balance  | String | 必填     | 正常账户余额       |
-| lock_balance    | String | 必填     | 冻结账户余额       |
-| deposit_address | String | 必填     | 币种对应的充值地址 |
-
-
-### 获取商户归集账户余额
-
-
-
-开启商户资金自动归集之后，商户可以通过该接口种获取商户归集账户余额
-
-
-
-#### HTTP请求
-
-`GET/api/v2/account/getCompanyBySymbol`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| vesion  | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| symbol  | String | 必填     | 币种                              |
-
-
-
-> 响应数据解密后示例:	
-```java
-{
-    "code":"0",
-    "data":{
-        "symbol":"ETH",
-        "balance":"64.97599802"
-    },
-    "msg":"成功"
-}
-```
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param   | 类型   | 是否必须 | 说明         |
-| ------- | ------ | -------- | ------------ |
-| symbol  | String | 必填     | 币种名称     |
-| balance | String | 必填     | 归集账户余额 |
-
-
-
-## 用户充值
-
-
-
-### 同步充值记录
-
-
-#### HTTP请求
-
-`GET/api/v2/billing/syncDepositList`
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| max_id  | int    | 必填     | 返回大于id的100条充值记录数据     |
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "code":"0",
-    "data":[
-        {
-            "withdraw_fee":"0",
-            "symbol":"BTC",
-            "amount":"0.0001",
-            "real_fee":"0",
-            "fee":"0",
-            "address_to":"1CfYiePwcf3mWhLBQH2ac35C7jmE2udQqH",
-            "created_at":1539050731000,
-            "txid":"",
-            "confirmations":0,
-            "address_from":"",
-            "uid":10596,
-            "withdraw_fee_symbol":"BTC",
-            "fee_symbol":"BTC",
-            "saas_status":0,
-            "updated_at":1543483252000,
-            "company_status":2,
-            "id":45325,
-            "request_id":"",
-            "status":2
-        },
-        {
-            "withdraw_fee":"0.0000001",
-            "symbol":"BTC",
-            "amount":"0.0001",
-            "real_fee":"0",
-            "fee":"0.0000001",
-            "address_to":"17m2GM8aRrrnxPt5JhYPJd4qUFqF8rJDop",
-            "created_at":1539065092000,
-            "txid":"",
-            "confirmations":0,
-            "address_from":"",
-            "uid":10595,
-            "withdraw_fee_symbol":"BTC",
-            "fee_symbol":"BTC",
-            "saas_status":1,
-            "updated_at":1543851222000,
-            "company_status":2,
-            "id":45332,
-            "request_id":"",
-            "status":2
-        }
-    ],
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param         | 类型   | 是否必须 | 说明                                                         |
-| ------------- | ------ | -------- | ------------------------------------------------------------ |
-| id            | int    | 必填     | 充值唯一id                                                   |
-| uid           | int    | 必填     | 充值用户id                                                   |
-| symbol        | String | 必填     | 币种                                                         |
-| amount        | String | 必填     | 充值金额                                                     |
-| created_at    | Long   | 必填     | 创建时间                                                     |
-| updated_at    | Long   | 必填     | 修改时间                                                     |
-| txid          | String | 必填     | 区块链交易ID                                                 |
-| confirmations | int    | 必填     | 区块链确认数                                                 |
-| address_from  | String | 必填     | 来源地址                                                     |
-| address_to    | String | 必填     | 充值到帐地址                                                 |
-| status        | int    | 必填     | 0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断) |
-
-
-
-
-
-### 批量获取充值记录
-
-
-
-#### HTTP请求
-
-`GET/api/v2/billing/depositList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                                |
-| ------- | ------ | -------- | ----------------------------------- |
-| time    | long   | 必填     | 当前时间戳                          |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8   |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2    |
-| ids     | String | 必填     | 多个充值id使用逗号隔开，最多100个id |
-
-
-
-> 响应数据解密后示例:
-
-
-```java
-{
-"code": "0",
-        "msg": "suc",
-        "data": [
-                {
-                        "id" ：1,
-                "uid" ：11,
-                "symbol"："ETH",
-                "amount"："0.0002000000000000",
-                "created_at": 1545273830000,
-                "updated_at": 1545273830000,
-                "txid":"78d1edef3b3fd14365f88cf2d03e8c29ec49ac1a43cedde9e21d320b3268f4de",
-                        "confirmations":11,
-                "status":1,
-                "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
-                },
-        {
-                "id" ：2,
-                "uid" ：12,
-                        "symbol" ："ETH",
-                "amount"："0.0002000000000000",
-                "created_at": 1545273830000,
-                "updated_at": 1545273830000,
-                "txid":"0xd609e050c3d573fb715431edbd36cc08eaa475f813de921026a65c0a96e8113e",
-                        "confirmations":11,
-                "status":1,
-                "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
-        }
-        ]
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param         | 类型   | 是否必须 | 说明                                                         |
-| ------------- | ------ | -------- | ------------------------------------------------------------ |
-| id            | int    | 必填     | 充值唯一id                                                   |
-| uid           | int    | 必填     | 充值 用户id                                                  |
-| symbol        | String | 必填     | 币种                                                         |
-| amount        | String | 必填     | 充值金额                                                     |
-| created_at    | Long   | 必填     | 创建时间,时间戳                                              |
-| updated_at    | Long   | 必填     | 修改时间，时间戳                                             |
-| txid          | String | 必填     | 区块链交易ID                                                 |
-| confirmations | int    | 必填     | 区块链确认数                                                 |
-| address_from  | String | 必填     | 来源地址                                                     |
-| address_to    | String | 必填     | 充值到帐地址                                                 |
-| status        | int    | 必填     | 0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断) |
-
-
-
-
-
-### 用户充值异步回调通知
-
-
-
-| 说明:     | 此接口仅定义了接口规范，具体接口需要开发者实现     |
-| :-------- | -------------------------------------------------- |
-| 接口地址: | 接口地址由开发者提供，联系管理员在平台进行配置即可 |
-| 请求方式: | POST                                               |
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-充值通知：
-
-| Param         | 类型   | 是否必须 | 说明                                                         |
-| ------------- | ------ | -------- | ------------------------------------------------------------ |
-| charset       | String | 是       | 编码格式，无特殊情况，传参数utf-8                            |
-| version       | String | 是       | 接口版本号，无特殊情况，传参数v2                             |
-| side          | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
-| notify_time   | string | 是       | 通知时间                                                     |
-| id            | string | 是       | 充值id                                                       |
-| uid           | string | 是       | 提现用户id                                                   |
-| symbol        | string | 是       | 币种                                                         |
-| amount        | string | 是       | 提现金额                                                     |
-| address_to    | string | 是       | 充值地址                                                     |
-| created_at    | string | 是       | 创建时间                                                     |
-| updated_at    | string | 是       | 修改时间                                                     |
-| txid          | string | 是       | 区块链交易ID                                                 |
-| confirmations | string | 是       | 区块链确认数                                                 |
-| status        | string | 是       | 充值状态 0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断) |
-
-
-
-#### 响应参数:
-
-返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
-
-
-
-
-
-### 获取归集矿工费
-
-
-
-账户类型的币种充值后需要进行归集，UTXO无归集矿工费费用
-
-
-
-#### HTTP请求
-
-`GET//api/v2/billing/syncMinerFeeList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                                     |
-| ------- | ------ | -------- | ---------------------------------------- |
-| time    | long   | 必填     | 当前时间戳                               |
-| charset | String | 必填     | 编码格式，无特殊情况，传 参数 utf-8      |
-| version | String | 必填     | 接口版本号，无特殊情况， 传参数 v2       |
-| max_id  | int    | 必填     | 返回大于 id 的 100 条归集矿 工费记录数据 |
-
-
-
-
-> 响应数据解密后示例:
-
-```java
-
-{ "code":"0",
-  "data":[
-         {
-         "id":1,
-          "symbol":"BTC",
-          "amount":"11",
-          "fee":"0.00111",
-          "created_at":1539050731000,
-          "updated_at":1543483252000,
-          "txid":"",
-          "confirmations":0,
-          "status":2,
-          "address_from":"",
-          "address_to":"",
-          "txid_type":"1",
-          "base_symbol":"",
-          "contract_address":"123",
-          "email":""
-          }
-     ],
-  "msg": "成功"
-  }
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param            | 类型   | 是否必须 | 说明                                                         |
-| ---------------- | ------ | -------- | ------------------------------------------------------------ |
-| id               | int    | 是       | 归集唯一ID                                                   |
-| symbol           | String | 是       | 币种                                                         |
-| amount           | String | 是       | 归集金额                                                     |
-| fee              | String | 是       | 归集手续费                                                   |
-| created_at       | Long   | 是       | 创建时间                                                     |
-| updated_at       | Long   | 是       | 修改时间                                                     |
-| txid             | String | 是       | 区块链交易ID                                                 |
-| confirmations    | int    | 是       | 区块链确认数                                                 |
-| status           | int    | 是       | 0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断) |
-| address_to       | String | 是       | 充值到账地址                                                 |
-| address_from     | String | 是       | 充值发送地址                                                 |
-| txid_type        | String | 是       | 0 链上交易，1 联盟转账交易                                   |
-| base_symbol      | String | 是       | 主链币名称                                                   |
-| contract_address | String | 是       | 币种合约地址                                                 |
-| email            | String | 是       | 邮箱                                                         |
-
-
-
-## 用户提现
-
-
-
-### 发起提现
-
-
-
-如果提现地址为联盟内部地址，则不会上链；否则需要上链。另外，为了避免非法的提现请求，钱包服务在接收到第三方应用的提现请求时，会调用第三方提供的[提现二次确认接口。
-
-
-
-#### HTTP请求
-
-`POST/api/v2/billing/withdraw`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param      | 类型   | 是否必须 | 说明                                                   |
-| ---------- | ------ | -------- | ------------------------------------------------------ |
-| time       | long   | 必填     | 当前时间戳                                             |
-| charset    | String | 必填     | 编码格式，无特殊情况，传参数utf-8                      |
-| version    | String | 必填     | 接口版本号，无特殊情况，传参数v2                       |
-| request_id | String | 必填     | 请求唯一标识，最多支持64位                             |
-| from_uid   | String | 必填     | 转出用户ID                                             |
-| to_address | String | 必填     | 转入用户地址，memo类型，使用"_"进行拼接，如: eos_24545 |
-| amount     | String | 必填     | 提现金额，包含提现手续费；手续费需要在商户后台配置     |
-| symbol     | String | 必填     | 提现币种                                               |
-
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "code":"0",
-    "data":{
-        "id":48680,
-        "status":0
-    },
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-
-
-| param  | type   | 是否必须 | 说明                                                         |
-| ------ | ------ | -------- | ------------------------------------------------------------ |
-| status | string | 必填     | 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高) |
-
-
-
-
-
-### 提现信息二次确认
-
-
-
-| 说明:     | 平台在接收到提现请求之后，会调用第三方提供的二次确认接口，来确认该请求为商户正常发起的提现请求。此接口仅定义了接口规范，具体接口需要开发者实现。 |
-| :-------- | ------------------------------------------------------------ |
-| 接口地址: | 接口地址由开发者提供，联系管理员在平台进行配置即可           |
-| 请求方式: | POST                                                         |
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param      | 类型   | 是否必须 | 说明                                               |
-| ---------- | ------ | -------- | -------------------------------------------------- |
-| time       | long   | 是       | 当前时间戳                                         |
-| charset    | String | 是       | 编码格式，无特殊情况，传参数utf-8                  |
-| version    | String | 是       | 接口版本号，无特殊情况，传参数v2                   |
-| request_id | String | 是       | 请求唯一标识                                       |
-| from_uid   | String | 是       | 转出用户ID                                         |
-| to_address | String | 是       | 转入用户地址                                       |
-| amount     | String | 是       | 提现金额，包含提现手续费；手续费需要在商户后台配置 |
-| symbol     | String | 是       | 提现币种                                           |
-| check_sum  | String | 是       | 随机校验码，第三方原样返回此字段平台认为成功       |
-
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "check_sum":"1234",
-    "time":"12345678"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param     | 类型   | 是否必须 | 说明                  |
-| --------- | ------ | -------- | --------------------- |
-| check_sum | String | 必填     | 请求参数中的check_sum |
-| time      | String | 必须     | 时间戳                |
-
-
-
-
-
-
-
-### 用户提现异步回调通知 
-
-
-
-| 说明:     | 此接口仅定义了接口规范，具体接口需要开发者实现     |
-| :-------- | -------------------------------------------------- |
-| 接口地址: | 接口地址由开发者提供，联系管理员在平台进行配置即可 |
-| 请求方式: | POST                                               |
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-提现通知：
-
-| Param               | 类型   | 是否必须 | 说明                                                         |
-| ------------------- | ------ | -------- | ------------------------------------------------------------ |
-| charset             | String | 是       | 编码格式，无特殊情况，传参数utf-8                            |
-| version             | String | 是       | 接口版本号，无特殊情况，传参数v2                             |
-| side                | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
-| notify_time         | String | 是       | 通知时间                                                     |
-| request_id          | String | 是       | 提现请求ID，对应提现接口中的request_id                       |
-| id                  | String | 是       | 提现id                                                       |
-| uid                 | String | 是       | 提现用户id                                                   |
-| symbol              | String | 是       | 币种                                                         |
-| amount              | String | 是       | 提现金额                                                     |
-| withdraw_fee_symbol | String | 是       | 提现手续费币种                                               |
-| withdraw_fee        | String | 是       | 提现手续费                                                   |
-| fee_symbol          | String | 是       | 挖矿手续费币种                                               |
-| real_fee            | String | 是       | 矿工费                                                       |
-| address_to          | String | 是       | 充值地址                                                     |
-| created_at          | String | 是       | 创建时间                                                     |
-| updated_at          | String | 是       | 修改时间                                                     |
-| txid                | String | 是       | 区块链交易ID                                                 |
-| confirmations       | String | 是       | 区块链确认数                                                 |
-| status              | String | 是       | 提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高) |
-
-
-
-#### 响应参数:
-
-返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
-
-
-
-
-
-
-
-### 同步提现记录
-
-
-
-批量获取提现记录
-
-
-
-#### HTTP请求
-
-`GET/api/v2/billing/syncWithdrawList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| max_id  | String | 必填     | 返回大于id的100条充值记录数据     |
-
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "code":"0",
-    "data":[
-        {
-            "withdraw_fee":"0.4",
-            "symbol":"LTC",
-            "amount":"10",
-            "real_fee":"0",
-            "fee":"0",
-            "address_to":"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1",
-            "created_at":1551429063000,
-            "txid":"",
-            "confirmations":0,
-            "address_from":"",
-            "uid":10739,
-            "withdraw_fee_symbol":"ETH",
-            "fee_symbol":"LTC",
-            "saas_status":0,
-            "updated_at":1551429063000,
-            "company_status":0,
-            "id":48393,
-            "request_id":"123",
-            "status":0
-        }
-    ],
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param               | 类型   | 是否必须 | 说明                                                         |
-| ------------------- | ------ | -------- | ------------------------------------------------------------ |
-| request_id          | String | 必填     | 请求id,                                                      |
-| id                  | int    | 必填     | 提现id                                                       |
-| uid                 | int    | 必填     | 提现用户id                                                   |
-| symbol              | String | 必填     | 币种                                                         |
-| amount              | String | 必填     | 提现金额                                                     |
-| withdraw_fee_symbol | String | 必填     | 提现手续费币种                                               |
-| withdraw_fee        | String | 必填     | 提现手续费                                                   |
-| fee_symbol          | String | 必填     | 挖矿手续费币种                                               |
-| real_fee            | String | 必填     | 矿工费                                                       |
-| created_at          | Long   | 必填     | 创建时间                                                     |
-| updated_at          | Long   | 必填     | 修改时间                                                     |
-| address_from        | String | 必填     | 来源地址                                                     |
-| address_to          | String | 必填     | 到账地址                                                     |
-| txid                | String | 必填     | 区块链交易ID                                                 |
-| confirmations       | int    | 必填     | 区块链确认数                                                 |
-| saas_status         | int    | 必填     | 平台审核状态:0 未审核，1 已审核，2 审核拒绝                  |
-| company_status      | int    | 必填     | 商户审核状态:0 未审核，1 已审核，2 审核拒绝                  |
-| status              | int    | 必填     | 提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高) |
-
-
-
-### 批量获取提现记录
-
-
-
-批量获取提现记录
-
-
-
-#### HTTP请求
-
-`GET/api/v2/billing/withdrawList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                                            |
-| ------- | ------ | -------- | ----------------------------------------------- |
-| time    | long   | 必填     | 当前时间戳                                      |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8               |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2                |
-| ids     | String | 必填     | 多个request_id使用逗号隔开，最多100个request_id |
-
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "code":"0",
-    "data":[
-        {
-            "withdraw_fee":"0.4",
-            "symbol":"LTC",
-            "amount":"10",
-            "real_fee":"0",
-            "fee":"0",
-            "address_to":"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1",
-            "created_at":1551429063000,
-            "txid":"",
-            "confirmations":0,
-            "address_from":"",
-            "uid":10739,
-            "withdraw_fee_symbol":"ETH",
-            "fee_symbol":"LTC",
-            "saas_status":0,
-            "updated_at":1551429063000,
-            "company_status":0,
-            "id":48393,
-            "request_id":"123",
-            "status":0
-        }
-    ],
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param               | 类型   | 是否必须 | 说明                                                         |
-| ------------------- | ------ | -------- | ------------------------------------------------------------ |
-| request_id          | String | 必填     | 请求id                                                       |
-| id                  | int    | 必填     | 提现id                                                       |
-| uid                 | int    | 必填     | 提现用户id                                                   |
-| symbol              | String | 必填     | 币种                                                         |
-| amount              | String | 必填     | 提现金额                                                     |
-| withdraw_fee_symbol | String | 必填     | 提现手续费币种                                               |
-| withdraw_fee        | String | 必填     | 提现手续费                                                   |
-| fee_symbol          | String | 必填     | 挖矿手续费币种                                               |
-| real_fee            | String | 必填     | 矿工费                                                       |
-| created_at          | Long   | 必填     | 创建时间,                                                    |
-| updated_at          | Long   | 必填     | 修改时间                                                     |
-| address_from        | String | 必填     | 来源地址                                                     |
-| address_to          | String | 必填     | 到账地址                                                     |
-| txid                | String | 必填     | 区块链交易ID                                                 |
-| confirmations       | int    | 必填     | 区块链确认数                                                 |
-| saas_status         | int    | 必填     | 平台审核状态                                                 |
-| company_status      | int    | 必填     | 商户审核状态                                                 |
-| status              | int    | 必填     | 提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高) |
-
-
-
-
-
-## 商户转账
-
-
-
-### Custody商户转账 
-
-
-
-Custody内部商户互相转账
-
-
-
-#### HTTP请求
-
-`POST/api/v2/account/transfer`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param      | 类型   | 是否必须 | 说明                              |
-| ---------- | ------ | -------- | --------------------------------- |
-| time       | Long   | 必填     | 当前时间戳                        |
-| charset    | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version    | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| request_id | String | 必填     | 请求唯一标识，最多支持64位        |
-| symbol     | String | 必填     | 转账币种，Custody获取币种名称     |
-| amount     | String | 必填     | 转账数量，包含转账手续费          |
-| to         | String | 必填     | 转入商户，目前填写商户APPID       |
-| remark     | String | 选填     | 备注字段                          |
-
-
-
-> 响应数据解密后示例:
-
-```java
-{
-    "code":"0",
-    "data":[
-        {
-            "receipt":"abcdesd",
-        }
-    ],
-    "msg":"成功"
-}
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param   | 类型   | 是否必须 | 说明         |
-| ------- | ------ | -------- | ------------ |
-| receipt | String | 必填     | 转账唯一凭证 |
-
-
-
-
-
-
-
-### 转账信息异步确认 
-
-
-
-转账信息异步确认
-
-
-
-#### HTTP请求
-
-`POST/same-with-withdraw-check-sum`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param      | 类型   | 是否必须 | 说明                                         |
-| ---------- | ------ | -------- | -------------------------------------------- |
-| time       | Long   | 必填     | 当前时间戳                                   |
-| charset    | String | 必填     | 编码格式，无特殊情况，传参数utf-8            |
-| version    | String | 必填     | 接口版本号，无特殊情况，传参数v2             |
-| request_id | String | 必填     | 请求唯一标识，最多支持64位                   |
-| symbol     | String | 必填     | 币种                                         |
-| amount     | String | 必填     | 转账数量，包含转账手续费                     |
-| to         | String | 必填     | 转入商户，目前填写商户APPID                  |
-| check_sum  | String | 必填     | 随机校验码，第三方原样返回此字段平台认为成功 |
-| remark     | String | 选填     | 备注字段                                     |
-
-
-
-> 响应数据解密后示例:
-
-```java
-    {
-"code":"0",
-"data":[
-    {
-        "time":1551429063111,
-        "check_sum":"123124",
-    }
-],
-"msg":"成功"
-    }
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param     | 类型   | 是否必须 | 说明                                         |
-| --------- | ------ | -------- | -------------------------------------------- |
-| time      | long   | 必填     | 当前时间戳                                   |
-| check_sum | String | 必填     | 随机校验码，第三方原样返回此字段平台认为成功 |
-
-
-
-
-
-### 批量查询转账记录 
-
-
-
-#### HTTP请求
-
-`POST/api/v2/account/transferList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param    | 类型   | 是否必须 | 说明                                           |
-| -------- | ------ | -------- | ---------------------------------------------- |
-| time     | long   | 必填     | 当前时间戳                                     |
-| charset  | String | 必填     | 编码格式，无特殊情况，传参数utf-8              |
-| version  | String | 必填     | 接口版本号，无特殊情况，传参数v2               |
-| ids      | String | 必填     | 请求唯一标识,多个之间用英文逗号分割，最多100个 |
-| ids_type | String | 必填     | request_id：请求ID（默认）；receipt：转账凭证  |
-
-
-
-> 响应数据解密后示例:
-
-```java
-    {
-"code":"0",
-"data":[
-    {
-        "id":"123",
-        "symbol":"ETH",
-        "amount":"0.002",
-        "from":"0xc0ff095a9f1608f6873e74b84671640364107dc4",
-        "to":"0xc0ff095a9f1608f6873e74b84671640364107dc5",
-        "created_at":1551429063000,
-        "request_id":"123123",
-        "receipt":"4444444",
-        "remark":"备注信息"
-    }
-    {
-        "id":"124",
-        "symbol":"ETH",
-        "amount":"0.002",
-        "from":"0xc0ff095a9f1608f6873e74b84671640364107dc4",
-        "to":"0xc0ff095a9f1608f6873e74b84671640364107dc5",
-        "created_at":1551429063111,
-        "request_id":"123124",
-        "receipt":"4444445",
-        "remark":"备注信息"
-    }
-],
-"msg":"成功"
-    }
-```
-
-
-
-#### 响应参数data解密之后数据结构:
-
-| Param      | 类型   | 是否必须 | 说明                              |
-| ---------- | ------ | -------- | --------------------------------- |
-| time       | long   | 必填     | 当前时间戳                        |
-| charset    | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version    | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| id         | String | 必填     | 请求唯一标识，最多支持64位        |
-| symbol     | String | 必填     | 币种                              |
-| amount     | String | 必填     | 转账数量，包含转账手续费          |
-| from       | String | 必填     | 转出商户，转出商户APPID           |
-| to         | String | 必填     | 转入商户，转入商户APPID           |
-| created_at | Long   | 必填     | 创建时间                          |
-| request_id | String | 必填     | 三方ID                            |
-| receipt    | String | 必填     | 转账凭证                          |
-| remark     | String | 必填     | 最大支持32字符                    |
-
-
-
-### 同步转账记录
-
-
-
-#### HTTP请求
-
-`POST/api/v2/account/syncTransferList`
-
-
-
-#### 请求参数data解密之后数据结构: 
-
-| Param   | 类型   | 是否必须 | 说明                              |
-| ------- | ------ | -------- | --------------------------------- |
-| time    | long   | 必填     | 当前时间戳                        |
-| charset | String | 必填     | 编码格式，无特殊情况，传参数utf-8 |
-| version | String | 必填     | 接口版本号，无特殊情况，传参数v2  |
-| max_id  | String | 必填     | 返回大于id的100条转账记录数据     |
-
-
-
-> 响应数据解密后示例:
-
-```java
-   {
-"code":"0",
-"data":[
-    {
-        "id":"123",
-        "symbol":"ETH",
-        "amount":"0.002",
-        "from":"0xc0ff095a9f1608f6873e74b84671640364107dc4",
-        "to":"0xc0ff095a9f1608f6873e74b84671640364107dc5",
-        "created_at":1551429063000,
-        "request_id":"123123",
-        "receipt":"4444444",
-        "remark":"备注信息"
-    }
-    {
-        "id":"124",
-        "symbol":"ETH",
-        "amount":"0.002",
-        "from":"0xc0ff095a9f1608f6873e74b84671640364107dc4",
-        "to":"0xc0ff095a9f1608f6873e74b84671640364107dc5",
-        "created_at":1551429063111,
-        "request_id":"123124",
-        "receipt":"4444445",
-        "remark":"备注信息"
-    }
-],
-"msg":"成功"
-    }
-```
-
-
-
-#### 响应参数data解密之后数据结构:
 
 无
+
+
+
+
+
+## 提币
+
+
+
+### 提现
+
+发起一笔提现交易
+
+#### HTTP请求
+
+`POST /api/mpc/billing/withdraw`
+
+
+
+#### 请求参数数据结构 
+
+| Param         | 类型   | 是否必须 | 说明                                                         |
+| :------------ | :----- | :------- | :----------------------------------------------------------- |
+| Param         | 类型   | 是否必须 | 说明                                                         |
+| sub_wallet_id | String | 是       | 子钱包id，例：10234122                                       |
+| symbol        | String | 是       | 币种唯一标识，例：USDTERC20                                  |
+| address_to    | String | 是       | 提币到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| memo          | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入，例：123321       |
+| amount        | String | 是       | 提币金额，例：1.23                                           |
+| request_id    | String | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
+| remark        | String | 否       | 提币备注，例：mpc矿池                                        |
+| gas_price     | String | 否       | 自定义矿工费时传入，通过<预估手续费接口>获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
+| gas_limit     | String | 否       | 自定义矿工费时传入，通过<预估手续费接口>获取参考值，填入大于等于0的数值 |
+| fee           | String | 否       | 自定义矿工费时传入，通过<预估手续费接口>获取参考值，填入大于等于0的数值；fee是真实的矿工费，无精度，填入时需要注意fee和gas_price二选一，其中一者为0，另一者不为0； |
+
+> 响应结果示例：
+```java
+{
+    "withdraw_id": 12345
+}
+```
+
+#### 响应参数数据结构
+
+| Param       | 类型    | 是否必须 | 说明              |
+| :---------- | :------ | :------- | :---------------- |
+| withdraw_id | Integer | 是       | 提币id，例：12345 |
+
+
+
+
+
+
+### 提现预估手续费
+
+获取提现需要的预估手续费用
+
+#### HTTP请求
+
+`GET /api/mpc/billing/gas_estimate`
+
+#### 请求参数数据结构 
+
+| Param  | 类型   | 是否必须 | 说明                                                     |
+| :----- | :----- | :------- | :------------------------------------------------------- |
+| Param  | 类型   | 是否必须 | 说明                                                     |
+| from   | String | 是       | 出币地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b84 |
+| to     | String | 是       | 到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| memo   | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入，例：123321   |
+| symbol | String | 是       | 币种唯一标识，例：USDTERC20                              |
+| amount | String | 是       | 金额，例：1.23                                           |
+
+> 响应结果示例：
+```java
+{
+    "gas_limit":0,
+    "fee_unit":"Gwei",
+    "gas_price1":"0",
+    "fee":"0.00159",
+    "gas_price2":"0",
+    "gas_price3":"0",
+}
+```
+
+
+#### 响应参数数据结构
+
+| Param      | 类型   | 是否必须 | 说明                           |
+| :--------- | :----- | :------- | :----------------------------- |
+| gas_price1 | String | 是       | 手续费推荐单价第一档，例：12.4 |
+| gas_price2 | String | 是       | 手续费推荐单价第二档，例：13.4 |
+| gas_price3 | String | 是       | 手续费推荐单价第三档，例：14.4 |
+| gas_limit  | Long   | 是       | 手续费限制，例：21000          |
+| fee_unit   | String | 是       | 手续费单位，例：Gwei           |
+| fee        | String | 是       | 手续费推荐值，例：0            |
+
+
+
+
+
+
+
+
+### 提现加速
+
+提现签名完成后，由于手续费不足而长时间未上链的时候，可以重新指定更高额的手续费用加速上链
+
+#### HTTP请求
+
+`POST /api/mpc/billing/withdraw_pending`
+
+
+
+#### 请求参数数据结构 
+
+| Param       | 类型   | 是否必须 | 说明                                                         |
+| :---------- | :----- | :------- | :----------------------------------------------------------- |
+| withdraw_id | String | 是       | 提币id，例：12345                                            |
+| gas_price   | String | 是       | 通过<预估手续费接口>获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
+| gas_limit   | String | 是       | 通过<预估手续费接口>获取参考值，填入大于等于0的数值          |
+| fee         | String | 是       | 通过<预估手续费接口>获取参考值，填入大于等于0的数值；fee是真实的矿工费，无精度，填入时需要注意；fee和gas_price二选一，其中一者为0，另一者不为0； |
+
+
+
+#### 响应参数数据结构
+
+
+
+无
+
+
+
+
+### 获取提币记录
+
+获取钱包下所有子钱包提币记录，最多返回100条
+
+
+
+#### HTTP请求
+
+`GET /api/mpc/billing/withdraw_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                                         |
+| :---- | :----- | :------- | :----------------------------------------------------------- |
+| ids   | String | 是       | 多个request_id的字符串，英文逗号分割，例：0d766c03-8382-4005-b976-16c33f780f21,0db54264-7ea0-41c2-af85-4dd22b5e74d6 |
+
+
+> 响应结果示例：
+```java
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "wihdraw_source":2,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "123321",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":1200
+    }
+]
+```
+
+
+#### 响应参数数据结构
+
+| Param              | 类型    | 是否必须 | 说明                                                         |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+|                    | Array   |          | 获取指定提币request_id的最多100条记录                        |
+| > id               | Integer | 是       | 提币id，例：12345                                            |
+| > request_id       | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
+| > sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| > symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
+| > amount           | String  | 是       | 提币金额，例：1.23                                           |
+| > fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
+| > fee              | String  | 是       | 手续费，例：0.00123                                          |
+| > real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
+| > created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
+| > updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
+| > address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > memo             | String  | 否       | 提币到账地址memo，例：123321                                 |
+| > txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| > confirmations    | Integer | 是       | 区块确认数，例：10                                           |
+| > status           | Integer | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| > withdraw_source  | Integer | 是       | 提现类型： 1.app, 2.openapi                                  |
+| > base_symbol      | String  | 否       | 提币币种主链唯一标识，例：ETH                                |
+| > contract_address | String  | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+
+
+### 同步提币记录
+
+获取钱包下所有子钱包提币记录，最多返回100条
+
+
+
+#### HTTP请求
+
+`GET /api/mpc/billing/sync_withdraw_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param  | 类型   | 是否必须 | 说明                      |
+| :----- | :----- | :------- | :------------------------ |
+| max_id | String | 是       | 提币记录起始id，例：12345 |
+
+> 响应结果示例：
+```java
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "wihdraw_source":2,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "123321",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":1200
+    }
+]
+```
+
+#### 响应参数数据结构
+
+| Param              | 类型    | 是否必须 | 说明                                                         |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+|                    | Array   |          | 获取大于指定提币id的最多100条记录                            |
+| > id               | Integer | 是       | 提币id，例：12345                                            |
+| > request_id       | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
+| > sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| > symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
+| > amount           | String  | 是       | 提币金额，例：1.23                                           |
+| > fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
+| > fee              | String  | 是       | 手续费，例：0.00123                                          |
+| > real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
+| > created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
+| > updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
+| > address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > memo             | String  | 否       | 提币到账地址memo，例：123321                                 |
+| > txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| > confirmations    | Integer | 是       | 区块确认数，例：10                                           |
+| > status           | Integer | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| > withdraw_source  | Integer | 是       | 提现类型： 1.app, 2.openapi                                  |
+| > base_symbol      | String  | 否       | 提币币种主链唯一标识，例：ETH                                |
+| > contract_address | String  | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+
+
+## 充值
+
+### 获取充币记录
+
+
+
+获取钱包下所有子钱包充币记录，最多返回100条
+
+
+
+#### HTTP请求
+
+`GET /api/mpc/billing/deposit_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+| ids   | String | 是       | 多个id的字符串，英文逗号分割，例：123,345 |
+
+
+> 响应结果示例：
+```java
+[
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
+        "memo": "123321",
+      "created_at":1672107533000,
+        "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
+        "confirmations":20,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "updated_at":1672323030000,
+        "base_symbol":"",
+        "id":43,
+        "status":2000
+    }
+]
+```
+
+
+#### 响应参数数据结构
+
+| Param              | 类型    | 是否必须 | 说明                                                         |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+| Param              | 类型    | 是否必须 | 说明                                                         |
+|                    | Array   |          | 获取指定id的最多100条记录                                    |
+| > id               | Integer | 是       | 充币id，例：12345                                            |
+| > sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| > symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
+| > amount           | String  | 是       | 充币金额，例：1.23                                           |
+| > created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
+| > updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
+| > address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > memo             | String  | 否       | 到账地址memo，例：123321                                     |
+| > txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| > confirmations    | Integer | 是       | 区块确认数，例：10                                           |
+| > status           | Integer | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
+| > base_symbol      | String  | 否       | 充币币种主链唯一标识，例：ETH                                |
+| > contract_address | String  | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+### 同步充币记录
+
+获取钱包下所有子钱包充币记录，最多返回100条
+
+
+
+#### HTTP请求
+
+`GET /api/mpc/billing/sync_deposit_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param  | 类型   | 是否必须 | 说明                    |
+| :----- | :----- | :------- | :---------------------- |
+| max_id | String | 是       | 提币记录起始id，例：100 |
+
+
+
+> 响应结果示例：
+```java
+[
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
+        "memo": "123321",
+      "created_at":1672107533000,
+        "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
+        "confirmations":20,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "updated_at":1672323030000,
+        "base_symbol":"",
+        "id":43,
+        "status":2000
+    }
+]
+```
+
+
+#### 响应参数数据结构
+
+
+| Param              | 类型    | 是否必须 | 说明                                                         |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+| Param              | 类型    | 是否必须 | 说明                                                         |
+|                    | Array   |          | 获取大于指定充币id的最多100条记录                            |
+| > id               | Integer | 是       | 充币id，例：12345                                            |
+| > sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| > symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
+| > amount           | String  | 是       | 充币金额，例：1.23                                           |
+| > created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
+| > updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
+| > address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| > memo             | String  | 否       | 到账地址memo，例：123321                                     |
+| > txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| > confirmations    | Integer | 是       | 区块确认数，例：10                                           |
+| > status           | Integer | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
+| > base_symbol      | String  | 否       | 充币币种主链唯一标识，例：ETH                                |
+| > contract_address | String  | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+# 交易通知
+
+## 统一说明
+
+`POST /用户回调通知地址`
+
+> 交易通知请求接口示例
+
+```java
+app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
+```
+
+
+
+#### 交易通知请求参数统一格式
+
+| Param  | 类型   | 是否必须 | 说明                                                    |
+| :----- | :----- | :------- | :------------------------------------------------------ |
+| Param  | 类型   | 是否必须 | 说明                                                    |
+| app_id | String | 必须     | 商户唯一标识                                            |
+| data   | String | 必须     | 加密之后的字符串，具体加密信息见各接口 请求参数数据结构 |
+
+
+
+#### 交易通知响应参数统一格式
+
+返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
+
+
+
+
+
+## 提币通知
+
+#### 请求参数数据结构 
+
+| Param            | 类型   | 是否必须 | 说明                                                         |
+| :--------------- | :----- | :------- | :----------------------------------------------------------- |
+| charset          | String | 是       | 编码格式，无特殊情况，传参数utf-8                            |
+| side             | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
+| notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
+| id               | String | 是       | 提币id，例：12345                                            |
+| request_id       | String | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
+| sub_wallet_id    | String | 是       | 子钱包id，例：10234122                                       |
+| symbol           | String | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
+| amount           | String | 是       | 提币金额，例：1.23                                           |
+| fee_symbol       | String | 是       | 手续费币种，例：ETH                                          |
+| fee              | String | 是       | 手续费，例：0.00123                                          |
+| real_fee         | String | 是       | 真实消耗的手续费，例：0.00111                                |
+| created_at       | String | 是       | 创建时间时间戳，例：1643349275000                            |
+| updated_at       | String | 是       | 修改时间时间戳，例：1643349275001                            |
+| address_from     | String | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| address_to       | String | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| memo             | String | 否       | 到账地址memo，例：123321                                     |
+| txid             | String | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | String | 是       | 区块确认数，例：10                                           |
+| status           | String | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| withdraw_source  | String | 是       | 提现类型： 1.app, 2.openapi                                  |
+| base_symbol      | String | 否       | 提币币种主链唯一标识，例：ETH                                |
+| contract_address | String | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+## 充币通知
+
+#### 请求参数数据结构
+
+
+| Param            | 类型   | 是否必须 | 说明                                                         |
+| :--------------- | :----- | :------- | :----------------------------------------------------------- |
+| Param            | 类型   | 是否必须 | 说明                                                         |
+| charset          | String | 是       | 编码格式，无特殊情况，传参数utf-8                            |
+| side             | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
+| notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
+| id               | String | 是       | 充币id，例：12345                                            |
+| sub_wallet_id    | String | 是       | 子钱包id，例：10234122                                       |
+| symbol           | String | 是       | 币种唯一标识，例：USDTERC20                                  |
+| amount           | String | 是       | 充币金额，例：1.23                                           |
+| created_at       | String | 是       | 创建时间时间戳，例：1643349275000                            |
+| updated_at       | String | 是       | 修改时间时间戳，例：1643349275001                            |
+| address_from     | String | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| address_to       | String | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
+| memo             | String | 否       | 到账地址memo，例：123321                                     |
+| txid             | String | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | String | 是       | 区块确认数，例：10                                           |
+| status           | String | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
+| base_symbol      | String | 否       | 充币币种主链唯一标识，例：ETH                                |
+| contract_address | String | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+# Co-signer部署及说明
+
+> co-signer配置文件
+
+
+```java
+## 主配置信息
+main:
+  ## co-signer的服务ip地址
+  tcp: "0.0.0.0:28888"
+  ## 加密后的随机数种子文件
+  seed_key: "conf/seed.dat"
+ 
+## rsa配置
+rsa:
+  ## 加密后的rsa私钥文件
+  pri_pem: "conf/rsaPri.pem"
+ 
+## custody系统
+custody_service:
+  ## app_id，创建商户后获取
+  app_id: ""
+  ## api域名地址，见接口文档
+  domain: ""
+  ## custody商户公钥文件
+  rsa_pub: "conf/custodyPub.pem"
+  ## 请求获取响应语言，支持zh_CN和en_US
+  language: "zh_CN"
+ 
+## 客户系统
+custom_service:
+  ## withdraw签名回调地址
+  withdraw_callback_url: ""
+```
+
+
+
+## 二进制文件名称
+
+- co-signer
+
+## co-signer相关命令
+
+- co-signer -h          获取帮助命令
+
+![image2023-2-10_14-46-42](C:\Users\65813\Downloads\image2023-2-10_14-46-42.png)
+
+- -v                   获取co-signer版本号
+- -server               启动co-signer参数，不含该参数则为工具模式
+- -conf                启动co-signer时指定配置文件
+- -rsa-gen              工具模式：输入启动密码，生成加密的rsa公私钥文件（私钥加密，公钥非加密）
+- -rsa-pri-import         工具模式：输入启动密码，导入现有的rsa私钥，生成加密后的rsa私钥文件（仅导入私钥）
+- -recover-seed         工具模式：输入启动密码，导入现有的根私钥助记词，每个单词使用英文符号 - 分隔，生成加密后的随机数种子文件
+
+
+
+
+
+
+
+ 
+
+## 客户需要实现提现签名回调接口（签名前回调一次，签名成功回调一次）
+
+
+
+#### HTTP请求
+
+`POST /自定义地址`
+
+
+
+#### 请求参数数据结构（无需进行加密）
+
+
+
+
+| Param         | 类型    | 是否必须 | 说明                                                     |
+| :------------ | :------ | :------- | :------------------------------------------------------- |
+| withdraw_id   | Integer | 是       | 提现id，例：12345                                        |
+| request_id    | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21   |
+| pending_round | Bool    | 是       | 加速状态，false为提币，true为提币加速                    |
+| from          | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| to            | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo          | String  | 否       | 到账地址memo，例：123321                                 |
+| amount        | Decimal | 是       | 提币金额，例：1.23                                       |
+| symbol        | String  | 是       | 币种唯一标识，例：USDTERC20                              |
+
+
+
+#### 回调响应参数统一格式
+
+返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
+
+
+
+
+
+
+
