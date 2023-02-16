@@ -1,0 +1,529 @@
+
+
+# ChainUp Custody WAPI documentation
+
+Welcome to the TopValue asset custody platform. This document is used by the third-party technical team to add the self-developed mainchain to the ChainUp Custody for alliance members.
+
+Note: How to use WAPI to access the mainchain, the server and private keys are kept by the third-party technical team, and the ChainUp Custody is not responsible for the security of assets. Therefore, the third-party technical team must establish a complete wallet private key custody system and API private key custody system
+
+
+
+# Preliminary Preparation
+
+## Development Notes
+
+### The Role of Public and Private Keys
+
+
+
+**Party A** is a third-party public chain docking party
+
+**Party B** is the ChainUp Custody BaaS Cloud
+
+
+
+**The Role of Public and Private Keys**： Party A needs to generate a pair of public and private keys in advance when registering the WAPI interface. The public key (rsa_third_pub) is provided to Party B. The private key is kept by yourself, and the private key is not disclosed to anyone. When requesting WAPI services, Party A shall encrypt the request parameters with Party B’s public key and sign the original data after MD5 with Party A’s private key. Upon receiving the request, Party B shall decrypt the data with Party B’s private key and check the original data after MD5 with Party A’s public key
+
+
+
+### Account Preparation
+
+#### Developers need to prepare the following information：
+
+1）Generate a pair of public and private keys, and provide the public key to the platform；
+
+2）Third-party application server IP；
+
+
+
+**Contact the relevant people of the platform and provide the above two types of information. The platform prepares WAPI docking information for you, and provides you with the following information：**
+
+1）The unique identifier for third-party docking: app_id；
+
+2）WAPI public key：rsa_wapi_pub。
+
+
+
+#### RSA public and private key generation address:
+
+http://www.metools.info/code/c80.html
+
+Password length：2048
+
+Key format：PKCS#8
+
+
+
+### Interface rules
+
+| Transmission method:      | https (the test environment temporarily uses http)           |
+| :------------------------ | ------------------------------------------------------------ |
+| Signature Field:          | Except for the `sign`  field, all other required fields need to be signed |
+| The response status code: | `0`indicating successful processing; **non-zero**, indicating request error or system abnormality |
+| Request Address:          | domain name + interface address                              |
+| Encryption Algorithm:     | See `Appendix 1 `for details                                 |
+
+
+
+# Domain Name and API Key
+
+## Production Environment
+
+| Domain Name:    | [https://baas.waas.group](https://baas.waas.group/) |
+| :-------------- | --------------------------------------------------- |
+| app_id:         | To be assigned                                      |
+| rsa_wallet_pub: | To be allocated                                     |
+
+
+
+## Test environment
+
+
+
+| Domain Name:      | <http://baas.dw2nn.com>          |
+| :---------------- | -------------------------------- |
+| **app_id:**       | 8ee3794a7e5bd188c6af4fd7dda191f3 |
+| **rsa_third_pub** | refer to the `code`              |
+| **rsa_third_prv** | refer to the `code`              |
+| **rsa_baas_pub**  | refer to the `code`              |
+
+
+
+> rsa_third_pub:
+
+```text
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0P18OcSRr2mnWAWwn6hWlKCyChBb8bF6X1gHiFfdyejHmPnni60j6uKEHhAB7L9xyCnvpP44Wzp7txjNfYF+8SiaFUVP5rawisiHrcUHxvKEInVdyjeE6dUnDvr7acFTmF0JZCbfzDA38l5WznDV3AWESOm7Gd/0NP7rCiZDbn+2uOlrGqsYSi4cLwCnoqREQ+/Z7rNug8l3Vlqvvx6YVj0xxWi/4qz8yXlZV8aBAN1rshAkaTVbkWjij6uSJ3lMHY99B5DqnF/5EAhYYc+GTgAML5KAHfHYlF+Y9GDlKZoBaixIK/X3HtgBOaIIDaCZFLSQaO36ghIEpyjnepgXBQIDAQAB
+```
+
+> rsa_third_prv:
+
+```text
+MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ/Xw5xJGvaadYBbCfqFaUoLIKEFvxsXpfWAeIV93J6MeY+eeLrSPq4oQeEAHsv3HIKe+k/jhbOnu3GM19gX7xKJoVRU/mtrCKyIetxQfG8oQidV3KN4Tp1ScO+vtpwVOYXQlkJt/MMDfyXlbOcNXcBYRI6bsZ3/Q0/usKJkNuf7a46WsaqxhKLhwvAKeipERD79nus26DyXdWWq+/HphWPTHFaL/irPzJeVlXxoEA3WuyECRpNVuRaOKPq5IneUwdj30HkOqcX/kQCFhhz4ZOAAwvkoAd8diUX5j0YOUpmgFqLEgr9fce2AE5oggNoJkUtJBo7fqCEgSnKOd6mBcFAgMBAAECggEAcpe7aPWGqHc3QgWErlagesiONwR3VdRp9CORpcoAG7ke0JuewbDDNATWSqGeXJEws3+DHqYigqtTsLbR3hKGZ3dK3YTu5eOgc8i21KpntEe/+iD+t2Wv5INy8jzeZEOUMcQ55QeHyS9bTfM6h+HI8ea4fT5j0DFDd1ebyynl6YzyGYy4kccMSvfUhkY2NVbLH1EKCoNXDO1fOyxMZ2McNvDwFhmm9+RIWxgD+Jqso/t+eAFddkxZHzMKgvmvnS3ov5H+0dbhf/NGGinzv697YVF2+8iRFS9+dpcPGHKN8Pxfd+dASIAxAkRP+suLYAfBdnP5SdHP7PZTp0vHokgM1QKBgQDpagBKVZXfdwz2DGcVLHJezyhx0ND9ToMyW75LwAZqtCB5pStltnM1kCioQGqaIuvhMKBCq3EEAT7kxzJA6/1QFFwqaDjCIrhr0rtxcfzv027B5u8YFSr4Fe3Pk8Osrf3+Vh7DVYBnerknmYOn3D1sYxp0LCAuO3r6ilbA/mOdFwKBgQDlNng2UPqmJ/8ba4IuQIBijWfFnW3wmq5mQh4ZjZzt4WSzHhU8lUCt+U28HzKoziuKjUriOJJFkjqT+HlMgpeTgKDsHBDfioo40TcPhH29pdb0D340uNlQ93So6r5NNbMazmr/lBTvXNfFv7IMIhATuQWmBhV9AkbDHiSTQOoWQwKBgQDn8IhXVVJ3WxKLEOoB9Ue1BH85EfoKK9Fc4iNnnGoD7/fxSPqluLYk/JoaDuCfR6JDBBHMDhZgl2hK59H9B0ORJporHaOA7gV6R04xvcZM/jmp/nOJ58bp/MhyI3AmkEK7UBKDodvVd/Ky8e4MiGKU6Kmp1QspRbu/aGYqot6TgwKBgQCPszF0ZBpwFv0xtJn940RaBOr9EnC9ekxCIct7G7Q50qfuP7ryq2PMblLU0P5SpEbZ6zD6WJsjcMS2xf1OAUWEHQ1GWWYer11ut4N8gATQ4+q6QghOh2D/CNSjnd/GyhbKhITCTJU/Z4aDHGZEgwpvQv0OlBverpGse/ZUN0tKvwKBgQDme1R9fsRKrlNhXe1wXs8qDw10KOfAa9TC04RRlY3p9rLa6ZQhDrUQEHBZLeKOgWeiPHULt5emLcRlqm50mMBHHNoN61kHDIN+EdxZXmJnICD1TzD0P6yj+VjdbmGcz/mQ1+Msf0RT+/KGvjX+GenjpYiTQc7n2CwYypnN9ru8KA
+```
+
+> rsa_baas_pub:
+
+```
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvnCiDcpMVlNuQN1cr+Vg+WMPIUihWmWkupA9oXdZf4LzWtqv2SRlP3tIs+tWG4Df3FuuZ0W2CIxhtJNnWHIY146m/teif+H2v9G3GeY+P+z/LqGFyV0nLYJzs4WQZa3/RL0rh2IlVlfs1eHod+PX99o+Aog80kmUx8NF6ExsoO4qI9y3wW8CH+5tGVqHvq3NaD3jHyS3DYrRztfxuJw9k/YTfZ6rDJVXmD7onqvZe2leSe5h/ehu321y7nB7+2uTJ76i1YOmIrEBW8KupwQUU1JuZKvMCzcLowLjIOYysU8JfpxXH+MQIDAQAB
+```
+
+| Type     | Token Name | Accuracy   |
+| -------- | ---------- | ---------- |
+| memo     | SRM        | 8 decimals |
+| non-memo | VLX        | 8 decimals |
+
+
+
+Note： `rsa_third_prv` is a third-party application private key, which is mainly used to encrypt request parameters. If it is a production environment, `rsa_third_prv` is generated by the developer, and then the corresponding public key is provided to the platform. In order to simplify the developer connection process in the test environment, a set of third-party public and private keys and token names are directly provided here for developers to quickly connect.
+
+
+
+
+
+# Docking Solutions
+
+In order to allow public chain developers to access the **ChainUp Custody** more conveniently and quickly, we provide BaaS services to meet the public chain docking needs. Based on the docking experience of past customers, the platform has sorted out a set of docking solutions. details as follows:
+
+**The whole Process is divided into three steps：**
+
+1.  Register A Deposit Address
+2.  Make Deposits
+3.  Make Withdrawals
+
+#### The overall docking process is as follows
+
+[![../_images/wapi_interact_process.png](https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png)](https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png)
+
+## Register A Deposit Address
+
+1）The number of available addresses can be queried by currency name. Note: (A maximum of `100 `addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. Interface address: `/api/v1/address/available`)
+
+2）Push the currency name and address list to the BaaS platform, after the response is successful, and the representative registered address is successful (interface address:` /api/v1/address/register`) Note: If the type of registered currency is memo, the same address Only one registration is allowed.。
+
+## Make Deposits
+
+1）The third-party wallet detects that the address has a deposit transaction, initiates a deposit notification, and informs the BaaS system (interface address: `/api/v1/deposit/notify`)
+
+2）BaaS returns the notification result
+
+## Make Withdrawals
+
+1）The user initiates a withdrawal request in the Custody system
+
+2）Main chain developers pull the list of withdrawals (interface address:` /api/v1/withdraw/consume`)
+
+3）After the chain is successfully connected, BaaS will be notified of the withdrawal result, and the BaaS interface will respond (interface address: `/api/v1/withdraw/notify`)
+
+Note: In case of special circumstances, the withdrawal request can be withdrawn and a notification will be pushed to the BaaS interface (interface address: `/api/v1/withdraw/cancel`)
+
+
+
+# WAPI Documentation
+
+
+
+## Overview
+
+
+
+#### Request Parameters:
+
+| Param  | Type   | Required | Description                                                  |
+| ------ | ------ | -------- | ------------------------------------------------------------ |
+| app_id | string | Yes      | Customer ID                                                  |
+| time   | int64  | Yes      | Timestamp                                                    |
+| sign   | string | Yes      | Use Party A’s private key to sign the plaintext MD5 of the requested data |
+| data   | string | Yes      | Use Party B’s public key to encrypt the requested data       |
+
+
+> Request Example
+
+```json
+POST /api/v1/address/available
+body
+{
+    "app_id": "8ee3794a7e5bd188c6af4fd7dda191f3",
+    "time": 1616539980,
+    "sign": "qVQZ0W1vl6Mh4wMadMHR1XM8N-ZD9xlQhhiIrPlbmmyoDDAgxqwYbtFZBAvPswX4t_6N46ZOFcGuH2K6abiqpl4FtizBkbC3MUlZ6LYU4EPtay_nh6wF97L5jrs7-Qjw5SrFsHTDY4j7mKUXOPrQWrSYAU6QQy6NHjNHazjo592HbG-Cbso_wDOwRDMsLtc4cj6ZxYwjXwYlpkMTK-l_J1iHE16YTI3WyH0fSvNXc3423h5rbJ8UyFPfHLVO433yMnsoexj1KG1oLKlAlrv-t8sIw1A-KBSFTs0o6wuqpBNSLGvH0vh-iAtBJarhcaxdfZG1L8XnYDUAlgKHNzECAW",
+    "data": "wYEom2ihnpZRcI0PeJKCwkwUcN_SZzWDm-QhIiScBVahdMATenUe8ssVqqouTp4PBEStDi3tsUAHnBXLEFFeLDugqrffhQTLKYB2sN3stxOAP_9PO6ucUI-ck_eOzuOVq4ZXTxfdX6csf2o1yyZwtozcfik7ViL49ctTO2yjAdtO17BuAzdxSvyCm_ZyI0EANNglR029b4_TyrhT9gSmIeVT5Is_JJNaifoTmpWz0aB5LvjxojBjsMupExb3dXV9uykNybgjakbTZPwOx-ycZZrGvk8nLxWSaCTajAA3K_Kb4Wj40hn_XRH0X-_37MaxJKK-672wr7Ce94aY2UCiQQ", "sign": "siGNQawtTmtEAj3C56tNSV_mOuMYzG_SYxIwaT0LlU-68_VVKRCS22b8mNykOmDs2zJh9PTl9Bzs-8Eo10rAivVajcBWBp6qw3RKimOURbYOL_EKYrbZyuJH84YoavCtm_r-pI16L3EsUFdzuyqRnSutRyuK15EKnxn4aYUbFa2oBMC9jK7sdONLx3KwQ8oolvOjQSrAFjhuL9rxxc5v-EXUDoamchH2NfF5-oYrNSkrMWpw01B9hU0AUSYktPeTuqWKCt3_sEEH8jYvx7N3joG-lHq6JlYIgC7HBMlFh_ZKfvE0dMCS4wT2-unejSrudM9kG9GgkiCSEp_jD0PacQ"
+}
+```
+
+#### Response Parameters 
+
+| Param | Type   | Required | Description                                                  |
+| ----- | ------ | -------- | ------------------------------------------------------------ |
+| code  | int    | Yes      | Status code                                                  |
+| msg   | string | Yes      | Status information                                           |
+| data  | string | Yes      | Use Party A’s public key to encrypt the returned data        |
+| sign  | string | Yes      | Use Party B’s private key to sign the return data plaintext MD5 |
+
+
+
+> Response Example
+
+```json
+{
+    "code": 0,
+    "msg": "success",
+    "data": "tBosL74tKsUMckzB0320OjvqJvjHip77PS-mz_BZ-xsKO5MVzPz-adw94NUZ_8FtdYSDTsnM6ZtiL3e7T-2c2U5fvc7QTMVoJfv6SPJOmk0yRz8qBvMfgUKdjwEkpZJyCRYtmdp9sSJsbtI_Ygkr0i4KtaxMA_yskkAXODJ0aewcT7_uS9OHn8pExoNXpQ-XEbHbrK-QF8Sl4BcWQXZ2YdsF4z8T4Q3hQcSG3AyLOb4z3YIU6ZyjMok7ZsWyYoiHpMjD9eXfIfgDYUOxdocbNCjqAx6EPrueupLtUXqjCDqUEuXP3jXLJ97c9rluiNhc3XVdvrCK0lEzxoLL44yWRHDUTCpPARSemsHWy9XOiAdWlS8SaQKUS-iprfKi9e6kUDSHYFSEoZSo44Vktv8AGmHod5IGwGLBtu1fIaTuun8ahRHSVyLoJf11rSgfAkIWDUnC-Fiilk0O0pw-5q0HQkhihYYx4TEr-JWV_Y080YGkBI-NQ4RILpIKr0r292BrR4GLsYWzxieOURXrbmx7NKCaD0JmERrUbV0rbUs0rvJRj6T-5MIW6FD7oFGhXbViuTAxyqtUNvatbDEGRXbnoUTC_Jv0TX9LM0S9coT0ozYLn_2L9psdUdNGPPGkd6d3KzFxxy_m_h3l4MHinEpFvVewBJeZP7q5Z5rNhzSmxtc",
+    "sign": "jJr0UmgMHPesDNfe4kw8KYR3zSDzBmoRlJ6O979tgdLx5JydY6jNMYrzWEn4sqqy4p6niw7HEnbOrgtSGBr4BtgoGpzaqs4hslADUGfDpn8FPO4Cb6DW09yMsQZVMp7m9NIybgVwPiro7fMDOxOlSA5M5Bzxth7UNIVwgtEEZCoS0pi1Elsl6xASc9N8VR5gkh55B9zt_NbOOQ_nN-p7s1_JwOFY4qXtfYDrAjjawpTdprvThfRYoX_Lm-YpoWQeED80yFMOOUbrl9SUG-j8opVlSX53IwvQbVvwPI2gnZIBJBfUYgICP6ffQZRulP1WllYwaWYLKUdamyyYAZgQIQ"
+}
+```
+
+
+
+## Address Registration Interface
+
+Push address to the platform, this address is used to assign to users
+
+
+
+#### HTTP Request
+
+`POST/api/v1/address/register`
+
+
+
+<aside class="notice">
+A maximum of 100 addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. If the address is memo type, only one address needs to be registered, and the memo will be allocated by Party B</aside>
+
+
+
+#### **Decrypted Request Parameters**
+
+
+
+| Param     | Type   | Required | Description                                                  |
+| --------- | ------ | -------- | ------------------------------------------------------------ |
+| symbol    | string | Yes      | Token name                                                   |
+| addresses | string | Yes      | Address list (can be separated by commas, up to 100 at a time) |
+| memo      | bool   | Yes      | Whether it is memo type                                      |
+
+
+#### Decrypted Response Data Parameters 
+None
+
+
+
+## The number of remaining addresses available interface
+
+How many addresses are available in the pushed addresses
+
+
+
+#### HTTP Request
+
+`POST/api/v1/address/available`
+
+
+
+#### Please Note:
+
+It is recommended that the script monitor the available quantity.
+
+
+
+#### **Decrypted Request Parameters**
+
+
+
+| Param  | Type   | Required | Description |
+| ------ | ------ | -------- | ----------- |
+| symbol | string | Yes      | Token Name  |
+
+> Response
+
+```json
+{
+    "symbol":"BTC",
+    "count":1
+}
+```
+
+
+
+#### Decrypted Response Data Parameters 
+
+| Param  | Type   | Required | Description                   |
+| ------ | ------ | -------- | ----------------------------- |
+| symbol | string | Yes      | Token Name                    |
+| count  | int    | Yes      | Number of addresses available |
+
+
+
+## Deposit notification call interface
+
+Deposit notification call interface
+
+
+
+#### HTTP Request
+
+`POST/api/v1/deposit/notify`
+
+
+
+#### Please note:
+
+1. For the same txid, different addresses, separate notifications
+
+2. For the same txid, the same address, and the amount of notification will be cumulative
+
+3. For the same deposit, please make sure that the request_id remains the same, otherwise it will cause repeated payments
+
+4. After request decryption, request_id will be included
+
+   
+
+#### Decrypted Request Parameters
+
+| Param        | Type    | Required | Description                            |
+| ------------ | ------- | -------- | -------------------------------------- |
+| request_id   | string  | Yes      | Unique identifier for a single request |
+| address_from | string  | No       | from address                           |
+| address_to   | string  | Yes      | to address                             |
+| txid         | string  | Yes      | Transaction ID                         |
+| amount       | decimal | Yes      | Amount                                 |
+| confirm      | int     | Yes      | Confirmation number                    |
+| symbol       | string  | Yes      | Token name                             |
+| balance      | decimal | Yes      | Hot wallet balance                     |
+| status       | int     | Yes      | 1 =success; 0 = failure                |
+| memo         | string  | No       | memo ID                                |
+
+> Response
+
+```json
+{
+    "data":{
+        "request_id":"12345"
+    }
+}
+```
+
+
+
+#### Decrypted Response Data Parameters 
+
+| Param         | Type   | Required | Description                            |
+| ------        | ------ | -------- | ------------      |
+| data          | object | Yes    |                   |
+| └─request_id  | string | Yes    | Unique identifier for a single request |
+
+
+
+
+
+## Withdrawal Interface
+
+Withdrawal Interface
+
+#### HTTP Request
+
+`POST/api/v1/withdraw/consume`
+
+
+
+#### Please Note:
+
+This interface can return the latest 20 data at most at a time.
+
+
+
+#### Decrypted Request Parameters
+
+| Param  | Type   | Required | Description |
+| ------ | ------ | -------- | ----------- |
+| symbol | string | Yes      | Token Name  |
+
+
+
+> Response
+
+```json
+[
+    {
+        "trans_id":1,
+        "symbol":"BTC",
+        "amount":1.43232,
+        "fee":0.001,
+        "address_to":"3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r"
+    }
+]
+```
+
+
+
+#### Decrypted Response Data Parameters
+
+| Param      | Type    | Required | Description                   |
+| ---------- | ------- | -------- | ----------------------------- |
+| trans_id   | string  | Yes      | Withdrawal ID                 |
+| symbol     | string  | Yes      | Token name                    |
+| address_to | string  | Yes      | Withdrawal to account address |
+| amount     | decimal | Yes      | Withdrawal Amount             |
+| memo       | string  | No       | Withdraw memo                 |
+
+
+
+
+
+## Withdrawal Notification Interface
+
+提现通知调用接口Call interface for withdrawal notification
+
+
+
+#### HTTP Request
+
+`POST/api/v1/withdraw/consume`
+
+
+
+#### Please note:
+
+1. The same txid, different addresses, separate notifications
+
+2. The same txid, the same address, and the amount of notification will be cumulative
+
+3. For the same deposte, please make sure that the request_id remains the same, otherwise it will cause repeated payments
+
+4. After request decryption, request_id will be included
+
+   
+
+#### Decrypted Request Parameters
+
+| Param        | Type    | Required | Description                                                  |
+| ------------ | ------- | -------- | ------------------------------------------------------------ |
+| address_from | string  | No       | from address                                                 |
+| address_to   | string  | Yes      | to address                                                   |
+| txid         | string  | Yes      | Transaction ID                                               |
+| trans_id     | int     | Yes      | Withdrawal ID                                                |
+| amount       | decimal | Yes      | Amount                                                       |
+| fee          | decimal | Yes      | Real miner fees                                              |
+| confirm      | int     | Yes      | Confirm the number. When the confirm passes 0, the status of the withdrawal record will be changed to “Paying”, and the withdrawal record will not be repeatedly obtained through the /api/v1/withdraw/consume interface |
+| symbol       | string  | Yes      | Token Name                                                   |
+| balance      | decimal | Yes      | Hot Wallet Balance                                           |
+| memo         | string  | No       | to address memo ID                                           |
+
+#### Decrypted Response Data Parameters 
+None
+
+
+
+
+
+## Internal Notification Interface
+
+Internal Notification Interface
+
+
+
+#### HTTP Request
+
+`POST/api/v1/internal/notify`
+
+
+
+#### Please note:
+
+This interface is called during transactions that consume miner fees except for cash withdrawal, mainly for deduction of miner fees, such as collection, transfer to cold wallet, etc.
+
+
+
+#### Decrypted Request Parameters
+
+| Param        | Type    | Required | Description         |
+| ------------ | ------- | -------- | ------------------- |
+| address_from | string  | No       | from address        |
+| address_to   | string  | Yes      | to address          |
+| txid         | string  | Yes      | Transaction ID      |
+| amount       | decimal | Yes      | Amount              |
+| fee          | decimal | Yes      | Real miner fees     |
+| confirm      | int     | Yes      | Confirmation Number |
+| symbol       | string  | Yes      | Token Name          |
+| balance      | decimal | Yes      | Hot wallet balance  |
+| memo         | string  | No       | to address memo ID  |
+
+#### Decrypted Response Data Parameters 
+None
+
+
+
+
+
+# Callback Withdrawals Interface
+
+To callback withdrawals.
+
+#### HTTP Request
+
+`POST/api/v1/withdraw/cancel`
+
+
+
+#### Please note:
+
+Called when the withdrawal information is abnormal (address error, token error) and need to be called back.
+
+
+
+#### Decrypted Request Parameters
+
+| Param    | Type   | Required | Description      |
+| -------- | ------ | -------- | ---------------- |
+| symbol   | string | Yes      | Token Name       |
+| trans_id | int64  | Yes      | Withdrawal ID    |
+| msg      | string | Yes      | Call back reason |
+
+#### Decrypted Response Data Parameters 
+None
+
+
+
+# Appendix
+
+## Appendix 1: Encryption and Decryption Method
+
+Java Encryption and Decryption Demo： https://github.com/HiCoinCom/WAPIDemo.git

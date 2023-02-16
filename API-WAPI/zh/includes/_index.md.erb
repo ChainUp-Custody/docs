@@ -1,0 +1,515 @@
+# 托管(Custody) WAPI文档
+
+欢迎来到Custody资产托管平台，此文档用于第三方技术团队将自行开发的主链接入ChainUp Custody，以共享给联盟成员使用。
+
+注意：如何使用WAPI接入主链，服务器与私钥都由第三方技术团队负责保管，ChainUp Custody不对资产的安全负责。所以第三方技术团队务必需要建立完善的钱包私钥保管体系、API私钥保管体系。
+
+
+
+# 前期准备
+
+## 开发须知
+
+### 公私钥作用
+
+
+
+**甲方**为 第三方公链对接方
+
+**乙方**为 ChainUp Custody BaaS云
+
+
+
+**公私钥对作用**： 甲方在注册WAPI接口时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给乙方，私钥自己保管，私钥请勿透露给任何人。甲方在请求WAPI服务时，通过乙方的公钥来加密请求参数，并用甲方的私钥对MD5后的数据原文进行签名，乙方接受到请求时，通过乙方的私钥解密数据，并用甲方的公钥对MD5后的数据原文进行验签
+
+
+
+### 账号准备
+
+#### **开发者准备如下信息：**
+
+1）生成一对公私钥，将公钥提供给平台；
+
+2）第三方应用服务器IP；
+
+
+
+
+
+#### **联系平台相关人员，提供上述二类信息。平台为您准备WAPI对接信息，提供到您这边包括以下信息：**
+
+1）第三方对接的唯一标识：`app_id`；
+
+2）WAPI公钥：`rsa_wapi_pub`。
+
+
+
+#### **RSA 公私钥生成地址:**
+
+http://www.metools.info/code/c80.html
+
+密码长度：2048
+
+密钥格式：PKCS#8
+
+
+
+
+
+### 接口规则
+
+| 传输方式:     | https(测试环境暂时使用 http)                   |
+| :------------ | ---------------------------------------------- |
+| 签名字段:     | 除了` sign `字段，其他所有必填项都需要参与签名 |
+| 响应状态码为: | `0`表示处理成功，非 0 表示请求错误或系统异常   |
+| 请求地址:     | 域名+接口地址                                  |
+| 加密算法:     | 详见`附 1`                                     |
+
+
+
+
+
+# 域名及API密钥
+
+## 生产环境
+
+| 域名:           | [https://baas.waas.group](https://baas.waas.group/) |
+| :-------------- | --------------------------------------------------- |
+| app_id:         | 待分配                                              |
+| rsa_wallet_pub: | 待分配                                              |
+
+## 测试环境
+
+域名 : <http://baas.dw2nn.com>
+
+`app_id` :  8ee3794a7e5bd188c6af4fd7dda191f3
+
+
+
+> rsa_third_pub:
+
+```text
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0P18OcSRr2mnWAWwn6hWlKCyChBb8bF6X1gHiFfdyejHmPnni60j6uKEHhAB7L9xyCnvpP44Wzp7txjNfYF+8SiaFUVP5rawisiHrcUHxvKEInVdyjeE6dUnDvr7acFTmF0JZCbfzDA38l5WznDV3AWESOm7Gd/0NP7rCiZDbn+2uOlrGqsYSi4cLwCnoqREQ+/Z7rNug8l3Vlqvvx6YVj0xxWi/4qz8yXlZV8aBAN1rshAkaTVbkWjij6uSJ3lMHY99B5DqnF/5EAhYYc+GTgAML5KAHfHYlF+Y9GDlKZoBaixIK/X3HtgBOaIIDaCZFLSQaO36ghIEpyjnepgXBQIDAQAB
+```
+
+> rsa_third_prv:
+
+```text
+
+MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ/Xw5xJGvaadYBbCfqFaUoLIKEFvxsXpfWAeIV93J6MeY+eeLrSPq4oQeEAHsv3HIKe+k/jhbOnu3GM19gX7xKJoVRU/mtrCKyIetxQfG8oQidV3KN4Tp1ScO+vtpwVOYXQlkJt/MMDfyXlbOcNXcBYRI6bsZ3/Q0/usKJkNuf7a46WsaqxhKLhwvAKeipERD79nus26DyXdWWq+/HphWPTHFaL/irPzJeVlXxoEA3WuyECRpNVuRaOKPq5IneUwdj30HkOqcX/kQCFhhz4ZOAAwvkoAd8diUX5j0YOUpmgFqLEgr9fce2AE5oggNoJkUtJBo7fqCEgSnKOd6mBcFAgMBAAECggEAcpe7aPWGqHc3QgWErlagesiONwR3VdRp9CORpcoAG7ke0JuewbDDNATWSqGeXJEws3+DHqYigqtTsLbR3hKGZ3dK3YTu5eOgc8i21KpntEe/+iD+t2Wv5INy8jzeZEOUMcQ55QeHyS9bTfM6h+HI8ea4fT5j0DFDd1ebyynl6YzyGYy4kccMSvfUhkY2NVbLH1EKCoNXDO1fOyxMZ2McNvDwFhmm9+RIWxgD+Jqso/t+eAFddkxZHzMKgvmvnS3ov5H+0dbhf/NGGinzv697YVF2+8iRFS9+dpcPGHKN8Pxfd+dASIAxAkRP+suLYAfBdnP5SdHP7PZTp0vHokgM1QKBgQDpagBKVZXfdwz2DGcVLHJezyhx0ND9ToMyW75LwAZqtCB5pStltnM1kCioQGqaIuvhMKBCq3EEAT7kxzJA6/1QFFwqaDjCIrhr0rtxcfzv027B5u8YFSr4Fe3Pk8Osrf3+Vh7DVYBnerknmYOn3D1sYxp0LCAuO3r6ilbA/mOdFwKBgQDlNng2UPqmJ/8ba4IuQIBijWfFnW3wmq5mQh4ZjZzt4WSzHhU8lUCt+U28HzKoziuKjUriOJJFkjqT+HlMgpeTgKDsHBDfioo40TcPhH29pdb0D340uNlQ93So6r5NNbMazmr/lBTvXNfFv7IMIhATuQWmBhV9AkbDHiSTQOoWQwKBgQDn8IhXVVJ3WxKLEOoB9Ue1BH85EfoKK9Fc4iNnnGoD7/fxSPqluLYk/JoaDuCfR6JDBBHMDhZgl2hK59H9B0ORJporHaOA7gV6R04xvcZM/jmp/nOJ58bp/MhyI3AmkEK7UBKDodvVd/Ky8e4MiGKU6Kmp1QspRbu/aGYqot6TgwKBgQCPszF0ZBpwFv0xtJn940RaBOr9EnC9ekxCIct7G7Q50qfuP7ryq2PMblLU0P5SpEbZ6zD6WJsjcMS2xf1OAUWEHQ1GWWYer11ut4N8gATQ4+q6QghOh2D/CNSjnd/GyhbKhITCTJU/Z4aDHGZEgwpvQv0OlBverpGse/ZUN0tKvwKBgQDme1R9fsRKrlNhXe1wXs8qDw10KOfAa9TC04RRlY3p9rLa6ZQhDrUQEHBZLeKOgWeiPHULt5emLcRlqm50mMBHHNoN61kHDIN+EdxZXmJnICD1TzD0P6yj+VjdbmGcz/mQ1+Msf0RT+/KGvjX+GenjpYiTQc7n2CwYypnN9ru8KA
+```
+
+> rsa_baas_pub:
+
+```
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvnCiDcpMVlNuQN1cr+Vg+WMPIUihWmWkupA9oXdZf4LzWtqv2SRlP3tIs+tWG4Df3FuuZ0W2CIxhtJNnWHIY146m/teif+H2v9G3GeY+P+z/LqGFyV0nLYJzs4WQZa3/RL0rh2IlVlfs1eHod+PX99o+Aog80kmUx8NF6ExsoO4qI9y3wW8CH+5tGVqHvq3NaD3jHyS3DYrRztfxuJw9k/YTfZ6rDJVXmD7onqvZe2leSe5h/ehu321y7nB7+2uTJ76i1YOmIrEBW8KupwQUU1JuZKvMCzcLowLjIOYysU8JfpxXH+MQIDAQAB
+```
+
+| 类型   | 币种名称 | 精度 |
+| ------ | -------- | ---- |
+| memo   | SRM      | 8位  |
+| 非memo | VLX      | 8位  |
+
+
+
+**说明：** `rsa_third_prv`为第三方应用私钥，主要用于加密请求参数。如果是生产环境，`rsa_third_prv`由开发者生成，然后将对应的公钥提供给平台。测试环境为了简化开发者对接流程，此处直接提供了一套第三方的公私钥及币种名称，便于开发者快速对接。
+
+
+
+
+
+# 对接方案
+
+为了让公链接入者更便捷、快速的接入ChainUp Custody，我们提供了BaaS服务，以满足公链对接需求，平台基于过往客户的对接经验，梳理了一套对接方案。具体如下：
+
+
+
+整个方案共分三个流程：
+
+1、注册充币地址
+
+2、用户充币
+
+3、用户提币
+
+
+
+#### 整体对接流程如下
+
+[![../_images/wapi_interact_process.png](https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png)](https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png)
+
+
+
+## 注册充币地址
+
+1）可通过币种名称查询可用地址数量 注：（每次向Custody推送地址条数上限为`100`条，每次推送时会检查Custody剩余的地址可用数是否大于`5000`，如果有5000个地址没有被使用，则不允许注册；接口地址：`/api/v1/address/available`）
+
+2）向BaaS平台推送币种名称和地址列表，响应成功后及代表注册地址成功, 接口地址：`/api/v1/address/register`。 注：若注册币种的类型为memo类型，则同一个地址只允许注册一次。
+
+
+
+## 用户充币
+
+1）第三方钱包监测到地址有充币交易,发起充值通知，通知BaaS系统,  接口地址：`/api/v1/deposit/notify`
+
+2）BaaS返回通知结果
+
+
+
+## 用户提币
+
+1）用户在Custody系统发起提币请求
+
+2）主链开发者拉取提币列表（**接口地址：**`/api/v1/withdraw/consume`）
+
+3）上链成功后，向BaaS通知提现结果,BaaS接口响应（**接口地址: **`/api/v1/withdraw/notify`）
+
+注：如遇特殊情况可以撤销提币请求，向BaaS接口推送通知（**接口地址：**`/api/v1/withdraw/cancel`）
+
+
+
+# 托管(Custody) WAPI文档
+
+
+
+## 统一说明
+
+
+
+#### 请求参数:
+
+| Param  | 类型   | 是否必须 | 说明                                  |
+| ------ | ------ | -------- | ------------------------------------- |
+| app_id | string | 是       | 客户标识                              |
+| time   | int64  | 是       | 时间戳                                |
+| sign   | string | 是       | 使用甲方私钥对请求数据明文MD5后的签名 |
+| data   | string | 是       | 使用乙方公钥对请求数据的加密          |
+
+
+> 请求示例
+```json
+POST /api/v1/address/available
+body
+{
+    "app_id": "8ee3794a7e5bd188c6af4fd7dda191f3",
+    "time": 1616539980,
+    "sign": "qVQZ0W1vl6Mh4wMadMHR1XM8N-ZD9xlQhhiIrPlbmmyoDDAgxqwYbtFZBAvPswX4t_6N46ZOFcGuH2K6abiqpl4FtizBkbC3MUlZ6LYU4EPtay_nh6wF97L5jrs7-Qjw5SrFsHTDY4j7mKUXOPrQWrSYAU6QQy6NHjNHazjo592HbG-Cbso_wDOwRDMsLtc4cj6ZxYwjXwYlpkMTK-l_J1iHE16YTI3WyH0fSvNXc3423h5rbJ8UyFPfHLVO433yMnsoexj1KG1oLKlAlrv-t8sIw1A-KBSFTs0o6wuqpBNSLGvH0vh-iAtBJarhcaxdfZG1L8XnYDUAlgKHNzECAW",
+    "data": "wYEom2ihnpZRcI0PeJKCwkwUcN_SZzWDm-QhIiScBVahdMATenUe8ssVqqouTp4PBEStDi3tsUAHnBXLEFFeLDugqrffhQTLKYB2sN3stxOAP_9PO6ucUI-ck_eOzuOVq4ZXTxfdX6csf2o1yyZwtozcfik7ViL49ctTO2yjAdtO17BuAzdxSvyCm_ZyI0EANNglR029b4_TyrhT9gSmIeVT5Is_JJNaifoTmpWz0aB5LvjxojBjsMupExb3dXV9uykNybgjakbTZPwOx-ycZZrGvk8nLxWSaCTajAA3K_Kb4Wj40hn_XRH0X-_37MaxJKK-672wr7Ce94aY2UCiQQ", "sign": "siGNQawtTmtEAj3C56tNSV_mOuMYzG_SYxIwaT0LlU-68_VVKRCS22b8mNykOmDs2zJh9PTl9Bzs-8Eo10rAivVajcBWBp6qw3RKimOURbYOL_EKYrbZyuJH84YoavCtm_r-pI16L3EsUFdzuyqRnSutRyuK15EKnxn4aYUbFa2oBMC9jK7sdONLx3KwQ8oolvOjQSrAFjhuL9rxxc5v-EXUDoamchH2NfF5-oYrNSkrMWpw01B9hU0AUSYktPeTuqWKCt3_sEEH8jYvx7N3joG-lHq6JlYIgC7HBMlFh_ZKfvE0dMCS4wT2-unejSrudM9kG9GgkiCSEp_jD0PacQ"
+}
+```
+
+#### 响应参数:
+
+| Param | 类型   | 是否必须 | 说明                                  |
+| ----- | ------ | -------- | ------------------------------------- |
+| code  | int    | 是       | 状态码                                |
+| msg   | string | 是       | 状态信息                              |
+| data  | string | 是       | 使用甲方公钥对返回数据的加密           |
+| sign  | string | 是       | 使用乙方私钥对返回数据明文MD5后的签名 |
+
+> 响应示例
+```json
+{
+    "code": 0,
+    "msg": "success",
+    "data": "tBosL74tKsUMckzB0320OjvqJvjHip77PS-mz_BZ-xsKO5MVzPz-adw94NUZ_8FtdYSDTsnM6ZtiL3e7T-2c2U5fvc7QTMVoJfv6SPJOmk0yRz8qBvMfgUKdjwEkpZJyCRYtmdp9sSJsbtI_Ygkr0i4KtaxMA_yskkAXODJ0aewcT7_uS9OHn8pExoNXpQ-XEbHbrK-QF8Sl4BcWQXZ2YdsF4z8T4Q3hQcSG3AyLOb4z3YIU6ZyjMok7ZsWyYoiHpMjD9eXfIfgDYUOxdocbNCjqAx6EPrueupLtUXqjCDqUEuXP3jXLJ97c9rluiNhc3XVdvrCK0lEzxoLL44yWRHDUTCpPARSemsHWy9XOiAdWlS8SaQKUS-iprfKi9e6kUDSHYFSEoZSo44Vktv8AGmHod5IGwGLBtu1fIaTuun8ahRHSVyLoJf11rSgfAkIWDUnC-Fiilk0O0pw-5q0HQkhihYYx4TEr-JWV_Y080YGkBI-NQ4RILpIKr0r292BrR4GLsYWzxieOURXrbmx7NKCaD0JmERrUbV0rbUs0rvJRj6T-5MIW6FD7oFGhXbViuTAxyqtUNvatbDEGRXbnoUTC_Jv0TX9LM0S9coT0ozYLn_2L9psdUdNGPPGkd6d3KzFxxy_m_h3l4MHinEpFvVewBJeZP7q5Z5rNhzSmxtc",
+    "sign": "jJr0UmgMHPesDNfe4kw8KYR3zSDzBmoRlJ6O979tgdLx5JydY6jNMYrzWEn4sqqy4p6niw7HEnbOrgtSGBr4BtgoGpzaqs4hslADUGfDpn8FPO4Cb6DW09yMsQZVMp7m9NIybgVwPiro7fMDOxOlSA5M5Bzxth7UNIVwgtEEZCoS0pi1Elsl6xASc9N8VR5gkh55B9zt_NbOOQ_nN-p7s1_JwOFY4qXtfYDrAjjawpTdprvThfRYoX_Lm-YpoWQeED80yFMOOUbrl9SUG-j8opVlSX53IwvQbVvwPI2gnZIBJBfUYgICP6ffQZRulP1WllYwaWYLKUdamyyYAZgQIQ"
+}
+```
+
+
+## 地址注册接口
+
+推送地址给平台，此地址用于分配给用户
+
+
+
+#### HTTP请求
+
+`POST/api/v1/address/register`
+
+
+
+<aside class="notice">每次向Custody推送地址条数上限为100条，每次推送时会检查Custody剩余的地址可用数是否大于5000，如果有5000个地址没有被使用，则不允许注册；如果地址是memo类型，只需注册一个地址，memo由乙方分配</aside>
+
+
+
+#### **请求参数data解密之后数据结构:**
+
+| Param     | 类型   | 是否必须 | 说明                                      |
+| --------- | ------ | -------- | ----------------------------------------- |
+| symbol    | string | 是       | 币种名称                                  |
+| addresses | string | 是       | 地址列表（可以以逗号分隔，单次最多100个） |
+| memo      | bool   | 是       | 是否为memo类型                            |
+
+
+#### 响应参数data解密之后数据结构: 
+无
+
+
+
+## 剩余地址可用数量接口
+
+推送的地址中还有多少可用地址, 建议脚本监控可用数量。
+
+
+
+#### HTTP请求
+
+`POST/api/v1/address/available`
+
+
+
+#### **请求参数data解密之后数据结构:**
+
+| Param  | 类型   | 是否必须 | 说明     |
+| ------ | ------ | -------- | -------- |
+| symbol | string | 是       | 币种名称 |
+
+> 响应结果示例
+
+```json
+{
+    "symbol":"BTC",
+    "count":1
+}
+```
+
+
+
+#### 响应参数data解密之后数据结构: 
+
+| Param  | 类型   | 是否必须 | 说明         |
+| ------ | ------ | -------- | ------------ |
+| symbol | string | 是       | 币种名称     |
+| count  | int    | 是       | 地址可用数量 |
+
+## 充值通知接口
+
+充值通知调用接口
+
+
+
+#### HTTP请求
+
+`POST/api/v1/deposit/notify`
+
+
+
+#### 备注
+
+1. 同一txid，不同地址，分开通知
+
+2. 同一txid，相同地址，金额累加通知
+
+3. 同一笔充值，请确保request_id不变，否则会造成重复上账
+
+4. 请求解密后会包括 request_id
+
+   
+
+#### 请求参数data解密之后数据结构:
+
+| Param        | 类型    | 是否必须 | 说明               |
+| ------------ | ------- | -------- | ------------------ |
+| request_id   | string  | 是       | 单次请求的唯一标识 |
+| address_from | string  | 否       | from地址           |
+| address_to   | string  | 是       | to地址             |
+| txid         | string  | 是       | 交易id             |
+| amount       | decimal | 是       | 金额               |
+| confirm      | int     | 是       | 确认数             |
+| symbol       | string  | 是       | 币种名称           |
+| balance      | decimal | 是       | 热钱包余额         |
+| status       | int     | 是       | 1成功，0失败       |
+| memo         | string  | 否       | memo标识           |
+
+> 响应结果示例
+
+```json
+{
+    "data":{
+        "request_id":"12345"
+    }
+}
+```
+
+
+
+#### 响应参数data解密之后数据结构: 
+
+| Param         | 类型   | 是否必须 | 说明              |
+| ------        | ------ | -------- | ------------      |
+| data          | object | 是       |                   |
+| └─request_id  | string | 是       | 单次请求的唯一标识 |
+
+
+
+
+
+## 提现拉取接口
+
+提币拉取接口, 此接口单次最多返回最近20条数据
+
+
+
+#### HTTP请求
+
+`POST/api/v1/withdraw/consume`
+
+
+
+#### 请求参数data解密之后数据结构:
+
+| Param  | 类型   | 是否必须 | 说明     |
+| ------ | ------ | -------- | -------- |
+| symbol | string | 是       | 币种名称 |
+
+
+
+> 响应结果示例
+
+```json
+[
+    {
+        "trans_id":1,
+        "symbol":"BTC",
+        "amount":1.43232,
+        "fee":0.001,
+        "address_to":"3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r"
+    }
+]
+```
+
+
+
+#### 响应参数data解密之后数据结构:
+
+| Param      | 类型    | 是否必须 | 说明         |
+| ---------- | ------- | -------- | ------------ |
+| trans_id   | string  | 是       | 提现流水id   |
+| symbol     | string  | 是       | 币种名称     |
+| address_to | string  | 是       | 提币到账地址 |
+| amount     | decimal | 是       | 提现金额     |
+| memo       | string  | 否       | 提现memo     |
+
+
+
+
+
+## 提现通知接口
+
+提现通知调用接口
+
+
+
+#### HTTP请求
+
+`POST/api/v1/withdraw/consume`
+
+
+
+#### 备注
+
+1. 同一txid，不同地址，分开通知
+
+2. 同一txid，相同地址，金额累加通知
+
+3. 同一笔充值，请确保request_id不变，否则会造成重复上账
+
+4. 请求解密后会包括 request_id
+
+   
+
+#### 请求参数data解密之后数据结构:
+
+| Param        | 类型    | 是否必须 | 说明                                                         |
+| ------------ | ------- | -------- | ------------------------------------------------------------ |
+| address_from | string  | 否       | from地址                                                     |
+| address_to   | string  | 是       | to地址                                                       |
+| txid         | string  | 是       | 交易id                                                       |
+| trans_id     | int     | 是       | 提现流水id                                                   |
+| amount       | decimal | 是       | 金额                                                         |
+| fee          | decimal | 是       | 真实矿工费                                                   |
+| confirm      | int     | 是       | 确认数，confirm传0时，会将这笔提现记录状态修改为“支付中”，通过/api/v1/withdraw/consume接口就不会在重复获取这笔提现记录 |
+| symbol       | string  | 是       | 币种名称                                                     |
+| balance      | decimal | 是       | 热钱包余额                                                   |
+| memo         | string  | 否       | to地址memo标识                                               |
+
+#### 响应参数data解密之后数据结构: 
+无
+
+
+
+
+
+## 内部通知接口
+
+内部通知调用接口
+
+
+
+#### HTTP请求
+
+`POST/api/v1/internal/notify`
+
+
+
+#### 备注
+
+此接口在除提现外的其他消耗矿工费的交易时调用，主要为了扣除矿工费，比如归集，转冷等
+
+
+
+#### 请求参数data解密之后数据结构:
+
+| Param        | 类型    | 是否必须 | 说明           |
+| ------------ | ------- | -------- | -------------- |
+| address_from | string  | 否       | from地址       |
+| address_to   | string  | 是       | to地址         |
+| txid         | string  | 是       | 交易id         |
+| amount       | decimal | 是       | 金额           |
+| fee          | decimal | 是       | 真实矿工费     |
+| confirm      | int     | 是       | 确认数         |
+| symbol       | string  | 是       | 币种名称       |
+| balance      | decimal | 是       | 热钱包余额     |
+| memo         | string  | 否       | to地址memo标识 |
+
+#### 响应参数data解密之后数据结构: 
+无
+
+
+
+
+
+## 提币打回接口
+
+推送地址给平台，此地址用于分配给用户
+
+#### HTTP请求
+
+`POST/api/v1/withdraw/cancel`
+
+
+
+#### 备注
+
+当提币信息异常(地址错误，精度错误)，需要打回时调用
+
+
+
+#### **请求参数data解密之后数据结构:**
+
+| Param    | 类型   | 是否必须 | 说明       |
+| -------- | ------ | -------- | ---------- |
+| symbol   | string | 是       | 币种名称   |
+| trans_id | int64  | 是       | 提现流水id |
+| msg      | string | 是       | 打回原因   |
+
+#### 响应参数data解密之后数据结构: 
+无
+
+# 4 附录
+
+## 附 1:加解密方式
+
+Java 加解密Demo ： https://github.com/HiCoinCom/WAPIDemo.git
