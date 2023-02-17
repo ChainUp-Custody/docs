@@ -8,12 +8,26 @@
 
 
 
-您可以通过API实现对子钱包和资产的管理、快捷提币以及交易记录获取等功能。
+您可以通过 **ChainUp Custody** 提供的 **MPC- API** ：
+
+- 实现对子钱包和资产的管理
+
+- 快捷发起交易，并收到关于交易的实时状态变更通知
+
+- 获取充值提币等交易记录
+
+- 检查区块链钱包地址是否正确
+
+- 通过 ChainUp MPC-API 的 Co-signer 设置交易自动签名
+
+- ... ...
+
+  
+
+请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。 
 
 
 
-
-目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；
 
 
 
@@ -52,19 +66,52 @@
 
 
 
+
+
+## 创建并配置企业钱包
+
+
+
+钱包分为**主钱包**、**子钱包**两个类型；一个主钱包可以创建多个子钱包；
+
+
+
+#### 应用场景：
+
+- 主钱包可用于某个业务线的资产统计；子钱包分配给不同的用户使用。
+
+- 主钱包可用于公司总资产的统计；子钱包分配给不同的业务部门使用。
+
+  
+
+**私钥密码**用于加解密私钥分片，非常重要，为了您的资产安全**请务必及时备份**。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。 
+
+- 钱包共有3个私钥分片，其中2个私钥分片加密存储在**ChainUp HSM**，另外1个私钥分片在用户本地，用户需要及时将本地私钥分片进行备份并妥善保管；
+- 为了便于记忆，私钥分片以助记词形式存在
+
+
+
+若钱包配置不满足您的需求，可联系商务经理或发邮件至 <custody@chainup.com> 获取支持。
+
+
+
+## 获取API 信息
+
+请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。 
+
+
+
+
+
+
+
 # 开发前准备 
 
 
 
-## 前期准备
+##  开发须知
 
-
-
-###  开发须知
-
-
-
-#### 两对公私钥作用（API方式）
+### 两对公私钥作用（API方式）
 
 **第一对公私钥：** 开发者在开通资管账号时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台B，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。
 
@@ -72,13 +119,13 @@
 
 
 
-#### 为什么需要进行提现二次确认（API方式）
+### 为什么需要进行提现二次确认（API方式）
 
 钱包服务接收到第三方应用请求时，为了确认该请求为第三方应用合法请求，会调用第三方提供的接口来确认。该过程在一定程度上也能避免第三方私钥丢失所造成的影响，也为钱包服务的安全性提供了一套有效屏障。
 
 
 
-#### 域名及API密钥（API方式）
+### 域名及API密钥（API方式）
 
 | 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>                     |
 | :---------------------------- | ------------------------------------------------- |
@@ -108,7 +155,7 @@
 
 
 
-### 资管账号准备
+## 资管账号准备
 
 **开发者准备如下信息：**
 
@@ -136,7 +183,7 @@
 
 
 
-### 接口交互过程
+## 接口交互过程
 
 文档为钱包服务对第三方应用提供的接口。
 
@@ -150,7 +197,7 @@
 
 
 
-### 接口规则
+## 接口规则
 
 | 传输方式:     | https(测试环境暂时使用 http)                           |
 | :------------ | ------------------------------------------------------ |
@@ -205,7 +252,17 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 > 响应结果示例：
 
 ```java
-{"data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"}
+{
+    "data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov
+        -7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA
+        _NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_
+        Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-
+        oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2
+        _u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ
+        _H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_
+        bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzka
+        HXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"
+}
 
 ```
 
@@ -287,23 +344,25 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 响应参数数据结构
 
-| Param              | 类型    | 是否必须 | 说明                                    |
-| :----------------- | :------ | :------- | :-------------------------------------- |
-| open_main_chain    | Array   | 否       | 钱包开通的主链                          |
-| coin_net           | String  | 否       | 币种网络，例：ETH                       |
-| symbol             | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20 |
-| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                  |
-| support_main_chain | Array   | 否       | MPC支持的主链                           |
-| coin_net           | String  | 否       | 币种网络，例：ETH                       |
-| symbol             | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20 |
-| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                  |
-| if_open_chain      | Boolean | 是       | 是否开通主链 false:未开通，true:已开通  |
+| Param              | 类型    | 是否必须 | 说明                                        |
+| :----------------- | :------ | :------- | :------------------------------------------ |
+| open_main_chain    | Array   | 否       | 钱包开通的主链                              |
+| coin_net           | String  | 否       | 币种网络，例：ETH                           |
+| symbol             | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20     |
+| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                      |
+| support_main_chain | Array   | 否       | MPC支持的主链                               |
+| coin_net           | String  | 否       | 币种网络，例：ETH                           |
+| symbol             | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20     |
+| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                      |
+| if_open_chain      | Boolean | 是       | 是否开通主链,  `false`未开通，`true`:已开通 |
 
 
 
+## 子钱包（用户）
 
 
-### 创建子钱包（用户）
+
+### 创建子钱包
 
 传入指定的子钱包名称，为钱包创建一个新的子钱包
 
@@ -333,7 +392,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型    | 是否必须 | 说明                   |
 | :------------ | :------ | :------- | :--------------------- |
-| sub_wallet_id | Integer | 是       | 子钱包id，例：10234122 |
+| sub_wallet_id | Integer | 是       | 子钱包id |
 
 
 
@@ -341,7 +400,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-### 获取子钱包（用户）地址
+### 获取子钱包地址
 
 获取指定子钱包及币种下的充币地址
 
@@ -357,13 +416,14 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| sub_wallet_id | String | 是       | 子钱包id，例：10234122      |
+| sub_wallet_id | String | 是       | 子钱包id      |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
 
 > 响应结果示例
 
 ```json
-{ "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+{ 
+    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
 }
 ```
 
@@ -371,13 +431,13 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param   | 类型   | 是否必须 | 说明                                                         |
 | :------ | :----- | :------- | :----------------------------------------------------------- |
-| address | String | 是       | 充值到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| address | String | 是       | 充值到账地址 |
 
 
 
 
 
-### 获取子钱包（用户）资产
+### 获取子钱包资产
 
 获取指定子钱包及币种下的账户资产
 
@@ -392,7 +452,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
-| sub_wallet_id | String | 是       | 子钱包id，例：10234122      |
+| sub_wallet_id | String | 是       | 子钱包id      |
 
 > 响应结果示例
 
@@ -408,8 +468,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param           | 类型   | 是否必须 | 说明                                                         |
 | :-------------- | :----- | :------- | :----------------------------------------------------------- |
-| deposit_address | String | 是       | 充值到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
-| normal_balance  | String | 是       | 可用余额，例：1.23                                           |
+| deposit_address | String | 是       | 充值到账地址 |
+| normal_balance  | String | 是       | 可用余额                                           |
 | lock_balance    | String | 是       | 冻结余额，例：0.77                                           |
 
 
@@ -418,7 +478,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-### 修改子钱包（用户）在app客户端展示状态
+### 修改子钱包状态
 
 指定子钱包在app客户端的展示情况，不展示无法在app发起交易
 
@@ -430,10 +490,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 请求参数数据结构 
 
-| Param           | 类型   | 是否必须 | 说明                                                      |
-| :-------------- | :----- | :------- | :-------------------------------------------------------- |
-| sub_wallet_ids  | String | 是       | 多个子钱包id的字符串，英文逗号分割，例：10234122,10234123 |
-| app_show_status | String | 是       | 1展示 2不展示                                             |
+| Param           | 类型   | 是否必须 | 说明                               |
+| :-------------- | :----- | :------- | :--------------------------------- |
+| sub_wallet_ids  | String | 是       | 多个子钱包id的字符串，英文逗号分割 |
+| app_show_status | String | 是       | `1`展示,  `2`不展示                |
 
 
 
@@ -464,12 +524,12 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                                                         |
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
-| sub_wallet_id | String | 是       | 子钱包id，例：10234122                                       |
+| sub_wallet_id | String | 是       | 子钱包id                                       |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20                                  |
-| address_to    | String | 是       | 提币到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
-| memo          | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入，例：123321       |
-| amount        | String | 是       | 提币金额，例：1.23                                           |
-| request_id    | String | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
+| address_to    | String | 是       | 提币到账地址 |
+| memo          | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入       |
+| amount        | String | 是       | 提币金额                                           |
+| request_id    | String | 是       | 提币唯一标识       |
 | remark        | String | 否       | 提币备注，例：mpc矿池                                        |
 | gas_price     | String | 否       | 自定义矿工费时传入，通过`预估手续费接口`获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
 | gas_limit     | String | 否       | 自定义矿工费时传入，通过`预估手续费接口`获取参考值，填入大于等于0的数值 |
@@ -487,7 +547,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param       | 类型    | 是否必须 | 说明              |
 | :---------- | :------ | :------- | :---------------- |
-| withdraw_id | Integer | 是       | 提币id，例：12345 |
+| withdraw_id | Integer | 是       | 提币id|
 
 
 
@@ -506,11 +566,11 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param  | 类型   | 是否必须 | 说明                                                     |
 | :----- | :----- | :------- | :------------------------------------------------------- |
-| from   | String | 是       | 出币地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b84 |
-| to     | String | 是       | 到账地址，例：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
-| memo   | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入，例：123321   |
+| from   | String | 是       | 出币地址|
+| to     | String | 是       | 到账地址 |
+| memo   | String | 否       | 提币到账地址memo，Memo类型提币时如有可填入   |
 | symbol | String | 是       | 币种唯一标识，例：USDTERC20                              |
-| amount | String | 是       | 金额，例：1.23                                           |
+| amount | String | 是       | 金额                                           |
 
 > 响应结果示例
 
@@ -559,7 +619,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param       | 类型   | 是否必须 | 说明                                                         |
 | :---------- | :----- | :------- | :----------------------------------------------------------- |
-| withdraw_id | String | 是       | 提币id，例：12345                                            |
+| withdraw_id | String | 是       | 提币id                                           |
 | gas_price   | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
 | gas_limit   | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值          |
 | fee         | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值；fee是真实的矿工费，无精度，填入时需要注意；fee和gas_price二选一，其中一者为0，另一者不为0； |
@@ -591,7 +651,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param | 类型   | 是否必须 | 说明                                                         |
 | :---- | :----- | :------- | :----------------------------------------------------------- |
-| ids   | String | 是       | 多`request_id`的字符串，英文逗号分割，例：`0d766c03-8382-4005-b976-16c33f780f21,0db54264-7ea0-41c2-af85-4dd22b5e74d` |
+| ids   | String | 是       | 多`request_id`的字符串，英文逗号分割 |
 
 
 > 响应结果示例
@@ -627,25 +687,25 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param              | 类型    | 是否必须 | 说明                                                         |
 | :----------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 提币id，例：12345                                            |
-| request_id       | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
-| sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| id               | Integer | 是       | 提币id                                           |
+| request_id       | String  | 是       | 提币唯一标识       |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                       |
 | symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
-| amount           | String  | 是       | 提币金额，例：1.23                                           |
+| amount           | String  | 是       | 提币金额                                           |
 | fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
 | fee              | String  | 是       | 手续费，例：0.00123                                          |
 | real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
-| created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String  | 否       | 提币到账地址memo，例：123321                                 |
-| txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| created_at       | Long    | 是       | 创建时间时间戳                            |
+| updated_at       | Long    | 是       | 修改时间时间戳                            |
+| address_from     | String  | 是       | 出币地址     |
+| address_to       | String  | 是       | 到账地址     |
+| memo             | String  | 否       | 提币到账地址memo                                 |
+| txid             | String  | 是       | 交易hash|
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
 | withdraw_source  | Integer | 是       | 提现类型： 1.app, 2.openapi                                  |
 | base_symbol      | String  | 否       | 提币币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String  | 否       | 提币币种合约地址 |
 
 
 
@@ -670,7 +730,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param  | 类型   | 是否必须 | 说明                      |
 | :----- | :----- | :------- | :------------------------ |
-| max_id | String | 是       | 提币记录起始id，例：12345 |
+| max_id | String | 是       | 提币记录起始id|
 
 > 响应结果示例
 
@@ -704,25 +764,25 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型    | 是否必须 | 说明                                                         |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 提币id，例：12345                                            |
-| request_id       | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
-| sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| id               | Integer | 是       | 提币id                                                       |
+| request_id       | String  | 是       | 提币唯一标识                                                 |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
 | symbol           | String  | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
-| amount           | String  | 是       | 提币金额，例：1.23                                           |
+| amount           | String  | 是       | 提币金额                                                     |
 | fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
 | fee              | String  | 是       | 手续费，例：0.00123                                          |
 | real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
-| created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String  | 否       | 提币到账地址memo，例：123321                                 |
-| txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| created_at       | Long    | 是       | 创建时间时间戳                                               |
+| updated_at       | Long    | 是       | 修改时间时间戳                                               |
+| address_from     | String  | 是       | 出币地址                                                     |
+| address_to       | String  | 是       | 到账地址                                                     |
+| memo             | String  | 否       | 提币到账地址memo                                             |
+| txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
 | withdraw_source  | Integer | 是       | 提现类型： 1.app, 2.openapi                                  |
 | base_symbol      | String  | 否       | 提币币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String  | 否       | 提币币种合约地址                                             |
 
 
 
@@ -782,20 +842,20 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型    | 是否必须 | 说明                                                         |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 充币id，例：12345                                            |
-| sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| id               | Integer | 是       | 充币id                                                       |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
 | symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String  | 是       | 充币金额，例：1.23                                           |
-| created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String  | 否       | 到账地址memo，例：123321                                     |
-| txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| amount           | String  | 是       | 充币金额                                                     |
+| created_at       | Long    | 是       | 创建时间时间戳                                               |
+| updated_at       | Long    | 是       | 修改时间时间戳                                               |
+| address_from     | String  | 是       | 出币地址                                                     |
+| address_to       | String  | 是       | 到账地址                                                     |
+| memo             | String  | 否       | 到账地址memo                                                 |
+| txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String  | 否       | 充币币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String  | 否       | 充币币种合约地址                                             |
 
 
 
@@ -849,20 +909,20 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型    | 是否必须 | 说明                                                         |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 充币id，例：12345                                            |
-| sub_wallet_id    | Integer | 是       | 子钱包id，例：10234122                                       |
+| id               | Integer | 是       | 充币id                                                       |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
 | symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String  | 是       | 充币金额，例：1.23                                           |
-| created_at       | Long    | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | Long    | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String  | 否       | 到账地址memo，例：123321                                     |
-| txid             | String  | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| amount           | String  | 是       | 充币金额                                                     |
+| created_at       | Long    | 是       | 创建时间时间戳                                               |
+| updated_at       | Long    | 是       | 修改时间时间戳                                               |
+| address_from     | String  | 是       | 出币地址                                                     |
+| address_to       | String  | 是       | 到账地址                                                     |
+| memo             | String  | 否       | 到账地址memo                                                 |
+| txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String  | 否       | 充币币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String  | 否       | 充币币种合约地址                                             |
 
 
 
@@ -912,25 +972,25 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | charset          | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
 | side             | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
 | notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
-| id               | String | 是       | 提币id，例：12345                                            |
-| request_id       | String | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21       |
-| sub_wallet_id    | String | 是       | 子钱包id，例：10234122                                       |
+| id               | String | 是       | 提币id                                                       |
+| request_id       | String | 是       | 提币唯一标识                                                 |
+| sub_wallet_id    | String | 是       | 子钱包id                                                     |
 | symbol           | String | 是       | 币种唯一标识，提币时使用，例：USDTERC20                      |
-| amount           | String | 是       | 提币金额，例：1.23                                           |
+| amount           | String | 是       | 提币金额                                                     |
 | fee_symbol       | String | 是       | 手续费币种，例：ETH                                          |
 | fee              | String | 是       | 手续费，例：0.00123                                          |
 | real_fee         | String | 是       | 真实消耗的手续费，例：0.00111                                |
-| created_at       | String | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | String | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String | 否       | 到账地址memo，例：123321                                     |
-| txid             | String | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| created_at       | String | 是       | 创建时间时间戳                                               |
+| updated_at       | String | 是       | 修改时间时间戳                                               |
+| address_from     | String | 是       | 出币地址                                                     |
+| address_to       | String | 是       | 到账地址                                                     |
+| memo             | String | 否       | 到账地址memo                                                 |
+| txid             | String | 是       | 交易hash                                                     |
 | confirmations    | String | 是       | 区块确认数，例：10                                           |
 | status           | String | 是       | 提现状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | String | 是       | 提现类型： 1.app, 2.openapi                                  |
+| withdraw_source  | String | 是       | 提现类型： `1`app, `2`openapi                                |
 | base_symbol      | String | 否       | 提币币种主链唯一标识，例：ETH                                |
-| contract_address | String | 否       | 提币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String | 否       | 提币币种合约地址                                             |
 
 
 
@@ -942,22 +1002,22 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param            | 类型   | 是否必须 | 说明                                                         |
 | :--------------- | :----- | :------- | :----------------------------------------------------------- |
 | charset          | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
-| side             | String | 是       | 通知类型， 充值通知：deposit， 提现通知： withdraw           |
+| side             | String | 是       | 通知类型， 充值通知：`deposit`， 提现通知： `withdraw`       |
 | notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
-| id               | String | 是       | 充币id，例：12345                                            |
-| sub_wallet_id    | String | 是       | 子钱包id，例：10234122                                       |
+| id               | String | 是       | 充币id                                                       |
+| sub_wallet_id    | String | 是       | 子钱包id                                                     |
 | symbol           | String | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String | 是       | 充币金额，例：1.23                                           |
-| created_at       | String | 是       | 创建时间时间戳，例：1643349275000                            |
-| updated_at       | String | 是       | 修改时间时间戳，例：1643349275001                            |
-| address_from     | String | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| address_to       | String | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23     |
-| memo             | String | 否       | 到账地址memo，例：123321                                     |
-| txid             | String | 是       | 交易hash，例：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| amount           | String | 是       | 充币金额                                                     |
+| created_at       | String | 是       | 创建时间时间戳                                               |
+| updated_at       | String | 是       | 修改时间时间戳                                               |
+| address_from     | String | 是       | 出币地址                                                     |
+| address_to       | String | 是       | 到账地址                                                     |
+| memo             | String | 否       | 到账地址memo                                                 |
+| txid             | String | 是       | 交易hash                                                     |
 | confirmations    | String | 是       | 区块确认数，例：10                                           |
 | status           | String | 是       | 充值状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String | 否       | 充币币种主链唯一标识，例：ETH                                |
-| contract_address | String | 否       | 充币币种合约地址，例：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+| contract_address | String | 否       | 充币币种合约地址                                             |
 
 
 # SDK
@@ -1034,16 +1094,16 @@ API：`请查看相关文档`
 
 
 
-| Param         | 类型    | 是否必须 | 说明                                                     |
-| :------------ | :------ | :------- | :------------------------------------------------------- |
-| withdraw_id   | Integer | 是       | 提现id，例：12345                                        |
-| request_id    | String  | 是       | 提币唯一标识，例：0d766c03-8382-4005-b976-16c33f780f21   |
-| pending_round | Bool    | 是       | 加速状态，false为提币，true为提币加速                    |
-| from          | String  | 是       | 出币地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
-| to            | String  | 是       | 到账地址，例：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
-| memo          | String  | 否       | 到账地址memo，例：123321                                 |
-| amount        | Decimal | 是       | 提币金额，例：1.23                                       |
-| symbol        | String  | 是       | 币种唯一标识，例：USDTERC20                              |
+| Param         | 类型    | 是否必须 | 说明                                      |
+| :------------ | :------ | :------- | :---------------------------------------- |
+| withdraw_id   | Integer | 是       | 提现id                                    |
+| request_id    | String  | 是       | 提币唯一标识                              |
+| pending_round | Bool    | 是       | 加速状态，`false`为提币，`true`为提币加速 |
+| from          | String  | 是       | 出币地址                                  |
+| to            | String  | 是       | 到账地址                                  |
+| memo          | String  | 否       | 到账地址memo                              |
+| amount        | Decimal | 是       | 提币金额                                  |
+| symbol        | String  | 是       | 币种唯一标识，例：USDTERC20               |
 
 
 
