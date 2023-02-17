@@ -1,0 +1,1128 @@
+# Introduction
+
+**ChainUp Custody's** implementation of the **MPC technology** ensures that users' investment assets are under the protection of the highest security level in the market. User's private key will be managed jointly by the user and ChainUp Custody, and the user will have complete control over assets and may use them at any time without limitation. MPC technology not only makes recovery easier but also increases security by removing the single point of failure of a private key.
+
+
+
+**MPC** allows each co-signing component to audit which of the keys participated in the signing but the nature of the MPC protocol does not require participants to reveal their secret share to others, which means that every party’s input is kept private. In addition, the signature-generating parties are not exposed or visible over the network. MPC addresses the problem of enabling collaboration between different parties while providing trustworthy records and preserving the privacy of their individual data.
+
+
+
+You can manage sub-wallets and assets, quickly withdraw and deposit coins, and obtain transaction records through the **API**.
+
+
+
+
+
+# Access Guidelines
+
+## Create Account
+
+Follow the instructions below to access ChainUp Custody
+
+[![../_images/api_plan_jieruzhiyin2.png](https://custodydocs.chainup.com/en/latest/_images/api_plan_jieruzhiyin2.png)](https://custodydocs.chainup.com/en/latest/_images/api_plan_jieruzhiyin2.png)
+
+
+
+### Download MPC Wallet
+
+Method 1：Open the link in your mobile browser：https://custody.chainup.com/download
+
+Method 2： scan the QR code for download:
+
+<%= image_tag "qrCode.png", style:"width: 150px" %>
+
+
+
+### Register MPC Wallet Account
+
+Open the app and register a new account using email OR mobile phone number.
+
+<%= image_tag "elogin.png", style:"width: 250px" %>
+
+
+
+
+
+# Docking Solutions
+
+To allow customers more convenient and quicker access to Custody service, our platform has a comprehensive set of docking solutions based on previous clients’ requirement.
+
+The whole program is divided into four processes:
+
+1.Obtain the deposit address
+
+2.User deposit
+
+3.User withdrawl
+
+4.Financial reconciliation
+
+Note: If the client’s project timeline is urgent, the necessary processes [obtaining the deposit address], [user deposit], [user withdrawal], and [financial reconciliation] can be developed in two weeks.
+
+## Obtain the deposit address
+
+1）Customer registers with Custody system (email address is recommended)
+
+2）After successful registration, the address can be obtained through the UID of the Custody system
+
+Note: Obtaining the address in advance helps to ensure efficient address allocation after user registration; If the user registers and then obtains the address through the interface, it may fail due to reasons such as network issue, resulting in users’ inability to use the services.
+
+[![../_images/api_tsoulution_zhunbei.png](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_zhunbei.png)](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_zhunbei.png)
+
+## User deposit
+
+1）The user completes registration in their system;
+
+2）When the user checks the currency deposit address on the user interface, the system will assign a currency address to the user;
+
+3）Users send coins to the address;
+
+4）The Custody system monitors and accounts for the transaction of coins in the blockchain address on behalf of the clients, and notifies the client actively or automatically obtaining it within the system.
+
+5）After the system confirms the validity of the information for coin deposit, the coins will be credited into the user’s account;
+
+6）The system notifies the user that the coins are successfully deposited.
+
+[![../_images/api_tsoulution_chongzhi.png](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_chongzhi.png)](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_chongzhi.png)
+
+Note: The asynchronous callback of teh Custody system will be triggered when each order is final, and it can be sent up to 5 times per day;
+
+Timed task: a total of five callbacks
+
+Notification time: 1s for the first time, 2min for the second time, 8min for the third time, 32min for the fourth time, 128min for the fifth time
+
+Callback logic：
+
+If the callback is successful, update the callback status;
+
+If the callback fails, continue the callback and update the interval between the next callback;
+
+When the callback fails five times, the callback is stopped
+
+## User withdrawal
+
+1）The user initiates withdrawal in their system;
+
+2）After the customer’s system has been approved, it will notify the Custody system;
+
+3）The Custody system provides two withdrawal conformation to the customer system;
+
+4）After the customer system confirms that the withdrawal information is valid, the Custody system verifies the withdrawal information, and then the payment is initiated;
+
+5）The Custody system monitors the status of withdrawal orders, and actively notifies the client upon completion of withdrawal or actively acquires it by the customer system;
+
+6）The customer system informs the user that the withdrawal is successful.
+
+[![../_images/api_tsoulution_tibi.png](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_tibi.png)](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_tibi.png)
+
+## Financial reconciliation
+
+1）Perform checks on accounts between the customer system and Custody system periodically (daily is recommended)
+
+2）At midnight the the next day, the system retrieves all the deposits and withdrawals for the previous day as well as the aggregated orders and collection of the miners’ fees
+
+3）The customer system’s orders are reconciled against those in the Custody system
+
+4）If the order quantity, amount and status are correct, the reconciliation will be successful; Otherwise contact Custody support to resolve the issue
+
+[![../_images/api_tsoulution_duizhang.png](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_duizhang.png)](https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_duizhang.png)
+
+Note: In the Custody system, there are three kinds of cost expenses in the tripartite system: collecting miners’ fees, extracting miners’ fees, and profit-sharing commission;
+
+1. Collection of Miners’ Fee: With each currency’s account type, after depositing the coins, the funds on the address will be collected to the hot wallet address and the blockchain network. Part of the main chain blockchain transaction will consume the miner fee and the cost of which will be borne by the client. The client can contact us if they would like this capital expenditure will be handled by us;
+2. Miner’s fee: Miner’s fee (in some currencies) shall be borne by the three parties when withdrawing coins to the address of non-ChainUp Custody and using the blockchain network. This part of capital expenditure can be viewed directly in the coin withdrawal order;
+3. Distribution fee: temporarily not charged.
+
+
+
+# Preparation before development
+
+## Preparation
+
+### Development Instructions
+
+#### 
+
+To meet the diverse business needs of customers, ChainUp Custody supports two docking methods: SDK and API;
+
+**SDK**：Support for Java and PHP
+
+The Java SDK addres：https://github.com/HiCoinCom/java-sdk
+
+The PHP SDK address：https://github.com/HiCoinCom/php-sdk
+
+**API**：Please see the documentation
+
+
+
+#### Two pairs of public and private key functions (API mode）
+
+**The first pair of public and private keys**： The developer shall generate a pair of public and private keys in advance when opening the asset management account. The public key (rsa_third_pub) is provided to the platform and the private key is kept by itself. The private key is the only proof for the third-party application to call the wallet service and shall not be disclosed to anyone. When the third party requests the wallet service, the private key is used to encrypt the request parameters. When the platform receives the request, the public key (rsa_third_pub) is used to decrypt the request data.
+
+**The second pair of public and private keys**： After the developer opens the asset management account, the platform will provide the wallet public key (rsa_wallet_pub) to the developer. When the third-party application receives the response data or asynchronous notification of the wallet, it needs to use the public key to decrypt.
+
+#### Why is it necessary to confirm the withdrawal twice (API method)
+
+When the wallet service receives a request from a third-party application, in confirm that the request is a legitimate request from a third-party application, it will call the interface provided by the third-party to confirm. To a certain extent, this process can avoid the influence caused by the loss of the third party’s private key, and also provides an effective barrier for the security of the wallet service.
+
+#### Domain name and API key (API mode)
+
+| Production domain name(test environment not supported): | [https://openapi.hicoin.vip](https://openapi.hicoin.vip/)    |
+| :------------------------------------------------------ | ------------------------------------------------------------ |
+| app_id:                                                 | Please get it after creating the wallet                      |
+| rsa_wallet_pub:                                         | Custody system public key; Please create the wallet and get it from the Custody system |
+| rsa_third_prv:                                          | Client private key; Independent generation and preservation  |
+| rsa_third_pub:                                          | Client public key; Autonomous generation; Please create the wallet and configure it to the Custody system |
+
+
+
+**RSA public/private key generated address** http://www.metools.info/code/c80.html
+
+Recommended password length：2048
+
+Recommended key format：PKCS#8
+
+Description：
+
+1. Rsa_third_prv is a private key for third-party applications and is used primarily to encrypt request parameters. In a production environment, rsa_third_prv is generated by the developer and the corresponding public key is provided to the platform. To simplify the docking process for developers, a set of third-party public and private keys is directly provided here to facilitate quick docking for developers.
+2. Test environment docking is not supported at present, please register to create a wallet according to **Access Guidelines** , and get the API related information of the production environment.
+
+### Asset management account preparation
+
+**The developer prepares the following information：**
+
+1）Generate a pair of public and private keys and provide the public key to the platform;
+
+2）IP of third-party application server;
+
+3）Recharge withdrawal callback notification address;
+
+4）Reconfirm the address for withdrawal;
+
+5）Whether to enable the automatic collection function. After the function is enabled, the system will automatically transfer the user’s recharge funds to the merchant collection account.
+
+
+
+Contact relevant personnel of the platform to provide the above five types of information. The platform prepares an asset management account for you and provides you with the following information:
+
+1）Unique identification of the merchant：`app_id`；
+
+2）The wallet public key：`rsa_wallet_pub`.
+
+
+
+### Interface interaction process
+
+Documentation is the interface that the wallet service provides to third-party applications.
+
+[![../_images/apiopen-instructions.png](https://custodydocs.chainup.com/en/latest/_images/apiopen-instructions.png)](https://custodydocs.chainup.com/en/latest/_images/apiopen-instructions.png)
+
+The interface providers in the following documents are referred to as **wallet services**，and the interface callers are referred to as **third-party applications**. When the third-party application requests the wallet service, it encrypts the request parameters through the RSA algorithm and decrypts the response data after receiving the wallet service
+
+
+
+### Interface rules
+
+
+| Transfer mode:               | https(HTTP is temporarily used in the test environment)      |
+| :--------------------------- | ------------------------------------------------------------ |
+| Signature field:             | All Required fields, except the Sign field, need to be signed |
+| The response status code is: | 0, indicating successful processing, and non-0 indicates request error or system exception |
+| Request address:             | domain name + interface address                              |
+| Encryption algorithm:        | See `Encryption and Decryption Mode` at **API doc** - Overview for details |
+
+
+
+
+
+# API Documentation
+
+## Overview 
+
+
+
+### Common Request Parameters
+
+| Param  | Type   | Required | Description                                                  |
+| ------ | ------ | -------- | ------------------------------------------------------------ |
+| app_id | String | optional | merchant unique identifier                                   |
+| data   | String | optional | encrypted String, decrypted format is defined as `Decrypted Request Parameters` |
+
+
+
+### Request Example
+
+
+
+
+#### HTTP Request
+
+`POST/api/mpc/sub_wallet/assets`
+
+
+
+> Request Example
+
+```java
+POST /api/mpc/sub_wallet/assets
+
+app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
+```
+
+
+
+
+
+
+
+### Common Response Parameters
+
+| Param | Type   | Required | Description                                                  |
+| ----- | ------ | -------- | ------------------------------------------------------------ |
+| data  | String | optional | encrypted String decrypted format is defined as `Decrypted Response Parameters` |
+
+
+
+> Response Example
+
+```java
+{"data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"}
+
+```
+
+
+
+
+
+### Decrypted Response Parameters
+
+| Param | Type   | Required | Description                                                  |
+| ----- | ------ | -------- | ------------------------------------------------------------ |
+| code  | String | Required | status code                                                  |
+| msg   | String | Required | description of the response result                           |
+| data  | String | optional | the specific response data, the data structure is defined as `Response Data Parameters` |
+
+
+
+### Encryption and Decryption Mode
+
+The values of the request parameter DATA and the response field DATA are both encrypted by RSA and encrypted by **base64urlsafe**
+
+<aside class="notice">
+*Matters needing attention*
+<br/>
+<br/>
+1. There are two symbols + and/that are escaped directly by URL in Base64 traditional encoding. Therefore, if we want to transfer these encoded strings through URL, we need to do traditional Base64 encoding first, then replace + and/with two characters - _ respectively, and do the opposite action decoding at the receiving end. 
+<br/>
+<br/>
+2. RSA encryption and decryption using segmented encryption
+</aside>
+
+
+
+
+## Wallet
+
+### Get the main chain of wallet
+
+Get the main chain and coins supported by ChainUp Custody.
+
+#### HTTP Request
+
+`GET /api/mpc/wallet/open_coin`
+
+
+
+#### Decrypted Request Parameters 
+
+None
+
+
+
+> Response
+
+```json
+{
+    "open_main_chain":[
+        {
+            "coin_net":"BTC",
+            "symbol":"BTC",
+            "symbol_alias":"BTC"
+        }
+    ],
+    "support_main_chain":[
+        {
+            "coin_net":"BTC",
+            "if_open_chain":true,
+            "symbol":"BTC",
+            "symbol_alias":"BTC"
+        }
+    ]
+}
+```
+
+#### Response Data Parameters 
+
+| Param              | Type    | Required | Description                                                  |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+| open_main_chain    | Array   | No       | The main chain opened by the wallet                          |
+| symbol             | String  | Yes      | The unique identifier of the coin, used when withdrawing, for example: USDTERC20 |
+| symbol_alias       | String  | No       | The real name of the coin, for example: USDT                 |
+| support_main_chain | Array   | No       | Main chain supported by MPC wallet                           |
+| coin_net           | String  | No       | Coin network, for example: ETH                               |
+| if_open_chain      | Boolean | Yes      | Whether to open the main chain: ` false`,not opened; `true`,opened. |
+
+
+
+
+
+### Create a sub-wallet (user)
+
+Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/create`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param           | Type   | Requried | Description                                                  |
+| :-------------- | :----- | :------- | :----------------------------------------------------------- |
+| sub_wallet_name | String | Yes      | The name of the sub-wallet, up to 50 characters. Sub-wallets in the same wallet cannot have the same name, for example: mpc mining pool |
+
+
+> Response：
+
+```json
+{
+    "sub_wallet_id": 10234122
+}
+```
+
+
+#### Response Data Parameters 
+
+| Param         | Type    | Requried | Description                      |
+| :------------ | :------ | :------- | :------------------------------- |
+| sub_wallet_id | Integer | Yes      | Sub wallet id, example: 10234122 |
+
+
+
+
+
+
+
+### Get sub-wallet (user) address
+
+Obtain the deposit address under the specified sub-wallet and coin
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/get_address`
+
+
+
+#### Decrypted Request Parameters
+
+| Param         | Type   | Requried | Description                                           |
+| :------------ | :----- | :------- | :---------------------------------------------------- |
+| sub_wallet_id | String | Yes      | Sub wallet id, example: 10234122                      |
+| symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20 |
+
+> Response
+
+```json
+{ "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+}
+```
+
+#### Response Data Parameters 
+
+| Param   | Type   | Requried | Description                                                  |
+| :------ | :----- | :------- | :----------------------------------------------------------- |
+| address | String | Yes      | Deposit address, for example: 0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+
+
+
+
+
+### Get sub-wallet (user) assets
+
+Get the account assets under the specified sub-wallet and coin.
+
+#### HTTP Request
+
+`GET /api/mpc/sub_wallet/assets`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param         | Type   | Requried | Description                                           |
+| :------------ | :----- | :------- | :---------------------------------------------------- |
+| symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20 |
+| sub_wallet_id | String | Yes      | Sub wallet id, example: 10234122                      |
+
+> Response
+
+```json
+{
+    "normal_balance":"1.23",
+    "deposit_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
+    "lock_balance":"0.77"
+}
+```
+
+#### Response Data Parameters 
+
+| Param           | Type   | Requried | Description                                                  |
+| :-------------- | :----- | :------- | :----------------------------------------------------------- |
+| deposit_address | String | Yes      | Deposit address, example: 0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| normal_balance  | String | Yes      | Available balance, example: 1.23                             |
+| lock_balance    | String | Yes      | Freeze balance, example: 0.77                                |
+
+
+
+
+
+
+
+### Modify the display status of the sub-wallet (user) on the APP
+
+Specify the display status of the sub-wallet on the APP client, if it is not displayed, the transaction cannot be initiated on the APP.
+
+
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/change_show_status`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param           | Type   | Requried | Description                                                  |
+| :-------------- | :----- | :------- | :----------------------------------------------------------- |
+| sub_wallet_ids  | String | Yes      | A string of multiple sub-wallet ids, separated by commas, for example: 10234122, 10234123 |
+| app_show_status | String | Yes      | `1` show ,`2` don't show                                     |
+
+
+
+#### Response Data Parameters 
+
+
+None
+
+
+
+
+
+## Withdrawal
+
+
+
+### Withdrawal
+
+### Initiate a withdraw
+
+
+
+#### HTTP Request
+
+`POST /api/mpc/billing/withdraw`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param         | Type   | Requried | Description                                                  |
+| :------------ | :----- | :------- | :----------------------------------------------------------- |
+| sub_wallet_id | String | Yes      | Sub wallet id, example: 10234122                             |
+| symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| address_to    | String | Yes      | Withdrawal address, for example: 0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| memo          | String | No       | Withdrawal address memo, Memo type can be filled in if available,  example: 123321 |
+| amount        | String | Yes      | Withdrawal amount, for example: 1.23                         |
+| request_id    | String | Yes      | The unique identifier for withdrawing coins, example: 0d766c03-8382-4005-b976-16c33f780f21 |
+| remark        | String | No       | Withdrawal remarks, for example: mpc mining pool             |
+| gas_price     | String | No       | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
+| gas_limit     | String | No       | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to 0 . |
+| fee           | String | No       | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to 0; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is 0, the other is not 0; |
+
+> Response
+
+```json
+{
+    "withdraw_id": 12345
+}
+```
+
+#### Response Data Parameters 
+
+| Param       | Type    | Requried | Description                   |
+| :---------- | :------ | :------- | :---------------------------- |
+| withdraw_id | Integer | Yes      | Withdrawal id, example: 12345 |
+
+
+
+
+
+
+### Withdrawal Estimated Miner Fee
+
+Obtain the estimated miner fee required for withdrawal. 
+
+
+
+#### HTTP Request
+
+`GET /api/mpc/billing/gas_estimate`
+
+#### Decrypted Request Parameters 
+
+| Param  | Type   | Requried | Description                                                  |
+| :----- | :----- | :------- | :----------------------------------------------------------- |
+| from   | String | Yes      | withdrawal from address，example：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b84 |
+| to     | String | Yes      | withdrawal to address，example：0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86 |
+| memo   | String | No       | Withdrawal address memo, Memo type can be filled in if available,  example: 123321 |
+| symbol | String | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount | String | Yes      | amount，example：1.23                                        |
+
+> Response
+
+
+```json
+{
+    "gas_limit":0,
+    "fee_unit":"Gwei",
+    "gas_price1":"0",
+    "fee":"0.00159",
+    "gas_price2":"0",
+    "gas_price3":"0",
+}
+```
+
+
+#### Response Data Parameters 
+
+| Param      | Type   | Requried | Description                                                  |
+| :--------- | :----- | :------- | :----------------------------------------------------------- |
+| gas_price1 | String | Yes      | The first recommended unit price of the gas fee，example：12.4 |
+| gas_price2 | String | Yes      | The second recommended unit price of the gas fee，example：13.4 |
+| gas_price3 | String | Yes      | The third recommended unit price of the gas fee，example：14.4 |
+| gas_limit  | Long   | Yes      | Gas fee limit，example：21000                                |
+| fee_unit   | String | Yes      | Gas fee unit，example：Gwei                                  |
+| fee        | String | Yes      | The recommended value of the gas fee，example：0             |
+
+
+
+
+
+
+### Speed Up Withdrawal
+
+After the withdrawal signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.
+
+
+
+#### HTTP Request
+
+`POST /api/mpc/billing/withdraw_pending`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param       | Type   | Requried | Description                                                  |
+| :---------- | :----- | :------- | :----------------------------------------------------------- |
+| withdraw_id | String | Yes      | Withdrawal id, example: 12345                                |
+| gas_price   | String | Yes      | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
+| gas_limit   | String | Yes      | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to 0 . |
+| fee         | String | Yes      | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to 0; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is 0, the other is not 0; |
+
+
+
+#### Response Data Parameters 
+
+
+
+None
+
+
+
+
+### Get withdrawal records
+
+Get all sub-wallet withdrawal records under the main wallet, and return up to 100 records
+
+
+
+#### HTTP Request
+
+`GET /api/mpc/billing/withdraw_list`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param | Type   | Requried | Description                                                  |
+| :---- | :----- | :------- | :----------------------------------------------------------- |
+| ids   | String | Yes      | many `request_id`string，separated by commas，example：`0d766c03-8382-4005-b976-16c33f780f21,0db54264-7ea0-41c2-af85-4dd22b5e74d` |
+
+
+> Response
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "wihdraw_source":2,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "123321",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":1200
+    }
+]
+```
+
+
+#### Response Data Parameters 
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | Yes      | Withdrawal id, example: 12345                                |
+| request_id       | String  | Yes      | The unique identifier for withdrawing coins, example: 0d766c03-8382-4005-b976-16c33f780f21 |
+| sub_wallet_id    | Integer | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | Withdrawal amount, for example: 1.23                         |
+| fee_symbol       | String  | Yes      | gas fee coins，example：ETH                                  |
+| fee              | String  | Yes      | gas fee，example：0.00123                                    |
+| real_fee         | String  | Yes      | The actual gas fee consumed，example：0.00111                |
+| created_at       | Long    | Yes      | Creation time timestamp，example：1643349275000              |
+| updated_at       | Long    | Yes      | Modification time timestamp，example：1643349275001          |
+| address_from     | String  | Yes      | withdrawal from address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | withdrawal to address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | Withdrawal address memo，example：123321                     |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Withdrawal status: 1000 awaiting approval, 1100 Approved while awaiting signature, 1200 Payment in progress, 2000 Payment completed, 2100 Not Approved, 2200 Rejected, 2300 Transaction discarded, 2400 Payment failed |
+| withdraw_source  | Integer | Yes      | Withdrawal Type： 1.app, 2.openapi                           |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
+| contract_address | String  | No       | Withdrawal coin's  contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+
+
+### Synchronize withdrawal records
+
+Get all sub-wallet withdrawal records under the main wallet, and return up to 100 records
+
+
+
+#### HTTP Request
+
+`GET /api/mpc/billing/sync_withdraw_list`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param  | Type   | Requried | Description                                  |
+| :----- | :----- | :------- | :------------------------------------------- |
+| max_id | String | Yes      | Withdrawal record initial id, example: 12345 |
+
+> Response
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "wihdraw_source":2,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "123321",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":1200
+    }
+]
+```
+
+#### Response Data Parameters 
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | Yes      | withdrawal id，example：12345                                |
+| request_id       | String  | Yes      | The unique identifier for withdrawing coins, example: 0d766c03-8382-4005-b976-16c33f780f21 |
+| sub_wallet_id    | Integer | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | Withdrawal amount, for example: 1.23                         |
+| fee_symbol       | String  | Yes      | gas fee coins，example：ETH                                  |
+| fee              | String  | Yes      | gas fee，example：0.00123                                    |
+| real_fee         | String  | Yes      | The actual gas fee consumed，example：0.00111                |
+| created_at       | Long    | Yes      | Created time timestamp，example：1643349275000               |
+| updated_at       | Long    | Yes      | Modified time timestamp，example：1643349275001              |
+| address_from     | String  | Yes      | from account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | to account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | to account address memo，example：123321                     |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Withdrawal status: 1000 awaiting approval, 1100 Approved while awaiting signature, 1200 Payment in progress, 2000 Payment completed, 2100 Not Approved, 2200 Rejected, 2300 Transaction discarded, 2400 Payment failed |
+| withdraw_source  | Integer | Yes      | Withdrawal Type： 1.app, 2.openapi                           |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
+| contract_address | String  | No       | Withdrawal coin's  contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+
+
+## Deposit
+
+### Get deposit records
+
+Get all sub-wallet deposit records under the main wallet, and return up to 100 records
+
+
+
+#### HTTP Request
+
+`GET/api/mpc/billing/deposit_list`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param | Type   | Requried | Description                                                  |
+| :---- | :----- | :------- | :----------------------------------------------------------- |
+| ids   | String | Yes      | A string of multiple ids, separated by commas, example: 123,345 |
+
+
+> Response
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
+        "memo": "123321",
+      "created_at":1672107533000,
+        "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
+        "confirmations":20,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "updated_at":1672323030000,
+        "base_symbol":"",
+        "id":43,
+        "status":2000
+    }
+]
+```
+
+
+#### Response Data Parameters 
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | Yes      | Depositid，example：12345                                    |
+| sub_wallet_id    | Integer | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | Deposit amount，example：1.23                                |
+| created_at       | Long    | Yes      | Created time timestamp ，example：1643349275000              |
+| updated_at       | Long    | Yes      | Modified time timestamp，example：1643349275001              |
+| address_from     | String  | Yes      | withdrawal from address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | deposit address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | deposit address memo，example：123321                        |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Deposit status: 1000 unconfirmed, 1100 confirmed (transaction block confirmed), 2000 completed (shown at account), 3000 abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
+| contract_address | String  | No       | Deposit coin's contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+### Synchronous deposit record
+
+Get all sub-wallet deposit records under the main wallet, and return up to 100 records
+
+#### HTTP Request
+
+`GET /api/mpc/billing/sync_deposit_list`
+
+
+
+#### Decrypted Request Parameters 
+
+| Param  | Type   | Requried | Description                             |
+| :----- | :----- | :------- | :-------------------------------------- |
+| max_id | String | Yes      | deposit record initial id，example：100 |
+
+
+
+> Response
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
+        "memo": "123321",
+      "created_at":1672107533000,
+        "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
+        "confirmations":20,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "updated_at":1672323030000,
+        "base_symbol":"",
+        "id":43,
+        "status":2000
+    }
+]
+```
+
+
+#### Response Data Parameters 
+
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | Yes      | Depositid，example：12345                                    |
+| sub_wallet_id    | Integer | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | deposit amount，example：1.23                                |
+| created_at       | Long    | Yes      | Created time timestamp ，example：1643349275000              |
+| updated_at       | Long    | Yes      | Modified time timestamp，example：1643349275001              |
+| address_from     | String  | Yes      | withdrawal from address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | deposit address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | deposit address memo，example：123321                        |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Deposit status: 1000 unconfirmed, 1100 confirmed (transaction block confirmed), 2000 completed (shown at account), 3000 abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
+| contract_address | String  | No       | Deposit coin's contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+
+
+
+# Transaction Notification
+
+## Overview
+
+
+
+`POST /user callback notification address`
+
+> Request Example
+
+```json
+app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
+```
+
+
+
+#### Common Request Parameters
+
+| Param  | Type   | Requried | Description                                                  |
+| :----- | :----- | :------- | :----------------------------------------------------------- |
+| Param  | Type   | Requried | Description                                                  |
+| app_id | String | Requried | merchant unique identifier                                   |
+| data   | String | Requried | encrypted String, decrypted format is defined as `Decrypted Request Parameters` |
+
+
+
+#### Common Response
+
+Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the return parameter does not need to be encrypted here)
+
+
+
+
+
+
+## Withdrawal Notification
+
+#### Decrypted Request Parameters 
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
+| side             | String  | Yes      | Notification type, DEPOSIT notification: `deposit`, WITHDRAWAL notification: `withdraw` |
+| notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
+| id               | String  | Yes      | Withdrawal id, example: 12345                                |
+| request_id       | String  | Yes      | The unique identifier for withdrawing coins, example: 0d766c03-8382-4005-b976-16c33f780f21 |
+| sub_wallet_id    | String  | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | Withdrawal amount, for example: 1.23                         |
+| fee_symbol       | String  | Yes      | gas fee coins，example：ETH                                  |
+| fee              | String  | Yes      | gas fee，example：0.00123                                    |
+| real_fee         | String  | Yes      | The actual gas fee consumed，example：0.00111                |
+| created_at       | Long    | Yes      | Created time timestamp，example：1643349275000               |
+| updated_at       | Long    | Yes      | Modified time timestamp，example：1643349275001              |
+| address_from     | String  | Yes      | from account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | to account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | to account address memo，example：123321                     |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Withdrawal status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
+| withdraw_source  | Integer | Yes      | Withdrawal Type：`1`app, `2`openapi                          |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
+| contract_address | String  | No       | Withdrawal coin's contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+## Deposit Notification
+
+#### Decrypted Request Parameters
+
+
+| Param            | Type    | Requried | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
+| side             | String  | Yes      | Notification type, DEPOSIT notification: `deposit`, WITHDRAWAL notification: `withdraw` |
+| notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
+| id               | String  | Yes      | Deposit id，example：12345                                   |
+| sub_wallet_id    | String  | Yes      | Sub wallet id, example: 10234122                             |
+| symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| amount           | String  | Yes      | Deposit amount，example：1.23                                |
+| created_at       | Long    | Yes      | Created time timestamp ，example：1643349275000              |
+| updated_at       | Long    | Yes      | Modified time timestamp，example：1643349275001              |
+| address_from     | String  | Yes      | from account address，example: 0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| address_to       | String  | Yes      | to account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo             | String  | No       | to account address memo，example：123321                     |
+| txid             | String  | Yes      | Transaction hash，example：0x1f4b543f17fb429b90daa8971a8d0175a1a666adc93692182925a5ac19de0741 |
+| confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
+| status           | Integer | Yes      | Deposit status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
+| contract_address | String  | No       | Deposit coin's contract address，example：0xdac17f958d2ee523a2206206994597c13d831ec7 |
+
+
+
+# SDK
+
+To meet the diverse business needs of customers, **ChainUp MPC Wallet** supports two docking methods: SDK and API;
+
+**SDK**：Support for Java and PHP
+
+The Java SDK addres：https://github.com/HiCoinCom/java-sdk
+
+The PHP SDK address：https://github.com/HiCoinCom/php-sdk
+
+**API**：Please see the documentation
+
+
+
+# Interface Error Code List
+
+| code    | msg                                                          |
+| ------- | ------------------------------------------------------------ |
+| 0       | success                                                      |
+| 100001  | system error                                                 |
+| 100004  | request parameter is not valid                               |
+| 100005  | signature verification failed                                |
+| 100007  | illegal IP                                                   |
+| 100015  | merchant ID is invalid                                       |
+| 100016  | merchant information expired                                 |
+| 110004  | users are frozen and cannot withdraw money                   |
+| 110023  | mobile phone number has been registered                      |
+| 110037  | withdrawal address is at risk                                |
+| 110055  | correct withdrawal address for                               |
+| 110065  | user does not exist (used to obtain user balance, withdraw money, or transfer money) |
+| 110078  | withdrawal or transfer amount less than the minimum transfer amount |
+| 110087  | withdrawal or transfer amount is greater than the maximum transfer amount |
+| 110088  | please do not repeat the request                             |
+| 110089  | registered mobile phone number is incorrect                  |
+| 110101  | user registration failed                                     |
+| 110161  | exceeds the maximum withdrawal support accuracy              |
+| 120202  | currency is not supported                                    |
+| 120206  | withdrawal second confirmation failed                        |
+| 120402  | insufficient balance in withdrawal or transfer               |
+| 120403  | insufficient balance of withdrawal fee                       |
+| 120404  | withdrawal or transfer amount is too small, less than or equal to the commission fee |
+| 900006  | the user is at risk. Withdrawal is prohibited                |
+| 3040006 | cannot transfer money to itself                              |
+
+
+
+
+
+
+
+# Co-signer
+
+
+
+## Need to implement the withdrawal signature callback interface (one callback before signing, another callback after successfully signed)
+
+
+
+#### HTTP Request
+
+`POST /custom address`
+
+
+
+#### Request Parameters（No encryption required）
+
+
+
+
+| Param         | Type    | Requried | Description                                                  |
+| :------------ | :------ | :------- | :----------------------------------------------------------- |
+| withdraw_id   | Integer | Yes      | Withdrawal id, example: 12345                                |
+| request_id    | String  | Yes      | The unique identifier for withdrawing coins, example: 0d766c03-8382-4005-b976-16c33f780f21 |
+| pending_round | Bool    | Yes      | Speed Up status, `false` means in withdrawing transaction , `true` means speeding up the transaction |
+| from          | String  | Yes      | from account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| to            | String  | Yes      | to account address，example：0xf4918d61b204bc0bb888f59dda13742ce998ad23 |
+| memo          | String  | No       | to account address memo，example：123321                     |
+| amount        | Decimal | Yes      | Withdrawal amount, for example: 1.23                         |
+| symbol        | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+
+
+
+#### Common Response
+
+Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the return parameter does not need to be encrypted here)
+
+
+
+
+

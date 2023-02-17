@@ -294,20 +294,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-#### 开发方式
-
-为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API；
-
-SDK：支持java与PHP
-
-java SDK地址：`https://github.com/HiCoinCom/java-sdk`
-
-PHP SDK地址：`https://github.com/HiCoinCom/php-sdk`
-
-API：`请查看相关文档`
-
-
-
 #### 两对公私钥作用（API方式）
 
 **第一对公私钥：** 开发者在开通资管账号时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台B，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。
@@ -402,119 +388,7 @@ API：`请查看相关文档`
 | 签名字段:     | 除了 `sign` 字段，其他所有必填项都需要参与签名 |
 | 响应状态码为: | `0`表示处理`成功`，非 0 表示**请求错误**或**系统异常** |
 | 请求地址:     | 域名+接口地址                                |
-| 加密算法:     | 详见`附 1`                                     |
-
-
-
-
-
-
-
-## 附录 
-
-> 请求参数加密示例:
-
-```java
-// 原始请求参数
-String originReqData = '{"charset":"utf-8","symbol":"eth","sign":"","time":"1586420916306","app_id":"baaceb1e506e1b5d7d1f0a3b1622583b","version":"2.0"}'
-// encryptByPrivate方法封装在下列公共类RSAHelper.java中
-String encryptReqData = RSAHelper.encryptByPrivate(originReqData, "第三方自己的私钥")
-//http post
-String httpBuildParams = "app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=" + encryptReqData
-```
-
-
-> 响应数据解密示例:
-
-```java
-// 响应的原始数据
-String originResp= '{"data":"jwtkGrhh2EVJS8xe93MpUYd-SQ-TyK0Bx5sXjE4hygFNg4wmctiahtIYXRpR2j8yDaEF5YzVstnUKbOH2p44FSMjXMQU4qFrhD00WOfW7v4LNALyiQXRb_5sakR0Zf573lGfLRTPlzLtTho3gqu3hMwuAv5e3r2dpb6_jxh1Z9BjkzSsNRX_bjLcHLUOPhMvo6rTUKSa9LQ6QnT8RX0eqzOZPlnCw3TeX_zcWWjxp6fcpKcdODxoI86gHwWRpSd-2qbEbFcaT12CJd9nPXA0KnLPNNHWz8sxQGiAg7Jg_-cN_yBHL9cS15zecTemYGqpOXRkojM1JwLsjM-7txf_dw"}'
-// 解密响应数据
-String encryptRespData = JSON.parse(originResp)['data']
-// decryptByPublic 方法封装在下列公共类 RSAHelper.java中
-String decryptRespData = RSAHelper.decryptByPublic( encryptRespData, "托管平台提供的公钥" )
-```
-
-
-
-### 附 1:加解密方式
-
-
-
-请求参数data与响应字段data的值都是经过rsa加密后再通过 **base64urlsafe** 加密的结果
-
-
-
-<aside class="notice">
-*注意事项*
-<br/>
-<br/>
-1）base64传统编码中会出现+, /两个会被url直接转义的符号，因此如果希望通过url传输这些编码字符串，我们需要先做传统base64编码，随后将+和/分别替换为- _两个字符，在接收端则做相反的动作解码
-<br/>
-<br/>
-2）java Demo ： https://github.com/HiCoinCom/WaaSDemo
-<br/>
-<br/>
-3）rsa加密与解密使用分段加密
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 附 2:接口错误码表 - 表格
-
-| code    | msg                                                  |
-| ------- | ---------------------------------------------------- |
-| 0       | 成功                                               |
-| 100001  | 系统错误                                             |
-| 100004  | 请求参数不合法(提现二次确认接口回调失败)             |
-| 100005  | 签名校验失败                                         |
-| 100007  | 非法IP                                               |
-| 100015  | 商户ID无效                                           |
-| 100016  | 商户信息过期                                         |
-| 110004  | 用户被冻结不可提现                                   |
-| 110023  | 手机号已注册                                         |
-| 110037  | 提现地址存在风险                                     |
-| 110055  | 提现地址错误                                         |
-| 110065  | 请求用户用户不存在（获取用户余额、提现或转账时用到） |
-| 110078  | 提现或转账金额小于最小转出金额                       |
-| 110087  | 提现或转账金额大于最大转出金额                       |
-| 110088  | 请勿重复提交请求                                     |
-| 110089  | 注册手机号不正确                                     |
-| 110101  | 用户注册失败                                         |
-| 110161  | 超过提现最大支持精度                                 |
-| 120202  | 币种不支持                                           |
-| 120206  | 提现二次确认失败                                     |
-| 120402  | 提现或转账余额不足                                   |
-| 120403  | 提现手续费余额不足                                   |
-| 120404  | 提现或转账金额太小, 小于等于手续费                   |
-| 900006  | 用户存在风险，禁止提现                               |
-| 3040006 | 不能给自己转账                                       |
-
-
-
-## 常见问题(FAQ)
-
-
-
-
-
-
-
-
-
+| 加密算法:     | 详见 API 文档 `加解密方式`               |
 
 
 
@@ -580,7 +454,6 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 > 响应结果示例:	
 
 ```java
-
 {"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
 ```
 
@@ -595,6 +468,22 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 | data  | String | 否       | 具体响应数据，数据结构定义见各接口  `响应参数数据结构` |
 
 
+
+### 加解密方式
+
+请求参数data与响应字段data的值都是经过rsa加密后再通过 **base64urlsafe** 加密的结果
+
+
+
+<aside class="notice">
+*注意事项*
+<br/>
+<br/>
+1）base64传统编码中会出现+, /两个会被url直接转义的符号，因此如果希望通过url传输这些编码字符串，我们需要先做传统base64编码，随后将+和/分别替换为- _两个字符，在接收端则做相反的动作解码
+<br/>
+<br/>
+2）rsa加密与解密使用分段加密
+</aside>
 
 
 
@@ -633,7 +522,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应结果示例：
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -680,7 +569,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:	
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -726,7 +615,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -779,7 +668,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:	
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -830,7 +719,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:	
 
-```java
+```json
 
 {
   "code":"0",
@@ -906,7 +795,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:	
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -959,7 +848,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -1004,7 +893,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "code":"0",
     "data":[
@@ -1101,7 +990,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 > 响应数据解密后示例:
 
 
-```java
+```json
 {
 "code": "0",
         "msg": "suc",
@@ -1226,7 +1115,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 
 { "code":"0",
   "data":[
@@ -1311,7 +1200,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "code":"0",
     "data":{
@@ -1365,7 +1254,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "check_sum":"1234",
     "time":"12345678"
@@ -1463,7 +1352,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "code":"0",
     "data":[
@@ -1547,7 +1436,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "code":"0",
     "data":[
@@ -1641,7 +1530,7 @@ Custody内部商户互相转账
 
 > 响应数据解密后示例:
 
-```java
+```json
 {
     "code":"0",
     "data":[
@@ -1699,7 +1588,7 @@ Custody内部商户互相转账
 
 > 响应数据解密后示例:
 
-```java
+```json
     {
 "code":"0",
 "data":[
@@ -1749,7 +1638,7 @@ Custody内部商户互相转账
 
 > 响应数据解密后示例:
 
-```java
+```json
     {
 "code":"0",
 "data":[
@@ -1824,7 +1713,7 @@ Custody内部商户互相转账
 
 > 响应数据解密后示例:
 
-```java
+```json
    {
 "code":"0",
 "data":[
@@ -1860,3 +1749,52 @@ Custody内部商户互相转账
 #### 响应参数data解密之后数据结构:
 
 无
+
+# SDK
+
+为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API
+
+SDK：支持java与PHP和node
+
+
+
+java SDK地址：`https://github.com/HiCoinCom/java-sdk`
+
+PHP SDK地址：`https://github.com/HiCoinCom/php-sdk`
+
+node SDK地址：`https://github.com/HiCoinCom/js-sdk`
+
+API：`请查看相关文档`
+
+
+
+
+# 错误码
+
+| code    | msg                                                  |
+| ------- | ---------------------------------------------------- |
+| 0       | 成功                                               |
+| 100001  | 系统错误                                             |
+| 100004  | 请求参数不合法(提现二次确认接口回调失败)             |
+| 100005  | 签名校验失败                                         |
+| 100007  | 非法IP                                               |
+| 100015  | 商户ID无效                                           |
+| 100016  | 商户信息过期                                         |
+| 110004  | 用户被冻结不可提现                                   |
+| 110023  | 手机号已注册                                         |
+| 110037  | 提现地址存在风险                                     |
+| 110055  | 提现地址错误                                         |
+| 110065  | 请求用户用户不存在（获取用户余额、提现或转账时用到） |
+| 110078  | 提现或转账金额小于最小转出金额                       |
+| 110087  | 提现或转账金额大于最大转出金额                       |
+| 110088  | 请勿重复提交请求                                     |
+| 110089  | 注册手机号不正确                                     |
+| 110101  | 用户注册失败                                         |
+| 110161  | 超过提现最大支持精度                                 |
+| 120202  | 币种不支持                                           |
+| 120206  | 提现二次确认失败                                     |
+| 120402  | 提现或转账余额不足                                   |
+| 120403  | 提现手续费余额不足                                   |
+| 120404  | 提现或转账金额太小, 小于等于手续费                   |
+| 900006  | 用户存在风险，禁止提现                               |
+| 3040006 | 不能给自己转账                                       |
