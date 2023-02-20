@@ -8,21 +8,19 @@
 
 
 
-您可以通过 **ChainUp Custody** 提供的 **MPC- API** ：
+**ChainUp Custody MPC**提供了一个简单、高效的对接组件和API，可以帮助开发者更快地接入系统，可以让您自动化管理您的钱包、交易流程等。除此之外，我们还提供交易消息通知，让你更快的感知事件的发生。
 
-- 实现对子钱包和资产的管理
 
-- 快捷发起交易，并收到关于交易的实时状态变更通知
 
-- 获取充值提币等交易记录
+#### API主要提供以下功能：
 
-- 检查区块链钱包地址是否正确
+- 管理子钱包和资产查看
+- 获取发起交易所需的预估手续费
+- 发起交易、收到交易最终的状态通知
+- 通过ChainUp Custody提供的Co-Signer完成自动签名、地址生成
+- 获取所有交易的记录详情
 
-- 通过 ChainUp MPC-API 的 Co-signer 设置交易自动签名
 
-- ... ...
-
-  
 
 请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。 
 
@@ -113,15 +111,9 @@
 
 ### 两对公私钥作用（API方式）
 
-**第一对公私钥：** 开发者在开通资管账号时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台B，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。
+**第一对公私钥：** 开发者在开通MPC钱包时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。
 
-**第二对公私钥：** 开发者开通资管账号后，平台会提供钱包公钥（rsa_wallet_pub）给开发者，第三方应用在接受到钱包的响应数据或异步通知时，需要通过公钥来进行解密。
-
-
-
-### 为什么需要进行提现二次确认（API方式）
-
-钱包服务接收到第三方应用请求时，为了确认该请求为第三方应用合法请求，会调用第三方提供的接口来确认。该过程在一定程度上也能避免第三方私钥丢失所造成的影响，也为钱包服务的安全性提供了一套有效屏障。
+**第二对公私钥：** 开发者开通MPC钱包后，平台会提供钱包公钥（rsa_wallet_pub）给开发者，第三方应用在接受到钱包的响应数据或异步通知时，需要通过公钥来进行解密。
 
 
 
@@ -155,23 +147,21 @@
 
 
 
-## 资管账号准备
+## MPC钱包准备
 
 **开发者准备如下信息：**
 
 1）生成一对公私钥，将公钥提供给平台；
 
-2）第三方应用服务器IP；
+2）第三方应用服务器和Co-Signer服务器的IP；
 
 3）充值提现回调通知地址；
 
-4）提现二次确认地址；
-
-5）是否开启自动归集功能，开启后，系统会自动将用户充值资金划转到商户归集账户。
+4）Co-Signer服务器的域名；
 
 
 
-联系平台相关人员，提供上述五类信息。平台为您准备资管账号，提供到您这边包括以下信息：
+联系平台相关人员，提供上述四类信息。平台为您准备MPC钱包，提供到您这边包括以下信息：
 
 1）商户的唯一标识：`app_id`；
 
@@ -204,7 +194,7 @@
 | 签名字段:     | 除了 `sign` 字段，其他所有必填项都需要参与签名         |
 | 响应状态码为: | `0`表示处理`成功`，非 0 表示**请求错误**或**系统异常** |
 | 请求地址:     | 域名+接口地址                                          |
-| 加密算法:     | 详见`附 1`                                             |
+| 加密算法:     | RSA                                                   |
 
 
 
@@ -212,6 +202,14 @@
 
 ## 统一说明
 
+
+> 请求接口示例：
+
+```java
+POST /api/mpc/sub_wallet/assets
+
+app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
+```
 
 
 #### 请求参数统一格式
@@ -229,13 +227,6 @@
 
 
 
-> 请求接口示例：
-
-```java
-POST /api/mpc/sub_wallet/assets
-
-app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
-```
 
 
 
@@ -939,7 +930,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 > 交易通知请求接口示例
 
-```json
+```java
 app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
 ```
 
@@ -949,7 +940,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param  | 类型   | 是否必须 | 说明                                                    |
 | :----- | :----- | :------- | :------------------------------------------------------ |
-| Param  | 类型   | 是否必须 | 说明                                                    |
 | app_id | String | 必须     | 商户唯一标识                                            |
 | data   | String | 必须     | 加密之后的字符串，具体加密信息见各接口 请求参数数据结构 |
 
@@ -1079,37 +1069,88 @@ API：`请查看相关文档`
 # Co-Signer
 
 
-## 客户需要实现提现签名回调接口（签名前回调一次，签名成功回调一次）
+
+## **概述**
+
+Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上。Co-Signer需要绑定您钱包的分片私钥，用于创建地址和交易签名。
+
+Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。
+
+
+
+## **对接流程**
+
+Co-Signer主要实现了两个功能：创建地址和自动签名，具体流程如下图：
+
+
+
+#### 创建地址流程：
+
+<%= image_tag "createaddress.png", style:"width: 350px" %>
+
+
+
+#### 自动签名流程：
+
+<%= image_tag "sign.png", style:"width: 350px" %>
+
+
+
+
+
+
+## **Co-Signer回调**
+
+为了保证交易的安全，您需要在Co-Signer中配置一个业务系统的回调地址，在交易签名之前授权。
+
+授权交易数据**采用明文传输**，您需要在应用服务中保证业务系统和Co-Signer之间的通信安全。
 
 
 
 #### HTTP请求
 
-`POST /自定义地址`
+`POST /{url}`
+
+`Content-Type application/json;charset=UTF-8`
 
 
+> 回调参数示例
 
-#### 请求参数数据结构（无需进行加密）
+```json
+POST /callback/example
+
+{
+    "type":"sign_start",
+    "withdraw_id":321456,
+    "request_id":"c70d1eebb7c687ec8d56bead73f104",
+    "pending_round":false,
+    "from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+    "to":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+    "memo": "123321",
+    "amount":167230.4978,
+    "symbol":"BTC"
+}
+```
+
+#### 回调参数格式：
 
 
-
-
-| Param         | 类型    | 是否必须 | 说明                                      |
-| :------------ | :------ | :------- | :---------------------------------------- |
-| withdraw_id   | Integer | 是       | 提现id                                    |
-| request_id    | String  | 是       | 提币唯一标识                              |
-| pending_round | Bool    | 是       | 加速状态，`false`为提币，`true`为提币加速 |
-| from          | String  | 是       | 出币地址                                  |
-| to            | String  | 是       | 到账地址                                  |
-| memo          | String  | 否       | 到账地址memo                              |
-| amount        | Decimal | 是       | 提币金额                                  |
-| symbol        | String  | 是       | 币种唯一标识，例：USDTERC20               |
-
+| Param         | 类型    | 是否必须 | 说明                                                   |
+| :------------ | :------ | :------- | :----------------------------------------------------- |
+| type          | String  | 是       | 回调类型，`sign_start`签名开始，`sign_success`签名成功 |
+| withdraw_id   | Integer | 是       | 交易ID                                                 |
+| request_id    | String  | 是       | 发起交易唯一标识                                       |
+| pending_round | Boolean | 是       | 加速状态，true是，false否（普通交易）                  |
+| from          | String  | 是       | 交易出币地址                                           |
+| to            | String  | 是       | 交易到账地址                                           |
+| memo          | String  | 否       | 交易到账memo                                           |
+| amount        | Decimal | 是       | 交易金额                                               |
+| symbol        | String  | 是       | 交易币种唯一标识                                       |
 
 
 #### 回调响应参数统一格式
 
-返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 （注意此处返回参数无需进行加密）
+返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 
 
 
 
