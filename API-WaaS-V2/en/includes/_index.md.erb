@@ -316,7 +316,7 @@ To meet the diverse business needs of customers, ChainUp Custody supports two do
 
 
 
-**SDK**：Support for Java、PHP and node
+**SDK**：Support for Java, PHP and node
 
 java SDK address：https://github.com/HiCoinCom/java-sdk
 
@@ -376,7 +376,9 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 > Response Example	
 
 ```java
-{"data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"}
+{
+    "data":"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"
+}
 ```
 
 
@@ -937,34 +939,34 @@ Batch access recharge records
 
 ```json
 {
-"code": "0",
-        "msg": "suc",
-        "data": [
-                {
-                        "id" ：1,
-                "uid" ：11,
-                "symbol"："ETH",
-                "amount"："0.0002000000000000",
-                "created_at": 1545273830000,
-                "updated_at": 1545273830000,
-                "txid":"78d1edef3b3fd14365f88cf2d03e8c29ec49ac1a43cedde9e21d320b3268f4de",
-                        "confirmations":11,
-                "status":1,
-                "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
-                },
+    "code":"0",
+    "msg":"suc",
+    "data":[
         {
-                "id" ：2,
-                "uid" ：12,
-                        "symbol" ："ETH",
-                "amount"："0.0002000000000000",
-                "created_at": 1545273830000,
-                "updated_at": 1545273830000,
-                "txid":"0xd609e050c3d573fb715431edbd36cc08eaa475f813de921026a65c0a96e8113e",
-                        "confirmations":11,
-                "status":1,
-                "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
+            "id":1,
+            "uid":11,
+            "symbol":"ETH",
+            "amount":"0.0002000000000000",
+            "created_at":1545273830000,
+            "updated_at":1545273830000,
+            "txid":"78d1edef3b3fd14365f88cf2d03e8c29ec49ac1a43cedde9e21d320b3268f4de",
+            "confirmations":11,
+            "status":1,
+            "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
+        },
+        {
+            "id":2,
+            "uid":12,
+            "symbol":"ETH",
+            "amount":"0.0002000000000000",
+            "created_at":1545273830000,
+            "updated_at":1545273830000,
+            "txid":"0xd609e050c3d573fb715431edbd36cc08eaa475f813de921026a65c0a96e8113e",
+            "confirmations":11,
+            "status":1,
+            "address_to":"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"
         }
-        ]
+    ]
 }
 ```
 
@@ -1007,8 +1009,8 @@ Deposit Notice：
 
 | Param         | type   | Required | Description                                                  |
 | ------------- | ------ | -------- | ------------------------------------------------------------ |
-| charset       | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version       | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset       | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version       | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | side          | String | Required | Notice type, recharge notice: deposit, withdrawal notice: withdraw |
 | notify_time   | string | Required | Notice time                                                  |
 | id            | string | Required | Deposit id                                                   |
@@ -1049,8 +1051,8 @@ The currency of account type needs to be collected after recharging. UTXO has no
 | Param   | type   | repuired | Description                                                  |
 | ------- | ------ | -------- | ------------------------------------------------------------ |
 | time    | long   | repuired | Current timestamp                                            |
-| charset | String | repuired | Coding format, no special case, transfer parameter UTF-8     |
-| version | String | repuired | Interface version number, no special case, transfer parameter v2 |
+| charset | String | repuired | Coding format, no special case, transfer parameter `UTF-8`   |
+| version | String | repuired | Interface version number, no special case,transfer parameter `v2` |
 | max_id  | int    | repuired | Return the data of 100 collected miner fee records greater than ID |
 
 
@@ -1131,8 +1133,8 @@ If the withdrawal address is the internal address of the Alliance, it will not b
 | Param      | type   | Required | Description                                                  |
 | ---------- | ------ | -------- | ------------------------------------------------------------ |
 | time       | long   | Required | Current timestamp                                            |
-| charset    | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version    | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | request_id | String | Required | Request unique identification, up to 64 bits                 |
 | from_uid   | String | Required | Transfer out user ID                                         |
 | to_address | String | Required | Transfer in the user address, memo type, use “_” For example:eos_24545 |
@@ -1180,8 +1182,8 @@ If the withdrawal address is the internal address of the Alliance, it will not b
 | Param      | type   | Required | Description                                                  |
 | ---------- | ------ | -------- | ------------------------------------------------------------ |
 | time       | long   | Required | Current timestamp                                            |
-| charset    | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version    | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | request_id | String | Required | Request unique identity                                      |
 | from_uid   | String | Required | Transfer out user ID                                         |
 | to_address | String | Required | Transfer in user address                                     |
@@ -1230,8 +1232,8 @@ Withdrawal notice：
 
 | Param               | type   | Required | Description                                                  |
 | ------------------- | ------ | -------- | ------------------------------------------------------------ |
-| charset             | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version             | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset             | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version             | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | side                | String | Required | Notice type, recharge notice: deposit, withdrawal notice: withdraw |
 | notify_time         | String | Required | Notice time                                                  |
 | request_id          | String | Required | The withdrawal request_id corresponds to the request in the withdrawal interface id |
@@ -1279,8 +1281,8 @@ Batch access to withdrawal records
 | Param   | type   | Required | Description                                                  |
 | ------- | ------ | -------- | ------------------------------------------------------------ |
 | time    | long   | Required | Current timestamp                                            |
-| charset | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | max_id  | String | Required | Return 100 recharge record data greater than ID              |
 
 > Response
@@ -1359,8 +1361,8 @@ Batch access to withdrawal records
 | Param   | type   | Required | Description                                                  |
 | ------- | ------ | -------- | ------------------------------------------------------------ |
 | time    | long   | Required | Current timestamp                                            |
-| charset | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | ids     | String | Required | Multiple requests_id are separated by commas, up to 100 requests_id |
 
 
@@ -1449,8 +1451,8 @@ ChainUp Custody merchants transfer money to each other
 | Param      | type   | Required | Description                                                  |
 | ---------- | ------ | -------- | ------------------------------------------------------------ |
 | time       | Long   | Required | Current timestamp                                            |
-| charset    | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version    | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | request_id | String | Required | Request unique identification, up to 64 bits                 |
 | symbol     | String | Required | Transfer currency, Custody get currency name                 |
 | amount     | String | Required | Transfer quantity, including transfer fees                   |
@@ -1504,8 +1506,8 @@ Transfer information is confirmed asynchronously
 | Param      | type   | Required | Description                                                  |
 | ---------- | ------ | -------- | ------------------------------------------------------------ |
 | time       | Long   | Required | Current timestamp                                            |
-| charset    | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version    | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | request_id | String | Required | Request unique identification, up to 64 bits                 |
 | symbol     | String | Required | currency                                                     |
 | amount     | String | Required | Transfer quantity, including transfer fees                   |
@@ -1558,8 +1560,8 @@ Transfer information is confirmed asynchronously
 | Param    | Type   | Required | Description                                                  |
 | -------- | ------ | -------- | ------------------------------------------------------------ |
 | time     | long   | Required | Current timestamp                                            |
-| charset  | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version  | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset  | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version  | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | ids      | String | Required | Request a unique identifier. Multiple identifiers are separated by English commas, up to 100 |
 | ids_type | String | Required | request_id：request ID (default); receipt: transfer voucher  |
 
@@ -1605,13 +1607,13 @@ Transfer information is confirmed asynchronously
 | Param      | Type   | Required | Description                                                  |
 | ---------- | ------ | -------- | ------------------------------------------------------------ |
 | time       | long   | Required | Current timestamp                                            |
-| charset    | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version    | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | id         | String | Required | Request unique identification, up to 64 bits                 |
 | symbol     | String | Required | currency                                                     |
 | amount     | String | Required | Transfer quantity, including transfer fees                   |
-| from       | String | Required | Transfer out merchant, transfer out merchant APPID           |
-| to         | String | Required | Transfer in merchant, transfer in merchant APPID             |
+| from       | String | Required | Transfer out merchant, transfer out merchant `APPID`         |
+| to         | String | Required | Transfer in merchant, transfer in merchant `APPID`           |
 | created_at | Long   | Required | Creation time                                                |
 | request_id | String | Required | Tripartite ID                                                |
 | receipt    | String | Required | Transfer voucher                                             |
@@ -1636,8 +1638,8 @@ Synchronize all transfer records (paging)
 | Param   | type   | Required | Description                                                  |
 | ------- | ------ | -------- | ------------------------------------------------------------ |
 | time    | long   | Required | Current timestamp                                            |
-| charset | String | Required | Coding format, no special case, transfer parameter UTF-8     |
-| version | String | Required | Interface version number, no special case, transfer parameter v2 |
+| charset | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version | String | Required | Interface version number, no special case,transfer parameter `v2` |
 | max_id  | String | Required | Return the data of 100 transfer records greater than ID      |
 
 
@@ -1679,7 +1681,20 @@ Synchronize all transfer records (paging)
 
 #### Response Data Parameters 
 
-None
+| Param      | Type   | Required | Description                                                  |
+| ---------- | ------ | -------- | ------------------------------------------------------------ |
+| time       | long   | Required | Current timestamp                                            |
+| charset    | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
+| version    | String | Required | Interface version number, no special case,transfer parameter `v2` |
+| id         | String | Required | Request unique identification, up to 64 bits                 |
+| symbol     | String | Required | currency                                                     |
+| amount     | String | Required | Transfer quantity, including transfer fees                   |
+| from       | String | Required | Transfer out merchant, transfer out merchant `APPID`         |
+| to         | String | Required | Transfer in merchant, transfer in merchant `APPID`           |
+| created_at | Long   | Required | Creation time                                                |
+| request_id | String | Required | Tripartite ID                                                |
+| receipt    | String | Required | Transfer voucher                                             |
+| remark     | String | Required | Up to 32 characters                                          |
 
 
 
