@@ -178,9 +178,9 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 #### SDK：支持java和node 
 
-**java SDK地址**：[GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk](https://github.com/HiCoinCom/java-wapi-sdk)
+**Java SDK地址**：[GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk](https://github.com/HiCoinCom/java-wapi-sdk)
 
-**node SDK地址**：[GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk](https://github.com/HiCoinCom/js-wapi-sdk)
+**Node SDK地址**：[GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk](https://github.com/HiCoinCom/js-wapi-sdk)
 
 
 
@@ -191,18 +191,6 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 ## 统一说明
-
-
-
-#### 请求参数:
-
-| Param  | 类型   | 是否必须 | 说明                                  |
-| ------ | ------ | -------- | ------------------------------------- |
-| app_id | string | 是       | 客户标识                              |
-| time   | int64  | 是       | 时间戳                                |
-| sign   | string | 是       | 使用甲方私钥对请求数据明文MD5后的签名 |
-| data   | string | 是       | 使用乙方公钥对请求数据的加密          |
-
 
 > 请求示例
 
@@ -219,14 +207,15 @@ body
 }
 ```
 
-#### 响应参数:
+#### 请求参数:
 
-| Param | 类型   | 是否必须 | 说明                                  |
-| ----- | ------ | -------- | ------------------------------------- |
-| code  | int    | 是       | 状态码                                |
-| msg   | string | 是       | 状态信息                              |
-| data  | string | 是       | 使用甲方公钥对返回数据的加密           |
-| sign  | string | 是       | 使用乙方私钥对返回数据明文MD5后的签名 |
+| Param  | 类型   | 是否必须 | 说明                                  |
+| ------ | ------ | -------- | ------------------------------------- |
+| app_id | string | 是       | 客户标识                              |
+| time   | int64  | 是       | 时间戳                                |
+| sign   | string | 是       | 使用甲方私钥对请求数据明文MD5后的签名 |
+| data   | string | 是       | 使用乙方公钥对请求数据的加密          |
+
 
 > 响应示例
 
@@ -238,6 +227,17 @@ body
     "sign": "jJr0UmgMHPesDNfe4kw8KYR3zSDzBmoRlJ6O979tgdLx5JydY6jNMYrzWEn4sqqy4p6niw7HEnbOrgtSGBr4BtgoGpzaqs4hslADUGfDpn8FPO4Cb6DW09yMsQZVMp7m9NIybgVwPiro7fMDOxOlSA5M5Bzxth7UNIVwgtEEZCoS0pi1Elsl6xASc9N8VR5gkh55B9zt_NbOOQ_nN-p7s1_JwOFY4qXtfYDrAjjawpTdprvThfRYoX_Lm-YpoWQeED80yFMOOUbrl9SUG-j8opVlSX53IwvQbVvwPI2gnZIBJBfUYgICP6ffQZRulP1WllYwaWYLKUdamyyYAZgQIQ"
 }
 ```
+
+#### 响应参数:
+
+| Param | 类型   | 是否必须 | 说明                                  |
+| ----- | ------ | -------- | ------------------------------------- |
+| code  | int    | 是       | 状态码                                |
+| msg   | string | 是       | 状态信息                              |
+| data  | string | 是       | 使用甲方公钥对返回数据的加密           |
+| sign  | string | 是       | 使用乙方私钥对返回数据明文MD5后的签名 |
+
+
 
 
 ## 地址注册
