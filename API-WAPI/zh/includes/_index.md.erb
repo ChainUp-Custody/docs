@@ -69,16 +69,16 @@ http://www.metools.info/code/c80.html
 
 
 
-# 域名及API密钥
+## 域名及API密钥
 
-## 生产环境
+### 生产环境
 
 | 域名:           | [https://baas.waas.group](https://baas.waas.group/) |
 | :-------------- | --------------------------------------------------- |
 | app_id:         | 待分配                                              |
 | rsa_wallet_pub: | 待分配                                              |
 
-## 测试环境
+### 测试环境
 
 域名 : <http://baas.dw2nn.com>
 
@@ -118,7 +118,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-# 对接方案
+## 对接方案
 
 为了让公链接入者更便捷、快速的接入ChainUp Custody，我们提供了BaaS服务，以满足公链对接需求，平台基于过往客户的对接经验，梳理了一套对接方案。具体如下：
 
@@ -140,7 +140,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-## 注册充币地址
+### 注册充币地址
 
 1）可通过币种名称查询可用地址数量 注：（每次向Custody推送地址条数上限为`100`条，每次推送时会检查Custody剩余的地址可用数是否大于`5000`，如果有5000个地址没有被使用，则不允许注册；接口地址：`/api/v1/address/available`）
 
@@ -148,7 +148,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-## 用户充币
+### 用户充币
 
 1）第三方钱包监测到地址有充币交易,发起充值通知，通知BaaS系统,  接口地址：`/api/v1/deposit/notify`
 
@@ -156,7 +156,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-## 用户提币
+### 用户提币
 
 1）用户在Custody系统发起提币请求
 
@@ -168,7 +168,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-# 托管(Custody) WAPI文档
+# API文档
 
 
 

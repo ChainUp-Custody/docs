@@ -2,11 +2,21 @@
 
 欢迎来到**ChainUp Custody**，ChainUp Custody基于深厚的底层钱包技术和安全的区块链钱包架构，将强大的资产托管功通过接口的方式提供给第三方合作伙伴。通过这种方式能帮助合作伙伴在关注于核心业务发展的同时也能确保资产的安全。
 
-您可以通过API提交传输，并接收传输的实时信息;安全检查所有事务类型和消息;与托管钱包的共同管理人制定取款政策;管理你的钱包和子钱包账户、地址簿和网络连接;并利用反洗钱机制等功能。所有转账都反映在ChainUp Custody的开放平台、交易记录、安全策略和对账中心中。
+您可以通过API
+
+- 提交传输，并接收传输的实时信息
+
+- ;安全检查所有事务类型和消息;
+
+- 与托管钱包的共同管理人制定取款政策;
+
+- 管理你的钱包和子钱包账户、地址簿和网络连接;
+
+- 利用反洗钱机制等功能。
+
+所有转账都反映在ChainUp Custody的开放平台、交易记录、安全策略和对账中心中。
 
 
-
-# 概述
 
 ## 介绍
 
@@ -41,7 +51,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 ## 创建账号
 
-###  下载Custody钱包
+####  下载Custody钱包
 
 方式一：手机浏览器打开链接：<https://custody.chainup.com/download>
 
@@ -59,7 +69,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 注册Custody账号
+#### 注册Custody账号
 
 打开【Custody】应用，注册账号（未注册账号登录即注册），支持邮箱与手机号两种方式
 
@@ -67,7 +77,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 完成身份认证
+#### 完成身份认证
 
 身份认证信息，仅支持一种身份，且认证后不支持更换
 
@@ -90,7 +100,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 ## 创建并配置企业钱包
 
-### 登录ChainUp Custody平台
+#### 登录ChainUp Custody平台
 
 浏览器打开[ChainUp Custody平台](https://custody.chainup.com/)， 使用【Custody】应用，首页或云端钱包【扫码】功能扫描二维码登录
 
@@ -104,7 +114,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 创建钱包
+#### 创建钱包
 
 进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）
 
@@ -112,7 +122,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 [![../_images/api_plan_chuangjianqianbao1.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)
 
-### 开启币种
+#### 开启币种
 
 开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）
 
@@ -134,7 +144,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 [![../_images/api_plan_apixiangqing.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)
 
-### 开发测试
+#### 开发测试
 
 根据平台提供的技术方案与API文档进行系统对接
 
@@ -144,13 +154,13 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 正式签约
+#### 正式签约
 
 支持线上、线下签约
 
 
 
-### 支付费用
+#### 支付费用
 
 支付系统订阅、安装等费用（具体费用类型以合同为准）
 
@@ -160,13 +170,13 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-### 协助上线
+#### 协助上线
 
 协助商户正式上线运营
 
 
 
-### 技术支持
+#### 技术支持
 
 平台提供7*24h技术支持
 
@@ -177,8 +187,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 # 对接方案
 
 为了让客户更便捷、快速的接入Custody，平台基于过往客户的对接经验，梳理了一套比较完善的技术对接方案。具体如下：
-
-整个方案共分四个流程：
 
 1. 获取充币地址
 2. 用户充币
@@ -421,7 +429,7 @@ node SDK地址：`https://github.com/HiCoinCom/js-sdk`
 
 
 
-### 请求接口示例
+#### 请求接口示例
 
 `POST/api/v2/user/createUser`
 
@@ -588,7 +596,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 获取用户指定币种充币地址
+### 获取指定充币地址
 
 
 
@@ -693,7 +701,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 获取支持的币种列表
+### 获取币种列表
 
 
 
@@ -766,7 +774,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 获取指定用户的账户信息
+### 获取指定账户信息
 
 
 
@@ -821,7 +829,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 获取商户归集账户余额
+### 获取归集账户余额
 
 
 
@@ -966,7 +974,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 批量获取充值记录
+### 批量充值记录
 
 
 
@@ -1276,7 +1284,7 @@ app_id=baaceb1e506e1b5d7d1f0a3b1622583b&data=GCJBk77n7epyOexdGZ20qvukd321TpJ62lI
 
 
 
-### 用户提现异步回调通知 
+### 提现异步回调通知 
 
 
 

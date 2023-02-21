@@ -19,3 +19,6 @@ docker run --rm --name slate -v $(pwd)/build/API-WAPI/en:/srv/slate/build -v $(p
 sudo cp $(pwd)/index.html $(pwd)/build
 
 # docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source gengyujian/slate serve
+
+
+# git subtree push --prefix build origin gh-pages

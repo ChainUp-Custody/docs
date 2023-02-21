@@ -1,12 +1,44 @@
-# Overview
+# Introduction
 
-## Introduction
 
-ChainUp Custodian is a comprehensive set of digital asset custody services provided by ChainUp Group. We have served more than 300 clients for over the past 4 years, leveraging our extensive experience in digital asset custody and the development of 200+ coins. Our services include mainchain asset custody, node services, customized mainchain development, easy inclusion for new coins and tokens, co-managed wallets, asset management and many others.
+
+Welcome to **ChainUp Custody**! Our platform leverages deep underlying wallet technology and a secure blockchain wallet architecture to provide powerful asset custody functions to our third-party partners through various API. With our assistance, our partners can focus on core business development while we ensure the safety and security of their assets.
+
+
+
+With **ChainUp Custody** API, you can:
+
+- Submit transfers and receive real-time information on transfers;
+
+- Benefit from security checks for all transaction types and messages;
+
+- Establish a withdrawal policy with the co-managed wallet;
+
+- Manage your wallet and sub-wallet accounts, address book, and internet connection;
+
+- Using features such as anti-money laundering mechanisms.
+
+  
+
+All transfers made through our API are reflected in ChainUp Custody's open platform, transaction records, security policies, and reconciliation center, ensuring full transparency and accountability.
+
+
+
+## Overview
+
+**ChainUp Custody** is a comprehensive set of digital asset custody services provided by ChainUp Group. We have served more than 300 clients for over the past 4 years, leveraging our extensive experience in digital asset custody and the development of 200+ coins. Our services include mainchain asset custody, node services, customized mainchain development, easy inclusion for new coins and tokens, co-managed wallets, asset management and many others.
+
+
 
 Exchanges, Asset Management Platforms, and other Crypto Institutions can secure their digital assets efficiently and quickly with cloud hosting via API and SDK. At the same time, clients can carry out their asset management operations through our web-based user interface (custody.chainup.com), with numerous financial products available for client usage.
 
-At present, ChainUp Custody has 500 over clients from various industries such as blockchain industry like exchanges, miners, OTC, lending etc and traditional industries like games, real estate, live broadcasting, e-commerce, supply chain and media, etc. Our benefits include zero transaction fees and instantaneous real-time transfer.
+
+
+At present, **ChainUp Custody** has 500 over clients from various industries such as blockchain industry like exchanges, miners, OTC, lending etc and traditional industries like games, real estate, live broadcasting, e-commerce, supply chain and media, etc. Our benefits include zero transaction fees and instantaneous real-time transfer.
+
+
+
+
 
 ## Vision
 
@@ -30,7 +62,7 @@ Follow the instructions below to access ChainUp Custody
 
 
 
-### Download Custody Wallet
+#### Download Custody Wallet
 
 Method 1：Open the link in your mobile browser：https://custody.chainup.com/download
 
@@ -40,7 +72,7 @@ Method 2： scan the QR code for download:
 
 
 
-### Register Custody Account
+#### Register Custody Account
 
 Open the app and register a new account using email OR mobile phone number.
 
@@ -48,7 +80,7 @@ Open the app and register a new account using email OR mobile phone number.
 
 
 
-### Complete Identity Verification
+#### Complete Identity Verification
 
 Please note that our authentication system only supports one identity and does not allow for replacement of that identity after authentication.
 
@@ -64,21 +96,21 @@ Complete identity verification and google authentication. (For security level 2,
 
 <%= image_tag "esecurity.png", style:"width: 250px" %>
 
-## Create and configure a corporate wallet
+## Build Enterprise wallet
 
-### Login to the ChainUp Custody platform
+#### Login
 
 Open ChainUp Custody platform (custody.chainup.com) using any browser, scan the QR code,and log in using the [Custody] app or by scanning the QR code.
 
 [![../_images/api_plan_saomadenglu.png](https://custodydocs.chainup.com/en/latest/_images/api_plan_saomadenglu.png)](https://custodydocs.chainup.com/en/latest/_images/api_plan_saomadenglu.png)
 
-### Create a wallet
+#### Create a wallet
 
 Enter the 【ChainUp Custody】 page and create a wallet. Please fill in the name carefully because you are unable to change the name once the wallet has been created.
 
 [![../_images/api_plan_chuangjianqianbao1.png](https://custodydocs.chainup.com/en/latest/_images/api_plan_chuangjianqianbao1.png)](https://custodydocs.chainup.com/en/latest/_images/api_plan_chuangjianqianbao1.png)
 
-### Add Currency
+#### Add Currency
 
 Before adding a currency, please contact the platform admin to add the main chain first. The corresponding token can only be used for free once the main chain currency has been added by the platform admin.
 
@@ -100,27 +132,29 @@ The API creation is completed and the public key information is available now.
 
 [![../_images/api_plan_apixiangqing.png](https://custodydocs.chainup.com/en/latest/_images/api_plan_apixiangqing.png)](https://custodydocs.chainup.com/en/latest/_images/api_plan_apixiangqing.png)
 
-### Development and Testing
+#### Development and Testing
 
 API documentation integration with the system based on the platform’s capabilities and solutions.
 
 ## Merchant signing
 
-### Formal signing
+#### Formal signing
 
 Support online and offline signing
 
-### Payment
+#### Payment
 
 Subscription payment for system, installation, and other costs. (Specific types of fees are subjected based on client’s contract)
 
-## Usage
 
-### Online Assistance
+
+## Support
+
+#### Online Assistance
 
 Assist merchants with operations
 
-### Technical support
+#### Technical support
 
 The platform provides 7* 24 technical support
 
@@ -218,7 +252,7 @@ Note: In the Custody system, there are three kinds of cost expenses in the tripa
 
 
 
-# Preparation before development
+# Getting Started
 
 ## Development Notes
 
@@ -260,7 +294,7 @@ Description：
 
 
 
-## Asset management account preparation
+## Account preparation
 
 #### The developer prepares the following information：
 
@@ -268,11 +302,11 @@ Description：
 
 2）IP of third-party application server;
 
-3）Recharge withdrawal callback notification address;
+3）deposit and withdrawal callback notification address;
 
 4）Reconfirm the address for withdrawal;
 
-5）Whether to enable the automatic collection function. After the function is enabled, the system will automatically transfer the user’s recharge funds to the merchant collection account.
+5）Whether to enable the automatic collection function. After the function is enabled, the system will automatically transfer the user’s deposit funds to the merchant collection account.
 
 
 
@@ -284,7 +318,7 @@ Contact relevant personnel of the platform to provide the above five types of in
 
 2）The wallet public key：`rsa_wallet_pub`.
 
-## Interface Interaction Process
+## Interface Process
 
 Documentation is the interface that the wallet service provides to third-party applications.
 
@@ -308,7 +342,7 @@ The interface providers in the following documents are referred to as **wallet s
 
 
 
-# API Documentation
+# API List
 
 
 
@@ -464,7 +498,7 @@ Register to become a wallet user
 
 
 
-### User email registration
+### User Email Registration
 
 
 
@@ -511,7 +545,7 @@ Register to become a wallet user, with email format (e.g. [123@111.com](mailto:1
 
 
 
-### Obtain the address of the user-specified currency 
+### Address of the user-specified currency 
 
 
 
@@ -565,7 +599,7 @@ To obtain the user specified currency account address. If there is no address, t
 
 
 
-### Query user information
+### Query User Information
 
 
 
@@ -620,7 +654,7 @@ Query user information
 
 
 
-### Obtain a list of supported currencies
+### List of supported currencies
 
 
 
@@ -697,7 +731,7 @@ Get a list of the currencies of the merchant
 
 
 
-### Obtain the account information for the specified user
+### Account information for specified user
 
 
 
@@ -750,7 +784,7 @@ Search the user’s account according to the currency and user ID. In addition, 
 
 
 
-### Obtain the balance of merchant collection account
+### Balance of merchant collection account
 
 After opening the automatic collection of merchant funds, the merchant can obtain the balance of merchant collection account through this interface
 
@@ -804,7 +838,7 @@ After opening the automatic collection of merchant funds, the merchant can obtai
 
 
 
-## User deposit
+## User Deposit
 
 
 
@@ -903,7 +937,7 @@ Synchronized deposit records
 | updated_at    | Long   | Required | change time                                                  |
 | txid          | String | Required | blockchain transaction ID                                    |
 | confirmations | int    | Required | number of blockchain confirmations                           |
-| address_from  | String | Required | Recharge source address                                      |
+| address_from  | String | Required | deposit source address                                       |
 | address_to    | String | Required | depositing account address                                   |
 | status        | int    | Required | 0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker) |
 
@@ -913,7 +947,7 @@ Synchronized deposit records
 
 ### Batch access depositing records
 
-Batch access recharge records
+Batch access deposit records
 
 
 
@@ -984,7 +1018,7 @@ Batch access recharge records
 | updated_at    | Long   | Required | change time, timestamp                                       |
 | txid          | String | Required | blockchain transaction ID                                    |
 | confirmations | int    | Required | number of blockchain confirmations                           |
-| address_from  | String | Required | Recharge source address                                      |
+| address_from  | String | Required | deposit source address                                       |
 | address_to    | String | Required | depositing account address                                   |
 | status        | int    | Required | 0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker) |
 
@@ -1011,7 +1045,7 @@ Deposit Notice：
 | ------------- | ------ | -------- | ------------------------------------------------------------ |
 | charset       | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
 | version       | String | Required | Interface version number, no special case,transfer parameter `v2` |
-| side          | String | Required | Notice type, recharge notice: deposit, withdrawal notice: withdraw |
+| side          | String | Required | Notice type, deposit notice: deposit, withdrawal notice: withdraw |
 | notify_time   | string | Required | Notice time                                                  |
 | id            | string | Required | Deposit id                                                   |
 | uid           | string | Required | Deposit user ID                                              |
@@ -1036,7 +1070,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 
 ### Collect miner fees
 
-The currency of account type needs to be collected after recharging. UTXO has no fees for collecting miners’ fees.
+The currency of account type needs to be collected after deposit. UTXO has no fees for collecting miners’ fees.
 
 
 
@@ -1108,9 +1142,7 @@ The currency of account type needs to be collected after recharging. UTXO has no
 | contract_address | String | repuired | Currency contract address                                    |
 | email            | String | repuired | email                                                        |
 
-
-
-# User withdrawal
+## User Withdrawal
 
 
 
@@ -1234,7 +1266,7 @@ Withdrawal notice：
 | ------------------- | ------ | -------- | ------------------------------------------------------------ |
 | charset             | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
 | version             | String | Required | Interface version number, no special case,transfer parameter `v2` |
-| side                | String | Required | Notice type, recharge notice: deposit, withdrawal notice: withdraw |
+| side                | String | Required | Notice type, deposit notice: deposit, withdrawal notice: withdraw |
 | notify_time         | String | Required | Notice time                                                  |
 | request_id          | String | Required | The withdrawal request_id corresponds to the request in the withdrawal interface id |
 | id                  | String | Required | Withdrawal ID                                                |
@@ -1283,7 +1315,7 @@ Batch access to withdrawal records
 | time    | long   | Required | Current timestamp                                            |
 | charset | String | Required | Coding format, no special case, transfer parameter `UTF-8`   |
 | version | String | Required | Interface version number, no special case,transfer parameter `v2` |
-| max_id  | String | Required | Return 100 recharge record data greater than ID              |
+| max_id  | String | Required | Return 100 deposit record data greater than ID               |
 
 > Response
 
@@ -1428,7 +1460,7 @@ Batch access to withdrawal records
 
 
 
-## Merchants transfer
+## Internal Transfer
 
 
 

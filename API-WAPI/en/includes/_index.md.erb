@@ -1,14 +1,14 @@
 
 
-# ChainUp Custody WAPI documentation
+# ChainUp Custody WAPI 
 
-Welcome to the TopValue asset custody platform. This document is used by the third-party technical team to add the self-developed mainchain to the ChainUp Custody for alliance members.
+Welcome to the **ChainUp Custody** platform. This document is used by the third-party technical team to add the self-developed mainchain to the ChainUp Custody for alliance members.
 
 Note: How to use WAPI to access the mainchain, the server and private keys are kept by the third-party technical team, and the ChainUp Custody is not responsible for the security of assets. Therefore, the third-party technical team must establish a complete wallet private key custody system and API private key custody system
 
 
 
-# Preliminary Preparation
+# Getting Started
 
 ## Development Notes
 
@@ -65,9 +65,9 @@ Key format：`PKCS#8`
 
 
 
-# Domain Name and API Key
+## Domain Name and API Key
 
-## Production Environment
+### Production Environment
 
 | Domain Name:    | [https://baas.waas.group](https://baas.waas.group/) |
 | :-------------- | --------------------------------------------------- |
@@ -76,7 +76,7 @@ Key format：`PKCS#8`
 
 
 
-## Test environment
+### Test environment
 
 
 
@@ -120,7 +120,7 @@ Note： `rsa_third_prv` is a third-party application private key, which is mainl
 
 
 
-# Docking Solutions
+## Docking Solutions
 
 In order to allow public chain developers to access the **ChainUp Custody** more conveniently and quickly, we provide BaaS services to meet the public chain docking needs. Based on the docking experience of past customers, the platform has sorted out a set of docking solutions. details as follows:
 
@@ -134,19 +134,19 @@ In order to allow public chain developers to access the **ChainUp Custody** more
 
 [![../_images/wapi_interact_process.png](https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png)](https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png)
 
-## Register A Deposit Address
+### Register Deposit Address
 
 1）The number of available addresses can be queried by currency name. Note: (A maximum of `100 `addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. Interface address: `/api/v1/address/available`)
 
 2）Push the currency name and address list to the BaaS platform, after the response is successful, and the representative registered address is successful (interface address:` /api/v1/address/register`) Note: If the type of registered currency is memo, the same address Only one registration is allowed.。
 
-## Make Deposits
+### Deposits
 
 1）The third-party wallet detects that the address has a deposit transaction, initiates a deposit notification, and informs the BaaS system (interface address: `/api/v1/deposit/notify`)
 
 2）BaaS returns the notification result
 
-## Make Withdrawals
+### Withdrawals
 
 1）The user initiates a withdrawal request in the Custody system
 
@@ -156,9 +156,7 @@ In order to allow public chain developers to access the **ChainUp Custody** more
 
 Note: In case of special circumstances, the withdrawal request can be withdrawn and a notification will be pushed to the BaaS interface (interface address: `/api/v1/withdraw/cancel`)
 
-
-
-# WAPI Documentation
+# API List
 
 
 
@@ -215,7 +213,7 @@ body
 
 
 
-## Address Registration Interface
+## Register Address 
 
 Push address to the platform, this address is used to assign to users
 
@@ -247,9 +245,9 @@ A maximum of 100 addresses per push to Custody, with each push checking that the
 
 
 
-## The number of remaining addresses available interface
+## Available Address
 
-How many addresses are available in the pushed addresses
+Number of addresses that are available in the pushed addresses
 
 
 
@@ -293,7 +291,7 @@ It is recommended that the script monitor the available quantity.
 
 
 
-## Deposit notification call interface
+## Deposit Notification
 
 Deposit notification call interface
 
@@ -355,7 +353,7 @@ Deposit notification call interface
 
 
 
-## Withdrawal Interface
+## Withdrawal 
 
 Withdrawal Interface
 
@@ -409,7 +407,7 @@ This interface can return the latest 20 data at most at a time.
 
 
 
-## Withdrawal Notification Interface
+## Withdrawal Notification
 
 Call interface for withdrawal notification
 
@@ -455,7 +453,7 @@ None
 
 
 
-## Internal Notification Interface
+## Internal Notification
 
 Internal Notification Interface
 
@@ -494,7 +492,7 @@ None
 
 
 
-# Callback Withdrawals Interface
+## Callback Withdrawals Interface
 
 To callback withdrawals.
 
