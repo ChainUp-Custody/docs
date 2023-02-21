@@ -58,12 +58,12 @@ http://www.metools.info/code/c80.html
 
 ## 接口规则
 
-| 传输方式:     | https(测试环境暂时使用 http)                   |
-| :------------ | ---------------------------------------------- |
-| 签名字段:     | 除了` sign `字段，其他所有必填项都需要参与签名 |
-| 响应状态码为: | `0`表示处理成功，非 0 表示请求错误或系统异常   |
-| 请求地址:     | 域名+接口地址                                  |
-| 加密算法:     | 详见`附 1`                                     |
+| 传输方式:     | https(测试环境暂时使用 http)                                 |
+| :------------ | ------------------------------------------------------------ |
+| 签名字段:     | 除了` sign `字段，其他所有必填项都需要参与签名               |
+| 响应状态码为: | `0`表示处理成功，非 0 表示请求错误或系统异常                 |
+| 请求地址:     | 域名+接口地址                                                |
+| 加密算法:     | Java 加解密Demo ： <https://github.com/HiCoinCom/WAPIDemo.git>|
 
 
 
@@ -118,7 +118,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 
 
 
-## 对接方案
+# 对接方案
 
 为了让公链接入者更便捷、快速的接入ChainUp Custody，我们提供了BaaS服务，以满足公链对接需求，平台基于过往客户的对接经验，梳理了一套对接方案。具体如下：
 
@@ -165,6 +165,24 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvn
 3）上链成功后，向BaaS通知提现结果,BaaS接口响应（**接口地址: **`/api/v1/withdraw/notify`）
 
 注：如遇特殊情况可以撤销提币请求，向BaaS接口推送通知（**接口地址：**`/api/v1/withdraw/cancel`）
+
+
+
+
+
+# SDK
+
+为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：**SDK与API** 
+
+
+
+#### SDK：支持java和node 
+
+**java SDK地址**：[GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk](https://github.com/HiCoinCom/java-wapi-sdk)
+
+**node SDK地址**：[GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk](https://github.com/HiCoinCom/js-wapi-sdk)
+
+
 
 
 
@@ -222,7 +240,7 @@ body
 ```
 
 
-## 地址注册接口
+## 地址注册
 
 推送地址给平台，此地址用于分配给用户
 
@@ -252,7 +270,7 @@ body
 
 
 
-## 剩余地址可用数量接口
+## 剩余地址可用数量
 
 推送的地址中还有多少可用地址, 建议脚本监控可用数量。
 
@@ -288,7 +306,7 @@ body
 | symbol | string | 是       | 币种名称     |
 | count  | int    | 是       | 地址可用数量 |
 
-## 充值通知接口
+## 充值通知
 
 充值通知调用接口
 
@@ -350,7 +368,7 @@ body
 
 
 
-## 提现拉取接口
+## 提现拉取
 
 提币拉取接口, 此接口单次最多返回最近20条数据
 
@@ -400,7 +418,7 @@ body
 
 
 
-## 提现通知接口
+## 提现通知
 
 提现通知调用接口
 
@@ -446,7 +464,7 @@ body
 
 
 
-## 内部通知接口
+## 内部通知
 
 内部通知调用接口
 
@@ -485,7 +503,7 @@ body
 
 
 
-## 提币打回接口
+## 提币打回
 
 推送地址给平台，此地址用于分配给用户
 
@@ -512,8 +530,28 @@ body
 #### 响应参数data解密之后数据结构: 
 无
 
-# 附录
+# 错误码
 
-## 加解密方式
+| code    | msg                              |
+| ------- | -------------------------------- |
+| 0       | success                          |
+| 100001  | json decode error                |
+| 100002  | system error                     |
+| 100003  | appid not register               |
+| 100004  | publicKey decode error           |
+| 100005  | appid already exist              |
+| 100006  | decode publicKey error           |
+| 100007  | privkey decode error             |
+| 100008  | verify signature error           |
+| 100009  | appid does not match symbol      |
+| 1000010 | address length exceeds 100       |
+| 1000011 | deposit notify fail              |
+| 1000012 | request_id txid not match        |
+| 1000013 | privkey hash not match           |
+| 1000014 | only one address is allowed      |
+| 1000015 | add token address is not allowed |
+| 1000016 | address exceeds length           |
+| 1000017 | address not exists               |
+| 1000018 | finance notify error             |
+| 1000019 | appid is disabled                |
 
-**Java 加解密Demo** ： <https://github.com/HiCoinCom/WAPIDemo.git>

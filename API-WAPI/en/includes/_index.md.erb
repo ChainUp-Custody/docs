@@ -61,7 +61,7 @@ Key format：`PKCS#8`
 | Signature Field:          | Except for the `sign`  field, all other required fields need to be signed |
 | The response status code: | `0`indicating successful processing; **non-zero**, indicating request error or system abnormality |
 | Request Address:          | domain name + interface address                              |
-| Encryption Algorithm:     | See `Appendix 1 `for details                                 |
+| Encryption Algorithm:     | Java Encryption and Decryption Demo：<https://github.com/HiCoinCom/WAPIDemo.git> |
 
 
 
@@ -120,7 +120,7 @@ Note： `rsa_third_prv` is a third-party application private key, which is mainl
 
 
 
-## Docking Solutions
+# Docking Solutions
 
 In order to allow public chain developers to access the **ChainUp Custody** more conveniently and quickly, we provide BaaS services to meet the public chain docking needs. Based on the docking experience of past customers, the platform has sorted out a set of docking solutions. details as follows:
 
@@ -155,6 +155,24 @@ In order to allow public chain developers to access the **ChainUp Custody** more
 3）After the chain is successfully connected, BaaS will be notified of the withdrawal result, and the BaaS interface will respond (interface address: `/api/v1/withdraw/notify`)
 
 Note: In case of special circumstances, the withdrawal request can be withdrawn and a notification will be pushed to the BaaS interface (interface address: `/api/v1/withdraw/cancel`)
+
+
+
+
+
+# SDK
+
+To meet the diverse business needs of our customers, ChainUp Custody supports two docking methods:  **SDK and API;**
+
+
+
+#### SDK：Support for Java and node
+
+java SDK address：[GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk](https://github.com/HiCoinCom/java-wapi-sdk)
+
+node SDK address：[GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk](https://github.com/HiCoinCom/js-wapi-sdk)
+
+
 
 # API List
 
@@ -521,8 +539,29 @@ None
 
 
 
-# Appendix
 
-## Encryption and Decryption Method
 
-**Java Encryption and Decryption Demo**： <https://github.com/HiCoinCom/WAPIDemo.git>
+# Error Code
+
+| code    | msg                              |
+| ------- | -------------------------------- |
+| 0       | success                          |
+| 100001  | json decode error                |
+| 100002  | system error                     |
+| 100003  | appid not register               |
+| 100004  | publicKey decode error           |
+| 100005  | appid already exist              |
+| 100006  | decode publicKey error           |
+| 100007  | privkey decode error             |
+| 100008  | verify signature error           |
+| 100009  | appid does not match symbol      |
+| 1000010 | address length exceeds 100       |
+| 1000011 | deposit notify fail              |
+| 1000012 | request_id txid not match        |
+| 1000013 | privkey hash not match           |
+| 1000014 | only one address is allowed      |
+| 1000015 | add token address is not allowed |
+| 1000016 | address exceeds length           |
+| 1000017 | address not exists               |
+| 1000018 | finance notify error             |
+| 1000019 | appid is disabled                |
