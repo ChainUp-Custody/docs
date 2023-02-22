@@ -1,0 +1,3407 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="images/favicon-5df21527.ico" rel="icon" type="image/ico" />
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-fac2324c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-2b633527.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;java&quot;]">
+    <div class="header">
+        <div class="header-left">
+            <img src="images/logo-055122b5.png" class="logo" alt="" />
+            <div class="header-line"></div>
+            <div class="header-nav-h5">
+                API-WaaS-V2
+                <ul class="header-nav-list-h5">
+                        <li class="header-nav__item"><a href="/API-MPC/en/index.html">MPC WALLET</a></li>
+                        <li class="header-nav__item active"><a href="/API-WaaS-V2/en/index.html">Custody V2</a></li>
+                        <li class="header-nav__item"><a href="/API-WAPI/en/index.html">Custody WAPI</a></li>
+                </ul>
+            </div>
+            <ul class="header-nav">
+                    <li class="header-nav__item"><a href="/API-MPC/en/index.html">MPC WALLET</a></li>
+                    <li class="header-nav__item active"><a href="/API-WaaS-V2/en/index.html">Custody V2</a></li>
+                    <li class="header-nav__item"><a href="/API-WAPI/en/index.html">Custody WAPI</a></li>
+            </ul>
+        </div>
+        <a class="switch-language" href="/API-WaaS-V2/zh/index.html">中文</a>
+    </div>
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#chainup-custody-v2" class="toc-h1 toc-link" data-title="ChainUp Custody V2">ChainUp Custody V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#vision" class="toc-h2 toc-link" data-title="Vision">Vision</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#access-guidelines" class="toc-h1 toc-link" data-title="Access Guidelines">Access Guidelines</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-account" class="toc-h2 toc-link" data-title="Create Account">Create Account</a>
+                  </li>
+                  <li>
+                    <a href="#build-enterprise-wallet" class="toc-h2 toc-link" data-title="Build Enterprise wallet">Build Enterprise wallet</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#obtain-api-information" class="toc-h3 toc-link" data-title="Obtain API information">Obtain API information</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#merchant-signing" class="toc-h2 toc-link" data-title="Merchant signing">Merchant signing</a>
+                  </li>
+                  <li>
+                    <a href="#support" class="toc-h2 toc-link" data-title="Support">Support</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#docking-solutions" class="toc-h1 toc-link" data-title="Docking Solutions">Docking Solutions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obtain-the-deposit-address" class="toc-h2 toc-link" data-title="Obtain the deposit address">Obtain the deposit address</a>
+                  </li>
+                  <li>
+                    <a href="#user-deposit" class="toc-h2 toc-link" data-title="User deposit">User deposit</a>
+                  </li>
+                  <li>
+                    <a href="#user-withdrawal" class="toc-h2 toc-link" data-title="User withdrawal">User withdrawal</a>
+                  </li>
+                  <li>
+                    <a href="#financial-reconciliation" class="toc-h2 toc-link" data-title="Financial reconciliation">Financial reconciliation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#development-notes" class="toc-h2 toc-link" data-title="Development Notes">Development Notes</a>
+                  </li>
+                  <li>
+                    <a href="#account-preparation" class="toc-h2 toc-link" data-title="Account preparation">Account preparation</a>
+                  </li>
+                  <li>
+                    <a href="#interface-process" class="toc-h2 toc-link" data-title="Interface Process">Interface Process</a>
+                  </li>
+                  <li>
+                    <a href="#interface-rules" class="toc-h2 toc-link" data-title="Interface rules">Interface rules</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk" class="toc-h1 toc-link" data-title="SDK">SDK</a>
+          </li>
+          <li>
+            <a href="#api-list" class="toc-h1 toc-link" data-title="API List">API List</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview-2" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#common-request-parameters" class="toc-h3 toc-link" data-title="Common Request Parameters">Common Request Parameters</a>
+                          </li>
+                          <li>
+                            <a href="#request-example" class="toc-h3 toc-link" data-title="Request Example">Request Example</a>
+                          </li>
+                          <li>
+                            <a href="#common-response-parameters" class="toc-h3 toc-link" data-title="Common Response Parameters">Common Response Parameters</a>
+                          </li>
+                          <li>
+                            <a href="#decrypted-response-parameters" class="toc-h3 toc-link" data-title="Decrypted Response Parameters">Decrypted Response Parameters</a>
+                          </li>
+                          <li>
+                            <a href="#encryption-and-decryption-mode" class="toc-h3 toc-link" data-title="Encryption and Decryption Mode">Encryption and Decryption Mode</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#get-the-address" class="toc-h2 toc-link" data-title="Get the address">Get the address</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#user-mobile-registration" class="toc-h3 toc-link" data-title="User Mobile Registration">User Mobile Registration</a>
+                          </li>
+                          <li>
+                            <a href="#user-email-registration" class="toc-h3 toc-link" data-title="User Email Registration">User Email Registration</a>
+                          </li>
+                          <li>
+                            <a href="#address-of-the-user-specified-currency" class="toc-h3 toc-link" data-title="Address of the user-specified currency">Address of the user-specified currency</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#account-balance" class="toc-h2 toc-link" data-title="Account balance">Account balance</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#query-user-information" class="toc-h3 toc-link" data-title="Query User Information">Query User Information</a>
+                          </li>
+                          <li>
+                            <a href="#list-of-supported-currencies" class="toc-h3 toc-link" data-title="List of supported currencies">List of supported currencies</a>
+                          </li>
+                          <li>
+                            <a href="#account-information-for-specified-user" class="toc-h3 toc-link" data-title="Account information for specified user">Account information for specified user</a>
+                          </li>
+                          <li>
+                            <a href="#balance-of-merchant-collection-account" class="toc-h3 toc-link" data-title="Balance of merchant collection account">Balance of merchant collection account</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#user-deposit-2" class="toc-h2 toc-link" data-title="User Deposit">User Deposit</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#synchronize-deposit-records" class="toc-h3 toc-link" data-title="Synchronize deposit records">Synchronize deposit records</a>
+                          </li>
+                          <li>
+                            <a href="#batch-access-depositing-records" class="toc-h3 toc-link" data-title="Batch access depositing records">Batch access depositing records</a>
+                          </li>
+                          <li>
+                            <a href="#nonsync-callback-notification-for-user-deposit" class="toc-h3 toc-link" data-title="Nonsync callback notification for user deposit">Nonsync callback notification for user deposit</a>
+                          </li>
+                          <li>
+                            <a href="#collect-miner-fees" class="toc-h3 toc-link" data-title="Collect miner fees">Collect miner fees</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#user-withdrawal-2" class="toc-h2 toc-link" data-title="User Withdrawal">User Withdrawal</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#initiate-a-withdraw" class="toc-h3 toc-link" data-title="Initiate a withdraw">Initiate a withdraw</a>
+                          </li>
+                          <li>
+                            <a href="#second-confirmation-of-withdrawal-information" class="toc-h3 toc-link" data-title="Second confirmation of withdrawal information">Second confirmation of withdrawal information</a>
+                          </li>
+                          <li>
+                            <a href="#asynchronous-callback-notification-of-user-withdrawal" class="toc-h3 toc-link" data-title="Asynchronous callback notification of user withdrawal">Asynchronous callback notification of user withdrawal</a>
+                          </li>
+                          <li>
+                            <a href="#synchronize-withdrawal-records" class="toc-h3 toc-link" data-title="Synchronize withdrawal records">Synchronize withdrawal records</a>
+                          </li>
+                          <li>
+                            <a href="#batch-access-to-withdrawal-records" class="toc-h3 toc-link" data-title="Batch access to withdrawal records">Batch access to withdrawal records</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#internal-transfer" class="toc-h2 toc-link" data-title="Internal Transfer">Internal Transfer</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#custody-merchant-transfer" class="toc-h3 toc-link" data-title="Custody Merchant Transfer">Custody Merchant Transfer</a>
+                          </li>
+                          <li>
+                            <a href="#asynchronous-confirmation-of-transfer-information" class="toc-h3 toc-link" data-title="Asynchronous confirmation of transfer information">Asynchronous confirmation of transfer information</a>
+                          </li>
+                          <li>
+                            <a href="#batch-query-transfer-records" class="toc-h3 toc-link" data-title="Batch query transfer records">Batch query transfer records</a>
+                          </li>
+                          <li>
+                            <a href="#synchronous-transfer-record" class="toc-h3 toc-link" data-title="Synchronous transfer record">Synchronous transfer record</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#error-code" class="toc-h1 toc-link" data-title="Error Code">Error Code</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='chainup-custody-v2'>ChainUp Custody V2</h1>
+<p>Welcome to <strong>ChainUp Custody</strong>! Our platform leverages deep underlying wallet technology and a secure blockchain wallet architecture to provide powerful asset custody functions to our third-party partners through various API. With our assistance, our partners can focus on core business development while we ensure the safety and security of their assets.</p>
+<h4 id='with-chainup-custody-api-you-can'>With <strong>ChainUp Custody</strong> API, you can:</h4>
+<ul>
+<li><p>Submit transfers and receive real-time information on transfers;</p></li>
+<li><p>Benefit from security checks for all transaction types and messages;</p></li>
+<li><p>Establish a withdrawal policy with the co-managed wallet;</p></li>
+<li><p>Manage your wallet and sub-wallet accounts, address book, and internet connection;</p></li>
+<li><p>Using features such as anti-money laundering mechanisms.</p></li>
+</ul>
+
+<p>All transfers made through our API are reflected in your transaction records, security policies, and reconciliation center, ensuring full transparency and accountability.</p>
+<h2 id='overview'>Overview</h2>
+<p><strong>ChainUp Custody</strong> is a comprehensive set of digital asset custody services provided by ChainUp Group. We have served more than 300 clients for over the past 4 years, leveraging our extensive experience in digital asset custody and the development of 200+ coins. Our services include mainchain asset custody, node services, customized mainchain development, easy inclusion for new coins and tokens, co-managed wallets, asset management and many others.</p>
+
+<p>Exchanges, Asset Management Platforms, and other Crypto Institutions can secure their digital assets efficiently and quickly with cloud hosting via API and SDK. At the same time, clients can carry out their asset management operations through our web-based user interface (custody.chainup.com), with numerous financial products available for client usage.</p>
+
+<p>At present, <strong>ChainUp Custody</strong> has 500 over clients from various industries such as blockchain industry like exchanges, miners, OTC, lending etc and traditional industries like games, real estate, live broadcasting, e-commerce, supply chain and media, etc. Our benefits include zero transaction fees and instantaneous real-time transfer.</p>
+<h2 id='vision'>Vision</h2>
+<p>ChainUp Custody aims to build an open bank in the blockchain field by building a global financial clearing system across the main chain and relevant projects within a shared network which helps to reduce cost and improve asset utilization.</p>
+
+<p><img src="https://custodydocs.chainup.com/en/latest/_images/yuanjing.jpg" alt="img" /></p>
+<h1 id='access-guidelines'>Access Guidelines</h1>
+<p>Follow the instructions below to access ChainUp Custody</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_jieruzhiyin2.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_jieruzhiyin2.png" alt="../_images/api_plan_jieruzhiyin2.png" /></a></p>
+<h2 id='create-account'>Create Account</h2><h4 id='download-custody-wallet'>Download Custody Wallet</h4>
+<p>Method 1：Open the link in your mobile browser：https://custody.chainup.com/download</p>
+
+<p>Method 2： scan the QR code for download:</p>
+
+<p><img src="images/qrCode-3001df59.png" style="width: 150px" alt="" /></p>
+<h4 id='register-custody-account'>Register Custody Account</h4>
+<p>Open the app and register a new account using email OR mobile phone number.</p>
+
+<p><img src="images/elogin-3d31bb33.png" style="width: 250px" alt="" /></p>
+<h4 id='complete-identity-verification'>Complete Identity Verification</h4>
+<p>Please note that our authentication system only supports one identity and does not allow for replacement of that identity after authentication.</p>
+
+<p><img src="images/ppkyc-41fb3b2a.png" style="width: 250px" alt="" /> </p>
+
+<p><img src="images/eekyc-ed8e8438.png" style="width: 250px" alt="" /></p>
+
+<p>Complete identity verification and google authentication. (For security level 2, please kindly contact customer support for verification). </p>
+
+<p><img src="images/esecurity-22762612.png" style="width: 250px" alt="" /></p>
+<h2 id='build-enterprise-wallet'>Build Enterprise wallet</h2><h4 id='login'>Login</h4>
+<p>Open ChainUp Custody platform (custody.chainup.com) using any browser, scan the QR code,and log in using the [Custody] app or by scanning the QR code.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_saomadenglu.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_saomadenglu.png" alt="../_images/api_plan_saomadenglu.png" /></a></p>
+<h4 id='create-a-wallet'>Create a wallet</h4>
+<p>Enter the 【ChainUp Custody】 page and create a wallet. Please fill in the name carefully because you are unable to change the name once the wallet has been created.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_chuangjianqianbao1.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_chuangjianqianbao1.png" alt="../_images/api_plan_chuangjianqianbao1.png" /></a></p>
+<h4 id='add-currency'>Add Currency</h4>
+<p>Before adding a currency, please contact the platform admin to add the main chain first. The corresponding token can only be used for free once the main chain currency has been added by the platform admin.</p>
+
+<p>After adding the currency, enter the wallet and click “Currency Management” to search for the currency.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_bizhongguanli.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_bizhongguanli.png" alt="../_images/api_plan_bizhongguanli.png" /></a></p>
+
+<p>Go to the edit page and add the currency.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_bizhongbianji.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_bizhongbianji.png" alt="../_images/api_plan_bizhongbianji.png" /></a></p>
+<h3 id='obtain-api-information'>Obtain API information</h3>
+<p>Create APIs (Currently only allows permission and support one set of API)</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_apiliebiao.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_apiliebiao.png" alt="../_images/api_plan_apiliebiao.png" /></a></p>
+
+<p>The API creation is completed and the public key information is available now.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_plan_apixiangqing.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_plan_apixiangqing.png" alt="../_images/api_plan_apixiangqing.png" /></a></p>
+<h4 id='development-and-testing'>Development and Testing</h4>
+<p>API documentation integration with the system based on the platform’s capabilities and solutions.</p>
+<h2 id='merchant-signing'>Merchant signing</h2><h4 id='formal-signing'>Formal signing</h4>
+<p>Support online and offline signing</p>
+<h4 id='payment'>Payment</h4>
+<p>Subscription payment for system, installation, and other costs. (Specific types of fees are subjected based on client’s contract)</p>
+<h2 id='support'>Support</h2><h4 id='online-assistance'>Online Assistance</h4>
+<p>Assist merchants with operations</p>
+<h4 id='technical-support'>Technical support</h4>
+<p>The platform provides 7* 24 technical support</p>
+<h1 id='docking-solutions'>Docking Solutions</h1>
+<p>To allow customers more convenient and quicker access to Custody service, our platform has a comprehensive set of docking solutions based on previous clients’ requirement.</p>
+
+<p>The whole program is divided into four processes:</p>
+
+<p>1.Obtain the deposit address</p>
+
+<p>2.User deposit</p>
+
+<p>3.User withdrawl</p>
+
+<p>4.Financial reconciliation</p>
+
+<p>Note: If the client’s project timeline is urgent, the necessary processes [obtaining the deposit address], [user deposit], [user withdrawal], and [financial reconciliation] can be developed in two weeks.</p>
+<h2 id='obtain-the-deposit-address'>Obtain the deposit address</h2>
+<p>1）Customer registers with Custody system (email address is recommended)</p>
+
+<p>2）After successful registration, the address can be obtained through the UID of the Custody system</p>
+
+<p>Note: Obtaining the address in advance helps to ensure efficient address allocation after user registration; If the user registers and then obtains the address through the interface, it may fail due to reasons such as network issue, resulting in users’ inability to use the services.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_zhunbei.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_zhunbei.png" alt="../_images/api_tsoulution_zhunbei.png" /></a></p>
+<h2 id='user-deposit'>User deposit</h2>
+<p>1）The user completes registration in their system;</p>
+
+<p>2）When the user checks the currency deposit address on the user interface, the system will assign a currency address to the user;</p>
+
+<p>3）Users send coins to the address;</p>
+
+<p>4）The Custody system monitors and accounts for the transaction of coins in the blockchain address on behalf of the clients, and notifies the client actively or automatically obtaining it within the system.</p>
+
+<p>5）After the system confirms the validity of the information for coin deposit, the coins will be credited into the user’s account;</p>
+
+<p>6）The system notifies the user that the coins are successfully deposited.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_chongzhi.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_chongzhi.png" alt="../_images/api_tsoulution_chongzhi.png" /></a></p>
+
+<p>Note: The asynchronous callback of teh Custody system will be triggered when each order is final, and it can be sent up to 5 times per day;</p>
+
+<p>Timed task: a total of five callbacks</p>
+
+<p>Notification time: 1s for the first time, 2min for the second time, 8min for the third time, 32min for the fourth time, 128min for the fifth time</p>
+
+<p>Callback logic：</p>
+
+<p>If the callback is successful, update the callback status;</p>
+
+<p>If the callback fails, continue the callback and update the interval between the next callback;</p>
+
+<p>When the callback fails five times, the callback is stopped</p>
+<h2 id='user-withdrawal'>User withdrawal</h2>
+<p>1）The user initiates withdrawal in their system;</p>
+
+<p>2）After the customer’s system has been approved, it will notify the Custody system;</p>
+
+<p>3）The Custody system provides two withdrawal conformation to the customer system;</p>
+
+<p>4）After the customer system confirms that the withdrawal information is valid, the Custody system verifies the withdrawal information, and then the payment is initiated;</p>
+
+<p>5）The Custody system monitors the status of withdrawal orders, and actively notifies the client upon completion of withdrawal or actively acquires it by the customer system;</p>
+
+<p>6）The customer system informs the user that the withdrawal is successful.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_tibi.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_tibi.png" alt="../_images/api_tsoulution_tibi.png" /></a></p>
+<h2 id='financial-reconciliation'>Financial reconciliation</h2>
+<p>1）Perform checks on accounts between the customer system and Custody system periodically (daily is recommended)</p>
+
+<p>2）At midnight the the next day, the system retrieves all the deposits and withdrawals for the previous day as well as the aggregated orders and collection of the miners’ fees</p>
+
+<p>3）The customer system’s orders are reconciled against those in the Custody system</p>
+
+<p>4）If the order quantity, amount and status are correct, the reconciliation will be successful; Otherwise contact Custody support to resolve the issue</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_duizhang.png"><img src="https://custodydocs.chainup.com/en/latest/_images/api_tsoulution_duizhang.png" alt="../_images/api_tsoulution_duizhang.png" /></a></p>
+
+<p>Note: In the Custody system, there are three kinds of cost expenses in the tripartite system: collecting miners’ fees, extracting miners’ fees, and profit-sharing commission;</p>
+
+<ol>
+<li>Collection of Miners’ Fee: With each currency’s account type, after depositing the coins, the funds on the address will be collected to the hot wallet address and the blockchain network. Part of the main chain blockchain transaction will consume the miner fee and the cost of which will be borne by the client. The client can contact us if they would like this capital expenditure will be handled by us;</li>
+<li>Miner’s fee: Miner’s fee (in some currencies) shall be borne by the three parties when withdrawing coins to the address of non-ChainUp Custody and using the blockchain network. This part of capital expenditure can be viewed directly in the coin withdrawal order;</li>
+<li>Distribution fee: temporarily not charged.</li>
+</ol>
+<h1 id='getting-started'>Getting Started</h1><h2 id='development-notes'>Development Notes</h2><h4 id='two-pairs-of-public-and-private-key-functions-api-mode'>Two pairs of public and private key functions (API mode）</h4>
+<p><strong>The first pair of public and private keys</strong>： The developer shall generate a pair of public and private keys in advance when opening the asset management account. The public key (rsa_third_pub) is provided to the platform and the private key is kept by itself. The private key is the only proof for the third-party application to call the wallet service and shall not be disclosed to anyone. When the third party requests the wallet service, the private key is used to encrypt the request parameters. When the platform receives the request, the public key (rsa_third_pub) is used to decrypt the request data.</p>
+
+<p><strong>The second pair of public and private keys</strong>： After the developer opens the asset management account, the platform will provide the wallet public key (rsa_wallet_pub) to the developer. When the third-party application receives the response data or asynchronous notification of the wallet, it needs to use the public key to decrypt.</p>
+<h4 id='why-is-it-necessary-to-confirm-the-withdrawal-twice-api-method'>Why is it necessary to confirm the withdrawal twice (API method)</h4>
+<p>When the wallet service receives a request from a third-party application, in confirm that the request is a legitimate request from a third-party application, it will call the interface provided by the third-party to confirm. To a certain extent, this process can avoid the influence caused by the loss of the third party’s private key, and also provides an effective barrier for the security of the wallet service.</p>
+<h4 id='domain-name-and-api-key-api-mode'>Domain name and API key (API mode)</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Production domain name(test environment not supported):</th>
+<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip</a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">app_id:</td>
+<td>Please get it after creating the wallet</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_wallet_pub:</td>
+<td>Custody system public key; Please create the wallet and get it from the Custody system</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_third_prv:</td>
+<td>Client private key; Independent generation and preservation</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_third_pub:</td>
+<td>Client public key; Autonomous generation; Please create the wallet and configure it to the Custody system</td>
+</tr>
+</tbody></table>
+
+<p><strong>RSA public/private key generated address</strong> http://www.metools.info/code/c80.html</p>
+
+<p>Recommended password length：<code>2048</code></p>
+
+<p>Recommended key format：<code>PKCS#8</code></p>
+
+<p>Description：</p>
+
+<ol>
+<li>Rsa_third_prv is a private key for third-party applications and is used primarily to encrypt request parameters. In a production environment, rsa_third_prv is generated by the developer and the corresponding public key is provided to the platform. To simplify the docking process for developers, a set of third-party public and private keys is directly provided here to facilitate quick docking for developers.</li>
+<li>Test environment docking is not supported at present, please register to create a wallet according to <strong>Access Guidelines</strong> , and get the API related information of the production environment.</li>
+</ol>
+<h2 id='account-preparation'>Account preparation</h2><h4 id='the-developer-prepares-the-following-information'>The developer prepares the following information：</h4>
+<p>1）Generate a pair of public and private keys and provide the public key to the platform;</p>
+
+<p>2）IP of third-party application server;</p>
+
+<p>3）deposit and withdrawal callback notification address;</p>
+
+<p>4）Reconfirm the address for withdrawal;</p>
+
+<p>5）Whether to enable the automatic collection function. After the function is enabled, the system will automatically transfer the user’s deposit funds to the merchant collection account.</p>
+
+<p>Contact relevant personnel of the platform to provide the above five types of information. The platform prepares an asset management account for you and provides you with the following information:</p>
+
+<p>1）Unique identification of the merchant：<code>app_id</code>；</p>
+
+<p>2）The wallet public key：<code>rsa_wallet_pub</code>.</p>
+<h2 id='interface-process'>Interface Process</h2>
+<p>Documentation is the interface that the wallet service provides to third-party applications.</p>
+
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/apiopen-instructions.png"><img src="https://custodydocs.chainup.com/en/latest/_images/apiopen-instructions.png" alt="../_images/apiopen-instructions.png" /></a></p>
+
+<p>The interface providers in the following documents are referred to as <strong>wallet services</strong>，and the interface callers are referred to as <strong>third-party applications</strong>. When the third-party application requests the wallet service, it encrypts the request parameters through the RSA algorithm and decrypts the response data after receiving the wallet service</p>
+<h2 id='interface-rules'>Interface rules</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Transfer mode:</th>
+<th>https(HTTP is temporarily used in the test environment)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Signature field:</td>
+<td>All Required fields, except the Sign field, need to be signed</td>
+</tr>
+<tr>
+<td style="text-align: left">The response status code is:</td>
+<td>0, indicating successful processing, and non-0 indicates request error or system exception</td>
+</tr>
+<tr>
+<td style="text-align: left">Request address:</td>
+<td>domain name + interface address</td>
+</tr>
+<tr>
+<td style="text-align: left">Encryption algorithm:</td>
+<td>RSA， See <strong>API List</strong>- <code>Overview</code> for details</td>
+</tr>
+</tbody></table>
+<h1 id='sdk'>SDK</h1>
+<p>To meet the diverse business needs of customers, ChainUp Custody supports two docking methods: <strong>SDK and API;</strong></p>
+<h4 id='sdk-support-for-java-php-and-node'><strong>SDK</strong>：Support for Java, PHP and node</h4>
+<p><strong>Java SDK address</strong>：<a href="https://github.com/HiCoinCom/java-sdk">https://github.com/HiCoinCom/java-sdk</a></p>
+
+<p><strong>PHP SDK address</strong>：<a href="https://github.com/HiCoinCom/php-sdk">https://github.com/HiCoinCom/php-sdk</a></p>
+
+<p><strong>Node SDK address</strong>：<a href="https://github.com/HiCoinCom/js-sdk">https://github.com/HiCoinCom/js-sdk</a></p>
+<h1 id='api-list'>API List</h1><h2 id='overview-2'>Overview</h2><h3 id='common-request-parameters'>Common Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>String</td>
+<td>optional</td>
+<td>merchant unique identifier</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>optional</td>
+<td>encrypted String, decrypted format is defined as <code>Decrypted Request Parameters</code></td>
+</tr>
+</tbody></table>
+<h3 id='request-example'>Request Example</h3><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST/api/v2/user/createUser</code></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code>
+<span class="no">POST</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">createUser</span>
+
+<span class="n">app_id</span><span class="o">=</span><span class="n">baaceb1e506e1b5d7d1f0a3b1622583b</span><span class="o">&amp;</span><span class="n">data</span><span class="o">=</span><span class="nc">GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK</span><span class="o">--</span><span class="n">Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml</span><span class="o">-</span><span class="n">DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn</span><span class="o">-</span><span class="no">C_</span><span class="o">-</span><span class="n">HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q</span><span class="o">-</span><span class="n">dLN1MpOlkUKwbmbpb</span><span class="o">-</span><span class="n">gEh_s68yl7ox6WSgKfCK4i_uvA</span>
+</code></pre></div><h3 id='common-response-parameters'>Common Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>optional</td>
+<td>encrypted String decrypted format is defined as <code>Decrypted Response Parameters</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Example  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="o">{</span>
+    <span class="s">"data"</span><span class="o">:</span><span class="s">"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='decrypted-response-parameters'>Decrypted Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>Required</td>
+<td>status code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>Required</td>
+<td>description of the response result</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>optional</td>
+<td>the specific response data, the data structure is defined as <code>Response Data Parameters</code></td>
+</tr>
+</tbody></table>
+<h3 id='encryption-and-decryption-mode'>Encryption and Decryption Mode</h3>
+<p>The values of the request parameter DATA and the response field DATA are both encrypted by RSA and encrypted by <strong>base64urlsafe</strong></p>
+
+<aside class="notice">
+*Matters needing attention*
+<br/>
+<br/>
+1. There are two symbols + and/that are escaped directly by URL in Base64 traditional encoding. Therefore, if we want to transfer these encoded strings through URL, we need to do traditional Base64 encoding first, then replace + and/with two characters - _ respectively, and do the opposite action decoding at the receiving end. 
+<br/>
+<br/>
+2. RSA encryption and decryption using segmented encryption
+</aside>
+<h2 id='get-the-address'>Get the address</h2>
+<p>Please note that the default number of registered users is 50,000. If the number of users exceeds the upper limit, please contact the relevant operation personnel for assistance.</p>
+<h3 id='user-mobile-registration'>User Mobile Registration</h3>
+<p>Register to become a wallet user</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST/api/v2/user/createUser</code></p>
+<h4 id='decrypted-request-parameters'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>Required</td>
+<td>country number, e.g. 86 for China</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>String</td>
+<td>Required</td>
+<td>mobile number</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>the unique identity of the user in the wallet service</td>
+</tr>
+</tbody></table>
+<h3 id='user-email-registration'>User Email Registration</h3>
+<p>Register to become a wallet user, with email format (e.g. <a href="mailto:123@111.com">123@111.com</a>)</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>POST /api/v2/user/registerEmail</code></p>
+<h4 id='decrypted-request-parameters-2'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Required</td>
+<td>Email or Virtual Accounts, to ensure their uniqueness, up to 100 characters</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-2'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>the unique identity of the user in the wallet service</td>
+</tr>
+</tbody></table>
+<h3 id='address-of-the-user-specified-currency'>Address of the user-specified currency</h3>
+<p>To obtain the user specified currency account address. If there is no address, the user is assigned an address, and the account should not be generated. The account is still generated on demand.</p>
+<h4 id='http-request-4'>HTTP Request</h4>
+<p><code>POST/api/v2/account/getDepositAddress</code></p>
+<h4 id='decrypted-request-parameters-3'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>vesion</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>Required</td>
+<td>user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="s2">"3529218"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-3'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>the unique identity of the user in the wallet service</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Required</td>
+<td>the currency account address</td>
+</tr>
+</tbody></table>
+<h2 id='account-balance'>Account balance</h2><h3 id='query-user-information'>Query User Information</h3>
+<p>Query user information</p>
+<h4 id='http-request-5'>HTTP Request</h4>
+<p><code>GET/api/v2/user/info</code></p>
+<h4 id='decrypted-request-parameters-4'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>optional</td>
+<td>Country number, Mobile is not empty, this field is Required. Such as: 86</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>String</td>
+<td>optional</td>
+<td>Phone Number, Phone and Email must be made sure that one of them is not empty</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>optional</td>
+<td>Email, Phone, and Email must be made sure that one of them is not empty</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nickname"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-4'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>the unique identity of the user in the wallet service</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>String</td>
+<td>Required</td>
+<td>the nickname of the user</td>
+</tr>
+</tbody></table>
+<h3 id='list-of-supported-currencies'>List of supported currencies</h3>
+<p>Get a list of the currencies of the merchant</p>
+<h4 id='http-request-6'>HTTP Request</h4>
+<p><code>GET/api/v2/user/getCoinList</code></p>
+<h4 id='decrypted-request-parameters-5'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"icon"</span><span class="p">:</span><span class="s2">"http://chainup-oss.oss-cn-beijing.aliyuncs.com/saas/1565681771193.png"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"real_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"decimals"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"deposit_confirmation"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"explorer"</span><span class="p">:</span><span class="s2">"https://btc.com/"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_regex"</span><span class="p">:</span><span class="s2">"^(1|3)[a-zA-Z0-9]{24,36}$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_tag_regex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"support_memo"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"support_token"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-5'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency(Be sure to use the value returned by this field when calling the interface to withdraw coins, and any query interface)</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>String</td>
+<td>Required</td>
+<td>currency icon</td>
+</tr>
+<tr>
+<td>real_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Cryptocurrency on-chain names</td>
+</tr>
+<tr>
+<td>decimals</td>
+<td>String</td>
+<td>Required</td>
+<td>Decimals</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Required</td>
+<td>Full name of coin</td>
+</tr>
+<tr>
+<td>base_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Main Chain Coin Name</td>
+</tr>
+<tr>
+<td>contract_address</td>
+<td>String</td>
+<td>Required</td>
+<td>Contract Address</td>
+</tr>
+<tr>
+<td>deposit_confirmation</td>
+<td>String</td>
+<td>Required</td>
+<td>Deposit confirmation</td>
+</tr>
+<tr>
+<td>explorer</td>
+<td>String</td>
+<td>Required</td>
+<td>Explorer</td>
+</tr>
+<tr>
+<td>address_regex</td>
+<td>String</td>
+<td>Required</td>
+<td>Address regex</td>
+</tr>
+<tr>
+<td>address_tag_regex</td>
+<td>String</td>
+<td>Required</td>
+<td>Address tag regex</td>
+</tr>
+<tr>
+<td>support_memo</td>
+<td>String</td>
+<td>Required</td>
+<td>Whether memo is supported, 0 not supported 1 supported</td>
+</tr>
+<tr>
+<td>support_token</td>
+<td>String</td>
+<td>Required</td>
+<td>Whether to support token coins, 0 does not support 1 supports, only main chain coins have value, tokens are empty</td>
+</tr>
+</tbody></table>
+<h3 id='account-information-for-specified-user'>Account information for specified user</h3>
+<p>Search the user’s account according to the currency and user ID. In addition, if the merchant starts automatic collection, the user account will be transferred to the merchant’s collection account</p>
+<h4 id='http-request-7'>HTTP Request</h4>
+<p><code>GET/api/v2/account/getByUidAndSymbol</code></p>
+<h4 id='decrypted-request-parameters-6'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>vesion</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>Required</td>
+<td>user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"normal_balance"</span><span class="p">:</span><span class="s2">"2.99400066"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="s2">"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-6'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal_balance</td>
+<td>String</td>
+<td>Required</td>
+<td>normal account balance</td>
+</tr>
+<tr>
+<td>lock_balance</td>
+<td>String</td>
+<td>Required</td>
+<td>freeze account balance</td>
+</tr>
+<tr>
+<td>deposit_address</td>
+<td>String</td>
+<td>Required</td>
+<td>deposit_address</td>
+</tr>
+</tbody></table>
+<h3 id='balance-of-merchant-collection-account'>Balance of merchant collection account</h3>
+<p>After opening the automatic collection of merchant funds, the merchant can obtain the balance of merchant collection account through this interface</p>
+<h4 id='http-request-8'>HTTP Request</h4>
+<p><code>GET/api/v2/account/getCompanyBySymbol</code></p>
+<h4 id='decrypted-request-parameters-7'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>vesion</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"64.97599802"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-7'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>String</td>
+<td>Required</td>
+<td>collection account balance</td>
+</tr>
+</tbody></table>
+<h2 id='user-deposit-2'>User Deposit</h2><h3 id='synchronize-deposit-records'>Synchronize deposit records</h3>
+<p>Synchronized deposit records</p>
+<h4 id='http-request-9'>HTTP Request</h4>
+<p><code>GET/api/v2/billing/syncDepositList</code></p>
+<h4 id='decrypted-request-parameters-8'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>int</td>
+<td>Required</td>
+<td>returns 100 records greater than id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"1CfYiePwcf3mWhLBQH2ac35C7jmE2udQqH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539050731000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10596</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543483252000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45325</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.0000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"17m2GM8aRrrnxPt5JhYPJd4qUFqF8rJDop"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539065092000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10595</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543851222000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45332</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-8'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Required</td>
+<td>deposit unique id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>deposit user id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>deposit amount</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>change time</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>Required</td>
+<td>blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>Required</td>
+<td>number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Required</td>
+<td>deposit source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Required</td>
+<td>depositing account address</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Required</td>
+<td>0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker)</td>
+</tr>
+</tbody></table>
+<h3 id='batch-access-depositing-records'>Batch access depositing records</h3>
+<p>Batch access deposit records</p>
+<h4 id='http-request-10'>HTTP Request</h4>
+<p><code>GET/api/v2/billing/depositList</code></p>
+<h4 id='decrypted-request-parameters-9'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>encoding format, no special case, pass parameter UTF-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>interface version number, no special case, pass parameter v2</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>Required</td>
+<td>multiple top-up IDs separated by commas, up to 100 IDs</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0002000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"78d1edef3b3fd14365f88cf2d03e8c29ec49ac1a43cedde9e21d320b3268f4de"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0002000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xd609e050c3d573fb715431edbd36cc08eaa475f813de921026a65c0a96e8113e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-9'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Required</td>
+<td>depositing unique id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>depositing user id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>depositing amount</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>create time, timestamp</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>change time, timestamp</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>Required</td>
+<td>blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>Required</td>
+<td>number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Required</td>
+<td>deposit source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Required</td>
+<td>depositing account address</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Required</td>
+<td>0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker)</td>
+</tr>
+</tbody></table>
+<h3 id='nonsync-callback-notification-for-user-deposit'>Nonsync callback notification for user deposit</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Description:</th>
+<th>This interface only defines the interface specification, the specific interface needs to be implemented by the developer</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Interface address:</td>
+<td>The interface address is provided by the developer and can be configured on the platform by contacting the administrator</td>
+</tr>
+<tr>
+<td style="text-align: left">Request method:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-request-parameters-10'>Decrypted Request Parameters</h4>
+<p>Deposit Notice：</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>Required</td>
+<td>Notice type, deposit notice: deposit, withdrawal notice: withdraw</td>
+</tr>
+<tr>
+<td>notify_time</td>
+<td>string</td>
+<td>Required</td>
+<td>Notice time</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Required</td>
+<td>Deposit id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>Required</td>
+<td>Deposit user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>Required</td>
+<td>Deposit amount</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>Required</td>
+<td>Depositing address</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>string</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>string</td>
+<td>Required</td>
+<td>Revision time</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>Required</td>
+<td>Blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>string</td>
+<td>Required</td>
+<td>Number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Required</td>
+<td>0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker)</td>
+</tr>
+</tbody></table>
+<h4 id='response'>Response:</h4>
+<p>Return string: <code>SUCCESS</code> means SUCCESS, <code>FAILURE</code> means FAILURE (note that the return parameter does not need to be encrypted here)</p>
+<h3 id='collect-miner-fees'>Collect miner fees</h3>
+<p>The currency of account type needs to be collected after deposit. UTXO has no fees for collecting miners’ fees.</p>
+<h4 id='http-request-11'>HTTP Request</h4>
+<p><code>GET//api/v2/billing/syncMinerFeeList</code></p>
+<h4 id='decrypted-request-parameters-11'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>repuired</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>repuired</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>repuired</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>repuired</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>int</td>
+<td>repuired</td>
+<td>Return the data of 100 collected miner fee records greater than ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00111"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539050731000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543483252000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"txid_type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-10'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>repuired</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>repuired</td>
+<td>Collect unique ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>repuired</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>repuired</td>
+<td>Collection amount</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>repuired</td>
+<td>Collection fee</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>repuired</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>repuired</td>
+<td>Revision time</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>repuired</td>
+<td>Blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>repuired</td>
+<td>Number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>repuired</td>
+<td>0 to be confirmed, 1 success, 2 failed, 4 pending KYT verification, 5 pending manual review (KYT risk level too high), 6 Pending manual review (KYT Deposit Circuit Breaker)</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>repuired</td>
+<td>depositing to account address</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>repuired</td>
+<td>depositing sending address</td>
+</tr>
+<tr>
+<td>txid_type</td>
+<td>String</td>
+<td>repuired</td>
+<td>0 chain transaction, 1 union transfer transaction</td>
+</tr>
+<tr>
+<td>base_symbol</td>
+<td>String</td>
+<td>repuired</td>
+<td>Name of main chain currency</td>
+</tr>
+<tr>
+<td>contract_address</td>
+<td>String</td>
+<td>repuired</td>
+<td>Currency contract address</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>repuired</td>
+<td>email</td>
+</tr>
+</tbody></table>
+<h2 id='user-withdrawal-2'>User Withdrawal</h2><h3 id='initiate-a-withdraw'>Initiate a withdraw</h3>
+<p>If the withdrawal address is the internal address of the Alliance, it will not be linked; Otherwise, you need to chain up. In addition, in order to avoid illegal withdrawal requests, when the wallet service receives a withdrawal request from a third-party application, it will call the <code>Withdrawal Reconfirmation Interface</code> provided by the third party.</p>
+<h4 id='http-request-12'>HTTP Request</h4>
+<p><code>POST/api/v2/billing/withdraw</code></p>
+<h4 id='decrypted-request-parameters-12'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identification, up to 64 bits</td>
+</tr>
+<tr>
+<td>from_uid</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer out user ID</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer in the user address, memo type, use “_” For example:eos_24545</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal amount, including withdrawal service charge; The service charge needs to be configured in the background of the merchant</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal currency</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48680</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-11'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Required</td>
+<td>0 under review by risk control, 1 in payment, 2 audit rejection, 4 failed, 5 success, 6 cancelled , 7 pending KYT verification, 8 pending manual review (KYT risk level too high)</td>
+</tr>
+</tbody></table>
+<h3 id='second-confirmation-of-withdrawal-information'>Second confirmation of withdrawal information</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Description:</th>
+<th>After receiving a withdrawal request, the platform will call the secondary confirmation interface provided by the third party to confirm that the request is a withdrawal request normally initiated by the merchant. This interface only defines the interface specification, the specific interface needs to be implemented by the developer.</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Interface address:</td>
+<td>The interface address is provided by the developer and can be configured on the platform by contacting the administrator</td>
+</tr>
+<tr>
+<td style="text-align: left">Request method:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-request-parameters-13'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identity</td>
+</tr>
+<tr>
+<td>from_uid</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer out user ID</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer in user address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal amount, including withdrawal service charge; The service charge needs to be configured in the background of the merchant</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal currency</td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>Required</td>
+<td>Random check code. The third party returns this field as it is. The platform considers it successful</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"check_sum"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"12345678"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-12'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>Required</td>
+<td>Check in request parameter check_sum</td>
+</tr>
+<tr>
+<td>time</td>
+<td>String</td>
+<td>Optional</td>
+<td>time stamp</td>
+</tr>
+</tbody></table>
+<h3 id='asynchronous-callback-notification-of-user-withdrawal'>Asynchronous callback notification of user withdrawal</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Description:</th>
+<th>This interface only defines the interface specification, the specific interface needs to be implemented by the developer</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Interface address:</td>
+<td>The interface address is provided by the developer and can be configured on the platform by contacting the administrator</td>
+</tr>
+<tr>
+<td style="text-align: left">Request method:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-request-parameters-14'>Decrypted Request Parameters</h4>
+<p>Withdrawal notice：</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>Required</td>
+<td>Notice type, deposit notice: deposit, withdrawal notice: withdraw</td>
+</tr>
+<tr>
+<td>notify_time</td>
+<td>String</td>
+<td>Required</td>
+<td>Notice time</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>The withdrawal request_id corresponds to the request in the withdrawal interface id</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal amount</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of withdrawal service deposit</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Service fee for withdrawal</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of Mining handling charge</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Miner’s fee</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Required</td>
+<td>Depositing address</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>String</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>String</td>
+<td>Required</td>
+<td>Revision time</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>Required</td>
+<td>Blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>String</td>
+<td>Required</td>
+<td>Number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal status: 0 under review by risk control, 1 in payment, 2 audit rejection, 4 failed, 5 success, 6 cancelled , 7 pending KYT verification, 8 pending manual review (KYT risk level too high)</td>
+</tr>
+</tbody></table>
+<h4 id='response-2'>Response</h4>
+<p>Return string: <code>SUCCESS</code> means SUCCESS, <code>FAILURE</code> means FAILURE (note that the return parameter does not need to be encrypted here)</p>
+<h3 id='synchronize-withdrawal-records'>Synchronize withdrawal records</h3>
+<p>Batch access to withdrawal records</p>
+<h4 id='http-request-13'>HTTP Request</h4>
+<p><code>GET/api/v2/billing/syncWithdrawList</code></p>
+<h4 id='decrypted-request-parameters-15'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Return 100 deposit record data greater than ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10739</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48393</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-13'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request ID</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal amount</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of withdrawal service deposit</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Service fee for withdrawal</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of Mining handling charge</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Miner’s fee</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Revision time</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Required</td>
+<td>Source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Required</td>
+<td>Arrival address</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>Required</td>
+<td>Blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>Required</td>
+<td>Number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>saas_status</td>
+<td>int</td>
+<td>Required</td>
+<td>Platform audit status: 0 not approved, 1 reviewed, 2 rejected</td>
+</tr>
+<tr>
+<td>company_status</td>
+<td>int</td>
+<td>Required</td>
+<td>Merchant audit status: 0 not approved, 1 reviewed, 2 rejected</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal status: 0 under review by risk control, 1 in payment, 2 audit rejection, 4 failed, 5 success, 6 cancelled , 7 pending KYT verification, 8 pending manual review (KYT risk level too high)</td>
+</tr>
+</tbody></table>
+<h3 id='batch-access-to-withdrawal-records'>Batch access to withdrawal records</h3>
+<p>Batch access to withdrawal records</p>
+<h4 id='http-request-14'>HTTP Request</h4>
+<p><code>GET/api/v2/billing/withdrawList</code></p>
+<h4 id='decrypted-request-parameters-16'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>Required</td>
+<td>Multiple requests_id are separated by commas, up to 100 requests_id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10739</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48393</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-14'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request ID</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal user ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Withdrawal amount</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of withdrawal service deposit</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Service fee for withdrawal</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Currency of Mining handling charge</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>Required</td>
+<td>Miner’s fee</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Revision time</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Required</td>
+<td>Source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Required</td>
+<td>Arrival address</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>Required</td>
+<td>Blockchain transaction ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>Required</td>
+<td>Number of blockchain confirmations</td>
+</tr>
+<tr>
+<td>saas_status</td>
+<td>int</td>
+<td>Required</td>
+<td>Platform audit status</td>
+</tr>
+<tr>
+<td>company_status</td>
+<td>int</td>
+<td>Required</td>
+<td>Merchant audit status</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Required</td>
+<td>Withdrawal status: 0 under review by risk control, 1 in payment, 2 audit rejection, 4 failed, 5 success, 6 cancelled , 7 pending KYT verification, 8 pending manual review (KYT risk level too high)</td>
+</tr>
+</tbody></table>
+<h2 id='internal-transfer'>Internal Transfer</h2><h3 id='custody-merchant-transfer'>Custody Merchant Transfer</h3>
+<p>ChainUp Custody merchants transfer money to each other</p>
+<h4 id='http-request-15'>HTTP Request</h4>
+<p><code>POST/api/v2/account/transfer</code></p>
+<h4 id='decrypted-request-parameters-17'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>Long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identification, up to 64 bits</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer currency, Custody get currency name</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer quantity, including transfer fees</td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer in merchant, fill in merchant APPID at present</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>Required</td>
+<td>Remark Field</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"abcdesd"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-15'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>Required</td>
+<td>Unique voucher for transfer</td>
+</tr>
+</tbody></table>
+<h3 id='asynchronous-confirmation-of-transfer-information'>Asynchronous confirmation of transfer information</h3>
+<p>Transfer information is confirmed asynchronously</p>
+<h4 id='http-request-16'>HTTP Request</h4>
+<p><code>POST/same-with-withdraw-check-sum</code></p>
+<h4 id='decrypted-request-parameters-18'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>Long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identification, up to 64 bits</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer quantity, including transfer fees</td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>Required</td>
+<td>fill in merchant appid at present</td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>Required</td>
+<td>Random check code. The third party returns this field as it is. The platform considers it successful</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>Required</td>
+<td>Remark Field</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"check_sum"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-16'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>Required</td>
+<td>Random check code. The third party returns this field as it is. The platform considers it successful</td>
+</tr>
+</tbody></table>
+<h3 id='batch-query-transfer-records'>Batch query transfer records</h3><h4 id='http-request-17'>HTTP Request</h4>
+<p><code>POST/api/v2/account/transferList</code></p>
+<h4 id='decrypted-request-parameters-19'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>Required</td>
+<td>Request a unique identifier. Multiple identifiers are separated by English commas, up to 100</td>
+</tr>
+<tr>
+<td>ids_type</td>
+<td>String</td>
+<td>Required</td>
+<td>request_id：request ID (default); receipt: transfer voucher</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444444"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"remark"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444445"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"remark"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-17'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identification, up to 64 bits</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer quantity, including transfer fees</td>
+</tr>
+<tr>
+<td>from</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer out merchant, transfer out merchant <code>APPID</code></td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer in merchant, transfer in merchant <code>APPID</code></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Tripartite ID</td>
+</tr>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer voucher</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>Required</td>
+<td>Up to 32 characters</td>
+</tr>
+</tbody></table>
+<h3 id='synchronous-transfer-record'>Synchronous transfer record</h3>
+<p>Synchronize all transfer records (paging)</p>
+<h4 id='http-request-18'>HTTP Request</h4>
+<p><code>POST/api/v2/account/syncTransferList</code></p>
+<h4 id='decrypted-request-parameters-20'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Return the data of 100 transfer records greater than ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444444"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"remark"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444445"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"remark"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-18'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>Required</td>
+<td>Current timestamp</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>Required</td>
+<td>Coding format, no special case, transfer parameter <code>UTF-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>Required</td>
+<td>Interface version number, no special case,transfer parameter <code>v2</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Required</td>
+<td>Request unique identification, up to 64 bits</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Required</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer quantity, including transfer fees</td>
+</tr>
+<tr>
+<td>from</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer out merchant, transfer out merchant <code>APPID</code></td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer in merchant, transfer in merchant <code>APPID</code></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>Required</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Required</td>
+<td>Tripartite ID</td>
+</tr>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>Required</td>
+<td>Transfer voucher</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>Required</td>
+<td>Up to 32 characters</td>
+</tr>
+</tbody></table>
+<h1 id='error-code'>Error Code</h1>
+<table><thead>
+<tr>
+<th>code</th>
+<th>msg</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>success</td>
+</tr>
+<tr>
+<td>100001</td>
+<td>system error</td>
+</tr>
+<tr>
+<td>100004</td>
+<td>request parameter is not valid</td>
+</tr>
+<tr>
+<td>100005</td>
+<td>signature verification failed</td>
+</tr>
+<tr>
+<td>100007</td>
+<td>illegal IP</td>
+</tr>
+<tr>
+<td>100015</td>
+<td>merchant ID is invalid</td>
+</tr>
+<tr>
+<td>100016</td>
+<td>merchant information expired</td>
+</tr>
+<tr>
+<td>110004</td>
+<td>users are frozen and cannot withdraw money</td>
+</tr>
+<tr>
+<td>110023</td>
+<td>mobile phone number has been registered</td>
+</tr>
+<tr>
+<td>110037</td>
+<td>withdrawal address is at risk</td>
+</tr>
+<tr>
+<td>110055</td>
+<td>correct withdrawal address for</td>
+</tr>
+<tr>
+<td>110065</td>
+<td>user does not exist (used to obtain user balance, withdraw money, or transfer money)</td>
+</tr>
+<tr>
+<td>110078</td>
+<td>withdrawal or transfer amount less than the minimum transfer amount</td>
+</tr>
+<tr>
+<td>110087</td>
+<td>withdrawal or transfer amount is greater than the maximum transfer amount</td>
+</tr>
+<tr>
+<td>110088</td>
+<td>please do not repeat the request</td>
+</tr>
+<tr>
+<td>110089</td>
+<td>registered mobile phone number is incorrect</td>
+</tr>
+<tr>
+<td>110101</td>
+<td>user registration failed</td>
+</tr>
+<tr>
+<td>110161</td>
+<td>exceeds the maximum withdrawal support accuracy</td>
+</tr>
+<tr>
+<td>120202</td>
+<td>currency is not supported</td>
+</tr>
+<tr>
+<td>120206</td>
+<td>withdrawal second confirmation failed</td>
+</tr>
+<tr>
+<td>120402</td>
+<td>insufficient balance in withdrawal or transfer</td>
+</tr>
+<tr>
+<td>120403</td>
+<td>insufficient balance of withdrawal fee</td>
+</tr>
+<tr>
+<td>120404</td>
+<td>withdrawal or transfer amount is too small, less than or equal to the commission fee</td>
+</tr>
+<tr>
+<td>900006</td>
+<td>the user is at risk. Withdrawal is prohibited</td>
+</tr>
+<tr>
+<td>3040006</td>
+<td>cannot transfer money to itself</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

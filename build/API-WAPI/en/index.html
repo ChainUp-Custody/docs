@@ -1,0 +1,1231 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="images/favicon-5df21527.ico" rel="icon" type="image/ico" />
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-fac2324c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-2b633527.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;java&quot;]">
+    <div class="header">
+        <div class="header-left">
+            <img src="images/logo-055122b5.png" class="logo" alt="" />
+            <div class="header-line"></div>
+            <div class="header-nav-h5">
+                API-WAPI
+                <ul class="header-nav-list-h5">
+                        <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                        <li class="header-nav__item"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                        <li class="header-nav__item active"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+                </ul>
+            </div>
+            <ul class="header-nav">
+                    <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                    <li class="header-nav__item"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                    <li class="header-nav__item active"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+            </ul>
+        </div>
+        <a class="switch-language" href="/API-WAPI/zh/index.html">中文</a>
+    </div>
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#chainup-custody-wapi" class="toc-h1 toc-link" data-title="ChainUp Custody WAPI">ChainUp Custody WAPI</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#development-notes" class="toc-h2 toc-link" data-title="Development Notes">Development Notes</a>
+                  </li>
+                  <li>
+                    <a href="#account-preparation" class="toc-h2 toc-link" data-title="Account Preparation">Account Preparation</a>
+                  </li>
+                  <li>
+                    <a href="#interface-rules" class="toc-h2 toc-link" data-title="Interface rules">Interface rules</a>
+                  </li>
+                  <li>
+                    <a href="#domain-name-and-api-key" class="toc-h2 toc-link" data-title="Domain Name and API Key">Domain Name and API Key</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#production-environment" class="toc-h3 toc-link" data-title="Production Environment">Production Environment</a>
+                          </li>
+                          <li>
+                            <a href="#test-environment" class="toc-h3 toc-link" data-title="Test environment">Test environment</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#docking-solutions" class="toc-h1 toc-link" data-title="Docking Solutions">Docking Solutions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-deposit-address" class="toc-h2 toc-link" data-title="Register Deposit Address">Register Deposit Address</a>
+                  </li>
+                  <li>
+                    <a href="#deposits" class="toc-h2 toc-link" data-title="Deposits">Deposits</a>
+                  </li>
+                  <li>
+                    <a href="#withdrawals" class="toc-h2 toc-link" data-title="Withdrawals">Withdrawals</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk" class="toc-h1 toc-link" data-title="SDK">SDK</a>
+          </li>
+          <li>
+            <a href="#api-list" class="toc-h1 toc-link" data-title="API List">API List</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#register-address" class="toc-h2 toc-link" data-title="Register Address">Register Address</a>
+                  </li>
+                  <li>
+                    <a href="#available-address" class="toc-h2 toc-link" data-title="Available Address">Available Address</a>
+                  </li>
+                  <li>
+                    <a href="#deposit-notification" class="toc-h2 toc-link" data-title="Deposit Notification">Deposit Notification</a>
+                  </li>
+                  <li>
+                    <a href="#withdrawal" class="toc-h2 toc-link" data-title="Withdrawal">Withdrawal</a>
+                  </li>
+                  <li>
+                    <a href="#withdrawal-notification" class="toc-h2 toc-link" data-title="Withdrawal Notification">Withdrawal Notification</a>
+                  </li>
+                  <li>
+                    <a href="#internal-notification" class="toc-h2 toc-link" data-title="Internal Notification">Internal Notification</a>
+                  </li>
+                  <li>
+                    <a href="#callback-withdrawals-interface" class="toc-h2 toc-link" data-title="Callback Withdrawals Interface">Callback Withdrawals Interface</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#error-code" class="toc-h1 toc-link" data-title="Error Code">Error Code</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='chainup-custody-wapi'>ChainUp Custody WAPI</h1>
+<p>Welcome to the <strong>ChainUp Custody</strong> platform. This document is used by the third-party technical team to add the self-developed mainchain to the ChainUp Custody for alliance members.</p>
+
+<p>Note:  When third-party technical team using WAPI to access the the server and keeping private keys,  ChainUp Custody is not responsible for the security of assets. Therefore, the third-party technical team must establish a complete wallet private key custody system and API private key custody system</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='development-notes'>Development Notes</h2>
+<p><strong>The Role of Public and Private Keys</strong></p>
+
+<p><strong>Party A</strong> is a third-party public chain docking party</p>
+
+<p><strong>Party B</strong> is the ChainUp Custody BaaS Cloud</p>
+
+<p><strong>The Role of Public and Private Keys</strong>： Party A needs to generate a pair of public and private keys in advance when registering the WAPI interface. The public key (rsa_third_pub) is provided to Party B. The private key is kept by yourself, and the private key is not disclosed to anyone. When requesting WAPI services, Party A shall encrypt the request parameters with Party B’s public key and sign the original data after MD5 with Party A’s private key. Upon receiving the request, Party B shall decrypt the data with Party B’s private key and check the original data after MD5 with Party A’s public key</p>
+<h2 id='account-preparation'>Account Preparation</h2><h4 id='developers-need-to-prepare-the-following-information'>Developers need to prepare the following information：</h4>
+<p>1）Generate a pair of public and private keys, and provide the public key to the platform；</p>
+
+<p>2）Third-party application server IP；</p>
+
+<p><strong>Contact the relevant people of the platform and provide the above two types of information. The platform prepares WAPI docking information for you, and provides you with the following information：</strong></p>
+
+<p>1）The unique identifier for third-party docking: app_id；</p>
+
+<p>2）WAPI public key：rsa_wapi_pub。</p>
+<h4 id='rsa-public-and-private-key-generation-address'>RSA public and private key generation address:</h4>
+<p>http://www.metools.info/code/c80.html</p>
+
+<p>Password length：<code>2048</code></p>
+
+<p>Key format：<code>PKCS#8</code></p>
+<h2 id='interface-rules'>Interface rules</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Transmission method:</th>
+<th>https (the test environment temporarily uses http)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Signature Field:</td>
+<td>Except for the <code>sign</code>  field, all other required fields need to be signed</td>
+</tr>
+<tr>
+<td style="text-align: left">The response status code:</td>
+<td><code>0</code>indicating successful processing; <strong>non-zero</strong>, indicating request error or system abnormality</td>
+</tr>
+<tr>
+<td style="text-align: left">Request Address:</td>
+<td>domain name + interface address</td>
+</tr>
+<tr>
+<td style="text-align: left">Encryption Algorithm:</td>
+<td>Java Encryption and Decryption Demo：<a href="https://github.com/HiCoinCom/WAPIDemo.git">https://github.com/HiCoinCom/WAPIDemo.git</a></td>
+</tr>
+</tbody></table>
+<h2 id='domain-name-and-api-key'>Domain Name and API Key</h2><h3 id='production-environment'>Production Environment</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Domain Name:</th>
+<th><a href="https://baas.waas.group/">https://baas.waas.group</a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">app_id:</td>
+<td>To be assigned</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_wallet_pub:</td>
+<td>To be allocated</td>
+</tr>
+</tbody></table>
+<h3 id='test-environment'>Test environment</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Domain Name:</th>
+<th><a href="http://baas.dw2nn.com">http://baas.dw2nn.com</a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>app_id:</strong></td>
+<td>8ee3794a7e5bd188c6af4fd7dda191f3</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>rsa_third_pub</strong></td>
+<td>refer to the <code>code</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>rsa_third_prv</strong></td>
+<td>refer to the <code>code</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>rsa_baas_pub</strong></td>
+<td>refer to the <code>code</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>rsa_third_pub</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0P18OcSRr2mnWAWwn6hWlKCyChBb8bF6X1gHiFfdyejHmPnni60j6uKEHhAB7L9xyCnvpP44Wzp7txjNfYF</span><span class="o">+</span><span class="mi">8</span><span class="nc">SiaFUVP5rawisiHrcUHxvKEInVdyjeE6dUnDvr7acFTmF0JZCbfzDA38l5WznDV3AWESOm7Gd</span><span class="o">/</span><span class="mi">0</span><span class="nc">NP7rCiZDbn</span><span class="o">+</span><span class="mi">2</span><span class="n">uOlrGqsYSi4cLwCnoqREQ</span><span class="o">+/</span><span class="nc">Z7rNug8l3Vlqvvx6YVj0xxWi</span><span class="o">/</span><span class="mi">4</span><span class="n">qz8yXlZV8aBAN1rshAkaTVbkWjij6uSJ3lMHY99B5DqnF</span><span class="o">/</span><span class="mi">5</span><span class="nc">EAhYYc</span><span class="o">+</span><span class="nc">GTgAML5KAHfHYlF</span><span class="o">+</span><span class="nc">Y9GDlKZoBaixIK</span><span class="o">/</span><span class="nc">X3HtgBOaIIDaCZFLSQaO36ghIEpyjnepgXBQIDAQAB</span>
+</code></pre></div>
+<blockquote>
+<p>rsa_third_prv</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ</span><span class="o">/</span><span class="nc">Xw5xJGvaadYBbCfqFaUoLIKEFvxsXpfWAeIV93J6MeY</span><span class="o">+</span><span class="n">eeLrSPq4oQeEAHsv3HIKe</span><span class="o">+</span><span class="n">k</span><span class="o">/</span><span class="n">jhbOnu3GM19gX7xKJoVRU</span><span class="o">/</span><span class="n">mtrCKyIetxQfG8oQidV3KN4Tp1ScO</span><span class="o">+</span><span class="n">vtpwVOYXQlkJt</span><span class="o">/</span><span class="nc">MMDfyXlbOcNXcBYRI6bsZ3</span><span class="o">/</span><span class="no">Q0</span><span class="o">/</span><span class="n">usKJkNuf7a46WsaqxhKLhwvAKeipERD79nus26DyXdWWq</span><span class="o">+/</span><span class="nc">HphWPTHFaL</span><span class="o">/</span><span class="n">irPzJeVlXxoEA3WuyECRpNVuRaOKPq5IneUwdj30HkOqcX</span><span class="o">/</span><span class="n">kQCFhhz4ZOAAwvkoAd8diUX5j0YOUpmgFqLEgr9fce2AE5oggNoJkUtJBo7fqCEgSnKOd6mBcFAgMBAAECggEAcpe7aPWGqHc3QgWErlagesiONwR3VdRp9CORpcoAG7ke0JuewbDDNATWSqGeXJEws3</span><span class="o">+</span><span class="nc">DHqYigqtTsLbR3hKGZ3dK3YTu5eOgc8i21KpntEe</span><span class="o">/+</span><span class="n">iD</span><span class="o">+</span><span class="n">t2Wv5INy8jzeZEOUMcQ55QeHyS9bTfM6h</span><span class="o">+</span><span class="nc">HI8ea4fT5j0DFDd1ebyynl6YzyGYy4kccMSvfUhkY2NVbLH1EKCoNXDO1fOyxMZ2McNvDwFhmm9</span><span class="o">+</span><span class="nc">RIWxgD</span><span class="o">+</span><span class="nc">Jqso</span><span class="o">/</span><span class="n">t</span><span class="o">+</span><span class="n">eAFddkxZHzMKgvmvnS3ov5H</span><span class="o">+</span><span class="mi">0</span><span class="n">dbhf</span><span class="o">/</span><span class="nc">NGGinzv697YVF2</span><span class="o">+</span><span class="mi">8</span><span class="n">iRFS9</span><span class="o">+</span><span class="n">dpcPGHKN8Pxfd</span><span class="o">+</span><span class="n">dASIAxAkRP</span><span class="o">+</span><span class="n">suLYAfBdnP5SdHP7PZTp0vHokgM1QKBgQDpagBKVZXfdwz2DGcVLHJezyhx0ND9ToMyW75LwAZqtCB5pStltnM1kCioQGqaIuvhMKBCq3EEAT7kxzJA6</span><span class="o">/</span><span class="mi">1</span><span class="nc">QFFwqaDjCIrhr0rtxcfzv027B5u8YFSr4Fe3Pk8Osrf3</span><span class="o">+</span><span class="nc">Vh7DVYBnerknmYOn3D1sYxp0LCAuO3r6ilbA</span><span class="o">/</span><span class="n">mOdFwKBgQDlNng2UPqmJ</span><span class="o">/</span><span class="mi">8</span><span class="n">ba4IuQIBijWfFnW3wmq5mQh4ZjZzt4WSzHhU8lUCt</span><span class="o">+</span><span class="nc">U28HzKoziuKjUriOJJFkjqT</span><span class="o">+</span><span class="nc">HlMgpeTgKDsHBDfioo40TcPhH29pdb0D340uNlQ93So6r5NNbMazmr</span><span class="o">/</span><span class="n">lBTvXNfFv7IMIhATuQWmBhV9AkbDHiSTQOoWQwKBgQDn8IhXVVJ3WxKLEOoB9Ue1BH85EfoKK9Fc4iNnnGoD7</span><span class="o">/</span><span class="n">fxSPqluLYk</span><span class="o">/</span><span class="nc">JoaDuCfR6JDBBHMDhZgl2hK59H9B0ORJporHaOA7gV6R04xvcZM</span><span class="o">/</span><span class="n">jmp</span><span class="o">/</span><span class="n">nOJ58bp</span><span class="o">/</span><span class="nc">MhyI3AmkEK7UBKDodvVd</span><span class="o">/</span><span class="nc">Ky8e4MiGKU6Kmp1QspRbu</span><span class="o">/</span><span class="n">aGYqot6TgwKBgQCPszF0ZBpwFv0xtJn940RaBOr9EnC9ekxCIct7G7Q50qfuP7ryq2PMblLU0P5SpEbZ6zD6WJsjcMS2xf1OAUWEHQ1GWWYer11ut4N8gATQ4</span><span class="o">+</span><span class="n">q6QghOh2D</span><span class="o">/</span><span class="nc">CNSjnd</span><span class="o">/</span><span class="nc">GyhbKhITCTJU</span><span class="o">/</span><span class="nc">Z4aDHGZEgwpvQv0OlBverpGse</span><span class="o">/</span><span class="nc">ZUN0tKvwKBgQDme1R9fsRKrlNhXe1wXs8qDw10KOfAa9TC04RRlY3p9rLa6ZQhDrUQEHBZLeKOgWeiPHULt5emLcRlqm50mMBHHNoN61kHDIN</span><span class="o">+</span><span class="nc">EdxZXmJnICD1TzD0P6yj</span><span class="o">+</span><span class="nc">VjdbmGcz</span><span class="o">/</span><span class="n">mQ1</span><span class="o">+</span><span class="nc">Msf0RT</span><span class="o">+/</span><span class="nc">KGvjX</span><span class="o">+</span><span class="nc">GenjpYiTQc7n2CwYypnN9ru8KA</span>
+</code></pre></div>
+<blockquote>
+<p>rsa_baas_pub</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvnCiDcpMVlNuQN1cr</span><span class="o">+</span><span class="nc">Vg</span><span class="o">+</span><span class="nc">WMPIUihWmWkupA9oXdZf4LzWtqv2SRlP3tIs</span><span class="o">+</span><span class="n">tWG4Df3FuuZ0W2CIxhtJNnWHIY146m</span><span class="o">/</span><span class="n">teif</span><span class="o">+</span><span class="nc">H2v9G3GeY</span><span class="o">+</span><span class="no">P</span><span class="o">+</span><span class="n">z</span><span class="o">/</span><span class="nc">LqGFyV0nLYJzs4WQZa3</span><span class="o">/</span><span class="nc">RL0rh2IlVlfs1eHod</span><span class="o">+</span><span class="nc">PX99o</span><span class="o">+</span><span class="nc">Aog80kmUx8NF6ExsoO4qI9y3wW8CH</span><span class="o">+</span><span class="mi">5</span><span class="n">tGVqHvq3NaD3jHyS3DYrRztfxuJw9k</span><span class="o">/</span><span class="nc">YTfZ6rDJVXmD7onqvZe2leSe5h</span><span class="o">/</span><span class="n">ehu321y7nB7</span><span class="o">+</span><span class="mi">2</span><span class="n">uTJ76i1YOmIrEBW8KupwQUU1JuZKvMCzcLowLjIOYysU8JfpxXH</span><span class="o">+</span><span class="no">MQIDAQAB</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Token Name</th>
+<th>Accuracy</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memo</td>
+<td>SRM</td>
+<td>8 decimals</td>
+</tr>
+<tr>
+<td>non-memo</td>
+<td>VLX</td>
+<td>8 decimals</td>
+</tr>
+</tbody></table>
+
+<p>Note： <code>rsa_third_prv</code> is a third-party application private key, which is mainly used to encrypt request parameters. If it is a production environment, <code>rsa_third_prv</code> is generated by the developer, and then the corresponding public key is provided to the platform. In order to simplify the developer connection process in the test environment, a set of third-party public and private keys and token names are directly provided here for developers to quickly connect.</p>
+<h1 id='docking-solutions'>Docking Solutions</h1>
+<p>In order to allow public chain developers to access the <strong>ChainUp Custody</strong> more conveniently and quickly, we provide BaaS services to meet the public chain docking needs. Based on the docking experience of past customers, the platform has sorted out a set of docking solutions. details as follows:</p>
+
+<p><strong>The whole Process is divided into three steps：</strong></p>
+
+<ol>
+<li> Register A Deposit Address</li>
+<li> Make Deposits</li>
+<li> Make Withdrawals</li>
+</ol>
+<h4 id='the-overall-docking-process-is-as-follows'>The overall docking process is as follows</h4>
+<p><a href="https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png"><img src="https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png" alt="../_images/wapi_interact_process.png" /></a></p>
+<h3 id='register-deposit-address'>Register Deposit Address</h3>
+<p>1）The number of available addresses can be queried by currency name. Note: (A maximum of <code>100</code>addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. Interface address: <code>/api/v1/address/available</code>)</p>
+
+<p>2）Push the currency name and address list to the BaaS platform, after the response is successful, and the representative registered address is successful (interface address:<code>/api/v1/address/register</code>) Note: If the type of registered currency is memo, the same address Only one registration is allowed.。</p>
+<h3 id='deposits'>Deposits</h3>
+<p>1）The third-party wallet detects that the address has a deposit transaction, initiates a deposit notification, and informs the BaaS system (interface address: <code>/api/v1/deposit/notify</code>)</p>
+
+<p>2）BaaS returns the notification result</p>
+<h3 id='withdrawals'>Withdrawals</h3>
+<p>1）The user initiates a withdrawal request in the Custody system</p>
+
+<p>2）Main chain developers pull the list of withdrawals (interface address:<code>/api/v1/withdraw/consume</code>)</p>
+
+<p>3）After the chain is successfully connected, BaaS will be notified of the withdrawal result, and the BaaS interface will respond (interface address: <code>/api/v1/withdraw/notify</code>)</p>
+
+<p>Note: In case of special circumstances, the withdrawal request can be withdrawn and a notification will be pushed to the BaaS interface (interface address: <code>/api/v1/withdraw/cancel</code>)</p>
+<h1 id='sdk'>SDK</h1>
+<p>To meet the diverse business needs of our customers, ChainUp Custody supports two docking methods:  <strong>SDK and API;</strong></p>
+<h4 id='sdk-support-for-java-and-node'>SDK：Support for Java and node</h4>
+<p><strong>Java SDK address</strong>：<a href="https://github.com/HiCoinCom/java-wapi-sdk">GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk</a></p>
+
+<p><strong>Node SDK address</strong>：<a href="https://github.com/HiCoinCom/js-wapi-sdk">GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk</a></p>
+<h1 id='api-list'>API List</h1><h2 id='overview'>Overview</h2>
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">POST</span><span class="w"> </span><span class="err">/api/v</span><span class="mi">1</span><span class="err">/address/available</span><span class="w">
+
+</span><span class="err">body</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ee3794a7e5bd188c6af4fd7dda191f3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1616539980</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qVQZ0W1vl6Mh4wMadMHR1XM8N-ZD9xlQhhiIrPlbmmyoDDAgxqwYbtFZBAvPswX4t_6N46ZOFcGuH2K6abiqpl4FtizBkbC3MUlZ6LYU4EPtay_nh6wF97L5jrs7-Qjw5SrFsHTDY4j7mKUXOPrQWrSYAU6QQy6NHjNHazjo592HbG-Cbso_wDOwRDMsLtc4cj6ZxYwjXwYlpkMTK-l_J1iHE16YTI3WyH0fSvNXc3423h5rbJ8UyFPfHLVO433yMnsoexj1KG1oLKlAlrv-t8sIw1A-KBSFTs0o6wuqpBNSLGvH0vh-iAtBJarhcaxdfZG1L8XnYDUAlgKHNzECAW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wYEom2ihnpZRcI0PeJKCwkwUcN_SZzWDm-QhIiScBVahdMATenUe8ssVqqouTp4PBEStDi3tsUAHnBXLEFFeLDugqrffhQTLKYB2sN3stxOAP_9PO6ucUI-ck_eOzuOVq4ZXTxfdX6csf2o1yyZwtozcfik7ViL49ctTO2yjAdtO17BuAzdxSvyCm_ZyI0EANNglR029b4_TyrhT9gSmIeVT5Is_JJNaifoTmpWz0aB5LvjxojBjsMupExb3dXV9uykNybgjakbTZPwOx-ycZZrGvk8nLxWSaCTajAA3K_Kb4Wj40hn_XRH0X-_37MaxJKK-672wr7Ce94aY2UCiQQ"</span><span class="p">,</span><span class="w"> </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siGNQawtTmtEAj3C56tNSV_mOuMYzG_SYxIwaT0LlU-68_VVKRCS22b8mNykOmDs2zJh9PTl9Bzs-8Eo10rAivVajcBWBp6qw3RKimOURbYOL_EKYrbZyuJH84YoavCtm_r-pI16L3EsUFdzuyqRnSutRyuK15EKnxn4aYUbFa2oBMC9jK7sdONLx3KwQ8oolvOjQSrAFjhuL9rxxc5v-EXUDoamchH2NfF5-oYrNSkrMWpw01B9hU0AUSYktPeTuqWKCt3_sEEH8jYvx7N3joG-lHq6JlYIgC7HBMlFh_ZKfvE0dMCS4wT2-unejSrudM9kG9GgkiCSEp_jD0PacQ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='request-parameters'>Request Parameters:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customer ID</td>
+</tr>
+<tr>
+<td>time</td>
+<td>int64</td>
+<td>Yes</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>string</td>
+<td>Yes</td>
+<td>Use Party A’s private key to sign the plaintext MD5 of the requested data</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>Yes</td>
+<td>Use Party B’s public key to encrypt the requested data</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tBosL74tKsUMckzB0320OjvqJvjHip77PS-mz_BZ-xsKO5MVzPz-adw94NUZ_8FtdYSDTsnM6ZtiL3e7T-2c2U5fvc7QTMVoJfv6SPJOmk0yRz8qBvMfgUKdjwEkpZJyCRYtmdp9sSJsbtI_Ygkr0i4KtaxMA_yskkAXODJ0aewcT7_uS9OHn8pExoNXpQ-XEbHbrK-QF8Sl4BcWQXZ2YdsF4z8T4Q3hQcSG3AyLOb4z3YIU6ZyjMok7ZsWyYoiHpMjD9eXfIfgDYUOxdocbNCjqAx6EPrueupLtUXqjCDqUEuXP3jXLJ97c9rluiNhc3XVdvrCK0lEzxoLL44yWRHDUTCpPARSemsHWy9XOiAdWlS8SaQKUS-iprfKi9e6kUDSHYFSEoZSo44Vktv8AGmHod5IGwGLBtu1fIaTuun8ahRHSVyLoJf11rSgfAkIWDUnC-Fiilk0O0pw-5q0HQkhihYYx4TEr-JWV_Y080YGkBI-NQ4RILpIKr0r292BrR4GLsYWzxieOURXrbmx7NKCaD0JmERrUbV0rbUs0rvJRj6T-5MIW6FD7oFGhXbViuTAxyqtUNvatbDEGRXbnoUTC_Jv0TX9LM0S9coT0ozYLn_2L9psdUdNGPPGkd6d3KzFxxy_m_h3l4MHinEpFvVewBJeZP7q5Z5rNhzSmxtc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jJr0UmgMHPesDNfe4kw8KYR3zSDzBmoRlJ6O979tgdLx5JydY6jNMYrzWEn4sqqy4p6niw7HEnbOrgtSGBr4BtgoGpzaqs4hslADUGfDpn8FPO4Cb6DW09yMsQZVMp7m9NIybgVwPiro7fMDOxOlSA5M5Bzxth7UNIVwgtEEZCoS0pi1Elsl6xASc9N8VR5gkh55B9zt_NbOOQ_nN-p7s1_JwOFY4qXtfYDrAjjawpTdprvThfRYoX_Lm-YpoWQeED80yFMOOUbrl9SUG-j8opVlSX53IwvQbVvwPI2gnZIBJBfUYgICP6ffQZRulP1WllYwaWYLKUdamyyYAZgQIQ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-parameters'>Response Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>Yes</td>
+<td>Status code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>Yes</td>
+<td>Status information</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>Yes</td>
+<td>Use Party A’s public key to encrypt the returned data</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>string</td>
+<td>Yes</td>
+<td>Use Party B’s private key to sign the return data plaintext MD5</td>
+</tr>
+</tbody></table>
+<h2 id='register-address'>Register Address</h2>
+<p>Push address to the platform, this address is used to assign to users</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>POST/api/v1/address/register</code></p>
+<h4 id='decrypted-request-parameters'><strong>Decrypted Request Parameters</strong></h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token name</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>string</td>
+<td>Yes</td>
+<td>Address list (can be separated by commas, up to 100 at a time)</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>bool</td>
+<td>Yes</td>
+<td>Whether it is memo type</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-response-data-parameters'>Decrypted Response Data Parameters</h4>
+<p>None</p>
+
+<aside class="notice">
+A maximum of 100 addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. If the address is memo type, only one address needs to be registered, and the memo will be allocated by Party B</aside>
+<h2 id='available-address'>Available Address</h2>
+<p>Number of addresses that are available in the pushed addresses</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST/api/v1/address/available</code></p>
+<h4 id='please-note'>Please Note:</h4>
+<p>It is recommended that the script monitor the available quantity.</p>
+<h4 id='decrypted-request-parameters-2'><strong>Decrypted Request Parameters</strong></h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='decrypted-response-data-parameters-2'>Decrypted Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Yes</td>
+<td>Number of addresses available</td>
+</tr>
+</tbody></table>
+<h2 id='deposit-notification'>Deposit Notification</h2>
+<p>Deposit notification call interface</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>POST/api/v1/deposit/notify</code></p>
+<h4 id='please-note-2'>Please note:</h4>
+<ol>
+<li><p>For the same txid, different addresses, separate notifications</p></li>
+<li><p>For the same txid, the same address, and the amount of notification will be cumulative</p></li>
+<li><p>For the same deposit, please make sure that the request_id remains the same, otherwise it will cause repeated payments</p></li>
+<li><p>After request decryption, request_id will be included</p></li>
+</ol>
+<h4 id='decrypted-request-parameters-3'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique identifier for a single request</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>No</td>
+<td>from address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>Yes</td>
+<td>to address</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>Yes</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>Yes</td>
+<td>Confirmation number</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token name</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Hot wallet balance</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Yes</td>
+<td>1 =success; 0 = failure</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>No</td>
+<td>memo ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"12345"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='decrypted-response-data-parameters-3'>Decrypted Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>└─request_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique identifier for a single request</td>
+</tr>
+</tbody></table>
+<h2 id='withdrawal'>Withdrawal</h2>
+<p>Withdrawal Interface</p>
+<h4 id='http-request-4'>HTTP Request</h4>
+<p><code>POST/api/v1/withdraw/consume</code></p>
+<h4 id='please-note-3'>Please Note:</h4>
+<p>This interface can return the latest 20 data at most at a time.</p>
+<h4 id='decrypted-request-parameters-4'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">1.43232</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="mf">0.001</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='decrypted-response-data-parameters-4'>Decrypted Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trans_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token name</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>Yes</td>
+<td>Withdrawal to account address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Withdrawal Amount</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>No</td>
+<td>Withdraw memo</td>
+</tr>
+</tbody></table>
+<h2 id='withdrawal-notification'>Withdrawal Notification</h2>
+<p>Call interface for withdrawal notification</p>
+<h4 id='http-request-5'>HTTP Request</h4>
+<p><code>POST/api/v1/withdraw/consume</code></p>
+<h4 id='please-note-4'>Please note:</h4>
+<ol>
+<li><p>The same txid, different addresses, separate notifications</p></li>
+<li><p>The same txid, the same address, and the amount of notification will be cumulative</p></li>
+<li><p>For the same deposte, please make sure that the request_id remains the same, otherwise it will cause repeated payments</p></li>
+<li><p>After request decryption, request_id will be included</p></li>
+</ol>
+<h4 id='decrypted-request-parameters-5'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>No</td>
+<td>from address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>Yes</td>
+<td>to address</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>Yes</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td>trans_id</td>
+<td>int</td>
+<td>Yes</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Real miner fees</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>Yes</td>
+<td>Confirm the number. When the confirm passes 0, the status of the withdrawal record will be changed to “Paying”, and the withdrawal record will not be repeatedly obtained through the /api/v1/withdraw/consume interface</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Hot Wallet Balance</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>No</td>
+<td>to address memo ID</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-response-data-parameters-5'>Decrypted Response Data Parameters</h4>
+<p>None</p>
+<h2 id='internal-notification'>Internal Notification</h2>
+<p>Internal Notification Interface</p>
+<h4 id='http-request-6'>HTTP Request</h4>
+<p><code>POST/api/v1/internal/notify</code></p>
+<h4 id='please-note-5'>Please note:</h4>
+<p>This interface is called during transactions that consume miner fees except for cash withdrawal, mainly for deduction of miner fees, such as collection, transfer to cold wallet, etc.</p>
+<h4 id='decrypted-request-parameters-6'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>No</td>
+<td>from address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>Yes</td>
+<td>to address</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>Yes</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Real miner fees</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>Yes</td>
+<td>Confirmation Number</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>Hot wallet balance</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>No</td>
+<td>to address memo ID</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-response-data-parameters-6'>Decrypted Response Data Parameters</h4>
+<p>None</p>
+<h2 id='callback-withdrawals-interface'>Callback Withdrawals Interface</h2>
+<p>To callback withdrawals.</p>
+<h4 id='http-request-7'>HTTP Request</h4>
+<p><code>POST/api/v1/withdraw/cancel</code></p>
+<h4 id='please-note-6'>Please note:</h4>
+<p>Called when the withdrawal information is abnormal (address error, token error) and need to be called back.</p>
+<h4 id='decrypted-request-parameters-7'>Decrypted Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token Name</td>
+</tr>
+<tr>
+<td>trans_id</td>
+<td>int64</td>
+<td>Yes</td>
+<td>Withdrawal ID</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>Yes</td>
+<td>Call back reason</td>
+</tr>
+</tbody></table>
+<h4 id='decrypted-response-data-parameters-7'>Decrypted Response Data Parameters</h4>
+<p>None</p>
+<h1 id='error-code'>Error Code</h1>
+<table><thead>
+<tr>
+<th>code</th>
+<th>msg</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>success</td>
+</tr>
+<tr>
+<td>100001</td>
+<td>json decode error</td>
+</tr>
+<tr>
+<td>100002</td>
+<td>system error</td>
+</tr>
+<tr>
+<td>100003</td>
+<td>appid not register</td>
+</tr>
+<tr>
+<td>100004</td>
+<td>publicKey decode error</td>
+</tr>
+<tr>
+<td>100005</td>
+<td>appid already exist</td>
+</tr>
+<tr>
+<td>100006</td>
+<td>decode publicKey error</td>
+</tr>
+<tr>
+<td>100007</td>
+<td>privkey decode error</td>
+</tr>
+<tr>
+<td>100008</td>
+<td>verify signature error</td>
+</tr>
+<tr>
+<td>100009</td>
+<td>appid does not match symbol</td>
+</tr>
+<tr>
+<td>1000010</td>
+<td>address length exceeds 100</td>
+</tr>
+<tr>
+<td>1000011</td>
+<td>deposit notify fail</td>
+</tr>
+<tr>
+<td>1000012</td>
+<td>request_id txid not match</td>
+</tr>
+<tr>
+<td>1000013</td>
+<td>privkey hash not match</td>
+</tr>
+<tr>
+<td>1000014</td>
+<td>only one address is allowed</td>
+</tr>
+<tr>
+<td>1000015</td>
+<td>add token address is not allowed</td>
+</tr>
+<tr>
+<td>1000016</td>
+<td>address exceeds length</td>
+</tr>
+<tr>
+<td>1000017</td>
+<td>address not exists</td>
+</tr>
+<tr>
+<td>1000018</td>
+<td>finance notify error</td>
+</tr>
+<tr>
+<td>1000019</td>
+<td>appid is disabled</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

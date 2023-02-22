@@ -1,0 +1,1205 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="images/favicon-5df21527.ico" rel="icon" type="image/ico" />
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-fac2324c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-2b633527.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;java&quot;]">
+    <div class="header">
+        <div class="header-left">
+            <img src="images/logo-055122b5.png" class="logo" alt="" />
+            <div class="header-line"></div>
+            <div class="header-nav-h5">
+                API-WAPI
+                <ul class="header-nav-list-h5">
+                        <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                        <li class="header-nav__item"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                        <li class="header-nav__item active"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+                </ul>
+            </div>
+            <ul class="header-nav">
+                    <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                    <li class="header-nav__item"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                    <li class="header-nav__item active"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+            </ul>
+        </div>
+        <a class="switch-language" href="/API-WAPI/en/index.html">English</a>
+    </div>
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#chainup-custody-wapi" class="toc-h1 toc-link" data-title="ChainUp Custody WAPI">ChainUp Custody WAPI</a>
+          </li>
+          <li>
+            <a href="#4390a3fb6e" class="toc-h1 toc-link" data-title="前期准备">前期准备</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#72706ccb1b" class="toc-h2 toc-link" data-title="开发须知">开发须知</a>
+                  </li>
+                  <li>
+                    <a href="#e773b144a5" class="toc-h2 toc-link" data-title="账号准备">账号准备</a>
+                  </li>
+                  <li>
+                    <a href="#cb6baa1bd8" class="toc-h2 toc-link" data-title="接口规则">接口规则</a>
+                  </li>
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="域名及API密钥">域名及API密钥</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#7f152260df" class="toc-h3 toc-link" data-title="生产环境">生产环境</a>
+                          </li>
+                          <li>
+                            <a href="#7a4cfb2662" class="toc-h3 toc-link" data-title="测试环境">测试环境</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#06914006d1" class="toc-h1 toc-link" data-title="对接方案">对接方案</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#e4d635d90e" class="toc-h2 toc-link" data-title="注册充币地址">注册充币地址</a>
+                  </li>
+                  <li>
+                    <a href="#3a86198eeb" class="toc-h2 toc-link" data-title="用户充币">用户充币</a>
+                  </li>
+                  <li>
+                    <a href="#6f4f99292a" class="toc-h2 toc-link" data-title="用户提币">用户提币</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk" class="toc-h1 toc-link" data-title="SDK">SDK</a>
+          </li>
+          <li>
+            <a href="#api-2" class="toc-h1 toc-link" data-title="API文档">API文档</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ada01d8c4e" class="toc-h2 toc-link" data-title="统一说明">统一说明</a>
+                  </li>
+                  <li>
+                    <a href="#22f2a9e0df" class="toc-h2 toc-link" data-title="地址注册">地址注册</a>
+                  </li>
+                  <li>
+                    <a href="#676802e579" class="toc-h2 toc-link" data-title="剩余地址可用数量">剩余地址可用数量</a>
+                  </li>
+                  <li>
+                    <a href="#0a4c7aae08" class="toc-h2 toc-link" data-title="充值通知">充值通知</a>
+                  </li>
+                  <li>
+                    <a href="#fe12700c74" class="toc-h2 toc-link" data-title="提现拉取">提现拉取</a>
+                  </li>
+                  <li>
+                    <a href="#751ba0a652" class="toc-h2 toc-link" data-title="提现通知">提现通知</a>
+                  </li>
+                  <li>
+                    <a href="#f39d1dc3bf" class="toc-h2 toc-link" data-title="内部通知">内部通知</a>
+                  </li>
+                  <li>
+                    <a href="#38ee0ad075" class="toc-h2 toc-link" data-title="提币打回">提币打回</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#e08c1d4f9a" class="toc-h1 toc-link" data-title="错误码">错误码</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='chainup-custody-wapi'>ChainUp Custody WAPI</h1>
+<p>欢迎来到Custody资产托管平台，此文档用于第三方技术团队将自行开发的主链接入ChainUp Custody，以共享给联盟成员使用。</p>
+
+<p>注意：如何使用WAPI接入主链，服务器与私钥都由第三方技术团队负责保管，ChainUp Custody不对资产的安全负责。所以第三方技术团队务必需要建立完善的钱包私钥保管体系、API私钥保管体系。</p>
+<h1 id='4390a3fb6e'>前期准备</h1><h2 id='72706ccb1b'>开发须知</h2>
+<p><strong>公私钥作用</strong></p>
+
+<p><strong>甲方</strong>为 第三方公链对接方</p>
+
+<p><strong>乙方</strong>为 ChainUp Custody BaaS云</p>
+
+<p><strong>公私钥对作用</strong>： 甲方在注册WAPI接口时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给乙方，私钥自己保管，私钥请勿透露给任何人。甲方在请求WAPI服务时，通过乙方的公钥来加密请求参数，并用甲方的私钥对MD5后的数据原文进行签名，乙方接受到请求时，通过乙方的私钥解密数据，并用甲方的公钥对MD5后的数据原文进行验签</p>
+<h2 id='e773b144a5'>账号准备</h2><h4 id='37eae518c1'><strong>开发者准备如下信息：</strong></h4>
+<p>1）生成一对公私钥，将公钥提供给平台；</p>
+
+<p>2）第三方应用服务器IP；</p>
+<h4 id='wapi'><strong>联系平台相关人员，提供上述二类信息。平台为您准备WAPI对接信息，提供到您这边包括以下信息：</strong></h4>
+<p>1）第三方对接的唯一标识：<code>app_id</code>；</p>
+
+<p>2）WAPI公钥：<code>rsa_wapi_pub</code>。</p>
+<h4 id='rsa'><strong>RSA 公私钥生成地址:</strong></h4>
+<p>http://www.metools.info/code/c80.html</p>
+
+<p>密码长度：2048</p>
+
+<p>密钥格式：PKCS#8</p>
+<h2 id='cb6baa1bd8'>接口规则</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">传输方式:</th>
+<th>https(测试环境暂时使用 http)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">签名字段:</td>
+<td>除了<code>sign</code>字段，其他所有必填项都需要参与签名</td>
+</tr>
+<tr>
+<td style="text-align: left">响应状态码为:</td>
+<td><code>0</code>表示处理成功，非 0 表示请求错误或系统异常</td>
+</tr>
+<tr>
+<td style="text-align: left">请求地址:</td>
+<td>域名+接口地址</td>
+</tr>
+<tr>
+<td style="text-align: left">加密算法:</td>
+<td>Java 加解密Demo ： <a href="https://github.com/HiCoinCom/WAPIDemo.git">https://github.com/HiCoinCom/WAPIDemo.git</a></td>
+</tr>
+</tbody></table>
+<h2 id='api'>域名及API密钥</h2><h3 id='7f152260df'>生产环境</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">域名:</th>
+<th><a href="https://baas.waas.group/">https://baas.waas.group</a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">app_id:</td>
+<td>待分配</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_wallet_pub:</td>
+<td>待分配</td>
+</tr>
+</tbody></table>
+<h3 id='7a4cfb2662'>测试环境</h3>
+<p>域名 : <a href="http://baas.dw2nn.com">http://baas.dw2nn.com</a></p>
+
+<p><code>app_id</code> :  8ee3794a7e5bd188c6af4fd7dda191f3</p>
+
+<blockquote>
+<p>rsa_third_pub:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0P18OcSRr2mnWAWwn6hWlKCyChBb8bF6X1gHiFfdyejHmPnni60j6uKEHhAB7L9xyCnvpP44Wzp7txjNfYF+8SiaFUVP5rawisiHrcUHxvKEInVdyjeE6dUnDvr7acFTmF0JZCbfzDA38l5WznDV3AWESOm7Gd/0NP7rCiZDbn+2uOlrGqsYSi4cLwCnoqREQ+/Z7rNug8l3Vlqvvx6YVj0xxWi/4qz8yXlZV8aBAN1rshAkaTVbkWjij6uSJ3lMHY99B5DqnF/5EAhYYc+GTgAML5KAHfHYlF+Y9GDlKZoBaixIK/X3HtgBOaIIDaCZFLSQaO36ghIEpyjnepgXBQIDAQAB
+</code></pre></div>
+<blockquote>
+<p>rsa_third_prv:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>
+MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ/Xw5xJGvaadYBbCfqFaUoLIKEFvxsXpfWAeIV93J6MeY+eeLrSPq4oQeEAHsv3HIKe+k/jhbOnu3GM19gX7xKJoVRU/mtrCKyIetxQfG8oQidV3KN4Tp1ScO+vtpwVOYXQlkJt/MMDfyXlbOcNXcBYRI6bsZ3/Q0/usKJkNuf7a46WsaqxhKLhwvAKeipERD79nus26DyXdWWq+/HphWPTHFaL/irPzJeVlXxoEA3WuyECRpNVuRaOKPq5IneUwdj30HkOqcX/kQCFhhz4ZOAAwvkoAd8diUX5j0YOUpmgFqLEgr9fce2AE5oggNoJkUtJBo7fqCEgSnKOd6mBcFAgMBAAECggEAcpe7aPWGqHc3QgWErlagesiONwR3VdRp9CORpcoAG7ke0JuewbDDNATWSqGeXJEws3+DHqYigqtTsLbR3hKGZ3dK3YTu5eOgc8i21KpntEe/+iD+t2Wv5INy8jzeZEOUMcQ55QeHyS9bTfM6h+HI8ea4fT5j0DFDd1ebyynl6YzyGYy4kccMSvfUhkY2NVbLH1EKCoNXDO1fOyxMZ2McNvDwFhmm9+RIWxgD+Jqso/t+eAFddkxZHzMKgvmvnS3ov5H+0dbhf/NGGinzv697YVF2+8iRFS9+dpcPGHKN8Pxfd+dASIAxAkRP+suLYAfBdnP5SdHP7PZTp0vHokgM1QKBgQDpagBKVZXfdwz2DGcVLHJezyhx0ND9ToMyW75LwAZqtCB5pStltnM1kCioQGqaIuvhMKBCq3EEAT7kxzJA6/1QFFwqaDjCIrhr0rtxcfzv027B5u8YFSr4Fe3Pk8Osrf3+Vh7DVYBnerknmYOn3D1sYxp0LCAuO3r6ilbA/mOdFwKBgQDlNng2UPqmJ/8ba4IuQIBijWfFnW3wmq5mQh4ZjZzt4WSzHhU8lUCt+U28HzKoziuKjUriOJJFkjqT+HlMgpeTgKDsHBDfioo40TcPhH29pdb0D340uNlQ93So6r5NNbMazmr/lBTvXNfFv7IMIhATuQWmBhV9AkbDHiSTQOoWQwKBgQDn8IhXVVJ3WxKLEOoB9Ue1BH85EfoKK9Fc4iNnnGoD7/fxSPqluLYk/JoaDuCfR6JDBBHMDhZgl2hK59H9B0ORJporHaOA7gV6R04xvcZM/jmp/nOJ58bp/MhyI3AmkEK7UBKDodvVd/Ky8e4MiGKU6Kmp1QspRbu/aGYqot6TgwKBgQCPszF0ZBpwFv0xtJn940RaBOr9EnC9ekxCIct7G7Q50qfuP7ryq2PMblLU0P5SpEbZ6zD6WJsjcMS2xf1OAUWEHQ1GWWYer11ut4N8gATQ4+q6QghOh2D/CNSjnd/GyhbKhITCTJU/Z4aDHGZEgwpvQv0OlBverpGse/ZUN0tKvwKBgQDme1R9fsRKrlNhXe1wXs8qDw10KOfAa9TC04RRlY3p9rLa6ZQhDrUQEHBZLeKOgWeiPHULt5emLcRlqm50mMBHHNoN61kHDIN+EdxZXmJnICD1TzD0P6yj+VjdbmGcz/mQ1+Msf0RT+/KGvjX+GenjpYiTQc7n2CwYypnN9ru8KA
+</code></pre></div>
+<blockquote>
+<p>rsa_baas_pub:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmY3x4DVuU2NV90HaXZWnxGj7XvuBtwGT4bvnCiDcpMVlNuQN1cr+Vg+WMPIUihWmWkupA9oXdZf4LzWtqv2SRlP3tIs+tWG4Df3FuuZ0W2CIxhtJNnWHIY146m/teif+H2v9G3GeY+P+z/LqGFyV0nLYJzs4WQZa3/RL0rh2IlVlfs1eHod+PX99o+Aog80kmUx8NF6ExsoO4qI9y3wW8CH+5tGVqHvq3NaD3jHyS3DYrRztfxuJw9k/YTfZ6rDJVXmD7onqvZe2leSe5h/ehu321y7nB7+2uTJ76i1YOmIrEBW8KupwQUU1JuZKvMCzcLowLjIOYysU8JfpxXH+MQIDAQAB
+</code></pre></div>
+<table><thead>
+<tr>
+<th>类型</th>
+<th>币种名称</th>
+<th>精度</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memo</td>
+<td>SRM</td>
+<td>8位</td>
+</tr>
+<tr>
+<td>非memo</td>
+<td>VLX</td>
+<td>8位</td>
+</tr>
+</tbody></table>
+
+<p><strong>说明：</strong> <code>rsa_third_prv</code>为第三方应用私钥，主要用于加密请求参数。如果是生产环境，<code>rsa_third_prv</code>由开发者生成，然后将对应的公钥提供给平台。测试环境为了简化开发者对接流程，此处直接提供了一套第三方的公私钥及币种名称，便于开发者快速对接。</p>
+<h1 id='06914006d1'>对接方案</h1>
+<p>为了让公链接入者更便捷、快速的接入ChainUp Custody，我们提供了BaaS服务，以满足公链对接需求，平台基于过往客户的对接经验，梳理了一套对接方案。具体如下：</p>
+
+<p>整个方案共分三个流程：</p>
+
+<p>1、注册充币地址</p>
+
+<p>2、用户充币</p>
+
+<p>3、用户提币</p>
+<h4 id='c930504af9'>整体对接流程如下</h4>
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png" alt="../_images/wapi_interact_process.png" /></a></p>
+<h3 id='e4d635d90e'>注册充币地址</h3>
+<p>1）可通过币种名称查询可用地址数量 注：（每次向Custody推送地址条数上限为<code>100</code>条，每次推送时会检查Custody剩余的地址可用数是否大于<code>5000</code>，如果有5000个地址没有被使用，则不允许注册；接口地址：<code>/api/v1/address/available</code>）</p>
+
+<p>2）向BaaS平台推送币种名称和地址列表，响应成功后及代表注册地址成功, 接口地址：<code>/api/v1/address/register</code>。 注：若注册币种的类型为memo类型，则同一个地址只允许注册一次。</p>
+<h3 id='3a86198eeb'>用户充币</h3>
+<p>1）第三方钱包监测到地址有充币交易,发起充值通知，通知BaaS系统,  接口地址：<code>/api/v1/deposit/notify</code></p>
+
+<p>2）BaaS返回通知结果</p>
+<h3 id='6f4f99292a'>用户提币</h3>
+<p>1）用户在Custody系统发起提币请求</p>
+
+<p>2）主链开发者拉取提币列表（<strong>接口地址：</strong><code>/api/v1/withdraw/consume</code>）</p>
+
+<p>3）上链成功后，向BaaS通知提现结果,BaaS接口响应（*<em>接口地址: *</em><code>/api/v1/withdraw/notify</code>）</p>
+
+<p>注：如遇特殊情况可以撤销提币请求，向BaaS接口推送通知（<strong>接口地址：</strong><code>/api/v1/withdraw/cancel</code>）</p>
+<h1 id='sdk'>SDK</h1>
+<p>为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：<strong>SDK与API</strong> </p>
+<h4 id='sdk-java-node'>SDK：支持java和node</h4>
+<p><strong>Java SDK地址</strong>：<a href="https://github.com/HiCoinCom/java-wapi-sdk">GitHub - HiCoinCom/java-wapi-sdk: bass wapi java sdk</a></p>
+
+<p><strong>Node SDK地址</strong>：<a href="https://github.com/HiCoinCom/js-wapi-sdk">GitHub - HiCoinCom/js-wapi-sdk: chainup wapi sdk</a></p>
+<h1 id='api-2'>API文档</h1><h2 id='ada01d8c4e'>统一说明</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">POST</span><span class="w"> </span><span class="err">/api/v</span><span class="mi">1</span><span class="err">/address/available</span><span class="w">
+
+</span><span class="err">body</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ee3794a7e5bd188c6af4fd7dda191f3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1616539980</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qVQZ0W1vl6Mh4wMadMHR1XM8N-ZD9xlQhhiIrPlbmmyoDDAgxqwYbtFZBAvPswX4t_6N46ZOFcGuH2K6abiqpl4FtizBkbC3MUlZ6LYU4EPtay_nh6wF97L5jrs7-Qjw5SrFsHTDY4j7mKUXOPrQWrSYAU6QQy6NHjNHazjo592HbG-Cbso_wDOwRDMsLtc4cj6ZxYwjXwYlpkMTK-l_J1iHE16YTI3WyH0fSvNXc3423h5rbJ8UyFPfHLVO433yMnsoexj1KG1oLKlAlrv-t8sIw1A-KBSFTs0o6wuqpBNSLGvH0vh-iAtBJarhcaxdfZG1L8XnYDUAlgKHNzECAW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wYEom2ihnpZRcI0PeJKCwkwUcN_SZzWDm-QhIiScBVahdMATenUe8ssVqqouTp4PBEStDi3tsUAHnBXLEFFeLDugqrffhQTLKYB2sN3stxOAP_9PO6ucUI-ck_eOzuOVq4ZXTxfdX6csf2o1yyZwtozcfik7ViL49ctTO2yjAdtO17BuAzdxSvyCm_ZyI0EANNglR029b4_TyrhT9gSmIeVT5Is_JJNaifoTmpWz0aB5LvjxojBjsMupExb3dXV9uykNybgjakbTZPwOx-ycZZrGvk8nLxWSaCTajAA3K_Kb4Wj40hn_XRH0X-_37MaxJKK-672wr7Ce94aY2UCiQQ"</span><span class="p">,</span><span class="w"> </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siGNQawtTmtEAj3C56tNSV_mOuMYzG_SYxIwaT0LlU-68_VVKRCS22b8mNykOmDs2zJh9PTl9Bzs-8Eo10rAivVajcBWBp6qw3RKimOURbYOL_EKYrbZyuJH84YoavCtm_r-pI16L3EsUFdzuyqRnSutRyuK15EKnxn4aYUbFa2oBMC9jK7sdONLx3KwQ8oolvOjQSrAFjhuL9rxxc5v-EXUDoamchH2NfF5-oYrNSkrMWpw01B9hU0AUSYktPeTuqWKCt3_sEEH8jYvx7N3joG-lHq6JlYIgC7HBMlFh_ZKfvE0dMCS4wT2-unejSrudM9kG9GgkiCSEp_jD0PacQ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='2eb6f47757'>请求参数:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>string</td>
+<td>是</td>
+<td>客户标识</td>
+</tr>
+<tr>
+<td>time</td>
+<td>int64</td>
+<td>是</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>string</td>
+<td>是</td>
+<td>使用甲方私钥对请求数据明文MD5后的签名</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>是</td>
+<td>使用乙方公钥对请求数据的加密</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tBosL74tKsUMckzB0320OjvqJvjHip77PS-mz_BZ-xsKO5MVzPz-adw94NUZ_8FtdYSDTsnM6ZtiL3e7T-2c2U5fvc7QTMVoJfv6SPJOmk0yRz8qBvMfgUKdjwEkpZJyCRYtmdp9sSJsbtI_Ygkr0i4KtaxMA_yskkAXODJ0aewcT7_uS9OHn8pExoNXpQ-XEbHbrK-QF8Sl4BcWQXZ2YdsF4z8T4Q3hQcSG3AyLOb4z3YIU6ZyjMok7ZsWyYoiHpMjD9eXfIfgDYUOxdocbNCjqAx6EPrueupLtUXqjCDqUEuXP3jXLJ97c9rluiNhc3XVdvrCK0lEzxoLL44yWRHDUTCpPARSemsHWy9XOiAdWlS8SaQKUS-iprfKi9e6kUDSHYFSEoZSo44Vktv8AGmHod5IGwGLBtu1fIaTuun8ahRHSVyLoJf11rSgfAkIWDUnC-Fiilk0O0pw-5q0HQkhihYYx4TEr-JWV_Y080YGkBI-NQ4RILpIKr0r292BrR4GLsYWzxieOURXrbmx7NKCaD0JmERrUbV0rbUs0rvJRj6T-5MIW6FD7oFGhXbViuTAxyqtUNvatbDEGRXbnoUTC_Jv0TX9LM0S9coT0ozYLn_2L9psdUdNGPPGkd6d3KzFxxy_m_h3l4MHinEpFvVewBJeZP7q5Z5rNhzSmxtc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jJr0UmgMHPesDNfe4kw8KYR3zSDzBmoRlJ6O979tgdLx5JydY6jNMYrzWEn4sqqy4p6niw7HEnbOrgtSGBr4BtgoGpzaqs4hslADUGfDpn8FPO4Cb6DW09yMsQZVMp7m9NIybgVwPiro7fMDOxOlSA5M5Bzxth7UNIVwgtEEZCoS0pi1Elsl6xASc9N8VR5gkh55B9zt_NbOOQ_nN-p7s1_JwOFY4qXtfYDrAjjawpTdprvThfRYoX_Lm-YpoWQeED80yFMOOUbrl9SUG-j8opVlSX53IwvQbVvwPI2gnZIBJBfUYgICP6ffQZRulP1WllYwaWYLKUdamyyYAZgQIQ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='75d7c3d973'>响应参数:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>是</td>
+<td>状态码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>是</td>
+<td>状态信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>是</td>
+<td>使用甲方公钥对返回数据的加密</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>string</td>
+<td>是</td>
+<td>使用乙方私钥对返回数据明文MD5后的签名</td>
+</tr>
+</tbody></table>
+<h2 id='22f2a9e0df'>地址注册</h2>
+<p>推送地址给平台，此地址用于分配给用户</p>
+<h4 id='http'>HTTP请求</h4>
+<p><code>POST/api/v1/address/register</code></p>
+
+<aside class="notice">每次向Custody推送地址条数上限为100条，每次推送时会检查Custody剩余的地址可用数是否大于5000，如果有5000个地址没有被使用，则不允许注册；如果地址是memo类型，只需注册一个地址，memo由乙方分配</aside>
+<h4 id='data'><strong>请求参数data解密之后数据结构:</strong></h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>string</td>
+<td>是</td>
+<td>地址列表（可以以逗号分隔，单次最多100个）</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>bool</td>
+<td>是</td>
+<td>是否为memo类型</td>
+</tr>
+</tbody></table>
+<h4 id='data-2'>响应参数data解密之后数据结构:</h4>
+<p>无</p>
+<h2 id='676802e579'>剩余地址可用数量</h2>
+<p>推送的地址中还有多少可用地址, 建议脚本监控可用数量。</p>
+<h4 id='http-2'>HTTP请求</h4>
+<p><code>POST/api/v1/address/available</code></p>
+<h4 id='data-3'><strong>请求参数data解密之后数据结构:</strong></h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-4'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>是</td>
+<td>地址可用数量</td>
+</tr>
+</tbody></table>
+<h2 id='0a4c7aae08'>充值通知</h2>
+<p>充值通知调用接口</p>
+<h4 id='http-3'>HTTP请求</h4>
+<p><code>POST/api/v1/deposit/notify</code></p>
+<h4 id='e0361480e3'>备注</h4>
+<ol>
+<li><p>同一txid，不同地址，分开通知</p></li>
+<li><p>同一txid，相同地址，金额累加通知</p></li>
+<li><p>同一笔充值，请确保request_id不变，否则会造成重复上账</p></li>
+<li><p>请求解密后会包括 request_id</p></li>
+</ol>
+<h4 id='data-5'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>string</td>
+<td>是</td>
+<td>单次请求的唯一标识</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>否</td>
+<td>from地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>是</td>
+<td>to地址</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>是</td>
+<td>交易id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>是</td>
+<td>金额</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>是</td>
+<td>确认数</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>是</td>
+<td>热钱包余额</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>是</td>
+<td>1成功，0失败</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>否</td>
+<td>memo标识</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"12345"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-6'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>└─request_id</td>
+<td>string</td>
+<td>是</td>
+<td>单次请求的唯一标识</td>
+</tr>
+</tbody></table>
+<h2 id='fe12700c74'>提现拉取</h2>
+<p>提币拉取接口, 此接口单次最多返回最近20条数据</p>
+<h4 id='http-4'>HTTP请求</h4>
+<p><code>POST/api/v1/withdraw/consume</code></p>
+<h4 id='data-7'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">1.43232</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="mf">0.001</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='data-8'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trans_id</td>
+<td>string</td>
+<td>是</td>
+<td>提现流水id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>是</td>
+<td>提币到账地址</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>是</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>否</td>
+<td>提现memo</td>
+</tr>
+</tbody></table>
+<h2 id='751ba0a652'>提现通知</h2>
+<p>提现通知调用接口</p>
+<h4 id='http-5'>HTTP请求</h4>
+<p><code>POST/api/v1/withdraw/consume</code></p>
+<h4 id='e0361480e3-2'>备注</h4>
+<ol>
+<li><p>同一txid，不同地址，分开通知</p></li>
+<li><p>同一txid，相同地址，金额累加通知</p></li>
+<li><p>同一笔充值，请确保request_id不变，否则会造成重复上账</p></li>
+<li><p>请求解密后会包括 request_id</p></li>
+</ol>
+<h4 id='data-9'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>否</td>
+<td>from地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>是</td>
+<td>to地址</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>是</td>
+<td>交易id</td>
+</tr>
+<tr>
+<td>trans_id</td>
+<td>int</td>
+<td>是</td>
+<td>提现流水id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>是</td>
+<td>金额</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>decimal</td>
+<td>是</td>
+<td>真实矿工费</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>是</td>
+<td>确认数，confirm传0时，会将这笔提现记录状态修改为“支付中”，通过/api/v1/withdraw/consume接口就不会在重复获取这笔提现记录</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>是</td>
+<td>热钱包余额</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>否</td>
+<td>to地址memo标识</td>
+</tr>
+</tbody></table>
+<h4 id='data-10'>响应参数data解密之后数据结构:</h4>
+<p>无</p>
+<h2 id='f39d1dc3bf'>内部通知</h2>
+<p>内部通知调用接口</p>
+<h4 id='http-6'>HTTP请求</h4>
+<p><code>POST/api/v1/internal/notify</code></p>
+<h4 id='e0361480e3-3'>备注</h4>
+<p>此接口在除提现外的其他消耗矿工费的交易时调用，主要为了扣除矿工费，比如归集，转冷等</p>
+<h4 id='data-11'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address_from</td>
+<td>string</td>
+<td>否</td>
+<td>from地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>是</td>
+<td>to地址</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>是</td>
+<td>交易id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td>是</td>
+<td>金额</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>decimal</td>
+<td>是</td>
+<td>真实矿工费</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>int</td>
+<td>是</td>
+<td>确认数</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>是</td>
+<td>热钱包余额</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td>否</td>
+<td>to地址memo标识</td>
+</tr>
+</tbody></table>
+<h4 id='data-12'>响应参数data解密之后数据结构:</h4>
+<p>无</p>
+<h2 id='38ee0ad075'>提币打回</h2>
+<p>推送地址给平台，此地址用于分配给用户</p>
+<h4 id='http-7'>HTTP请求</h4>
+<p><code>POST/api/v1/withdraw/cancel</code></p>
+<h4 id='e0361480e3-4'>备注</h4>
+<p>当提币信息异常(地址错误，精度错误)，需要打回时调用</p>
+<h4 id='data-13'><strong>请求参数data解密之后数据结构:</strong></h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>trans_id</td>
+<td>int64</td>
+<td>是</td>
+<td>提现流水id</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>是</td>
+<td>打回原因</td>
+</tr>
+</tbody></table>
+<h4 id='data-14'>响应参数data解密之后数据结构:</h4>
+<p>无</p>
+<h1 id='e08c1d4f9a'>错误码</h1>
+<table><thead>
+<tr>
+<th>code</th>
+<th>msg</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>success</td>
+</tr>
+<tr>
+<td>100001</td>
+<td>json decode error</td>
+</tr>
+<tr>
+<td>100002</td>
+<td>system error</td>
+</tr>
+<tr>
+<td>100003</td>
+<td>appid not register</td>
+</tr>
+<tr>
+<td>100004</td>
+<td>publicKey decode error</td>
+</tr>
+<tr>
+<td>100005</td>
+<td>appid already exist</td>
+</tr>
+<tr>
+<td>100006</td>
+<td>decode publicKey error</td>
+</tr>
+<tr>
+<td>100007</td>
+<td>privkey decode error</td>
+</tr>
+<tr>
+<td>100008</td>
+<td>verify signature error</td>
+</tr>
+<tr>
+<td>100009</td>
+<td>appid does not match symbol</td>
+</tr>
+<tr>
+<td>1000010</td>
+<td>address length exceeds 100</td>
+</tr>
+<tr>
+<td>1000011</td>
+<td>deposit notify fail</td>
+</tr>
+<tr>
+<td>1000012</td>
+<td>request_id txid not match</td>
+</tr>
+<tr>
+<td>1000013</td>
+<td>privkey hash not match</td>
+</tr>
+<tr>
+<td>1000014</td>
+<td>only one address is allowed</td>
+</tr>
+<tr>
+<td>1000015</td>
+<td>add token address is not allowed</td>
+</tr>
+<tr>
+<td>1000016</td>
+<td>address exceeds length</td>
+</tr>
+<tr>
+<td>1000017</td>
+<td>address not exists</td>
+</tr>
+<tr>
+<td>1000018</td>
+<td>finance notify error</td>
+</tr>
+<tr>
+<td>1000019</td>
+<td>appid is disabled</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
