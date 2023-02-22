@@ -1,78 +1,65 @@
-# 一级标题，一个 # ，会出现在左侧菜单中
+# [ChainUp Custody](https://custody.chainup.com/)
 
-## 二级标题，两个 ## ，会出现在一级标题下方
+Market Leading Institutional Digital Asset Custody and Trading Services
 
-### 三级标题，三个 ###， 目前不会出现在菜单中，可配置
 
-正常文本，段落与段落之间需要添加回车
 
-### 无序列表
-- 列表1
-  - 子列表1
-- 列表2
-  - 子列表2
+## Official Documentation for the  ChainUp Custody APIs
 
-### 有序列表
-1. 列表1
-2. 列表2
-3. 列表3
+**ChainUp Custody** provides secure and compliant digital asset custody solutions for institutional clients, with options for **MPC wallet**, **joint custody**, and **compliant custody**. We are committed to providing **robust and easy-to-use APIs** for our clients to access the features of our platform.
 
-### 引入文本
-> 引入的文案，这里的文案会出现在右侧代码块的位置
 
-### 高亮显示
-`高亮显示的文案`
 
-### 加粗
-**加粗的文字** 或者 __加粗的文字__
+Below are links to **3 API documents for our products**:
 
-### 链接与锚点
-- [外部链接](http://www.baidu.com)
-- [内部链接](#xxx) xxx表示某篇文章的标题，如中间有空格用_代替，全部小写。如：标题为 `Custody API Documentation V2`,则替换为 `custody-api-documentation-v2`
 
-### 代码块
-代码块出现在右侧，可以给不同语言写入不同代码
 
-#### java
-```java
-const kittn = require('kittn');
+## MPC Wallet
 
-let api = kittn.authorize('meowmeowmeow');
-```
-#### javascript
-```javascript
-const kittn = require('kittn');
+**Enterprise-level MPC Wallet**: One of the most secure wallets currently available that allows users to **self-manage their private keys.**  With our proprietary **MPC** technology, we **eliminate the risk of single points of failure**.
 
-let api = kittn.authorize('meowmeowmeow');
-```
 
-### 图片
-图片放入 `source/images` 文件夹中，创建文件时，文件名字 `xxx.md` 改为 `xxx.md.erb`
 
-使用如下代码引入图片：
+[**MPC wallet** detailed information](https://custody.chainup.com/mpc)
 
-logo.png 为图片名
-```
-<%= image_tag "images/logo.png" %>
-```
+[View the MPC Wallet API documentation](https://github.com/IDAC-API/mpc-wallet-api)
 
-### 表格
-| 项目        | 价格   |  数量  |
-| --------   | -----:  | :----:  |
-| 计算机      | $1600   |   5     |
-| 手机        |   $12   |   12   |
-| 管线        |    $1    |  234  |
 
-### 带颜色标签
-使用如下代码：
 
-class名字颜色表,可添加可修改
-- 蓝色: `notice`
-- 绿色: `success`
-- 红色: `warning`
+## V2 API Documentation
 
-```javascript
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-```
+You can use V2 API documentation to access ChainUp's **Joint custody** and **Compliant Custody** solutions.
+
+**Joint custody** supports wallet **security protection** and **flexible transaction policies** to fulfill clients' digital asset business requirements. ChainUp Custody will help you store and manage your private key with the most advanced security standards and regulations.
+
+**Compliant Custody**, where **Technology meets Regulations** . ChainUp Custody has developed the most ideal compliant custody solution for institutional investors requiring **high security and compliance standards** for their digital assets.
+
+
+
+[**Joint Custody** detailed information](https://custody.chainup.com/joint)
+
+[**Compliant Custody** detailed information](https://custody.chainup.com/compliant)
+
+[View the **V2 API** documentation](https://github.com/IDAC-API/joint-custody-api)
+
+
+
+## WAPI
+
+This document is used by the third-party technical team **to add the self-developed** main chain to the ChainUp Custody for alliance members.
+
+Please note that ChainUp Custody cannot be held responsible for the security of assets when third-party technical teams use **WAPI** to access the server and hold private keys. As such, it is the responsibility of the third-party technical team to establish a complete wallet private key and API private key custody system.
+
+
+
+[View the Compliant Custody API documentation](https://github.com/IDAC-API/compliant-custody-api)
+
+
+
+## [**Contact Us**](https://custody.chainup.com/contact)
+
+We are committed to providing the highest level of service to our clients, and our APIs are a key part of that commitment. Our API documentation is regularly updated and improved to ensure that our clients have the resources they need to build the best possible solutions for their businesses.
+
+
+
+Thank you for choosing [ChainUp Custody](https://custody.chainup.com/) for your digital asset security. If you have any questions or feedback on our APIs, please reach out to us at [custody@chainup.com](mailto:custody@chainup.com)
