@@ -395,7 +395,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### 获取子钱包地址
 
-获取指定子钱包及币种下的充值地址
+获取指定子钱包及币种下的收款地址
 
 
 
@@ -786,11 +786,11 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ## 收款
 
-### 获取充值记录
+### 获取收款记录
 
 
 
-获取钱包下所有子钱包充值记录，最多返回100条
+获取钱包下所有子钱包收款记录，最多返回100条
 
 
 
@@ -835,10 +835,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型    | 是否必须 | 说明                                                         |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 充值id                                                       |
+| id               | Integer | 是       | 收款id                                                       |
 | sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
 | symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String  | 是       | 充值金额                                                     |
+| amount           | String  | 是       | 收款金额                                                     |
 | created_at       | Long    | 是       | 创建时间时间戳                                               |
 | updated_at       | Long    | 是       | 修改时间时间戳                                               |
 | address_from     | String  | 是       | 出币地址                                                     |
@@ -847,15 +847,15 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
-| base_symbol      | String  | 否       | 充值币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 充值币种合约地址                                             |
+| base_symbol      | String  | 否       | 收款币种主链唯一标识，例：ETH                                |
+| contract_address | String  | 否       | 收款币种合约地址                                             |
 
 
 
 
-### 同步充值记录
+### 同步收款记录
 
-获取钱包下所有子钱包充值记录，最多返回100条
+获取钱包下所有子钱包收款记录，最多返回100条
 
 
 
@@ -902,10 +902,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型    | 是否必须 | 说明                                                         |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 充值id                                                       |
+| id               | Integer | 是       | 收款id                                                       |
 | sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
 | symbol           | String  | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String  | 是       | 充值金额                                                     |
+| amount           | String  | 是       | 收款金额                                                     |
 | created_at       | Long    | 是       | 创建时间时间戳                                               |
 | updated_at       | Long    | 是       | 修改时间时间戳                                               |
 | address_from     | String  | 是       | 出币地址                                                     |
@@ -914,8 +914,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
-| base_symbol      | String  | 否       | 充值币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 充值币种合约地址                                             |
+| base_symbol      | String  | 否       | 收款币种主链唯一标识，例：ETH                                |
+| contract_address | String  | 否       | 收款币种合约地址                                             |
 
 
 
@@ -986,7 +986,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-## 充值通知
+## 收款通知
 
 #### 请求参数数据结构
 
@@ -996,10 +996,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | charset          | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
 | side             | String | 是       | 通知类型， 收款通知：`deposit`， 转账通知： `withdraw`       |
 | notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
-| id               | String | 是       | 充值id                                                       |
+| id               | String | 是       | 收款id                                                       |
 | sub_wallet_id    | String | 是       | 子钱包id                                                     |
 | symbol           | String | 是       | 币种唯一标识，例：USDTERC20                                  |
-| amount           | String | 是       | 充值金额                                                     |
+| amount           | String | 是       | 收款金额                                                     |
 | created_at       | String | 是       | 创建时间时间戳                                               |
 | updated_at       | String | 是       | 修改时间时间戳                                               |
 | address_from     | String | 是       | 出币地址                                                     |
@@ -1008,8 +1008,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String | 是       | 交易hash                                                     |
 | confirmations    | String | 是       | 区块确认数，例：10                                           |
 | status           | String | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
-| base_symbol      | String | 否       | 充值币种主链唯一标识，例：ETH                                |
-| contract_address | String | 否       | 充值币种合约地址                                             |
+| base_symbol      | String | 否       | 收款币种主链唯一标识，例：ETH                                |
+| contract_address | String | 否       | 收款币种合约地址                                             |
 
 # Co-Signer
 

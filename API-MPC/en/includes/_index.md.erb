@@ -1,6 +1,6 @@
 # ChainUp MPC Wallet
 
-**ChainUp Custody's** implementation of the **MPC technology** ensures that users' investment assets are under the protection of the highest security level in the market. User's private key will be managed jointly by the user and ChainUp Custody, and the user will have complete control over assets and may use them at any time without limitation. MPC technology not only makes recovery easier but also increases security by removing the single point of failure of a private key.
+**ChainUp Custody's** implementation of the **MPC technology** ensures that users' investment assets are under the protection of the highest security level in the market. User's private key will be managed jointly by the user and ChainUp Custody, and the user will have complete control over assets and may use them at any time without limitation. MPC technology not only makes recovery easier but also increases security by **removing the single point of failure of a private key.**
 
 
 
@@ -121,7 +121,7 @@ Description：
 
 2）IP of **third-party** application server and Co-Signer server;
 
-3）**Deposit** and **Withdrawal** callback notification address;
+3）**Receiving** and **Transfer** callback notification address;
 
 4）Domain name of the **Co-signer Server**
 
@@ -154,20 +154,6 @@ The interface providers in the following documents are referred to as **wallet s
 | The response status code is: | 0, indicating successful processing, and non-0 indicates request error or system exception |
 | Request address:             | domain name + interface address                              |
 | Encryption algorithm:        | RSA                                                          |
-
-# SDK
-
-To meet the diverse business needs of customers, **ChainUp MPC Wallet** supports two docking methods: SDK and API;
-
-#### **SDK**：Support for Java and PHP
-
-The Java SDK address：<https://github.com/HiCoinCom/java-sdk>
-
-The PHP SDK address：<https://github.com/HiCoinCom/php-sdk>
-
-
-
-
 
 
 
@@ -304,7 +290,7 @@ None
 | Param              | Type    | Required | Description                                                  |
 | :----------------- | :------ | :------- | :----------------------------------------------------------- |
 | open_main_chain    | Array   | No       | The main chain opened by the wallet                          |
-| symbol             | String  | Yes      | The unique identifier of the coin, used when withdrawing, for example: USDTERC20 |
+| symbol             | String  | Yes      | The unique identifier of the coin, used when transferring, for example: USDTERC20 |
 | symbol_alias       | String  | No       | The real name of the coin, for example: USDT                 |
 | support_main_chain | Array   | No       | Main chain supported by MPC wallet                           |
 | coin_net           | String  | No       | Coin network, for example: ETH                               |
@@ -356,7 +342,7 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
 
 ### Get sub-wallet address
 
-Obtain the deposit address under the specified sub-wallet and coin
+Obtain the receiving address under the specified sub-wallet and coin
 
 #### HTTP Request
 
@@ -381,9 +367,9 @@ Obtain the deposit address under the specified sub-wallet and coin
 
 #### Response Data Parameters 
 
-| Param   | Type   | Requried | Description     |
-| :------ | :----- | :------- | :-------------- |
-| address | String | Yes      | Deposit address |
+| Param   | Type   | Requried | Description       |
+| :------ | :----- | :------- | :---------------- |
+| address | String | Yes      | receiving address |
 
 
 
@@ -411,18 +397,18 @@ Get the account assets under the specified sub-wallet and coin.
 ```json
 {
     "normal_balance":"1.23",
-    "deposit_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
+    "receive_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
     "lock_balance":"0.77"
 }
 ```
 
 #### Response Data Parameters 
 
-| Param           | Type   | Requried | Description       |
-| :-------------- | :----- | :------- | :---------------- |
-| deposit_address | String | Yes      | Deposit address   |
-| normal_balance  | String | Yes      | Available balance |
-| lock_balance    | String | Yes      | Freeze balance    |
+| Param             | Type   | Requried | Description       |
+| :---------------- | :----- | :------- | :---------------- |
+| receiving_address | String | Yes      | receiving address |
+| normal_balance    | String | Yes      | Available balance |
+| lock_balance      | String | Yes      | Freeze balance    |
 
 
 
@@ -460,19 +446,19 @@ None
 
 
 
-## Withdrawal
+## Transfer
 
 
 
-### Withdrawal
 
-### Initiate a withdraw
+
+### Initiate a transfer
 
 
 
 #### HTTP Request
 
-`POST /api/mpc/billing/withdraw`
+`POST /api/mpc/billing/transfer`
 
 
 
@@ -482,11 +468,11 @@ None
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
 | sub_wallet_id | String | Yes      | Sub wallet id                                                |
 | symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| address_to    | String | Yes      | Withdrawal address                                           |
-| memo          | String | No       | Withdrawal address memo, Memo type can be filled in if available,  example: 123321 |
-| amount        | String | Yes      | Withdrawal amount                                            |
-| request_id    | String | Yes      | The unique identifier for withdrawing coins                  |
-| remark        | String | No       | Withdrawal remarks                                           |
+| address_to    | String | Yes      | transfer address                                             |
+| memo          | String | No       | transfer address memo, Memo type can be filled in if available,  example: 123321 |
+| amount        | String | Yes      | transfer amount                                              |
+| request_id    | String | Yes      | The unique identifier for transferring coins                 |
+| remark        | String | No       | transfer remarks                                             |
 | gas_price     | String | No       | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
 | gas_limit     | String | No       | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to 0 . |
 | fee           | String | No       | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to 0; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is 0, the other is not 0; |
@@ -495,24 +481,24 @@ None
 
 ```json
 {
-    "withdraw_id": 12345
+    "transfer_id": 12345
 }
 ```
 
 #### Response Data Parameters 
 
-| Param       | Type    | Requried | Description   |
-| :---------- | :------ | :------- | :------------ |
-| withdraw_id | Integer | Yes      | Withdrawal id |
+| Param       | Type    | Requried | Description |
+| :---------- | :------ | :------- | :---------- |
+| transfer_id | Integer | Yes      | transfer id |
 
 
 
 
 
 
-### Withdrawal Estimated Miner Fee
+### Estimated Gas Fee
 
-Obtain the estimated miner fee required for withdrawal. 
+Obtain the estimated miner fee required for transfer. 
 
 
 
@@ -561,15 +547,15 @@ Obtain the estimated miner fee required for withdrawal.
 
 
 
-### Speed Up Withdrawal
+### Speed Up transfer
 
-After the withdrawal signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.
+After the transfer signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.
 
 
 
 #### HTTP Request
 
-`POST /api/mpc/billing/withdraw_pending`
+`POST /api/mpc/billing/transfer_pending`
 
 
 
@@ -577,7 +563,7 @@ After the withdrawal signature is completed, if the transaction fee has not been
 
 | Param       | Type   | Requried | Description                                                  |
 | :---------- | :----- | :------- | :----------------------------------------------------------- |
-| withdraw_id | String | Yes      | Withdrawal id, example: 12345                                |
+| transfer_id | String | Yes      | transfer id, example: 12345                                  |
 | gas_price   | String | Yes      | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
 | gas_limit   | String | Yes      | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to `0` . |
 | fee         | String | Yes      | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to `0`; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is `0`, the other is not 0; |
@@ -593,15 +579,15 @@ None
 
 
 
-### Get withdrawal records
+### Get transfer records
 
-Get all sub-wallet withdrawal records under the main wallet, and return up to 100 records
+Get all sub-wallet transfer records under the main wallet, and return up to 100 records
 
 
 
 #### HTTP Request
 
-`GET /api/mpc/billing/withdraw_list`
+`GET /api/mpc/billing/transfer_list`
 
 
 
@@ -645,11 +631,11 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | Yes      | Withdrawal id                                                |
-| request_id       | String  | Yes      | The unique identifier for withdrawing coins                  |
+| id               | Integer | Yes      | transfer id                                                  |
+| request_id       | String  | Yes      | The unique identifier for transferring coins                 |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin                            |
-| amount           | String  | Yes      | Withdrawal amount                                            |
+| amount           | String  | Yes      | transfer amount                                              |
 | fee_symbol       | String  | Yes      | gas fee coins                                                |
 | fee              | String  | Yes      | gas fee                                                      |
 | real_fee         | String  | Yes      | The actual gas fee consumed                                  |
@@ -660,10 +646,10 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 | memo             | String  | No       | to account address memo                                      |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
-| status           | Integer | Yes      | Withdrawal status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
-| withdraw_source  | Integer | Yes      | Withdrawal Type： `1`app, `2`openapi                         |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
-| contract_address | String  | No       | Withdrawal coin's  contract address                          |
+| status           | Integer | Yes      | transfer status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
+| transfer_source  | Integer | Yes      | transfer Type： `1`app, `2`openapi                           |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
+| contract_address | String  | No       | transfer coin's  contract address                            |
 
 
 
@@ -672,23 +658,23 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 
 
 
-### Synchronize withdrawal records
+### Synchronize transfer records
 
-Get all sub-wallet withdrawal records under the main wallet, and return up to 100 records
+Get all sub-wallet transfer records under the main wallet, and return up to 100 records
 
 
 
 #### HTTP Request
 
-`GET /api/mpc/billing/sync_withdraw_list`
+`GET /api/mpc/billing/sync_transfer_list`
 
 
 
 #### Decrypted Request Parameters 
 
-| Param  | Type   | Requried | Description                                  |
-| :----- | :----- | :------- | :------------------------------------------- |
-| max_id | String | Yes      | Withdrawal record initial id, example: 12345 |
+| Param  | Type   | Requried | Description                                |
+| :----- | :----- | :------- | :----------------------------------------- |
+| max_id | String | Yes      | transfer record initial id, example: 12345 |
 
 > Response
 
@@ -722,11 +708,11 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | Yes      | withdrawal id                                                |
-| request_id       | String  | Yes      | The unique identifier for withdrawing coins                  |
+| id               | Integer | Yes      | transfer id                                                  |
+| request_id       | String  | Yes      | The unique identifier for transferring coins                 |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount           | String  | Yes      | Withdrawal amount                                            |
+| amount           | String  | Yes      | transfer amount                                              |
 | fee_symbol       | String  | Yes      | gas fee coins                                                |
 | fee              | String  | Yes      | gas fee                                                      |
 | real_fee         | String  | Yes      | The actual gas fee consumed                                  |
@@ -737,10 +723,10 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 | memo             | String  | No       | to account address memo                                      |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations                                |
-| status           | Integer | Yes      | Withdrawal status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
-| withdraw_source  | Integer | Yes      | Withdrawal Type： `1`app, `2`openapi                         |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
-| contract_address | String  | No       | Withdrawal coin's  contract address                          |
+| status           | Integer | Yes      | transfer status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
+| transfer_source  | Integer | Yes      | transfer Type： `1`app, `2`openapi                           |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
+| contract_address | String  | No       | transfer coin's  contract address                            |
 
 
 
@@ -749,17 +735,17 @@ Get all sub-wallet withdrawal records under the main wallet, and return up to 10
 
 
 
-## Deposit
+## Received
 
-### Get deposit records
+### Get Receiving records
 
-Get all sub-wallet deposit records under the main wallet, and return up to 100 records
+Get all sub-wallet receiving records under the main wallet, and return up to 100 records
 
 
 
 #### HTTP Request
 
-`GET/api/mpc/billing/deposit_list`
+`GET/api/mpc/billing/receive_list`
 
 
 
@@ -798,39 +784,39 @@ Get all sub-wallet deposit records under the main wallet, and return up to 100 r
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | Yes      | Depositid                                                    |
+| id               | Integer | Yes      | Receiving id                                                 |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount           | String  | Yes      | Deposit amount                                               |
+| amount           | String  | Yes      | receiving amount                                             |
 | created_at       | Long    | Yes      | Created time timestamp                                       |
 | updated_at       | Long    | Yes      | Modified time timestamp                                      |
-| address_from     | String  | Yes      | withdrawal from address                                      |
-| address_to       | String  | Yes      | deposit address                                              |
-| memo             | String  | No       | deposit address memo，example：123321                        |
+| address_from     | String  | Yes      | transfer from address                                        |
+| address_to       | String  | Yes      | receiving address                                            |
+| memo             | String  | No       | receiving address memo，example：123321                      |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
-| status           | Integer | Yes      | Deposit status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
-| contract_address | String  | No       | Deposit coin's contract address                              |
+| status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
+| contract_address | String  | No       | received coin's contract address                             |
 
 
 
 
-### Synchronous deposit record
+### Synchronous Receiving record
 
-Get all sub-wallet deposit records under the main wallet, and return up to 100 records
+Get all sub-wallet receiving records under the main wallet, and return up to 100 records
 
 #### HTTP Request
 
-`GET /api/mpc/billing/sync_deposit_list`
+`GET /api/mpc/billing/sync_receive_list`
 
 
 
 #### Decrypted Request Parameters 
 
-| Param  | Type   | Requried | Description                             |
-| :----- | :----- | :------- | :-------------------------------------- |
-| max_id | String | Yes      | deposit record initial id，example：100 |
+| Param  | Type   | Requried | Description                               |
+| :----- | :----- | :------- | :---------------------------------------- |
+| max_id | String | Yes      | receiving record initial id，example：100 |
 
 
 
@@ -863,20 +849,20 @@ Get all sub-wallet deposit records under the main wallet, and return up to 100 r
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | Yes      | Depositid                                                    |
+| id               | Integer | Yes      | receivingid                                                  |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount           | String  | Yes      | deposit amount                                               |
+| amount           | String  | Yes      | receiving amount                                             |
 | created_at       | Long    | Yes      | Created time timestamp                                       |
 | updated_at       | Long    | Yes      | Modified time timestamp                                      |
-| address_from     | String  | Yes      | withdrawal from address                                      |
-| address_to       | String  | Yes      | deposit address                                              |
-| memo             | String  | No       | deposit address memo，example：123321                        |
+| address_from     | String  | Yes      | transfer from address                                        |
+| address_to       | String  | Yes      | receiving address                                            |
+| memo             | String  | No       | receiving address memo，example：123321                      |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
-| status           | Integer | Yes      | Deposit status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
-| contract_address | String  | No       | Deposit coin's contract address                              |
+| status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
+| contract_address | String  | No       | received coin's contract address                             |
 
 
 
@@ -917,20 +903,20 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 
 
 
-## Withdrawal Notification
+## Transfer Notification
 
 #### Decrypted Request Parameters 
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
-| side             | String  | Yes      | Notification type, DEPOSIT notification: `deposit`, WITHDRAWAL notification: `withdraw` |
+| side             | String  | Yes      | Notification type, receive notification: `receive`, transfer notification: `transfer` |
 | notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
-| id               | String  | Yes      | Withdrawal id, example: 12345                                |
-| request_id       | String  | Yes      | The unique identifier for withdrawing coins                  |
+| id               | String  | Yes      | transfer id, example: 12345                                  |
+| request_id       | String  | Yes      | The unique identifier for transferring coins                 |
 | sub_wallet_id    | String  | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount           | String  | Yes      | Withdrawal amount, for example: 1.23                         |
+| amount           | String  | Yes      | transfer amount, for example: 1.23                           |
 | fee_symbol       | String  | Yes      | gas fee coins，example：ETH                                  |
 | fee              | String  | Yes      | gas fee，example：0.00123                                    |
 | real_fee         | String  | Yes      | The actual gas fee consumed，example：0.00111                |
@@ -941,14 +927,14 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | memo             | String  | No       | to account address memo，example：123321                     |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
-| status           | Integer | Yes      | Withdrawal status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
-| withdraw_source  | Integer | Yes      | Withdrawal Type：`1`app, `2`openapi                          |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be withdrawn, for example: ETH |
-| contract_address | String  | No       | Withdrawal coin's contract address                           |
+| status           | Integer | Yes      | transfer status: `1000` awaiting approval, `1100` Approved while awaiting signature, `1200` Payment in progress, `2000`Payment completed, `2100` Not Approved, `2200` Rejected, `2300` Transaction discarded, `2400`Payment failed |
+| transfer_source  | Integer | Yes      | transfer Type：`1`app, `2`openapi                            |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
+| contract_address | String  | No       | transfer coin's contract address                             |
 
 
 
-## Deposit Notification
+## Receive Notification
 
 #### Decrypted Request Parameters
 
@@ -956,12 +942,12 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
-| side             | String  | Yes      | Notification type, DEPOSIT notification: `deposit`, WITHDRAWAL notification: `withdraw` |
+| side             | String  | Yes      | Notification type, receive notification: `receive`, transfer notification: `transfer` |
 | notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
-| id               | String  | Yes      | Deposit id                                                   |
+| id               | String  | Yes      | receiving id                                                 |
 | sub_wallet_id    | String  | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount           | String  | Yes      | Deposit amount                                               |
+| amount           | String  | Yes      | receiving amount                                             |
 | created_at       | Long    | Yes      | Created time timestamp                                       |
 | updated_at       | Long    | Yes      | Modified time timestamp                                      |
 | address_from     | String  | Yes      | from account address                                         |
@@ -969,9 +955,9 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | memo             | String  | No       | to account address memo，example：123321                     |
 | txid             | String  | Yes      | Transaction hash                                             |
 | confirmations    | Integer | Yes      | Number of block confirmations，example：10                   |
-| status           | Integer | Yes      | Deposit status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
-| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be deposited, example：ETH |
-| contract_address | String  | No       | Deposit coin's contract address                              |
+| status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
+| base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
+| contract_address | String  | No       | received coin's contract address                             |
 
 
 
@@ -1033,7 +1019,7 @@ POST /callback/example
 
 {
     "type":"sign_start",
-    "withdraw_id":321456,
+    "transfer_id":321456,
     "request_id":"c70d1eebb7c687ec8d56bead73f104",
     "pending_round":false,
     "from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
@@ -1051,9 +1037,9 @@ POST /callback/example
 | Param         | Type    | Requried | Description                                                  |
 | :------------ | :------ | :------- | :----------------------------------------------------------- |
 | type          | String  | Yes      | Callback type, `sign_start`start signing，`sign_success`successfully signed. |
-| withdraw_id   | Integer | Yes      | Withdrawal id, example: 12345                                |
+| transfer_id   | Integer | Yes      | transfer id, example: 12345                                  |
 | request_id    | String  | Yes      | The unique identifier for initiating transfer                |
-| pending_round | Bool    | Yes      | Speed Up status, `false` means in withdrawing transaction , `true` means speeding up the transaction |
+| pending_round | Bool    | Yes      | Speed Up status, `false` means in transferring transaction , `true` means speeding up the transaction |
 | from          | String  | Yes      | from account address                                         |
 | to            | String  | Yes      | to account address                                           |
 | memo          | String  | No       | to account address memo，example：123321                     |
@@ -1085,23 +1071,23 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 | 100007  | illegal IP                                                   |
 | 100015  | merchant ID is invalid                                       |
 | 100016  | merchant information expired                                 |
-| 110004  | users are frozen and cannot withdraw money                   |
+| 110004  | users are frozen and cannot transfer money                   |
 | 110023  | mobile phone number has been registered                      |
-| 110037  | withdrawal address is at risk                                |
-| 110055  | correct withdrawal address for                               |
-| 110065  | user does not exist (used to obtain user balance, withdraw money, or transfer money) |
-| 110078  | withdrawal or transfer amount less than the minimum transfer amount |
-| 110087  | withdrawal or transfer amount is greater than the maximum transfer amount |
+| 110037  | transfer address is at risk                                  |
+| 110055  | correct transfer address for                                 |
+| 110065  | user does not exist (used to obtain user balance, transfer money, or transfer money) |
+| 110078  | transfer or transfer amount less than the minimum transfer amount |
+| 110087  | transfer or transfer amount is greater than the maximum transfer amount |
 | 110088  | please do not repeat the request                             |
 | 110089  | registered mobile phone number is incorrect                  |
 | 110101  | user registration failed                                     |
-| 110161  | exceeds the maximum withdrawal support accuracy              |
+| 110161  | exceeds the maximum transfer support accuracy                |
 | 120202  | currency is not supported                                    |
-| 120206  | withdrawal second confirmation failed                        |
-| 120402  | insufficient balance in withdrawal or transfer               |
-| 120403  | insufficient balance of withdrawal fee                       |
-| 120404  | withdrawal or transfer amount is too small, less than or equal to the commission fee |
-| 900006  | the user is at risk. Withdrawal is prohibited                |
+| 120206  | transfer second confirmation failed                          |
+| 120402  | insufficient balance in transfer or transfer                 |
+| 120403  | insufficient balance of transfer fee                         |
+| 120404  | transfer or transfer amount is too small, less than or equal to the commission fee |
+| 900006  | the user is at risk. transfer is prohibited                  |
 | 3040006 | cannot transfer money to itself                              |
 
 
