@@ -1,0 +1,3401 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="images/favicon-5df21527.ico" rel="icon" type="image/ico" />
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-fac2324c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-2b633527.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;java&quot;]">
+    <div class="header">
+        <div class="header-left">
+            <img src="images/logo-055122b5.png" class="logo" alt="" />
+            <div class="header-line"></div>
+            <div class="header-nav-h5">
+                API-WaaS-V2
+                <ul class="header-nav-list-h5">
+                        <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                        <li class="header-nav__item active"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                        <li class="header-nav__item"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+                </ul>
+            </div>
+            <ul class="header-nav">
+                    <li class="header-nav__item"><a href="/API-MPC/zh/index.html">MPC WALLET</a></li>
+                    <li class="header-nav__item active"><a href="/API-WaaS-V2/zh/index.html">Custody V2</a></li>
+                    <li class="header-nav__item"><a href="/API-WAPI/zh/index.html">Custody WAPI</a></li>
+            </ul>
+        </div>
+        <a class="switch-language" href="/API-WaaS-V2/en/index.html">English</a>
+    </div>
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#chainup-custody-v2" class="toc-h1 toc-link" data-title="ChainUp Custody V2">ChainUp Custody V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#45fa4e00db" class="toc-h2 toc-link" data-title="介绍">介绍</a>
+                  </li>
+                  <li>
+                    <a href="#1771a2f143" class="toc-h2 toc-link" data-title="愿景">愿景</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#4b55c33f0b" class="toc-h1 toc-link" data-title="接入指引">接入指引</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#575f8f6ea6" class="toc-h2 toc-link" data-title="注册账号">注册账号</a>
+                  </li>
+                  <li>
+                    <a href="#c4571ab0cb" class="toc-h2 toc-link" data-title="创建并配置企业钱包">创建并配置企业钱包</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#api-2" class="toc-h3 toc-link" data-title="获取API信息">获取API信息</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#04c51bd8c9" class="toc-h2 toc-link" data-title="商户签约">商户签约</a>
+                  </li>
+                  <li>
+                    <a href="#51a788e152" class="toc-h2 toc-link" data-title="投入使用">投入使用</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#06914006d1" class="toc-h1 toc-link" data-title="对接方案">对接方案</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#263e170b4c" class="toc-h2 toc-link" data-title="获取充币地址">获取充币地址</a>
+                  </li>
+                  <li>
+                    <a href="#3a86198eeb" class="toc-h2 toc-link" data-title="用户充币">用户充币</a>
+                  </li>
+                  <li>
+                    <a href="#6f4f99292a" class="toc-h2 toc-link" data-title="用户提币">用户提币</a>
+                  </li>
+                  <li>
+                    <a href="#9f09dd41eb" class="toc-h2 toc-link" data-title="财务对账">财务对账</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#f3b134a5ca" class="toc-h1 toc-link" data-title="开发前准备">开发前准备</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#72706ccb1b" class="toc-h2 toc-link" data-title="开发须知">开发须知</a>
+                  </li>
+                  <li>
+                    <a href="#2f8862bf69" class="toc-h2 toc-link" data-title="资管账号准备">资管账号准备</a>
+                  </li>
+                  <li>
+                    <a href="#6e241fa925" class="toc-h2 toc-link" data-title="接口交互过程">接口交互过程</a>
+                  </li>
+                  <li>
+                    <a href="#cb6baa1bd8" class="toc-h2 toc-link" data-title="接口规则">接口规则</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk" class="toc-h1 toc-link" data-title="SDK">SDK</a>
+          </li>
+          <li>
+            <a href="#api-5" class="toc-h1 toc-link" data-title="API文档">API文档</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ada01d8c4e" class="toc-h2 toc-link" data-title="统一说明">统一说明</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#d06fcec6de" class="toc-h3 toc-link" data-title="请求参数统一格式">请求参数统一格式</a>
+                          </li>
+                          <li>
+                            <a href="#680b2bbba1" class="toc-h3 toc-link" data-title="响应参数统一格式">响应参数统一格式</a>
+                          </li>
+                          <li>
+                            <a href="#data" class="toc-h3 toc-link" data-title="响应结果data解密后格式">响应结果data解密后格式</a>
+                          </li>
+                          <li>
+                            <a href="#8c20d5369f" class="toc-h3 toc-link" data-title="加解密方式">加解密方式</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#a1cda4baf4" class="toc-h2 toc-link" data-title="获取地址">获取地址</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#7cdaa5821f" class="toc-h3 toc-link" data-title="用户手机注册">用户手机注册</a>
+                          </li>
+                          <li>
+                            <a href="#2a7ea8d599" class="toc-h3 toc-link" data-title="用户邮箱注册">用户邮箱注册</a>
+                          </li>
+                          <li>
+                            <a href="#a329bc371b" class="toc-h3 toc-link" data-title="获取指定充币地址">获取指定充币地址</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#11f99972ee" class="toc-h2 toc-link" data-title="账户资产">账户资产</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#b6bb36669d" class="toc-h3 toc-link" data-title="查询用户信息">查询用户信息</a>
+                          </li>
+                          <li>
+                            <a href="#84a3e2030f" class="toc-h3 toc-link" data-title="获取币种列表">获取币种列表</a>
+                          </li>
+                          <li>
+                            <a href="#48b246d3ee" class="toc-h3 toc-link" data-title="获取指定账户信息">获取指定账户信息</a>
+                          </li>
+                          <li>
+                            <a href="#a79057b06b" class="toc-h3 toc-link" data-title="获取归集账户余额">获取归集账户余额</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#6b81bd2875" class="toc-h2 toc-link" data-title="用户充值">用户充值</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#ae74502f48" class="toc-h3 toc-link" data-title="同步充值记录">同步充值记录</a>
+                          </li>
+                          <li>
+                            <a href="#e52c97ad2d" class="toc-h3 toc-link" data-title="批量充值记录">批量充值记录</a>
+                          </li>
+                          <li>
+                            <a href="#8e0f215981" class="toc-h3 toc-link" data-title="用户充值异步回调通知">用户充值异步回调通知</a>
+                          </li>
+                          <li>
+                            <a href="#3eb0894447" class="toc-h3 toc-link" data-title="获取归集矿工费">获取归集矿工费</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#69560f134e" class="toc-h2 toc-link" data-title="用户提现">用户提现</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#34cd7a9e4c" class="toc-h3 toc-link" data-title="发起提现">发起提现</a>
+                          </li>
+                          <li>
+                            <a href="#85379dc090" class="toc-h3 toc-link" data-title="提现信息二次确认">提现信息二次确认</a>
+                          </li>
+                          <li>
+                            <a href="#9cb2389eb8" class="toc-h3 toc-link" data-title="提现异步回调通知">提现异步回调通知</a>
+                          </li>
+                          <li>
+                            <a href="#74637cf841" class="toc-h3 toc-link" data-title="同步提现记录">同步提现记录</a>
+                          </li>
+                          <li>
+                            <a href="#3b572ffb5a" class="toc-h3 toc-link" data-title="批量获取提现记录">批量获取提现记录</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#ab640ebe1e" class="toc-h2 toc-link" data-title="商户转账">商户转账</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#custody-3" class="toc-h3 toc-link" data-title="Custody商户转账">Custody商户转账</a>
+                          </li>
+                          <li>
+                            <a href="#22d4f1a655" class="toc-h3 toc-link" data-title="转账信息异步确认">转账信息异步确认</a>
+                          </li>
+                          <li>
+                            <a href="#785254f966" class="toc-h3 toc-link" data-title="批量查询转账记录">批量查询转账记录</a>
+                          </li>
+                          <li>
+                            <a href="#047e3c04bb" class="toc-h3 toc-link" data-title="同步转账记录">同步转账记录</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#e08c1d4f9a" class="toc-h1 toc-link" data-title="错误码">错误码</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='chainup-custody-v2'>ChainUp Custody V2</h1>
+<p>欢迎来到<strong>ChainUp Custody</strong>，ChainUp Custody基于深厚的底层钱包技术和安全的区块链钱包架构，将强大的资产托管功通过接口的方式提供给第三方合作伙伴。通过这种方式能帮助合作伙伴在关注于核心业务发展的同时也能确保资产的安全。</p>
+<h4 id='api'><strong>您可以通过API</strong></h4>
+<ul>
+<li><p>提交传输，并接收传输的实时信息;</p></li>
+<li><p>安全检查所有事务类型和消息;</p></li>
+<li><p>与托管钱包的共同管理人制定取款政策;</p></li>
+<li><p>管理你的钱包和子钱包账户、地址簿和网络连接;</p></li>
+<li><p>利用反洗钱机制等功能。</p></li>
+</ul>
+
+<p>所有转账都反映在<strong>ChainUp Custody</strong>的交易记录、安全策略和对账中心中。</p>
+<h2 id='45fa4e00db'>介绍</h2>
+<p>ChainUp Custody是ChainUp集团依托3年时间所服务的300多家交易所经验，将底层区块链钱包封装成的一套完整的Custody服务，包含资产托管、节点服务、主链币种开发、热门币种一键接入、共管钱包、借贷理财等多种功能服务。</p>
+
+<p>ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、低成本的集成Custody服务（多达200条主链不限代币的收币、发币等功能）；同时三方合作伙伴亦可通过web端可视化界面 <a href="https://custody.chainup.com" title="ChainUp Custody">ChainUp Custody</a> 进行资产管理，更有丰富的金融产品供您使用。</p>
+
+<p>目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；接入ChainUp Custody的客户，可享受联盟成员之间转账【0手续费】、【秒级到账】等多种优势。</p>
+<h2 id='1771a2f143'>愿景</h2>
+<p>ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融清算体系，共享联盟成员流量，降低联盟成员成本，提升联盟成员资产使用率，构建区块链领域中的开放银行。让区块链联通万物。</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg"><img src="https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg" alt="" /></a></p>
+<h1 id='4b55c33f0b'>接入指引</h1>
+<p>您需要按照以下流程进行接入ChainUp Custody</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png" alt="" /></a></p>
+<h2 id='575f8f6ea6'>注册账号</h2><h4 id='custody'>下载Custody钱包</h4>
+<p>方式一：手机浏览器打开链接：<a href="https://custody.chainup.com/download">https://custody.chainup.com/download</a></p>
+
+<p>方式二：使用手机扫码打开链接下载：</p>
+
+<p><img src="images/qrCode-3001df59.png" style="width: 150px" alt="" /></p>
+<h4 id='custody-2'>注册Custody账号</h4>
+<p>打开【Custody】应用，注册账号（未注册账号登录即注册），支持邮箱与手机号两种方式</p>
+
+<p><img src="images/login-ddfa039e.png" style="width: 250px" alt="" /></p>
+<h4 id='e019fed864'>完成身份认证</h4>
+<p>身份认证信息，仅支持一种身份，且认证后不支持更换</p>
+
+<p><img src="images/pkyc-b038901c.jpg" style="width: 250px" alt="" /> </p>
+
+<p><img src="images/ekyc-d7915522.jpg" style="width: 250px" alt="" /></p>
+
+<p>完成【身份认证】、【谷歌验证】（身份认证需要平台审核，您可以联系项目经理或客服快速审核）</p>
+
+<p><img src="images/safe-74dc70cf.jpg" style="width: 250px" alt="" /></p>
+<h2 id='c4571ab0cb'>创建并配置企业钱包</h2><h4 id='chainup-custody'>登录ChainUp Custody平台</h4>
+<p>浏览器打开<a href="https://custody.chainup.com/">ChainUp Custody平台</a>， 使用【Custody】应用，首页或云端钱包【扫码】功能扫描二维码登录</p>
+
+<p><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_saomadenglu.jpg" alt="api_plan_saomadenglu.jpg (2882×1696)" /></p>
+<h4 id='705f06ca61'>创建钱包</h4>
+<p>进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg" alt="../_images/api_plan_chuangjianqianbao1.jpg" /></a></p>
+<h4 id='3f08cc2f10'>开启币种</h4>
+<p>开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）</p>
+
+<p>开通币种后，进入钱包点击【币种管理】，搜索币种</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg" alt="../_images/api_plan_bizhongguanli.jpg" /></a></p>
+
+<p>进入编辑页面，开启币种</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png" alt="../_images/api_plan_bizhongbianji.png" /></a></p>
+<h3 id='api-2'>获取API信息</h3>
+<p>创建API（目前仅支持一个全功能权限的API）</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png" alt="../_images/api_plan_apiliebiao.png" /></a></p>
+
+<p>创建完成，完善公钥信息</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png" alt="../_images/api_plan_apixiangqing.png" /></a></p>
+<h4 id='a5ef07f8b8'>开发测试</h4>
+<p>根据平台提供的技术方案与API文档进行系统对接</p>
+<h2 id='04c51bd8c9'>商户签约</h2><h4 id='0f7f64b1c8'>正式签约</h4>
+<p>支持线上、线下签约</p>
+<h4 id='d79e7254cc'>支付费用</h4>
+<p>支付系统订阅、安装等费用（具体费用类型以合同为准）</p>
+<h2 id='51a788e152'>投入使用</h2><h4 id='89ea478127'>协助上线</h4>
+<p>协助商户正式上线运营</p>
+<h4 id='f988263e8c'>技术支持</h4>
+<p>平台提供7*24h技术支持</p>
+<h1 id='06914006d1'>对接方案</h1>
+<p>为了让客户更便捷、快速的接入Custody，平台基于过往客户的对接经验，梳理了一套比较完善的技术对接方案。具体如下：</p>
+
+<ol>
+<li>获取充币地址</li>
+<li>用户充币</li>
+<li>用户提币</li>
+<li>财务对账</li>
+</ol>
+
+<p>注：若客户项目时间紧迫，可优先开发必须流程【获取充币地址】、【用户充币】、【用户提币】，【财务对账】流程可二期开发。</p>
+<h2 id='263e170b4c'>获取充币地址</h2>
+<ol>
+<li>客户向Custody系统注册用户（建议使用邮箱）</li>
+<li>注册成功后通过Custody系统的UID获取地址</li>
+</ol>
+
+<p>注：提前获取地址有利于用户注册后高效分配地址；若用户注册后再通过接口获取地址，有可能因为网络等其它原因造成获取失败，导致用户无法正常完成业务。</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png" alt="" /></a></p>
+<h2 id='3a86198eeb'>用户充币</h2>
+<p>1）用户在客户系统内完成注册</p>
+
+<p>2）当用户在前端查看币种充值地址时，客户系统为用户分配币种地址</p>
+
+<p>3）用户向地址充币</p>
+
+<p>4）Custody系统监控区块链地址有充币交易，在Custody系统为客户上账，并主动通知客户系统或客户系统主动获取</p>
+
+<p>5）客户系统确认充币信息有效后给用户上账</p>
+
+<p>6）客户系统通知用户充币成功</p>
+
+<p><img src="https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_chongzhi.png" alt="img" /></p>
+
+<p>注：Custody系统的异步回调是当每笔订单最终态时才会触发，每日最多发送5次；</p>
+
+<p>定时任务：总计回调五次</p>
+
+<p>通知时间：第一次1s, 第二次2min，第三次8min，第四次32min，第五次128min</p>
+
+<p><strong>回调逻辑：</strong></p>
+
+<p>如果回调成功，更新回调状态；</p>
+
+<p>如果回调失败，继续回调，更新下次回调间隔时间；</p>
+
+<p>当回调失败达到5次，停止回调</p>
+<h2 id='6f4f99292a'>用户提币</h2>
+<p>1）用户在客户系统发起提币</p>
+
+<p>2）客户系统审核通过后，通知Custody系统</p>
+
+<p>3）Custody系统向客户系统进行提币信息二次确认</p>
+
+<p>4）客户系统确认提币信息有效后Custody系统校验提币信息，校验通过发起支付</p>
+
+<p>5）Custody系统监控提币订单状态，提币完成，主动通知客户系统或客户系统主动获取</p>
+
+<p>6）客户系统通知用户提币成功</p>
+
+<p><img src="https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_tibi.png" alt="img" /></p>
+<h2 id='9f09dd41eb'>财务对账</h2>
+<p>1）客户系统按周期与Custody系统对账（建议按日）</p>
+
+<p>2）次日0点获取上一日的所有充币、提币以及消耗的归集矿工费订单</p>
+
+<p>3）客户系统订单与Custody系统内的订单做比对</p>
+
+<p>4）若订单数量、金额、状态等无误则对账成功；否则对账异常，联系ChainUP Custody技术人员协助处理</p>
+
+<p><img src="https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_duizhang.png" alt="img" /></p>
+
+<p>注：Custody系统内三方系统共有三种成本支出：归集矿工费、提币矿工费、分润手续费；</p>
+
+<ol>
+<li>归集矿工费：账户类型的币种，充币后地址上的资金会归集到热钱包地址，归集走区块链网络，部分主链区块链交易会消耗矿工费，这部分成本由客户承担；此部分资金支出需要联系我方处理</li>
+<li>提币矿工费：提币到非ChainUP Custody的地址，走区块链网络需要消耗矿工费（部分币种），消耗的矿工费由三方承担；此部分资金支出在提币订单内可以直接查看；</li>
+<li>分润手续费：暂不收取</li>
+</ol>
+<h1 id='f3b134a5ca'>开发前准备</h1><h2 id='72706ccb1b'>开发须知</h2><h4 id='api-3'>两对公私钥作用（API方式）</h4>
+<p><strong>第一对公私钥：</strong> 开发者在开通资管账号时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台B，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。</p>
+
+<p><strong>第二对公私钥：</strong> 开发者开通资管账号后，平台会提供钱包公钥（rsa_wallet_pub）给开发者，第三方应用在接受到钱包的响应数据或异步通知时，需要通过公钥来进行解密。</p>
+<h4 id='api-4'>为什么需要进行提现二次确认（API方式）</h4>
+<p>钱包服务接收到第三方应用请求时，为了确认该请求为第三方应用合法请求，会调用第三方提供的接口来确认。该过程在一定程度上也能避免第三方私钥丢失所造成的影响，也为钱包服务的安全性提供了一套有效屏障。</p>
+<h4 id='api-api'>域名及API密钥（API方式）</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">生产环境域名(不支持测试环境):</th>
+<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip/</a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">app_id:</td>
+<td>请创建钱包后获取</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_wallet_pub:</td>
+<td>Custody系统公钥；请创建钱包后从Custody系统获取</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_third_prv:</td>
+<td>客户私钥；自主生成、保存</td>
+</tr>
+<tr>
+<td style="text-align: left">rsa_third_pub:</td>
+<td>客户公钥；自主生成；请创建钱包后配置到Custody系统</td>
+</tr>
+</tbody></table>
+
+<p><a href="http://www.metools.info/code/c80.html">RSA 公私钥生成地址</a></p>
+
+<p>推荐密码长度：2048</p>
+
+<p>推荐密钥格式：PKCS#8</p>
+
+<p>说明：</p>
+
+<ol>
+<li><p>rsa_third_prv为第三方应用私钥，主要用于加密请求参数。如果是生产环境，rsa_third_prv由开发者生成，然后将对应的公钥提供给平台。测试环境为了简化开发者对接流程，此处直接提供了一套第三方的公私钥，便于开发者快速对接。</p></li>
+<li><p>目前不支持测试环境对接，请根据<strong>接入指引</strong>自主注册创建钱包后，获取生产环境的API相关信息。</p></li>
+</ol>
+<h2 id='2f8862bf69'>资管账号准备</h2>
+<p>开发者准备如下信息：</p>
+
+<p>1）生成一对公私钥，将公钥提供给平台；</p>
+
+<p>2）第三方应用服务器IP；</p>
+
+<p>3）充值提现回调通知地址；</p>
+
+<p>4）提现二次确认地址；</p>
+
+<p>5）是否开启自动归集功能，开启后，系统会自动将用户充值资金划转到商户归集账户。</p>
+
+<p>联系平台相关人员，提供上述五类信息。平台为您准备资管账号，提供到您这边包括以下信息：</p>
+
+<p>1）商户的唯一标识：<code>app_id</code>；</p>
+
+<p>2）钱包公钥：<code>rsa_wallet_pub</code>。</p>
+<h2 id='6e241fa925'>接口交互过程</h2>
+<p>文档为钱包服务对第三方应用提供的接口。</p>
+
+<p><a href="https://custodydocs.chainup.com/zh/latest/_images/apiopen-instructions-v2.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/apiopen-instructions-v2.png" alt="../_images/apiopen-instructions-v2.png" /></a></p>
+
+<p>以下文档中的接口提供方称为 <strong>钱包服务</strong>，接口调用方称为 <strong>第三方应用</strong>。第三方应用在请求钱包服务时，通过RSA算法对请求参数进行加密，接受到钱包服务的响应数据后需要进行解密</p>
+<h2 id='cb6baa1bd8'>接口规则</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">传输方式:</th>
+<th>https(测试环境暂时使用 http)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">签名字段:</td>
+<td>除了 <code>sign</code> 字段，其他所有必填项都需要参与签名</td>
+</tr>
+<tr>
+<td style="text-align: left">响应状态码为:</td>
+<td><code>0</code>表示处理<code>成功</code>，非 0 表示<strong>请求错误</strong>或<strong>系统异常</strong></td>
+</tr>
+<tr>
+<td style="text-align: left">请求地址:</td>
+<td>域名+接口地址</td>
+</tr>
+<tr>
+<td style="text-align: left">加密算法:</td>
+<td>RSA， 详见 API 文档 <code>加解密方式</code></td>
+</tr>
+</tbody></table>
+<h1 id='sdk'>SDK</h1>
+<p>为满足客户多样性的业务需求，ChainUp Custody支持两种对接方式：SDK与API</p>
+<h4 id='sdk-java-php-node'>SDK：支持java，PHP和node</h4>
+<p><strong>Java SDK地址：</strong><a href="https://github.com/HiCoinCom/java-sdk">https://github.com/HiCoinCom/java-sdk</a></p>
+
+<p><strong>PHP SDK地址：</strong><a href="https://github.com/HiCoinCom/php-sdk">https://github.com/HiCoinCom/php-sdk</a></p>
+
+<p><strong>node SDK地址：</strong><a href="https://github.com/HiCoinCom/js-sdk">https://github.com/HiCoinCom/js-sdk</a></p>
+<h1 id='api-5'>API文档</h1><h2 id='ada01d8c4e'>统一说明</h2><h3 id='d06fcec6de'>请求参数统一格式</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">app_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">必须</td>
+<td style="text-align: left">商户唯一标识</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">加密之后的字符串，具体加密信息见各接口 <code>请求参数数据结构</code></td>
+</tr>
+</tbody></table>
+<h4 id='513b6965ca'>请求接口示例</h4>
+<p><code>POST/api/v2/user/createUser</code></p>
+
+<blockquote>
+<p>请求接口示例：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code>
+<span class="no">POST</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">createUser</span>
+
+<span class="n">app_id</span><span class="o">=</span><span class="n">baaceb1e506e1b5d7d1f0a3b1622583b</span><span class="o">&amp;</span><span class="n">data</span><span class="o">=</span><span class="nc">GCJBk77n7epyOexdGZ20qvukd321TpJ62lIAtlCinW6TzHx8SIbm6evXGulO87UgLTzIWCtgupgeLJKDdZmC7msuPNBGK</span><span class="o">--</span><span class="n">Ec27WZXjuhI0gNWXcOVk5RW_VRVcyfJ1Ml</span><span class="o">-</span><span class="n">DMW8XVxZRgA2U1bt9BztiyfryzMGj8_jl1IXd5sOQfPYXulCdm70WyTJpjsDkuMSov6QUmOn</span><span class="o">-</span><span class="no">C_</span><span class="o">-</span><span class="n">HUoZ7s715EMeZ60D09uUsF0i6mKLhFZTEQZPGPeJITYSJNddAw7nvqvX2KzNc6YUeCQhEmU1Dfxp65W4e3SVOgpd_2Q</span><span class="o">-</span><span class="n">dLN1MpOlkUKwbmbpb</span><span class="o">-</span><span class="n">gEh_s68yl7ox6WSgKfCK4i_uvA</span>
+
+
+</code></pre></div><h3 id='680b2bbba1'>响应参数统一格式</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>可选</td>
+<td>加密之后的字符串，具体加密信息见 <code>响应结果data解密后格式</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例:   </p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="o">{</span>
+    <span class="s">"data"</span><span class="o">:</span><span class="s">"LK4D5mrtvTubDxCQM4lqyN2h8TTIkEBL_06FrrrzLrImyMO4Yuac-wdbk5VnGVfCKB5EFaUb162xXUJdTHhpA5CGBCAQKl64h_Dt10C-H8KIoap9dZI90qE4f-mAMAyjF1QzKXJ-f-R_3J3bRGqfHFBRXebh08R8MdRDssniopVOhsFUs4gBxUensKas3_ta15eFIqXPjIgJWfYQCD2DUi1gaKgmN-5Q_tgt-qXp5Y2uh3yfM4g4k71Ahyel3G8S_AktbWl2G9wU3cri3ZVQEo0faIpkX_CKsk9V1YoY5yRopvJbxNtkG9lBFxKnureAQo0KP3f1tsIMOzgcyEXPnA"</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='data'>响应结果data解密后格式</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">状态码，例：100002</td>
+</tr>
+<tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">响应结果说明，例：请求参数错误</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">具体响应数据，数据结构定义见各接口  <code>响应参数数据结构</code></td>
+</tr>
+</tbody></table>
+<h3 id='8c20d5369f'>加解密方式</h3>
+<p>请求参数data与响应字段data的值都是经过rsa加密后再通过 <strong>base64urlsafe</strong> 加密的结果</p>
+
+<aside class="notice">
+*注意事项*
+<br/>
+<br/>
+1）base64传统编码中会出现+, /两个会被url直接转义的符号，因此如果希望通过url传输这些编码字符串，我们需要先做传统base64编码，随后将+和/分别替换为- _两个字符，在接收端则做相反的动作解码
+<br/>
+<br/>
+2）rsa加密与解密使用分段加密
+</aside>
+<h2 id='a1cda4baf4'>获取地址</h2>
+<p>请注意，默认注册用户量为5万个，如果用户超过上限，请联系相关运营人员进行协助</p>
+<h3 id='7cdaa5821f'>用户手机注册</h3>
+<p>注册成为钱包的用户</p>
+<h4 id='http'>HTTP请求</h4>
+<p><code>POST/api/v2/user/createUser</code></p>
+<h4 id='data-2'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>必填</td>
+<td>国家编号，如：86表示中国</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>String</td>
+<td>必填</td>
+<td>手机号</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-3'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>是</td>
+<td>用户在钱包服务的唯一标识</td>
+</tr>
+</tbody></table>
+<h3 id='2a7ea8d599'>用户邮箱注册</h3>
+<p>注册成为钱包的用户。满足邮箱格式即可（e.g. <a href="mailto:123@111.com">123@111.com</a>）</p>
+<h4 id='http-2'>HTTP请求</h4>
+<p><code>POST /api/v2/user/registerEmail</code></p>
+<h4 id='data-4'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>必填</td>
+<td>邮箱或虚拟账号，确保其唯一性,最多支持100字符</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-5'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>是</td>
+<td>用户在钱包服务的唯一标识</td>
+</tr>
+</tbody></table>
+<h3 id='a329bc371b'>获取指定充币地址</h3>
+<p>获取用户指定币账户地址。如果没有地址，则给用户分配一个地址，此时不应生成账户，账户还是按需生成。</p>
+<h4 id='http-3'>HTTP请求</h4>
+<p><code>POST/api/v2/account/getDepositAddress</code></p>
+<h4 id='data-6'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>必填</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="s2">"3529218"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-7'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>是</td>
+<td>用户在钱包服务的唯一标识</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>是</td>
+<td>币种账户地址</td>
+</tr>
+</tbody></table>
+<h2 id='11f99972ee'>账户资产</h2><h3 id='b6bb36669d'>查询用户信息</h3>
+<p>查询用户信息。</p>
+<h4 id='http-4'>HTTP请求</h4>
+<p><code>GET/api/v2/user/info</code></p>
+<h4 id='data-8'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>可选</td>
+<td>国家编号，mobile不为空时，该字段必填。如：86</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>String</td>
+<td>可选</td>
+<td>手机号，手机和邮箱需要保证其中之一不能为空</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>可选</td>
+<td>邮箱，手机和邮箱需要保证其中之一不能为空</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">3529218</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nickname"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-9'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>是</td>
+<td>用户在钱包服务的唯一标识</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>String</td>
+<td>是</td>
+<td>用户昵称</td>
+</tr>
+</tbody></table>
+<h3 id='84a3e2030f'>获取币种列表</h3>
+<p>获取商户的币种列表</p>
+<h4 id='http-5'>HTTP请求</h4>
+<p><code>GET/api/v2/user/getCoinList</code></p>
+<h4 id='data-10'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"icon"</span><span class="p">:</span><span class="s2">"http://chainup-oss.oss-cn-beijing.aliyuncs.com/saas/1565681771193.png"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"real_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"decimals"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"deposit_confirmation"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"explorer"</span><span class="p">:</span><span class="s2">"https://btc.com/"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_regex"</span><span class="p">:</span><span class="s2">"^(1|3)[a-zA-Z0-9]{24,36}$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_tag_regex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"support_memo"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"support_token"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-11'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>币种（调用提币的接口，及任何查询接口时务必使用此字段返回的值）</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>String</td>
+<td>是</td>
+<td>币种icon</td>
+</tr>
+<tr>
+<td>real_symbol</td>
+<td>String</td>
+<td>是</td>
+<td>币种链上名称</td>
+</tr>
+<tr>
+<td>decimals</td>
+<td>String</td>
+<td>是</td>
+<td>精度</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>是</td>
+<td>币种全称</td>
+</tr>
+<tr>
+<td>base_symbol</td>
+<td>string</td>
+<td>是</td>
+<td>主链币币名</td>
+</tr>
+<tr>
+<td>contract_address</td>
+<td>string</td>
+<td>是</td>
+<td>合约地址</td>
+</tr>
+<tr>
+<td>deposit_confirmation</td>
+<td>string</td>
+<td>是</td>
+<td>币种充值确认数</td>
+</tr>
+<tr>
+<td>explorer</td>
+<td>string</td>
+<td>是</td>
+<td>区块浏览器</td>
+</tr>
+<tr>
+<td>address_regex</td>
+<td>string</td>
+<td>是</td>
+<td>地址正则</td>
+</tr>
+<tr>
+<td>address_tag_regex</td>
+<td>string</td>
+<td>是</td>
+<td>tag正则</td>
+</tr>
+<tr>
+<td>support_memo</td>
+<td>string</td>
+<td>是</td>
+<td>是否支持memo，0不支持1支持</td>
+</tr>
+<tr>
+<td>support_token</td>
+<td>string</td>
+<td>是</td>
+<td>是否支持token币，0不支持1支持,主链币才有值,代币为空</td>
+</tr>
+</tbody></table>
+<h3 id='48b246d3ee'>获取指定账户信息</h3>
+<p>根据币种及用户ID查询用户的账户。另外，若商户开启自动归集后，用户账户将被转移到商户的归集账户中</p>
+<h4 id='http-6'>HTTP请求</h4>
+<p><code>GET/api/v2/account/getByUidAndSymbol</code></p>
+<h4 id='data-12'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>vesion</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>必填</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"normal_balance"</span><span class="p">:</span><span class="s2">"2.99400066"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="s2">"0x6956f9af53b22117f2fc94dfe7c74ff3893b2acd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-13'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal_balance</td>
+<td>String</td>
+<td>必填</td>
+<td>正常账户余额</td>
+</tr>
+<tr>
+<td>lock_balance</td>
+<td>String</td>
+<td>必填</td>
+<td>冻结账户余额</td>
+</tr>
+<tr>
+<td>deposit_address</td>
+<td>String</td>
+<td>必填</td>
+<td>币种对应的充值地址</td>
+</tr>
+</tbody></table>
+<h3 id='a79057b06b'>获取归集账户余额</h3>
+<p>开启商户资金自动归集之后，商户可以通过该接口种获取商户归集账户余额</p>
+<h4 id='http-7'>HTTP请求</h4>
+<p><code>GET/api/v2/account/getCompanyBySymbol</code></p>
+<h4 id='data-14'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>vesion</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"64.97599802"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-15'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>String</td>
+<td>必填</td>
+<td>归集账户余额</td>
+</tr>
+</tbody></table>
+<h2 id='6b81bd2875'>用户充值</h2><h3 id='ae74502f48'>同步充值记录</h3><h4 id='http-8'>HTTP请求</h4>
+<p><code>GET/api/v2/billing/syncDepositList</code></p>
+<h4 id='data-16'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>int</td>
+<td>必填</td>
+<td>返回大于id的100条充值记录数据</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"1CfYiePwcf3mWhLBQH2ac35C7jmE2udQqH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539050731000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10596</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543483252000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45325</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.0000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"17m2GM8aRrrnxPt5JhYPJd4qUFqF8rJDop"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539065092000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10595</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543851222000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45332</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-17'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>必填</td>
+<td>充值唯一id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>必填</td>
+<td>充值用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>充值金额</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>必填</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>必填</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>必填</td>
+<td>来源地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>必填</td>
+<td>充值到帐地址</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>必填</td>
+<td>0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断)</td>
+</tr>
+</tbody></table>
+<h3 id='e52c97ad2d'>批量充值记录</h3><h4 id='http-9'>HTTP请求</h4>
+<p><code>GET/api/v2/billing/depositList</code></p>
+<h4 id='data-18'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>必填</td>
+<td>多个充值id使用逗号隔开，最多100个id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0002000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"78d1edef3b3fd14365f88cf2d03e8c29ec49ac1a43cedde9e21d320b3268f4de"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0002000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1545273830000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xd609e050c3d573fb715431edbd36cc08eaa475f813de921026a65c0a96e8113e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xcb03bfdccb50c9f62ec1c728f264bf453e037132"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-19'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>必填</td>
+<td>充值唯一id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>必填</td>
+<td>充值 用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>充值金额</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间,时间戳</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>修改时间，时间戳</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>必填</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>必填</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>必填</td>
+<td>来源地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>必填</td>
+<td>充值到帐地址</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>必填</td>
+<td>0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断)</td>
+</tr>
+</tbody></table>
+<h3 id='8e0f215981'>用户充值异步回调通知</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">说明:</th>
+<th>此接口仅定义了接口规范，具体接口需要开发者实现</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">接口地址:</td>
+<td>接口地址由开发者提供，联系管理员在平台进行配置即可</td>
+</tr>
+<tr>
+<td style="text-align: left">请求方式:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='data-20'>请求参数data解密之后数据结构:</h4>
+<p><strong>充值通知：</strong></p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>是</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>是</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>是</td>
+<td>通知类型， 充值通知：deposit， 提现通知： withdraw</td>
+</tr>
+<tr>
+<td>notify_time</td>
+<td>string</td>
+<td>是</td>
+<td>通知时间</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>是</td>
+<td>充值id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>是</td>
+<td>提现用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>是</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>string</td>
+<td>是</td>
+<td>充值地址</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>string</td>
+<td>是</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>string</td>
+<td>是</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>string</td>
+<td>是</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>string</td>
+<td>是</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>是</td>
+<td>充值状态 0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断)</td>
+</tr>
+</tbody></table>
+<h4 id='75d7c3d973'>响应参数:</h4>
+<p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败 （注意此处返回参数无需进行加密）</p>
+<h3 id='3eb0894447'>获取归集矿工费</h3>
+<p>账户类型的币种充值后需要进行归集，UTXO无归集矿工费费用</p>
+<h4 id='http-10'>HTTP请求</h4>
+<p><code>GET//api/v2/billing/syncMinerFeeList</code></p>
+<h4 id='data-21'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传 参数 utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况， 传参数 v2</td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>int</td>
+<td>必填</td>
+<td>返回大于 id 的 100 条归集矿 工费记录数据</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00111"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1539050731000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1543483252000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"txid_type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成功"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-22'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>是</td>
+<td>归集唯一ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>归集金额</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>是</td>
+<td>归集手续费</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>是</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>是</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>是</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>是</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>是</td>
+<td>0待确认，1 成功，2 失败，4 待KYT验证，5 待人工审核(KYT风险等级过高)，6 待人工审核(KYT充值熔断)</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>是</td>
+<td>充值到账地址</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>是</td>
+<td>充值发送地址</td>
+</tr>
+<tr>
+<td>txid_type</td>
+<td>String</td>
+<td>是</td>
+<td>0 链上交易，1 联盟转账交易</td>
+</tr>
+<tr>
+<td>base_symbol</td>
+<td>String</td>
+<td>是</td>
+<td>主链币名称</td>
+</tr>
+<tr>
+<td>contract_address</td>
+<td>String</td>
+<td>是</td>
+<td>币种合约地址</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>是</td>
+<td>邮箱</td>
+</tr>
+</tbody></table>
+<h2 id='69560f134e'>用户提现</h2><h3 id='34cd7a9e4c'>发起提现</h3>
+<p>如果提现地址为联盟内部地址，则不会上链；否则需要上链。另外，为了避免非法的提现请求，钱包服务在接收到第三方应用的提现请求时，会调用第三方提供的[提现二次确认接口。</p>
+<h4 id='http-11'>HTTP请求</h4>
+<p><code>POST/api/v2/billing/withdraw</code></p>
+<h4 id='data-23'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识，最多支持64位</td>
+</tr>
+<tr>
+<td>from_uid</td>
+<td>String</td>
+<td>必填</td>
+<td>转出用户ID</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>String</td>
+<td>必填</td>
+<td>转入用户地址，memo类型，使用&quot;_&quot;进行拼接，如: eos_24545</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>提现金额，包含提现手续费；手续费需要在商户后台配置</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>提现币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48680</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-24'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>param</th>
+<th>type</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>必填</td>
+<td>0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高)</td>
+</tr>
+</tbody></table>
+<h3 id='85379dc090'>提现信息二次确认</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">说明:</th>
+<th>平台在接收到提现请求之后，会调用第三方提供的二次确认接口，来确认该请求为商户正常发起的提现请求。此接口仅定义了接口规范，具体接口需要开发者实现。</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">接口地址:</td>
+<td>接口地址由开发者提供，联系管理员在平台进行配置即可</td>
+</tr>
+<tr>
+<td style="text-align: left">请求方式:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='data-25'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>是</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>是</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>是</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>是</td>
+<td>请求唯一标识</td>
+</tr>
+<tr>
+<td>from_uid</td>
+<td>String</td>
+<td>是</td>
+<td>转出用户ID</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>String</td>
+<td>是</td>
+<td>转入用户地址</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提现金额，包含提现手续费；手续费需要在商户后台配置</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>提现币种</td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>是</td>
+<td>随机校验码，第三方原样返回此字段平台认为成功</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"check_sum"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"12345678"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-26'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>必填</td>
+<td>请求参数中的check_sum</td>
+</tr>
+<tr>
+<td>time</td>
+<td>String</td>
+<td>必须</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<h3 id='9cb2389eb8'>提现异步回调通知</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">说明:</th>
+<th>此接口仅定义了接口规范，具体接口需要开发者实现</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">接口地址:</td>
+<td>接口地址由开发者提供，联系管理员在平台进行配置即可</td>
+</tr>
+<tr>
+<td style="text-align: left">请求方式:</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h4 id='data-27'>请求参数data解密之后数据结构:</h4>
+<p>提现通知：</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>是</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>是</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>是</td>
+<td>通知类型， 充值通知：deposit， 提现通知： withdraw</td>
+</tr>
+<tr>
+<td>notify_time</td>
+<td>String</td>
+<td>是</td>
+<td>通知时间</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>是</td>
+<td>提现请求ID，对应提现接口中的request_id</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>是</td>
+<td>提现id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>String</td>
+<td>是</td>
+<td>提现用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>是</td>
+<td>提现手续费币种</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>是</td>
+<td>提现手续费</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>是</td>
+<td>挖矿手续费币种</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>是</td>
+<td>矿工费</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>是</td>
+<td>充值地址</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>String</td>
+<td>是</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>String</td>
+<td>是</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>是</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>String</td>
+<td>是</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>是</td>
+<td>提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高)</td>
+</tr>
+</tbody></table>
+<h4 id='75d7c3d973-2'>响应参数:</h4>
+<p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败 （注意此处返回参数无需进行加密）</p>
+<h3 id='74637cf841'>同步提现记录</h3>
+<p>批量获取提现记录</p>
+<h4 id='http-12'>HTTP请求</h4>
+<p><code>GET/api/v2/billing/syncWithdrawList</code></p>
+<h4 id='data-28'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>String</td>
+<td>必填</td>
+<td>返回大于id的100条充值记录数据</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10739</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48393</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-29'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求id,</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>必填</td>
+<td>提现id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>必填</td>
+<td>提现用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>提现手续费币种</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>必填</td>
+<td>提现手续费</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>挖矿手续费币种</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>必填</td>
+<td>矿工费</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>必填</td>
+<td>来源地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>必填</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>必填</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>必填</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>saas_status</td>
+<td>int</td>
+<td>必填</td>
+<td>平台审核状态:0 未审核，1 已审核，2 审核拒绝</td>
+</tr>
+<tr>
+<td>company_status</td>
+<td>int</td>
+<td>必填</td>
+<td>商户审核状态:0 未审核，1 已审核，2 审核拒绝</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>必填</td>
+<td>提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高)</td>
+</tr>
+</tbody></table>
+<h3 id='3b572ffb5a'>批量获取提现记录</h3>
+<p>批量获取提现记录</p>
+<h4 id='http-13'>HTTP请求</h4>
+<p><code>GET/api/v2/billing/withdrawList</code></p>
+<h4 id='data-30'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数v2</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>必填</td>
+<td>多个request_id使用逗号隔开，最多100个request_id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="s2">"0.4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"LhFrA5ZJL15UdRV1uEfFxfdqWJUbBhXpRk1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uid"</span><span class="p">:</span><span class="mi">10739</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"withdraw_fee_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saas_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"company_status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">48393</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-31'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求id</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>必填</td>
+<td>提现id</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>int</td>
+<td>必填</td>
+<td>提现用户id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>withdraw_fee_symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>提现手续费币种</td>
+</tr>
+<tr>
+<td>withdraw_fee</td>
+<td>String</td>
+<td>必填</td>
+<td>提现手续费</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>挖矿手续费币种</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>必填</td>
+<td>矿工费</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间,</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>必填</td>
+<td>来源地址</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>必填</td>
+<td>到账地址</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>必填</td>
+<td>区块链交易ID</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>int</td>
+<td>必填</td>
+<td>区块链确认数</td>
+</tr>
+<tr>
+<td>saas_status</td>
+<td>int</td>
+<td>必填</td>
+<td>平台审核状态</td>
+</tr>
+<tr>
+<td>company_status</td>
+<td>int</td>
+<td>必填</td>
+<td>商户审核状态</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>必填</td>
+<td>提现状态: 0 风控审核中，1 支付中，2 审核拒绝，4 失败，5 成功， 6 已撤销，7 待KYT验证， 8 待人工审核(KYT风险等级过高)</td>
+</tr>
+</tbody></table>
+<h2 id='ab640ebe1e'>商户转账</h2><h3 id='custody-3'>Custody商户转账</h3>
+<p>Custody内部商户互相转账</p>
+<h4 id='http-14'>HTTP请求</h4>
+<p><code>POST/api/v2/account/transfer</code></p>
+<h4 id='data-32'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>Long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识，最多支持64位</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>转账币种，Custody获取币种名称</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>转账数量，包含转账手续费</td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>必填</td>
+<td>转入商户，目前填写商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>选填</td>
+<td>备注字段</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"abcdesd"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-33'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>必填</td>
+<td>转账唯一凭证</td>
+</tr>
+</tbody></table>
+<h3 id='22d4f1a655'>转账信息异步确认</h3>
+<p>转账信息异步确认</p>
+<h4 id='http-15'>HTTP请求</h4>
+<p><code>POST/same-with-withdraw-check-sum</code></p>
+<h4 id='data-34'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>Long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识，最多支持64位</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>转账数量，包含转账手续费</td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>必填</td>
+<td>转入商户，目前填写商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>必填</td>
+<td>随机校验码，第三方原样返回此字段平台认为成功</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>选填</td>
+<td>备注字段</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"check_sum"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-35'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>check_sum</td>
+<td>String</td>
+<td>必填</td>
+<td>随机校验码，第三方原样返回此字段平台认为成功</td>
+</tr>
+</tbody></table>
+<h3 id='785254f966'>批量查询转账记录</h3><h4 id='http-16'>HTTP请求</h4>
+<p><code>POST/api/v2/account/transferList</code></p>
+<h4 id='data-36'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识,多个之间用英文逗号分割，最多100个</td>
+</tr>
+<tr>
+<td>ids_type</td>
+<td>String</td>
+<td>必填</td>
+<td>request_id：请求ID（默认）；receipt：转账凭证</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444444"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"备注信息"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444445"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"备注信息"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-37'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识，最多支持64位</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>转账数量，包含转账手续费</td>
+</tr>
+<tr>
+<td>from</td>
+<td>String</td>
+<td>必填</td>
+<td>转出商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>必填</td>
+<td>转入商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>三方ID</td>
+</tr>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>必填</td>
+<td>转账凭证</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>必填</td>
+<td>最大支持32字符</td>
+</tr>
+</tbody></table>
+<h3 id='047e3c04bb'>同步转账记录</h3><h4 id='http-17'>HTTP请求</h4>
+<p><code>POST/api/v2/account/syncTransferList</code></p>
+<h4 id='data-38'>请求参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>max_id</td>
+<td>String</td>
+<td>必填</td>
+<td>返回大于id的100条转账记录数据</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应数据解密后示例:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+</span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444444"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"备注信息"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="s2">"0xc0ff095a9f1608f6873e74b84671640364107dc5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1551429063111</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"123124"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receipt"</span><span class="p">:</span><span class="s2">"4444445"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"备注信息"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"成功"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='data-39'>响应参数data解密之后数据结构:</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>time</td>
+<td>long</td>
+<td>必填</td>
+<td>当前时间戳</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>String</td>
+<td>必填</td>
+<td>编码格式，无特殊情况，传参数<code>utf-8</code></td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>必填</td>
+<td>接口版本号，无特殊情况，传参数<code>v2</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>必填</td>
+<td>请求唯一标识，最多支持64位</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>必填</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>必填</td>
+<td>转账数量，包含转账手续费</td>
+</tr>
+<tr>
+<td>from</td>
+<td>String</td>
+<td>必填</td>
+<td>转出商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>to</td>
+<td>String</td>
+<td>必填</td>
+<td>转入商户<code>APPID</code></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Long</td>
+<td>必填</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>必填</td>
+<td>三方ID</td>
+</tr>
+<tr>
+<td>receipt</td>
+<td>String</td>
+<td>必填</td>
+<td>转账凭证</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>必填</td>
+<td>最大支持32字符</td>
+</tr>
+</tbody></table>
+<h1 id='e08c1d4f9a'>错误码</h1>
+<table><thead>
+<tr>
+<th>code</th>
+<th>msg</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>100001</td>
+<td>系统错误</td>
+</tr>
+<tr>
+<td>100004</td>
+<td>请求参数不合法(提现二次确认接口回调失败)</td>
+</tr>
+<tr>
+<td>100005</td>
+<td>签名校验失败</td>
+</tr>
+<tr>
+<td>100007</td>
+<td>非法IP</td>
+</tr>
+<tr>
+<td>100015</td>
+<td>商户ID无效</td>
+</tr>
+<tr>
+<td>100016</td>
+<td>商户信息过期</td>
+</tr>
+<tr>
+<td>110004</td>
+<td>用户被冻结不可提现</td>
+</tr>
+<tr>
+<td>110023</td>
+<td>手机号已注册</td>
+</tr>
+<tr>
+<td>110037</td>
+<td>提现地址存在风险</td>
+</tr>
+<tr>
+<td>110055</td>
+<td>提现地址错误</td>
+</tr>
+<tr>
+<td>110065</td>
+<td>请求用户用户不存在（获取用户余额、提现或转账时用到）</td>
+</tr>
+<tr>
+<td>110078</td>
+<td>提现或转账金额小于最小转出金额</td>
+</tr>
+<tr>
+<td>110087</td>
+<td>提现或转账金额大于最大转出金额</td>
+</tr>
+<tr>
+<td>110088</td>
+<td>请勿重复提交请求</td>
+</tr>
+<tr>
+<td>110089</td>
+<td>注册手机号不正确</td>
+</tr>
+<tr>
+<td>110101</td>
+<td>用户注册失败</td>
+</tr>
+<tr>
+<td>110161</td>
+<td>超过提现最大支持精度</td>
+</tr>
+<tr>
+<td>120202</td>
+<td>币种不支持</td>
+</tr>
+<tr>
+<td>120206</td>
+<td>提现二次确认失败</td>
+</tr>
+<tr>
+<td>120402</td>
+<td>提现或转账余额不足</td>
+</tr>
+<tr>
+<td>120403</td>
+<td>提现手续费余额不足</td>
+</tr>
+<tr>
+<td>120404</td>
+<td>提现或转账金额太小, 小于等于手续费</td>
+</tr>
+<tr>
+<td>900006</td>
+<td>用户存在风险，禁止提现</td>
+</tr>
+<tr>
+<td>3040006</td>
+<td>不能给自己转账</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
