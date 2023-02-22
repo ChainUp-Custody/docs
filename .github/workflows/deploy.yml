@@ -15,7 +15,7 @@ jobs:
       - name: docker
         uses: whoan/docker-build-with-cache-action@v5
         with:
-          username: gengyujian
+          username: chainupcustody
           password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
           image_name: slate
       - name: run deploy.sh
