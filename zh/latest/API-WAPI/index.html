@@ -527,9 +527,7 @@ MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ/Xw5xJGvaadYBbCfqFaUoLIKEFvx
 <p>2、用户充币</p>
 
 <p>3、用户提币</p>
-<h4 id='c930504af9'>整体对接流程如下</h4>
-<p><a href="https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png"><img src="https://custodydocs.chainup.com/zh/latest/_images/wapi_interact_process.png" alt="../_images/wapi_interact_process.png" /></a></p>
-<h3 id='e4d635d90e'>注册充币地址</h3>
+<h4 id='c930504af9'>整体对接流程如下</h4><h3 id='e4d635d90e'>注册充币地址</h3>
 <p>1）可通过币种名称查询可用地址数量 注：（每次向Custody推送地址条数上限为<code>100</code>条，每次推送时会检查Custody剩余的地址可用数是否大于<code>5000</code>，如果有5000个地址没有被使用，则不允许注册；接口地址：<code>/api/v1/address/available</code>）</p>
 
 <p>2）向BaaS平台推送币种名称和地址列表，响应成功后及代表注册地址成功, 接口地址：<code>/api/v1/address/register</code>。 注：若注册币种的类型为memo类型，则同一个地址只允许注册一次。</p>

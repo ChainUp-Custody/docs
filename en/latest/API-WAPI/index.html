@@ -413,7 +413,7 @@
         <h1 id='chainup-custody-wapi'>ChainUp Custody WAPI</h1>
 <p>Welcome to the <strong>ChainUp Custody</strong> platform. This document is used by the third-party technical team to add the self-developed mainchain to the ChainUp Custody for alliance members.</p>
 
-<p>Note:  When third-party technical team using WAPI to access the the server and keeping private keys,  ChainUp Custody is not responsible for the security of assets. Therefore, the third-party technical team must establish a complete wallet private key custody system and API private key custody system</p>
+<p>Note:  When third-party technical team using WAPI to access the the server and keeping private keys,  ChainUp Custody is not responsible for the security of assets. Therefore, the third-party technical team must establish a complete wallet private key custody system and API private key custody system.</p>
 <h1 id='getting-started'>Getting Started</h1><h2 id='development-notes'>Development Notes</h2>
 <p><strong>The Role of Public and Private Keys</strong></p>
 
@@ -548,9 +548,7 @@
 <li> Make Deposits</li>
 <li> Make Withdrawals</li>
 </ol>
-<h4 id='the-overall-docking-process-is-as-follows'>The overall docking process is as follows</h4>
-<p><a href="https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png"><img src="https://custodydocs.chainup.com/en/latest/_images/wapi_interact_process.png" alt="../_images/wapi_interact_process.png" /></a></p>
-<h3 id='register-deposit-address'>Register Deposit Address</h3>
+<h4 id='the-overall-docking-process-is-as-follows'>The overall docking process is as follows</h4><h3 id='register-deposit-address'>Register Deposit Address</h3>
 <p>1）The number of available addresses can be queried by currency name. Note: (A maximum of <code>100</code>addresses per push to Custody, with each push checking that the number of addresses remaining available to Custody is greater than 5,000 and disallowing registration if 5,000 addresses are not being used. Interface address: <code>/api/v1/address/available</code>)</p>
 
 <p>2）Push the currency name and address list to the BaaS platform, after the response is successful, and the representative registered address is successful (interface address:<code>/api/v1/address/register</code>) Note: If the type of registered currency is memo, the same address Only one registration is allowed.。</p>
