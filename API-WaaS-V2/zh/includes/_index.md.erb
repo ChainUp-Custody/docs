@@ -32,9 +32,6 @@ ChainUp Custody通过API、SDK等形式为第三方合作伙伴提供快捷、�
 
 ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融清算体系，共享联盟成员流量，降低联盟成员成本，提升联盟成员资产使用率，构建区块链领域中的开放银行。让区块链联通万物。
 
-[![](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg)](https://custodydocs.chainup.com/zh/latest/_images/yuanjing.jpg)
-
-
 
 
 
@@ -44,8 +41,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 您需要按照以下流程进行接入ChainUp Custody
-
-[![](https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png)](https://custodydocs.chainup.com/zh/latest/_images/jieruzhiyin2.png)
 
 
 
@@ -108,41 +103,23 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 
 
-![api_plan_saomadenglu.jpg (2882×1696)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_saomadenglu.jpg)
-
-
-
-
-
 #### 创建钱包
 
 进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）
 
 
 
-[![../_images/api_plan_chuangjianqianbao1.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_chuangjianqianbao1.jpg)
-
 #### 开启币种
 
 开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）
 
-开通币种后，进入钱包点击【币种管理】，搜索币种
+开通币种后，进入钱包点击【币种管理】，搜索币种； 进入编辑页面，开启币种
 
-[![../_images/api_plan_bizhongguanli.jpg](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongguanli.jpg)
 
-进入编辑页面，开启币种
-
-[![../_images/api_plan_bizhongbianji.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_bizhongbianji.png)
 
 ### 获取API信息
 
-创建API（目前仅支持一个全功能权限的API）
-
-[![../_images/api_plan_apiliebiao.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apiliebiao.png)
-
-创建完成，完善公钥信息
-
-[![../_images/api_plan_apixiangqing.png](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)](https://custodydocs.chainup.com/zh/latest/_images/api_plan_apixiangqing.png)
+创建API（目前仅支持一个全功能权限的API）；创建完成，完善公钥信息
 
 #### 开发测试
 
@@ -204,7 +181,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 注：提前获取地址有利于用户注册后高效分配地址；若用户注册后再通过接口获取地址，有可能因为网络等其它原因造成获取失败，导致用户无法正常完成业务。
 
-[![](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png)](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_zhunbei.png)
 
 
 
@@ -222,7 +198,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 6）客户系统通知用户充币成功
 
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_chongzhi.png)
 
 注：Custody系统的异步回调是当每笔订单最终态时才会触发，每日最多发送5次；
 
@@ -258,7 +233,7 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 6）客户系统通知用户提币成功
 
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_tibi.png)
+
 
 
 
@@ -277,8 +252,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 4）若订单数量、金额、状态等无误则对账成功；否则对账异常，联系ChainUP Custody技术人员协助处理
 
 
-
-![img](https://custodydocs.chainup.com/zh/latest/_images/api_tsoulution_duizhang.png)
 
 注：Custody系统内三方系统共有三种成本支出：归集矿工费、提币矿工费、分润手续费；
 
@@ -372,7 +345,6 @@ ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融�
 
 文档为钱包服务对第三方应用提供的接口。
 
-[![../_images/apiopen-instructions-v2.png](https://custodydocs.chainup.com/zh/latest/_images/apiopen-instructions-v2.png)](https://custodydocs.chainup.com/zh/latest/_images/apiopen-instructions-v2.png)
 
 以下文档中的接口提供方称为 **钱包服务**，接口调用方称为 **第三方应用**。第三方应用在请求钱包服务时，通过RSA算法对请求参数进行加密，接受到钱包服务的响应数据后需要进行解密
 
