@@ -21,7 +21,8 @@ tmp
 _yardoc
 doc/
 .idea/
-#build/
+build/
+CNAME
 
 # Vagrant artifacts
 ubuntu-*-console.log

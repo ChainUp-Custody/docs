@@ -44,8 +44,7 @@ At present, **ChainUp Custody** has 500 over clients from various industries suc
 
 ChainUp Custody aims to build an open bank in the blockchain field by building a global financial clearing system across the main chain and relevant projects within a shared network which helps to reduce cost and improve asset utilization.
 
-
-
+<%= image_tag "eyuanjing.png"%>
 
 
 
@@ -54,9 +53,11 @@ ChainUp Custody aims to build an open bank in the blockchain field by building a
 
 Follow the instructions below to access ChainUp Custody
 
+For any questions, please contact your dedicated business manager or send email to  <custody@chainup.com> for assistance. 
 
 
 
+<%= image_tag "ejieruzhiyin.png"%>
 
 ## Create Account
 
@@ -66,7 +67,7 @@ Method 1：Open the link in your mobile browser：https://custody.chainup.com/do
 
 Method 2： scan the QR code for download:
 
-<%= image_tag "qrCode.png", style:"width: 150px" %>
+<%= image_tag "api_plan_jieruzhiyin2.png", style:"width: 150px" %>
 
 
 
@@ -98,36 +99,31 @@ Complete identity verification and google authentication. (For security level 2,
 
 #### Login
 
-Open ChainUp Custody platform (custody.chainup.com) using any browser, scan the QR code,and log in using the [Custody] app or by scanning the QR code.
+Open [ChainUp Custody platform](https://custody.chainup.com/) using any browser, scan the QR code using 【ChainUp Custody】APP to login. 
 
 
 
 #### Create a wallet
 
-Enter the 【ChainUp Custody】 page and create a wallet. Please fill in the name carefully because you are unable to change the name once the wallet has been created.
+Enter the 【ChainUp Custody】 page and create a wallet. 
+
+Please fill in the name carefully because you are unable to change the name once the wallet has been created.
 
 
 
 #### Add Currency
 
-Before adding a currency, please contact the platform admin to add the main chain first. The corresponding token can only be used for free once the main chain currency has been added by the platform admin.
+1. Before adding a currency, please contact the platform admin to add the main chain first. The corresponding token can only be used for free once the main chain currency has been added by the platform admin.
 
-After adding the currency, enter the wallet and click “Currency Management” to search for the currency.
-
-
-
-Go to the edit page and add the currency.
+2. After adding the currency, enter the wallet and click “Currency Management” to search for the currency.
+3. Go to the edit page and add the currency.
 
 
 
 ### Obtain API information
 
-Create APIs (Currently only allows permission and support one set of API)
-
-
-
-The API creation is completed and the public key information is available now.
-
+1. Create APIs (Currently only allows permission and support one set of API)
+2. The API creation is completed and the public key information is available now.
 
 
 #### Development and Testing
@@ -182,6 +178,7 @@ Note: If the client’s project timeline is urgent, the necessary processes [obt
 
 Note: Obtaining the address in advance helps to ensure efficient address allocation after user registration; If the user registers and then obtains the address through the interface, it may fail due to reasons such as network issue, resulting in users’ inability to use the services.
 
+<%= image_tag "eapi_tsoulution_zhunbei.png"%>
 
 ## User deposit
 
@@ -197,6 +194,10 @@ Note: Obtaining the address in advance helps to ensure efficient address allocat
 
 6）The system notifies the user that the coins are successfully deposited.
 
+<%= image_tag "eapi_tsoulution_chongzhi.png"%>
+
+
+
 
 Note: The asynchronous callback of teh Custody system will be triggered when each order is final, and it can be sent up to 5 times per day;
 
@@ -204,7 +205,7 @@ Timed task: a total of five callbacks
 
 Notification time: 1s for the first time, 2min for the second time, 8min for the third time, 32min for the fourth time, 128min for the fifth time
 
-Callback logic：
+#### Callback logic：
 
 If the callback is successful, update the callback status;
 
@@ -226,6 +227,7 @@ When the callback fails five times, the callback is stopped
 
 6）The customer system informs the user that the withdrawal is successful.
 
+<%= image_tag "eapi_tsoulution_tibi.png"%>
 
 
 ## Financial reconciliation
@@ -240,7 +242,11 @@ When the callback fails five times, the callback is stopped
 
 
 
-Note: In the Custody system, there are three kinds of cost expenses in the tripartite system: collecting miners’ fees, extracting miners’ fees, and profit-sharing commission;
+<%= image_tag "eapi_tsoulution_duizhang.png"%>
+
+#### Note: 
+
+In the Custody system, there are three kinds of cost expenses in the tripartite system: collecting miners’ fees, extracting miners’ fees, and profit-sharing commission;
 
 1. Collection of Miners’ Fee: With each currency’s account type, after depositing the coins, the funds on the address will be collected to the hot wallet address and the blockchain network. Part of the main chain blockchain transaction will consume the miner fee and the cost of which will be borne by the client. The client can contact us if they would like this capital expenditure will be handled by us;
 2. Miner’s fee: Miner’s fee (in some currencies) shall be borne by the three parties when withdrawing coins to the address of non-ChainUp Custody and using the blockchain network. This part of capital expenditure can be viewed directly in the coin withdrawal order;

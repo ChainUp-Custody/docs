@@ -33,6 +33,8 @@ docker run --rm --name slate -v $(pwd)/build/en/latest/API-WAPI:/srv/slate/build
 
 sudo cp $(pwd)/index.html $(pwd)/build
 
+sudo cp $(pwd)/CNAME $(pwd)/build
+
 # docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source gengyujian/slate serve
 
 
