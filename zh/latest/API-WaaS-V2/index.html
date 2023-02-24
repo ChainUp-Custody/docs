@@ -533,8 +533,14 @@
 <p>目前ChainUp Custody服务客户已突破500家，涉及各行业，如：区块链行业：交易所、项目方、矿工、OTC、借贷等；传统行业：游戏、地产、直播、电商、供应链、媒体等；接入ChainUp Custody的客户，可享受联盟成员之间转账【0手续费】、【秒级到账】等多种优势。</p>
 <h2 id='1771a2f143'>愿景</h2>
 <p>ChainUp Custody旨在通过搭建一套跨主链，跨项目方的全球金融清算体系，共享联盟成员流量，降低联盟成员成本，提升联盟成员资产使用率，构建区块链领域中的开放银行。让区块链联通万物。</p>
+
+<p><img src="images/yuanjing-c3b69727.png" alt="" /></p>
 <h1 id='4b55c33f0b'>接入指引</h1>
 <p>您需要按照以下流程进行接入ChainUp Custody</p>
+
+<p>如有任何问题， 请您联系<strong>商务经理</strong>或<strong>发邮件</strong>至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 。 </p>
+
+<p><img src="images/process_cn-55e4fed6.png" alt="" /></p>
 <h2 id='575f8f6ea6'>注册账号</h2><h4 id='custody'>下载Custody钱包</h4>
 <p>方式一：手机浏览器打开链接：<a href="https://custody.chainup.com/download">https://custody.chainup.com/download</a></p>
 
@@ -560,11 +566,16 @@
 <h4 id='705f06ca61'>创建钱包</h4>
 <p>进入【ChainUp Custody】页面，创建钱包（钱包名称不支持修改，请谨慎填写）</p>
 <h4 id='3f08cc2f10'>开启币种</h4>
-<p>开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币）</p>
-
-<p>开通币种后，进入钱包点击【币种管理】，搜索币种； 进入编辑页面，开启币种</p>
+<ol>
+<li><p>开启币种前，请先联系平台开通主链币种（开通主链币种后，对应代币即可免费使用，若未收录可联系平台免费上币)</p></li>
+<li><p>开通币种后，进入钱包点击【币种管理】，搜索币种</p></li>
+<li><p>进入编辑页面，开启币种</p></li>
+</ol>
 <h3 id='api-2'>获取API信息</h3>
-<p>创建API（目前仅支持一个全功能权限的API）；创建完成，完善公钥信息</p>
+<ol>
+<li>创建API（目前仅支持一个全功能权限的API）</li>
+<li>创建完成，完善公钥信息</li>
+</ol>
 <h4 id='a5ef07f8b8'>开发测试</h4>
 <p>根据平台提供的技术方案与API文档进行系统对接</p>
 <h2 id='04c51bd8c9'>商户签约</h2><h4 id='0f7f64b1c8'>正式签约</h4>
@@ -593,6 +604,8 @@
 </ol>
 
 <p>注：提前获取地址有利于用户注册后高效分配地址；若用户注册后再通过接口获取地址，有可能因为网络等其它原因造成获取失败，导致用户无法正常完成业务。</p>
+
+<p><img src="images/tsoulution_zhunbei-332b8759.png" alt="" /></p>
 <h2 id='3a86198eeb'>用户充币</h2>
 <p>1）用户在客户系统内完成注册</p>
 
@@ -605,6 +618,8 @@
 <p>5）客户系统确认充币信息有效后给用户上账</p>
 
 <p>6）客户系统通知用户充币成功</p>
+
+<p><img src="images/tsoulution_chongzhi-0edb2392.png" alt="" /></p>
 
 <p>注：Custody系统的异步回调是当每笔订单最终态时才会触发，每日最多发送5次；</p>
 
@@ -631,6 +646,8 @@
 <p>5）Custody系统监控提币订单状态，提币完成，主动通知客户系统或客户系统主动获取</p>
 
 <p>6）客户系统通知用户提币成功</p>
+
+<p><img src="images/tsoulution_tibi-8b13aae2.png" alt="" /></p>
 <h2 id='9f09dd41eb'>财务对账</h2>
 <p>1）客户系统按周期与Custody系统对账（建议按日）</p>
 
@@ -639,6 +656,8 @@
 <p>3）客户系统订单与Custody系统内的订单做比对</p>
 
 <p>4）若订单数量、金额、状态等无误则对账成功；否则对账异常，联系ChainUP Custody技术人员协助处理</p>
+
+<p><img src="images/tsoulution_duizhang-2ceb5acb.png" alt="" /></p>
 
 <p>注：Custody系统内三方系统共有三种成本支出：归集矿工费、提币矿工费、分润手续费；</p>
 
@@ -712,6 +731,8 @@
 <p>文档为钱包服务对第三方应用提供的接口。</p>
 
 <p>以下文档中的接口提供方称为 <strong>钱包服务</strong>，接口调用方称为 <strong>第三方应用</strong>。第三方应用在请求钱包服务时，通过RSA算法对请求参数进行加密，接受到钱包服务的响应数据后需要进行解密</p>
+
+<p><img src="images/apiopen-instructions-v2-483bee31.png" alt="" /></p>
 <h2 id='cb6baa1bd8'>接口规则</h2>
 <table><thead>
 <tr>
