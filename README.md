@@ -12,9 +12,9 @@ Market Leading Institutional Digital Asset Custody and Trading Services
 
 Below are links to **3 API documents for our products**: 
 
-[**MPC wallet API Documentation ** ](https://custodydocs.chainup.com/en/latest/API-MPC/index.html#chainup-mpc-wallet)
+[**MPC wallet API Documentation**](https://custodydocs.chainup.com/en/latest/API-MPC/index.html#chainup-mpc-wallet)
 
-[**V2 API Documentation ** ](https://custodydocs.chainup.com/en/latest/API-WaaS-V2/index.html#chainup-custody-v2)
+[**V2 API Documentation**](https://custodydocs.chainup.com/en/latest/API-WaaS-V2/index.html#chainup-custody-v2)
 
 [**WAPI Documentation** ](https://custodydocs.chainup.com/en/latest/API-WAPI/index.html#chainup-custody-wapi)
 
@@ -24,7 +24,7 @@ Below are links to **3 API documents for our products**:
 
 Enterprise-level **MPC** Wallet: One of the most secure wallets currently available that allows users to **self-manage their private keys.**  With our proprietary **MPC** technology, we **eliminate the risk of single points of failure**. 
 
-[**MPC wallet API Documentation ** ](https://custodydocs.chainup.com/en/latest/API-MPC/index.html#chainup-mpc-wallet)
+[**MPC wallet API Documentation** ](https://custodydocs.chainup.com/en/latest/API-MPC/index.html#chainup-mpc-wallet)
 
 
 
@@ -41,7 +41,7 @@ Enterprise-level **MPC** Wallet: One of the most secure wallets currently availa
 You can use V2 API documentation to access ChainUp's **Joint custody** and **Compliant Custody** solutions: 
 
 
-[**V2 API Documentation ** ](https://custodydocs.chainup.com/en/latest/API-WaaS-V2/index.html#chainup-custody-v2)
+[**V2 API Documentation** ](https://custodydocs.chainup.com/en/latest/API-WaaS-V2/index.html#chainup-custody-v2)
 
 
 
