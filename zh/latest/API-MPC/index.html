@@ -809,17 +809,23 @@
 <h4 id='79428c1686-2'>请求参数数据结构</h4>
 <table><thead>
 <tr>
-<th style="text-align: left">Param</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">是否必须</th>
-<th style="text-align: left">说明</th>
+<th>Param</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>说明</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">sub_wallet_name</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池</td>
+<td>sub_wallet_name</td>
+<td>string</td>
+<td>是</td>
+<td>子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池</td>
+</tr>
+<tr>
+<td>sub_wallet_type</td>
+<td>Integer</td>
+<td>否</td>
+<td>子钱包类型，1：资产子钱包，2：web3子钱包（不传时，默认创建该类型子钱包）</td>
 </tr>
 </tbody></table>
 
