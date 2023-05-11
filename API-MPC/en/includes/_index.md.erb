@@ -322,8 +322,8 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
 
 | Param           | Type   | Requried | Description                                                  |
 | :-------------- | :----- | :------- | :----------------------------------------------------------- |
-| sub_wallet_name | String | Yes      | The name of the sub-wallet, up to 50 characters. Sub-wallets in the same wallet cannot have the same name |
-
+| sub_wallet_name | String | Yes      | Name of sub-wallet, up to 50 characters. No duplicate names. Example: mpc mining pool |
+| sub_wallet_type  | Integer| No      | Type of sub-wallet. 1: Asset sub-wallet, 2: web3 sub-wallet (if not specified, the default sub-wallet type is web3)|
 
 > Response：
 
@@ -1068,35 +1068,36 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 
 # Error Code
 
-| code    | msg                                                          |
-| ------- | ------------------------------------------------------------ |
-| 0       | success                                                      |
-| 100001  | system error                                                 |
-| 100004  | request parameter is not valid                               |
-| 100005  | signature verification failed                                |
-| 100007  | illegal IP                                                   |
-| 100015  | merchant ID is invalid                                       |
-| 100016  | merchant information expired                                 |
-| 110004  | users are frozen and cannot transfer money                   |
-| 110023  | mobile phone number has been registered                      |
-| 110037  | transfer address is at risk                                  |
-| 110055  | correct transfer address for                                 |
-| 110065  | user does not exist (used to obtain user balance, transfer money, or transfer money) |
-| 110078  | transfer or transfer amount less than the minimum transfer amount |
-| 110087  | transfer or transfer amount is greater than the maximum transfer amount |
-| 110088  | please do not repeat the request                             |
-| 110089  | registered mobile phone number is incorrect                  |
-| 110101  | user registration failed                                     |
-| 110161  | exceeds the maximum transfer support accuracy                |
-| 120202  | currency is not supported                                    |
-| 120206  | transfer second confirmation failed                          |
-| 120402  | insufficient balance in transfer or transfer                 |
-| 120403  | insufficient balance of transfer fee                         |
-| 120404  | transfer or transfer amount is too small, less than or equal to the commission fee |
-| 900006  | the user is at risk. transfer is prohibited                  |
-| 3040006 | cannot transfer money to itself                              |
-
-
+| Code    | Message                          |
+| ------- | -------------------------------- |
+| 0       | Success                          |
+| 100001  | System Error                     |
+| 100004  | Invalid Request Parameters       |
+| 100005  | Signature Verification Failed    |
+| 100007  | Invalid IP                       |
+| 100011  | Insufficient Balance             |
+| 100015  | Invalid Merchant ID              |
+| 100016  | Expired Merchant Information     |
+| 110055  | Invalid Transfer Address         |
+| 110088  | Duplicate Request                |
+| 110160  | Registration Failed              |
+| 110161  | Exceeded Maximum Precision       |
+| 110227  | Transfer Suspended for Currency  |
+| 120202  | Unsupported Currency             |
+| 120204  | Failed to Build Transaction      |
+| 200004  | No Permission to Perform Action  |
+| 200005  | Wallet Does Not Exist            |
+| 200007  | Creating Sub-wallet, Please Wait |
+| 200008  | Exceeded Maximum Number of Sub-wallets |
+| 200011  | Currency Address Already Exists  |
+| 200013  | Node Configuration Error, Please Contact Customer Service |
+| 200015  | Signature Failed                 |
+| 200025  | Processing, Please Wait          |
+| 200040  | Wallet Has Expired               |
+| 200066  | Maximum 1000 Transactions Allowed |
+| 200067  | Name Exceeds Maximum Length       |
+| 210003  | Order Does Not Exist             |
+| 3040006 | Cannot Transfer to Yourself       |
 
 
 
