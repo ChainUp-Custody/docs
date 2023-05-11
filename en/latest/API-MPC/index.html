@@ -800,7 +800,13 @@
 <td style="text-align: left">sub_wallet_name</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">The name of the sub-wallet, up to 50 characters. Sub-wallets in the same wallet cannot have the same name</td>
+<td style="text-align: left">Name of sub-wallet, up to 50 characters. No duplicate names. Example: mpc mining pool</td>
+</tr>
+<tr>
+<td style="text-align: left">sub_wallet_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Type of sub-wallet. 1: Asset sub-wallet, 2: web3 sub-wallet (if not specified, the default sub-wallet type is web3)</td>
 </tr>
 </tbody></table>
 
@@ -2206,109 +2212,121 @@
 <h1 id='error-code'>Error Code</h1>
 <table><thead>
 <tr>
-<th>code</th>
-<th>msg</th>
+<th>Code</th>
+<th>Message</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>0</td>
-<td>success</td>
+<td>Success</td>
 </tr>
 <tr>
 <td>100001</td>
-<td>system error</td>
+<td>System Error</td>
 </tr>
 <tr>
 <td>100004</td>
-<td>request parameter is not valid</td>
+<td>Invalid Request Parameters</td>
 </tr>
 <tr>
 <td>100005</td>
-<td>signature verification failed</td>
+<td>Signature Verification Failed</td>
 </tr>
 <tr>
 <td>100007</td>
-<td>illegal IP</td>
+<td>Invalid IP</td>
+</tr>
+<tr>
+<td>100011</td>
+<td>Insufficient Balance</td>
 </tr>
 <tr>
 <td>100015</td>
-<td>merchant ID is invalid</td>
+<td>Invalid Merchant ID</td>
 </tr>
 <tr>
 <td>100016</td>
-<td>merchant information expired</td>
-</tr>
-<tr>
-<td>110004</td>
-<td>users are frozen and cannot transfer money</td>
-</tr>
-<tr>
-<td>110023</td>
-<td>mobile phone number has been registered</td>
-</tr>
-<tr>
-<td>110037</td>
-<td>transfer address is at risk</td>
+<td>Expired Merchant Information</td>
 </tr>
 <tr>
 <td>110055</td>
-<td>correct transfer address for</td>
-</tr>
-<tr>
-<td>110065</td>
-<td>user does not exist (used to obtain user balance, transfer money, or transfer money)</td>
-</tr>
-<tr>
-<td>110078</td>
-<td>transfer or transfer amount less than the minimum transfer amount</td>
-</tr>
-<tr>
-<td>110087</td>
-<td>transfer or transfer amount is greater than the maximum transfer amount</td>
+<td>Invalid Transfer Address</td>
 </tr>
 <tr>
 <td>110088</td>
-<td>please do not repeat the request</td>
+<td>Duplicate Request</td>
 </tr>
 <tr>
-<td>110089</td>
-<td>registered mobile phone number is incorrect</td>
-</tr>
-<tr>
-<td>110101</td>
-<td>user registration failed</td>
+<td>110160</td>
+<td>Registration Failed</td>
 </tr>
 <tr>
 <td>110161</td>
-<td>exceeds the maximum transfer support accuracy</td>
+<td>Exceeded Maximum Precision</td>
+</tr>
+<tr>
+<td>110227</td>
+<td>Transfer Suspended for Currency</td>
 </tr>
 <tr>
 <td>120202</td>
-<td>currency is not supported</td>
+<td>Unsupported Currency</td>
 </tr>
 <tr>
-<td>120206</td>
-<td>transfer second confirmation failed</td>
+<td>120204</td>
+<td>Failed to Build Transaction</td>
 </tr>
 <tr>
-<td>120402</td>
-<td>insufficient balance in transfer or transfer</td>
+<td>200004</td>
+<td>No Permission to Perform Action</td>
 </tr>
 <tr>
-<td>120403</td>
-<td>insufficient balance of transfer fee</td>
+<td>200005</td>
+<td>Wallet Does Not Exist</td>
 </tr>
 <tr>
-<td>120404</td>
-<td>transfer or transfer amount is too small, less than or equal to the commission fee</td>
+<td>200007</td>
+<td>Creating Sub-wallet, Please Wait</td>
 </tr>
 <tr>
-<td>900006</td>
-<td>the user is at risk. transfer is prohibited</td>
+<td>200008</td>
+<td>Exceeded Maximum Number of Sub-wallets</td>
+</tr>
+<tr>
+<td>200011</td>
+<td>Currency Address Already Exists</td>
+</tr>
+<tr>
+<td>200013</td>
+<td>Node Configuration Error, Please Contact Customer Service</td>
+</tr>
+<tr>
+<td>200015</td>
+<td>Signature Failed</td>
+</tr>
+<tr>
+<td>200025</td>
+<td>Processing, Please Wait</td>
+</tr>
+<tr>
+<td>200040</td>
+<td>Wallet Has Expired</td>
+</tr>
+<tr>
+<td>200066</td>
+<td>Maximum 1000 Transactions Allowed</td>
+</tr>
+<tr>
+<td>200067</td>
+<td>Name Exceeds Maximum Length</td>
+</tr>
+<tr>
+<td>210003</td>
+<td>Order Does Not Exist</td>
 </tr>
 <tr>
 <td>3040006</td>
-<td>cannot transfer money to itself</td>
+<td>Cannot Transfer to Yourself</td>
 </tr>
 </tbody></table>
 
