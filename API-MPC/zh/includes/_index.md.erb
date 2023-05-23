@@ -301,8 +301,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 获取ChainUp Custody支持的MPC主链币种和开通的MPC主链币种
 
-
-
 #### HTTP请求
 
 `GET /api/mpc/wallet/open_coin`
@@ -323,7 +321,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         {
             "coin_net":"BTC",
             "symbol":"BTC",
-            "symbol_alias":"BTC"
+            "symbol_alias":"BTC",
+            "support_acceleration" : false
         }
     ],
     "support_main_chain":[
@@ -331,7 +330,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
             "coin_net":"BTC",
             "if_open_chain":true,
             "symbol":"BTC",
-            "symbol_alias":"BTC"
+            "symbol_alias":"BTC",
+            "support_acceleration" : false
         }
     ]
 }
@@ -345,11 +345,76 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | coin_net           | String  | 否       | 币种网络，例：ETH                           |
 | symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20     |
 | symbol_alias       | String  | 否       | 币种真实币名，例：USDT                      |
+|support_acceleration| boole   | 是       | true：支持加速，false：不支持加速               |
 | support_main_chain | Array   | 否       | MPC支持的主链                               |
 | coin_net           | String  | 否       | 币种网络，例：ETH                           |
 | symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20     |
 | symbol_alias       | String  | 否       | 币种真实币名，例：USDT                      |
 | if_open_chain      | Boolean | 是       | 是否开通主链,  `false`未开通，`true`:已开通 |
+|support_acceleration| boole   | 是       | true：支持加速，false：不支持加速               |
+
+
+
+### 获取MPC币种详情
+
+获取ChainUp Custody支持的MPC主链币及代币
+
+#### HTTP请求
+
+`GET /api/mpc/coin_list`
+
+
+
+#### 请求参数数据结构 
+
+无
+
+> 响应结果示例
+
+```json
+[
+    {
+        "address_regex":".*",
+        "address_tag_regex":"",
+        "base_symbol":"BSC",
+        "coin_net":"BSC",
+        "contract_address":"0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals":"18",
+        "deposit_confirmation":"1",
+        "explorer":"https://www.bscscan.com/address/",
+        "icon":"",
+        "if_open_chain":true,
+        "name":"BUSD Token;BSC;BUSD",
+        "real_symbol":"BUSD",
+        "support_memo":"0",
+        "support_token":"0",
+        "symbol":"BUSD",
+        "symbol_alias":"BUSD"
+    }
+]
+```
+
+
+
+#### 响应参数数据结构
+
+| Param              | 类型    | 是否必须 | 说明                                        |
+| :----------------- | :------ | :------- | :------------------------------------------ |
+| symbol                 | String   | 是       | 币种唯一标识，转账时使用，例：BUSD                |
+| symbol_alias           | String   | 是       | Custody 币种别名                               |
+| real_symbol            | String   | 是       | 币种链上名称                                    |
+| base_symbol            | String   | 是       | 币种所属主链币种唯一标识，例：BSC                  |
+| coin_net               | String   | 否       | 币种网络                                       |
+| contract_address       | String   | 否       | MPC支持的主链                                   |
+| deposit_confirmation   | String   | 是       | 币种网络，例：ETH                                |
+| explorer               | String   | 否       | 区块浏览器                                       |
+| icon                   | String   | 是       | 币种icon                                        |
+| if_open_chain          | Boolean  | 是       | 是否开通主链,  `false`未开通，`true`:已开通         |
+| decimals               | String   | 是       | 币种精度                                         |
+| support_memo           | String   | 是       | 是否支持memo，0不支持1支持                         |
+| support_token          | String   | 是       | 是否支持token币，0不支持1支持,主链币有值,代币为空     |
+| address_tag_regex      | String   | 是       | 地址正则                                        |
+| address_regex          | String   | 是       | tag正则                                        |
 
 
 
@@ -369,7 +434,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 请求参数数据结构 
 
-
 | Param            | 类型        | 是否必须 | 说明                                                                     |
 | ---------------- | ----------- | --------- | ---------------------------------------------------------------------- |
 | sub_wallet_name  | string      | 是        | 子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池 |
@@ -382,6 +446,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
     "sub_wallet_id": 10234122
 }
 ```
+
 
 
 #### 响应参数数据结构
@@ -400,8 +465,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 获取指定子钱包及币种下的收款地址
 
-
-
 #### HTTP请求
 
 `POST /api/mpc/sub_wallet/get_address`
@@ -412,7 +475,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| sub_wallet_id | String | 是       | 子钱包id      |
+| sub_wallet_id | Integer | 是       | 子钱包id      |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
 
 > 响应结果示例
@@ -432,7 +495,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-
 ### 获取子钱包资产
 
 获取指定子钱包及币种下的账户资产
@@ -448,7 +510,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
-| sub_wallet_id | String | 是       | 子钱包id      |
+| sub_wallet_id | Integer | 是       | 子钱包id      |
 
 > 响应结果示例
 
@@ -520,16 +582,19 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                                                         |
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
-| sub_wallet_id | String | 是       | 子钱包id                                                     |
+| sub_wallet_id | Integer | 是       | 子钱包id                                                     |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20                                  |
 | address_to    | String | 是       | 转账到账地址                                                 |
 | memo          | String | 否       | 转账到账地址memo，Memo类型转账时如有可填入                   |
 | amount        | String | 是       | 转账金额                                                     |
 | request_id    | String | 是       | 转账唯一标识                                                 |
 | remark        | String | 否       | 转账备注，例：mpc矿池                                        |
-| gas_price     | String | 否       | 自定义矿工费时传入，通过`预估手续费接口`获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
-| gas_limit     | String | 否       | 自定义矿工费时传入，通过`预估手续费接口`获取参考值，填入大于等于0的数值 |
-| fee           | String | 否       | 自定义矿工费时传入，通过`预估手续费接口`获取参考值，填入大于等于0的数值；fee是真实的矿工费，无精度，填入时需要注意fee和gas_price二选一，其中一者为0，另一者不为0； |
+| fee_rate      | String | 否       | BTC类型系列，费率；注意：不要和其他系列参数一起传入    |
+| size          | String | 否       | BTC类型系列，字节大小；注意：不要和其他系列参数一起传入   |
+| gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
+| gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
+| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
+
 
 > 响应结果示例
 
@@ -558,6 +623,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 `GET /api/mpc/billing/gas_estimate`
 
+
+
 #### 请求参数数据结构 
 
 | Param  | 类型   | 是否必须 | 说明                                       |
@@ -585,14 +652,19 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 响应参数数据结构
 
-| Param      | 类型   | 是否必须 | 说明                           |
-| :--------- | :----- | :------- | :----------------------------- |
-| gas_price1 | String | 是       | 手续费推荐单价第一档，例：12.4 |
-| gas_price2 | String | 是       | 手续费推荐单价第二档，例：13.4 |
-| gas_price3 | String | 是       | 手续费推荐单价第三档，例：14.4 |
-| gas_limit  | Long   | 是       | 手续费限制，例：21000          |
-| fee_unit   | String | 是       | 手续费单位，例：Gwei           |
-| fee        | String | 是       | 手续费推荐值，例：0            |
+| Param          | 类型   | 是否必须 | 说明                           |
+| :---------     | :----- | :------- | :----------------------------- |
+| fee_unit       | String | 是       | 手续费单位，例：Gwei           |
+| fee_rate1      | String | 否       | BTC类型系列，费率一档           |
+| fee_rate2      | String | 否       | BTC类型系列，费率二档       |
+| fee_rate3      | String | 否       | BTC类型系列，费率三档          |
+| size           | Long   | 是       | BTC类型系列，字节大小，该参数值不可修改 |
+| gas_limit      | Long   | 否       | ETH类型系列（部分其他系列币种如ATOM也有此参数值），gas限制 |
+| gas_price1     | Long   | 否       | ETH类型系列，gas推荐单价一档 | 
+| gas_price2     | Long   | 否       | ETH类型系列，gas推荐单价二档 | 
+| gas_price3     | Long   | 否       | ETH类型系列，gas推荐单价三档 | 
+| fee            | String | 否  | 其他系列，如DOT\TRX，使用fee字段做手续费 | 
+| fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改| 
 
 
 
@@ -614,11 +686,13 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 #### 请求参数数据结构 
 
 | Param       | 类型   | 是否必须 | 说明                                                         |
-| :---------- | :----- | :------- | :----------------------------------------------------------- |
-| withdraw_id | String | 是       | 转账id                                                       |
-| gas_price   | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值fee和gas_price二选一，其中一者为0，另一者不为0； |
-| gas_limit   | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值          |
-| fee         | String | 是       | 通过`预估手续费接口`获取参考值，填入大于等于0的数值；fee是真实的矿工费，无精度，填入时需要注意；fee和gas_price二选一，其中一者为0，另一者不为0； |
+| :----------   | :----- | :------- | :----------------------------------------------------------- |
+| withdraw_id   | Integer | 是       | 转账id                                                       |
+| fee_rate      | String | 否       | BTC类型系列，费率；注意：不要和其他系列参数一起传入    |
+| size          | String | 否       | BTC类型系列，字节大小；注意：不要和其他系列参数一起传入   |
+| gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
+| gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
+| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
 
 
 
@@ -634,8 +708,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 ### 获取转账记录
 
 获取钱包下所有子钱包转账记录，最多返回100条
-
-
 
 #### HTTP请求
 
@@ -684,7 +756,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param              | 类型    | 是否必须 | 说明                                                         |
 | :----------------- | :------ | :------- | :----------------------------------------------------------- |
 | id               | Integer | 是       | 转账id                                           |
-| request_id       | String  | 是       | 转账唯一标识       |
+| request_id       | Integer  | 是       | 转账唯一标识       |
 | sub_wallet_id    | Integer | 是       | 子钱包id                                       |
 | symbol           | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20                      |
 | amount           | String  | 是       | 转账金额                                           |
@@ -713,8 +785,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 ### 同步转账记录
 
 获取钱包下所有子钱包转账记录，最多返回100条
-
-
 
 #### HTTP请求
 
@@ -791,11 +861,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### 获取收款记录
 
-
-
 获取钱包下所有子钱包收款记录，最多返回100条
-
-
 
 #### HTTP请求
 
@@ -819,7 +885,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
         "memo": "123321",
-      "created_at":1672107533000,
+        "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
         "contract_address":"",
@@ -860,8 +926,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 获取钱包下所有子钱包收款记录，最多返回100条
 
-
-
 #### HTTP请求
 
 `GET /api/mpc/billing/sync_deposit_list`
@@ -885,7 +949,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
         "memo": "123321",
-      "created_at":1672107533000,
+        "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
         "contract_address":"",
@@ -922,6 +986,220 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
+## Web3交易
+
+### 创建Web3交易
+
+创建一笔Web3交易
+
+#### HTTP请求
+
+`POST /api/mpc/web3/trans/create`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+| request_id        |String  | 是       | 交易唯一标识 |
+|main_chain_symbol  |String  | 是       | 主链币币名（唯一标识） |
+|sub_wallet_id      |Integer  | 是       | 子钱包ID	 |
+|interactive_contract  |String | 是     | 交互合约	 |
+|amount             | String | 是       | 交易金额，-1:表示无穷大 |
+|gas_price          | String | 是       | gas 手续费 |
+|gas_limit          | String | 是       | gas limit 手续费	 |
+|input_data         | String |是        | 合约交易的方法参数组成的16进制数据|
+|trans_type         | Integer| 是       | 0:授权交易，1：其他交易。为0是，amount设置金额无效|
+|dapp_name          | String | 否       | dapp名称	|
+|dapp_url           | String | 否      | dapp 访问url	|
+|dapp_img           | String | 否      | dapp 图片	|
+
+
+> 响应结果示例
+
+```json
+{
+     "trans_id": 198012
+}
+```
+
+
+
+#### 响应参数数据结构
+
+| Param            | 类型    | 是否必须 | 说明                                                         |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| trans_id         | Integer | 是    | Web3交易ID |
+
+
+
+### Web3交易加速
+
+转账签名完成后，由于手续费不足而长时间未上链的时候，可以重新指定更高额的手续费加速上链
+
+#### HTTP请求
+
+`POST /api/mpc/web3/pending`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+|trans_id        |Integer | 是       | Web3交易ID    |
+|gas_price       |String  | 是       | gas peice     |
+|gas_limit       |String  | 是       | gas limit	 |
+
+
+#### 响应参数数据结构
+
+无
+
+
+
+## 获取web3交易记录
+
+获取钱包下所有子钱包Web3交易记录，最多返回100条
+
+#### HTTP请求
+
+`GET /api/mpc/web3/trans_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+| ids        |String  | 是       | 多`request_id`的字符串，英文逗号分割 |
+
+> 响应结果示例
+
+```json
+[
+    {
+        "id":435,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+        "status":2400,
+        "trans_source":2
+    }
+]
+```
+
+
+
+#### 响应参数数据结构
+
+| Param            | 类型    | 是否必须 | 说明                                                         |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+|id                   | Integer     | 是      |Web3交易ID |
+|request_id           | String     | 是      |交易唯一标识  |
+|sub_wallet_id        | Integer     | 是      |子钱包ID	  |
+|txid                 | String     | 否      |交易hash	  |
+|symbol               | String     | 否      |交易币种  |
+|main_chain_symbol    | String     | 是      |主链币币名（唯一标识），例：ETH	  |
+|amount               | String     | 是      |交易金额。-1表示无穷大  |
+|fee_symbol           | String     | 是      |手续费币种，例：ETH	  |
+|fee                  | String     | 是      |手续费  |
+|real_fee             | String     | 是      |真实消耗的手续费  |
+|created_at           | String     | 是      |创建时间时间戳	  |
+|updated_at           | String     | 是      |修改时间时间戳	  |
+|address_from         | String     | 是      |交易from地址	  |
+|address_to           | String     | 是      |交易to地址	  |
+|interactive_contract | String     | 是      |交互合约	  |
+|confirmations        | Integer     | 是      |确认数	  |
+|input_data           | String     | 是      |合约交易的方法参数组成的16进制数据	  |
+|status               | Integer     | 是      |交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败	  |
+|trans_source         | Integer     | 是      |交易类型： 1.app, 2.open-api	  |
+
+
+
+## 同步web3交易记录
+
+获取钱包下所有子钱包Web3交易记录，最多返回100条
+
+#### HTTP请求
+
+`GET /api/mpc/web3/sync_trans_list`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+| max_id        |String  | 是       | Web3交易记录起始id |
+
+> 响应结果示例
+
+```json
+[
+    {
+        "id":435,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
+        "address_to":"",
+        "input_data":"0xca718c65",
+        "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+        "confirmations":4,
+        "status":2400,
+        "trans_source":2
+    }
+]
+```
+
+
+
+#### 响应参数数据结构
+
+| Param            | 类型    | 是否必须 | 说明                                                         |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+|id                   | Integer     | 是      |Web3交易ID |
+|request_id           | String     | 是      |交易唯一标识  |
+|sub_wallet_id        | Integer     | 是      |子钱包ID	  |
+|txid                 | String     | 否      |交易hash	  |
+|symbol               | String     | 否      |交易币种  |
+|main_chain_symbol    | String     | 是      |主链币币名（唯一标识），例：ETH	  |
+|amount               | String     | 是      |交易金额。-1表示无穷大  |
+|fee_symbol           | String     | 是      |手续费币种，例：ETH	  |
+|fee                  | String     | 是      |手续费  |
+|real_fee             | String     | 是      |真实消耗的手续费  |
+|created_at           | String     | 是      |创建时间时间戳	  |
+|updated_at           | String     | 是      |修改时间时间戳	  |
+|address_from         | String     | 是      |交易from地址	  |
+|address_to           | String     | 是      |交易to地址	  |
+|interactive_contract | String     | 是      |交互合约	  |
+|confirmations        | Integer     | 是      |确认数	  |
+|input_data           | String     | 是      |合约交易的方法参数组成的16进制数据	  |
+|status               | Integer     | 是      |交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败	  |
+|trans_source         | Integer     | 是      |交易类型： 1.app, 2.open-api	  |
 
 
 
@@ -965,7 +1243,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param            | 类型   | 是否必须 | 说明                                                         |
 | :--------------- | :----- | :------- | :----------------------------------------------------------- |
 | charset          | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
-| side             | String | 是       | 通知类型， 收款通知：deposit， 转账通知： withdraw           |
+| side             | String | 是       | 通知类型， 收款通知：`deposit`， 转账通知： `withdraw`，Web3交易通知：`web3-trans`  |
 | notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
 | id               | String | 是       | 转账id                                                       |
 | request_id       | String | 是       | 转账唯一标识                                                 |
@@ -975,8 +1253,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | fee_symbol       | String | 是       | 手续费币种，例：ETH                                          |
 | fee              | String | 是       | 手续费，例：0.00123                                          |
 | real_fee         | String | 是       | 真实消耗的手续费，例：0.00111                                |
-| created_at       | String | 是       | 创建时间时间戳                                               |
-| updated_at       | String | 是       | 修改时间时间戳                                               |
+| created_at       | String | 是       | 创建时间时间，如：2006-01-02 15:04:05                        |
+| updated_at       | String | 是       | 修改时间时间，如：2006-01-02 15:04:05                                                              |
 | address_from     | String | 是       | 出币地址                                                     |
 | address_to       | String | 是       | 到账地址                                                     |
 | memo             | String | 否       | 到账地址memo                                                 |
@@ -997,14 +1275,14 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param            | 类型   | 是否必须 | 说明                                                         |
 | :--------------- | :----- | :------- | :----------------------------------------------------------- |
 | charset          | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
-| side             | String | 是       | 通知类型， 收款通知：`deposit`， 转账通知： `withdraw`       |
+| side             | String | 是       | 通知类型， 收款通知：`deposit`， 转账通知： `withdraw`，Web3交易通知：`web3-trans`       |
 | notify_time      | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
 | id               | String | 是       | 收款id                                                       |
 | sub_wallet_id    | String | 是       | 子钱包id                                                     |
 | symbol           | String | 是       | 币种唯一标识，例：USDTERC20                                  |
 | amount           | String | 是       | 收款金额                                                     |
-| created_at       | String | 是       | 创建时间时间戳                                               |
-| updated_at       | String | 是       | 修改时间时间戳                                               |
+| created_at       | String | 是       | 创建时间时间，如：2006-01-02 15:04:05                           |
+| updated_at       | String | 是       | 修改时间时间，如：2006-01-02 15:04:05                          |
 | address_from     | String | 是       | 出币地址                                                     |
 | address_to       | String | 是       | 到账地址                                                     |
 | memo             | String | 否       | 到账地址memo                                                 |
@@ -1014,9 +1292,44 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | base_symbol      | String | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 收款币种合约地址                                             |
 
+
+
+## Web3交易通知
+
+#### 请求参数数据结构
+
+| Param            | 类型   | 是否必须 | 说明                                                         |
+| :--------------- | :----- | :------- | :----------------------------------------------------------- |
+| charset            | String | 是       | 编码格式，无特殊情况，传参数`utf-8`                          |
+| side               | String | 是       | 通知类型， 收款通知：`deposit`， 转账通知： `withdraw`，Web3交易通知：`web3-trans`  |
+| notify_time        | String | 是       | 通知时间，例：2022-11-02 11:04:05                            |
+| id                 | String | 是       | 收款id                                                       |
+| request_id         | String | 是       | 转账唯一标识                                                 |
+| sub_wallet_id      | String | 是       | 子钱包id                                                     |
+| main_chain_symbol  | String | 是       | 主链币币名（唯一标识），例：ETH    |
+| symbol             | String | 否       | 币种唯一标识，例：USDTERC20                                  |
+| amount             | String | 是       | 交易金额                                                     |
+| created_at         | String | 是       | 创建时间时间，如：2006-01-02 15:04:05                         |
+| updated_at         | String | 是       | 修改时间时间，如：2006-01-02 15:04:05                         |
+| address_from       | String | 是       | 出币地址                                                     |
+| address_to         | String | 是       | 到账地址                                                     |
+| txid               | String | 是       | 交易hash                                                     |
+| confirmations      | String | 是       | 区块确认数，例：10                                           |
+| status             | String | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| interactive_contract     | String | 是       | 交互合约                                                     |
+| fee_symbol               | String | 是       | 手续费币种，例：ETH                                            |
+| fee                      | String | 是       | 手续费                                    |
+| real_fee                 | String | 是       | 真实消耗的手续费              |
+| input_data               | String | 是       | 合约交易的方法参数组成的16进制数据       |
+| trans_type               | String | 是       | 交易类型, 0:授权交易，1：转账交易            |
+| dapp_img                 | String | 是       | dapp 图片		       |
+| dapp_name                | String | 是       | dapp名称	     |
+| dapp_url                 | String | 是       | dapp 访问url	 |
+
+
+
+
 # Co-Signer
-
-
 
 ## **概述**
 
@@ -1054,6 +1367,7 @@ Co-Signer主要实现了两个功能：创建地址和自动签名，具体流�
 授权交易数据**采用明文传输**，您需要在应用服务中保证业务系统和Co-Signer之间的通信安全。
 
 
+### 提现回调
 
 #### HTTP请求
 
@@ -1094,6 +1408,7 @@ POST /callback/example
 | memo          | String  | 否       | 交易到账memo                                           |
 | amount        | Decimal | 是       | 交易金额                                               |
 | symbol        | String  | 是       | 交易币种唯一标识                                       |
+| txid          | String  | 否       | 交易hash，签名成功返回txid                      |
 
 
 #### 回调响应参数统一格式
@@ -1101,8 +1416,56 @@ POST /callback/example
 返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 
 
 
+### Web3交易回调
+
+#### HTTP请求
+
+`POST /{url}`
+
+`Content-Type application/json;charset=UTF-8`
 
 
+> 回调参数示例
+
+```json
+POST /callback/example
+
+{
+    "type":"sign_start",
+    "trans_id":432,
+    "request_id":"0000000003",
+    "pending_round":false,
+    "from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+    "to":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+    "amount":0,
+    "main_chain_symbol":"HECO",
+    "input_data":"0xca718c65",
+    "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+    "txid":"",
+}
+```
+
+#### 回调参数格式：
+
+
+| Param         | 类型    | 是否必须 | 说明                                                   |
+| :------------ | :------ | :------- | :----------------------------------------------------- |
+| type                 | String  | 是       | 回调类型，`sign_start`签名开始，`sign_success`签名成功 |
+| trans_id             | Integer | 是       | 交易ID                                             |
+| request_id           | String  | 是       | 发起交易唯一标识                                     |
+| pending_round        | Boolean | 是       | 加速状态，true是，false否（普通交易）                  |
+| from                 | String  | 是       | 交易from地址                                         |
+| to                   | String  | 是       | 交易to地址                                         |
+| amount               | Decimal | 是       | 交易金额。-1表示无穷大                               |
+| main_chain_symbol    | String  | 是       | 主链币币名（唯一标识），例：ETH                   |
+| input_data           | String  | 是       | 交易币种唯一标识                                      |
+| interactive_contract | String  | 是       |交互合约	  |
+| txid                 | String  | 否       | 交易hash，签名成功返回txid                                       |
+
+
+#### 回调响应参数统一格式
+
+返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 
 
 
 # 错误码 
@@ -1139,6 +1502,8 @@ POST /callback/example
 | 200067  | 名称超过限制长度           |
 | 210003  | 订单不存在                 |
 | 3040006 | 不能给自己转账             |
+| 200071  | 该主链不支持加速           |
+| 200072  | 子钱包类型不支持该类型交易   |
 
 
 
