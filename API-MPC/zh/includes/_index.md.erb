@@ -367,7 +367,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 请求参数数据结构 
 
-无
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| symbol        | String |否      | 币种唯一标识，转账时使用，例：USDTERC20      |
+| base_symbol   | String |否      | 主链币种名称，币种唯一标识，转账时使用，例：ETH |
 
 > 响应结果示例
 
@@ -389,7 +392,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "support_memo":"0",
         "support_token":"0",
         "symbol":"BUSD",
-        "symbol_alias":"BUSD"
+        "symbol_alias":"BUSD",
+        "support_acceleration": true
     }
 ]
 ```
@@ -415,6 +419,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | support_token          | String   | 是       | 是否支持token币，0不支持1支持,主链币有值,代币为空     |
 | address_tag_regex      | String   | 是       | 地址正则                                        |
 | address_regex          | String   | 是       | tag正则                                        |
+| support_acceleration   | Boolean  | 是       | 是否支持加速                                     |
 
 
 
