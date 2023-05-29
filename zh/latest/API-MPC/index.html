@@ -747,7 +747,27 @@
 <h4 id='http'>HTTP请求</h4>
 <p><code>GET /api/mpc/wallet/open_coin</code></p>
 <h4 id='79428c1686'>请求参数数据结构</h4>
-<p>无</p>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">当前时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">charset</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">编码格式，无特殊情况，传参数utf-8</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>响应结果示例</p>
@@ -860,6 +880,18 @@
 <th style="text-align: left">说明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">当前时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">charset</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">编码格式，无特殊情况，传参数utf-8</td>
+</tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
