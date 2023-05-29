@@ -309,9 +309,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### 请求参数数据结构 
 
-
-
-无
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| time        | long   |是      | 当前时间戳      |
+| charset     | String |是      | 编码格式，无特殊情况，传参数utf-8 |
 
 > 响应结果示例
 
@@ -340,7 +341,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 #### 响应参数数据结构
 
 | Param              | 类型    | 是否必须 | 说明                                        |
-| :----------------- | :------ | :------- | :------------------------------------------ |
+| :----------------- | :------ | :------- | :----------------------------------------|
 | open_main_chain    | Array   | 否       | 钱包开通的主链                              |
 | coin_net           | String  | 否       | 币种网络，例：ETH                           |
 | symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20     |
@@ -369,6 +370,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
+| time        | long   |是      | 当前时间戳      |
+| charset     | String |是      | 编码格式，无特殊情况，传参数utf-8 |
 | symbol        | String |否      | 币种唯一标识，转账时使用，例：USDTERC20      |
 | base_symbol   | String |否      | 主链币种名称，币种唯一标识，转账时使用，例：ETH |
 
