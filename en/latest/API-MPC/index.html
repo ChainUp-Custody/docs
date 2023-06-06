@@ -391,7 +391,10 @@
                     <a href="#wallet" class="toc-h2 toc-link" data-title="Wallet">Wallet</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#get-the-main-chain-of-wallet" class="toc-h3 toc-link" data-title="Get the main chain of wallet">Get the main chain of wallet</a>
+                            <a href="#get-supported-main-chains" class="toc-h3 toc-link" data-title="Get Supported Main Chains">Get Supported Main Chains</a>
+                          </li>
+                          <li>
+                            <a href="#get-mpc-coin-details" class="toc-h3 toc-link" data-title="Get MPC Coin Details">Get MPC Coin Details</a>
                           </li>
                       </ul>
                   </li>
@@ -443,6 +446,23 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#web3-transaction" class="toc-h2 toc-link" data-title="Web3 Transaction">Web3 Transaction</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-web3-transaction" class="toc-h3 toc-link" data-title="Create Web3 Transaction">Create Web3 Transaction</a>
+                          </li>
+                          <li>
+                            <a href="#web3-transaction-acceleration" class="toc-h3 toc-link" data-title="Web3 Transaction Acceleration">Web3 Transaction Acceleration</a>
+                          </li>
+                          <li>
+                            <a href="#get-web3-transaction-records" class="toc-h3 toc-link" data-title="Get Web3 Transaction Records">Get Web3 Transaction Records</a>
+                          </li>
+                          <li>
+                            <a href="#sync-web3-transaction-records" class="toc-h3 toc-link" data-title="Sync Web3 Transaction Records">Sync Web3 Transaction Records</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -457,6 +477,9 @@
                   <li>
                     <a href="#receive-notification" class="toc-h2 toc-link" data-title="Receive Notification">Receive Notification</a>
                   </li>
+                  <li>
+                    <a href="#web3-transaction-notification" class="toc-h2 toc-link" data-title="Web3 Transaction Notification">Web3 Transaction Notification</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -470,6 +493,11 @@
                   </li>
                   <li>
                     <a href="#co-signer-callback" class="toc-h2 toc-link" data-title="Co-signer Callback">Co-signer Callback</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#web3-transaction-callback" class="toc-h3 toc-link" data-title="Web3 Transaction Callback">Web3 Transaction Callback</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -710,30 +738,52 @@
 <br/>
 2. RSA encryption and decryption using segmented encryption
 </aside>
-<h2 id='wallet'>Wallet</h2><h3 id='get-the-main-chain-of-wallet'>Get the main chain of wallet</h3>
-<p>Get the main chain and coins supported by ChainUp Custody.</p>
+<h2 id='wallet'>Wallet</h2><h3 id='get-supported-main-chains'>Get Supported Main Chains</h3>
+<p>Get the supported MPC main chain coins and the MPC main chain coins opened in ChainUp Custody.</p>
 <h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET /api/mpc/wallet/open_coin</code></p>
-<h4 id='decrypted-request-parameters'>Decrypted Request Parameters</h4>
-<p>None</p>
+<h4 id='request-parameters'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Current timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">charset</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Encoding format, typically &quot;utf-8&quot;</td>
+</tr>
+</tbody></table>
 
 <blockquote>
-<p>Response</p>
+<p>Response：</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"open_main_chain"</span><span class="p">:[</span><span class="w">
+    </span><span class="nl">"open_main_chain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"support_main_chain"</span><span class="p">:[</span><span class="w">
+    </span><span class="nl">"support_main_chain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -750,44 +800,243 @@
 <td style="text-align: left">open_main_chain</td>
 <td style="text-align: left">Array</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">The main chain opened by the wallet</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The unique identifier of the coin, used when transferring, for example: USDTERC20</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol_alias</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">No</td>
-<td style="text-align: left">The real name of the coin, for example: USDT</td>
-</tr>
-<tr>
-<td style="text-align: left">support_main_chain</td>
-<td style="text-align: left">Array</td>
-<td style="text-align: left">No</td>
-<td style="text-align: left">Main chain supported by MPC wallet</td>
+<td style="text-align: left">Opened main chains in the wallet</td>
 </tr>
 <tr>
 <td style="text-align: left">coin_net</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">Coin network, for example: ETH</td>
+<td style="text-align: left">Coin network, e.g., ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier for the coin, used for transfers</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol_alias</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Real name of the coin, e.g., USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">support_acceleration</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if acceleration is supported (true/false)</td>
+</tr>
+<tr>
+<td style="text-align: left">support_main_chain</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Supported main chains in MPC</td>
+</tr>
+<tr>
+<td style="text-align: left">coin_net</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Coin network, e.g., ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier for the coin, used for transfers</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol_alias</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Real name of the coin, e.g., USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">if_open_chain</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Whether to open the main chain: <code>false</code>,not opened; <code>true</code>,opened.</td>
+<td style="text-align: left">Indicates if the main chain is opened (false/true)</td>
+</tr>
+<tr>
+<td style="text-align: left">support_acceleration</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if acceleration is supported (true/false)</td>
+</tr>
+</tbody></table>
+<h3 id='get-mpc-coin-details'>Get MPC Coin Details</h3>
+<p>Get the details of MPC wallet main chain coins and tokens supported by ChainUp Custody</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>GET /api/mpc/coin_list</code></p>
+<h4 id='request-parameters-2'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Current timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">charset</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Encoding format, typically &quot;utf-8&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Unique identifier for the coin, used for transfers, e.g., USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">base_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Unique identifier for the base coin of the main chain, used for transfers, e.g., ETH</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address_regex"</span><span class="p">:</span><span class="s2">".*"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_tag_regex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">"0xe9e7cea3dedca5984780bafc599bd69add087d56"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"decimals"</span><span class="p">:</span><span class="s2">"18"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_confirmation"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"explorer"</span><span class="p">:</span><span class="s2">"https://www.bscscan.com/address/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"icon"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"BUSD Token;BSC;BUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_symbol"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_memo"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_token"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-2'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier of the coin, used for transfers, e.g., BUSD</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol_alias</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Alias of the coin in Custody</td>
+</tr>
+<tr>
+<td style="text-align: left">real_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Name of the coin on the blockchain</td>
+</tr>
+<tr>
+<td style="text-align: left">base_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier of the base coin of the main chain, used for transfers, e.g., BSC</td>
+</tr>
+<tr>
+<td style="text-align: left">coin_net</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Coin network</td>
+</tr>
+<tr>
+<td style="text-align: left">contract_address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Contract address supported by MPC main chain</td>
+</tr>
+<tr>
+<td style="text-align: left">deposit_confirmation</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Number of confirmations for deposits</td>
+</tr>
+<tr>
+<td style="text-align: left">explorer</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Blockchain explorer URL</td>
+</tr>
+<tr>
+<td style="text-align: left">icon</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Coin icon</td>
+</tr>
+<tr>
+<td style="text-align: left">if_open_chain</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if the main chain is open (false/true)</td>
+</tr>
+<tr>
+<td style="text-align: left">decimals</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Coin precision</td>
+</tr>
+<tr>
+<td style="text-align: left">support_memo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if memo is supported (0:not supported, 1:supported)</td>
+</tr>
+<tr>
+<td style="text-align: left">support_token</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if token coins are supported (0:not supported, 1:supported for main chain coins, empty for tokens)</td>
+</tr>
+<tr>
+<td style="text-align: left">address_tag_regex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Address tag regex pattern</td>
+</tr>
+<tr>
+<td style="text-align: left">address_regex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Address regex pattern</td>
+</tr>
+<tr>
+<td style="text-align: left">support_acceleration</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if acceleration is supported</td>
 </tr>
 </tbody></table>
 <h2 id='sub-wallet-user'>Sub-wallet (user)</h2><h3 id='create-a-sub-wallet'>Create a sub-wallet</h3>
 <p>Pass in the specified sub-wallet name to create a new sub-wallet for the wallet</p>
-<h4 id='http-request-3'>HTTP Request</h4>
+<h4 id='http-request-4'>HTTP Request</h4>
 <p><code>POST /api/mpc/sub_wallet/create</code></p>
-<h4 id='decrypted-request-parameters-2'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -816,7 +1065,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10234122</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-2'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-3'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -834,9 +1083,9 @@
 </tbody></table>
 <h3 id='get-sub-wallet-address'>Get sub-wallet address</h3>
 <p>Obtain the receiving address under the specified sub-wallet and coin</p>
-<h4 id='http-request-4'>HTTP Request</h4>
+<h4 id='http-request-5'>HTTP Request</h4>
 <p><code>POST /api/mpc/sub_wallet/get_address</code></p>
-<h4 id='decrypted-request-parameters-3'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-2'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -847,7 +1096,7 @@
 </thead><tbody>
 <tr>
 <td style="text-align: left">sub_wallet_id</td>
-<td style="text-align: left">String</td>
+<td style="text-align: left">Integer</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Sub wallet id</td>
 </tr>
@@ -865,7 +1114,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
     </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-3'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-4'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -883,9 +1132,9 @@
 </tbody></table>
 <h3 id='get-sub-wallet-assets'>Get sub-wallet assets</h3>
 <p>Get the account assets under the specified sub-wallet and coin.</p>
-<h4 id='http-request-5'>HTTP Request</h4>
+<h4 id='http-request-6'>HTTP Request</h4>
 <p><code>GET /api/mpc/sub_wallet/assets</code></p>
-<h4 id='decrypted-request-parameters-4'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-3'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -902,7 +1151,7 @@
 </tr>
 <tr>
 <td style="text-align: left">sub_wallet_id</td>
-<td style="text-align: left">String</td>
+<td style="text-align: left">Integer</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Sub wallet id</td>
 </tr>
@@ -916,7 +1165,7 @@
     </span><span class="nl">"receive_address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0.77"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-4'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-5'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -946,9 +1195,9 @@
 </tbody></table>
 <h3 id='modify-the-display-status'>Modify the Display Status</h3>
 <p>Specify the display status of the sub-wallet on the APP client, if it is not displayed, the transaction cannot be initiated on the APP.</p>
-<h4 id='http-request-6'>HTTP Request</h4>
+<h4 id='http-request-7'>HTTP Request</h4>
 <p><code>POST /api/mpc/sub_wallet/change_show_status</code></p>
-<h4 id='decrypted-request-parameters-5'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-4'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -970,11 +1219,11 @@
 <td style="text-align: left"><code>1</code> show ,<code>2</code> don&#39;t show</td>
 </tr>
 </tbody></table>
-<h4 id='response-data-parameters-5'>Response Data Parameters</h4>
+<h4 id='response-data-parameters-6'>Response Data Parameters</h4>
 <p>None</p>
-<h2 id='transfer'>Transfer</h2><h3 id='initiate-a-transfer'>Initiate a transfer</h3><h4 id='http-request-7'>HTTP Request</h4>
+<h2 id='transfer'>Transfer</h2><h3 id='initiate-a-transfer'>Initiate a transfer</h3><h4 id='http-request-8'>HTTP Request</h4>
 <p><code>POST /api/mpc/billing/transfer</code></p>
-<h4 id='decrypted-request-parameters-6'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-5'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -985,7 +1234,7 @@
 </thead><tbody>
 <tr>
 <td style="text-align: left">sub_wallet_id</td>
-<td style="text-align: left">String</td>
+<td style="text-align: left">Integer</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Sub wallet id</td>
 </tr>
@@ -1026,22 +1275,34 @@
 <td style="text-align: left">transfer remarks</td>
 </tr>
 <tr>
+<td style="text-align: left">fee_rate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Fee rate for BTC series; Note: Do not pass along with other series parameters</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Size in bytes for BTC series; Note: Do not pass along with other series parameters</td>
+</tr>
+<tr>
 <td style="text-align: left">gas_price</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">when custom miner fee is passed in, and the reference value is obtained through the <code>estimated miner fee interface</code>, and the value greater than or equal to <code>0</code> is filled in fee and gas_price, one of which is 0, and the other is not 0;</td>
+<td style="text-align: left">Gas recommended price for ETH series; Note: Do not pass along with other series parameters</td>
 </tr>
 <tr>
 <td style="text-align: left">gas_limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">The custom miner fee is passed in, and the reference value is obtained through the <code>estimated miner fee interface</code>, fill in a value greater than or equal to 0 .</td>
+<td style="text-align: left">Gas limit for ETH series; Note: Do not pass along with other series parameters</td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">Custom miner fee is passed in, get the reference value through <code>estimated miner fee interface</code>, fill in a value greater than or equal to 0; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is 0, the other is not 0;</td>
+<td style="text-align: left">Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM)</td>
 </tr>
 </tbody></table>
 
@@ -1051,7 +1312,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"transfer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-6'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-7'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1069,9 +1330,9 @@
 </tbody></table>
 <h3 id='estimated-gas-fee'>Estimated Gas Fee</h3>
 <p>Obtain the estimated miner fee required for transfer. </p>
-<h4 id='http-request-8'>HTTP Request</h4>
+<h4 id='http-request-9'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/gas_estimate</code></p>
-<h4 id='decrypted-request-parameters-7'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-6'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1123,97 +1384,139 @@
     </span><span class="nl">"gas_price2"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gas_price3"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-7'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-8'>Response Data Parameters</h4>
 <table><thead>
 <tr>
-<th style="text-align: left">Param</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: left">Requried</th>
-<th style="text-align: left">Description</th>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">gas_price1</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The first recommended unit price of the gas fee</td>
+<td>fee_unit</td>
+<td>String</td>
+<td>Yes</td>
+<td>Fee unit, e.g., Gwei</td>
 </tr>
 <tr>
-<td style="text-align: left">gas_price2</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The second recommended unit price of the gas fee</td>
+<td>fee_rate1</td>
+<td>String</td>
+<td>No</td>
+<td>Fee rate tier 1 for BTC series</td>
 </tr>
 <tr>
-<td style="text-align: left">gas_price3</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The third recommended unit price of the gas fee</td>
+<td>fee_rate2</td>
+<td>String</td>
+<td>No</td>
+<td>Fee rate tier 2 for BTC series</td>
 </tr>
 <tr>
-<td style="text-align: left">gas_limit</td>
-<td style="text-align: left">Long</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">Gas fee limit</td>
+<td>fee_rate3</td>
+<td>String</td>
+<td>No</td>
+<td>Fee rate tier 3 for BTC series</td>
 </tr>
 <tr>
-<td style="text-align: left">fee_unit</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">Gas fee unit</td>
+<td>size</td>
+<td>Long</td>
+<td>Yes</td>
+<td>Size in bytes for BTC series (parameter value cannot be modified)</td>
 </tr>
 <tr>
-<td style="text-align: left">fee</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The recommended value of the gas fee</td>
+<td>gas_limit</td>
+<td>Long</td>
+<td>No</td>
+<td>Gas limit for ETH series (also available for some other series like ATOM)</td>
+</tr>
+<tr>
+<td>gas_price1</td>
+<td>Long</td>
+<td>No</td>
+<td>Gas recommended price tier 1 for ETH series</td>
+</tr>
+<tr>
+<td>gas_price2</td>
+<td>Long</td>
+<td>No</td>
+<td>Gas recommended price tier 2 for ETH series</td>
+</tr>
+<tr>
+<td>gas_price3</td>
+<td>Long</td>
+<td>No</td>
+<td>Gas recommended price tier 3 for ETH series</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>No</td>
+<td>Fee for other series such as DOT and TRX, using the &#39;fee&#39; field for transaction fees</td>
+</tr>
+<tr>
+<td>fee_changeable</td>
+<td>Boolean</td>
+<td>No</td>
+<td>For other series such as DOT and TRX, indicates whether the &#39;fee&#39; parameter value can be changed. Set to true for modifiable and false for non-modifiable values</td>
 </tr>
 </tbody></table>
 <h3 id='speed-up-transfer'>Speed Up transfer</h3>
 <p>After the transfer signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.</p>
-<h4 id='http-request-9'>HTTP Request</h4>
-<p><code>POST /api/mpc/billing/transfer_pending</code></p>
-<h4 id='decrypted-request-parameters-8'>Decrypted Request Parameters</h4>
+<h4 id='http-request-10'>HTTP Request</h4>
+<p><code>POST /api/mpc/billing/withdraw_pending</code></p>
+<h4 id='decrypted-request-parameters-7'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
-<th style="text-align: left">Param</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: left">Requried</th>
-<th style="text-align: left">Description</th>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">transfer_id</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">transfer id, example: 12345</td>
+<td>withdraw_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Transfer ID</td>
 </tr>
 <tr>
-<td style="text-align: left">gas_price</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">when custom miner fee is passed in, and the reference value is obtained through the <code>estimated miner fee interface</code>, and the value greater than or equal to <code>0</code> is filled in fee and gas_price, one of which is 0, and the other is not 0;</td>
+<td>fee_rate</td>
+<td>String</td>
+<td>No</td>
+<td>Fee rate for BTC series; Note: Do not pass along with other series parameters</td>
 </tr>
 <tr>
-<td style="text-align: left">gas_limit</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">The custom miner fee is passed in, and the reference value is obtained through the <code>estimated miner fee interface</code>, fill in a value greater than or equal to <code>0</code> .</td>
+<td>size</td>
+<td>String</td>
+<td>No</td>
+<td>Size in bytes for BTC series; Note: Do not pass along with other series parameters</td>
 </tr>
 <tr>
-<td style="text-align: left">fee</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">Custom miner fee is passed in, get the reference value through <code>estimated miner fee interface</code>, fill in a value greater than or equal to <code>0</code>; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is <code>0</code>, the other is not 0;</td>
+<td>gas_price</td>
+<td>String</td>
+<td>No</td>
+<td>Gas recommended price for ETH series; Note: Do not pass along with other series parameters</td>
+</tr>
+<tr>
+<td>gas_limit</td>
+<td>String</td>
+<td>No</td>
+<td>Gas limit for ETH series; Note: Do not pass along with other series parameters</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>No</td>
+<td>Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM)</td>
 </tr>
 </tbody></table>
-<h4 id='response-data-parameters-8'>Response Data Parameters</h4>
+<h4 id='response-data-parameters-9'>Response Data Parameters</h4>
 <p>None</p>
 <h3 id='get-transfer-records'>Get transfer records</h3>
 <p>Get all sub-wallet transfer records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-10'>HTTP Request</h4>
-<p><code>GET /api/mpc/billing/transfer_list</code></p>
-<h4 id='decrypted-request-parameters-9'>Decrypted Request Parameters</h4>
+<h4 id='http-request-11'>HTTP Request</h4>
+<p><code>GET /api/mpc/billing/withdraw_list</code></p>
+<h4 id='decrypted-request-parameters-8'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1256,7 +1559,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-9'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-10'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1273,7 +1576,7 @@
 </tr>
 <tr>
 <td style="text-align: left">request_id</td>
-<td style="text-align: left">String</td>
+<td style="text-align: left">Integer</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The unique identifier for transferring coins</td>
 </tr>
@@ -1382,9 +1685,9 @@
 </tbody></table>
 <h3 id='synchronize-transfer-records'>Synchronize transfer records</h3>
 <p>Get all sub-wallet transfer records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-11'>HTTP Request</h4>
+<h4 id='http-request-12'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/sync_transfer_list</code></p>
-<h4 id='decrypted-request-parameters-10'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-9'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1427,7 +1730,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-10'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-11'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1553,9 +1856,9 @@
 </tbody></table>
 <h2 id='received'>Received</h2><h3 id='get-receiving-records'>Get Receiving records</h3>
 <p>Get all sub-wallet receiving records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-12'>HTTP Request</h4>
+<h4 id='http-request-13'>HTTP Request</h4>
 <p><code>GET/api/mpc/billing/receive_list</code></p>
-<h4 id='decrypted-request-parameters-11'>Decrypted Request Parameters</h4>
+<h4 id='decrypted-request-parameters-10'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1581,7 +1884,7 @@
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x33648fACAD6CECA85cf717841Ddd87c40B12438F"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1593,7 +1896,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-11'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-12'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1689,9 +1992,9 @@
 </tbody></table>
 <h3 id='synchronous-receiving-record'>Synchronous Receiving record</h3>
 <p>Get all sub-wallet receiving records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-13'>HTTP Request</h4>
-<p><code>GET /api/mpc/billing/sync_receive_list</code></p>
-<h4 id='decrypted-request-parameters-12'>Decrypted Request Parameters</h4>
+<h4 id='http-request-14'>HTTP Request</h4>
+<p><code>GET /api/mpc/billing/sync_deposit_list</code></p>
+<h4 id='decrypted-request-parameters-11'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1717,7 +2020,7 @@
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x33648fACAD6CECA85cf717841Ddd87c40B12438F"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1729,7 +2032,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-12'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-13'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1823,6 +2126,468 @@
 <td style="text-align: left">received coin&#39;s contract address</td>
 </tr>
 </tbody></table>
+<h2 id='web3-transaction'>Web3 Transaction</h2><h3 id='create-web3-transaction'>Create Web3 Transaction</h3>
+<p>Create a Web3 transaction.</p>
+<h4 id='http-request-15'>HTTP Request</h4>
+<p><code>POST /api/mpc/web3/trans/create</code></p>
+<h4 id='request-parameters-3'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Yes</td>
+<td>Unique identifier for the transaction</td>
+</tr>
+<tr>
+<td>main_chain_symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Main chain coin symbol (unique identifier)</td>
+</tr>
+<tr>
+<td>sub_wallet_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Sub-wallet ID</td>
+</tr>
+<tr>
+<td>interactive_contract</td>
+<td>String</td>
+<td>Yes</td>
+<td>Interactive contract</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction amount (-1 for infinite)</td>
+</tr>
+<tr>
+<td>gas_price</td>
+<td>String</td>
+<td>Yes</td>
+<td>Gas fee</td>
+</tr>
+<tr>
+<td>gas_limit</td>
+<td>String</td>
+<td>Yes</td>
+<td>Gas limit fee</td>
+</tr>
+<tr>
+<td>input_data</td>
+<td>String</td>
+<td>Yes</td>
+<td>Hexadecimal data for contract transaction</td>
+</tr>
+<tr>
+<td>trans_type</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>0: Authorization transaction, 1: Other transaction. If 0, the amount field is invalid.</td>
+</tr>
+<tr>
+<td>dapp_name</td>
+<td>String</td>
+<td>No</td>
+<td>Dapp name</td>
+</tr>
+<tr>
+<td>dapp_url</td>
+<td>String</td>
+<td>No</td>
+<td>Dapp URL</td>
+</tr>
+<tr>
+<td>dapp_img</td>
+<td>String</td>
+<td>No</td>
+<td>Dapp image</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198012</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-14'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trans_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Web3 transaction ID</td>
+</tr>
+</tbody></table>
+<h3 id='web3-transaction-acceleration'>Web3 Transaction Acceleration</h3>
+<p>When a transfer is signed but has not been confirmed on the blockchain for a long time due to insufficient fees, it can be accelerated by specifying a higher fee.</p>
+<h4 id='http-request-16'>HTTP Request</h4>
+<p><code>POST /api/mpc/web3/pending</code></p>
+<h4 id='request-parameters-4'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trans_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Web3 transaction ID</td>
+</tr>
+<tr>
+<td>gas_price</td>
+<td>String</td>
+<td>Yes</td>
+<td>Gas price</td>
+</tr>
+<tr>
+<td>gas_limit</td>
+<td>String</td>
+<td>Yes</td>
+<td>Gas limit</td>
+</tr>
+</tbody></table>
+<h4 id='response-data-parameters-15'>Response Data Parameters</h4>
+<p>None</p>
+<h3 id='get-web3-transaction-records'>Get Web3 Transaction Records</h3>
+<p>Get all Web3 transaction records under a wallet, maximum of 100 records.</p>
+<h4 id='http-request-17'>HTTP Request</h4>
+<p><code>GET /api/mpc/web3/trans_list</code></p>
+<h4 id='request-parameters-5'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>String</td>
+<td>Yes</td>
+<td>Comma-separated <code>request_id</code> strings</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">435</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-16'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Web3 transaction ID</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Yes</td>
+<td>Unique identifier for the transaction</td>
+</tr>
+<tr>
+<td>sub_wallet_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Sub-wallet ID</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>No</td>
+<td>Transaction hash</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Transaction currency</td>
+</tr>
+<tr>
+<td>main_chain_symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Main chain coin symbol (unique identifier), e.g., ETH</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction amount. -1 indicates infinite</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Fee currency, e.g., ETH</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>Yes</td>
+<td>Fee</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>Yes</td>
+<td>Actual fee consumed</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>String</td>
+<td>Yes</td>
+<td>Creation timestamp</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>String</td>
+<td>Yes</td>
+<td>Modification timestamp</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Transaction destination address |
+| interactive_contract | String  | Yes      | Interactive contract         |
+| confirmations        | Integer | Yes      | Confirmations                |
+| input_data           | String  | Yes      | Hexadecimal data for contract transaction |
+| status               | Integer | Yes      | Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed |
+| trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |</p>
+<h3 id='sync-web3-transaction-records'>Sync Web3 Transaction Records</h3>
+<p>Get all Web3 transaction records under a wallet, maximum of 100 records.</p>
+<h4 id='http-request-18'>HTTP Request</h4>
+<p><code>GET /api/mpc/web3/sync_trans_list</code></p>
+<h4 id='request-parameters-6'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max_id</td>
+<td>String</td>
+<td>Yes</td>
+<td>Starting ID of Web3 transactions</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">435</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-17'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Web3 transaction ID</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>String</td>
+<td>Yes</td>
+<td>Unique identifier for the transaction</td>
+</tr>
+<tr>
+<td>sub_wallet_id</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Sub-wallet ID</td>
+</tr>
+<tr>
+<td>txid</td>
+<td>String</td>
+<td>No</td>
+<td>Transaction hash</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Transaction currency</td>
+</tr>
+<tr>
+<td>main_chain_symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Main chain coin symbol (unique identifier), e.g., ETH</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction amount. -1 indicates infinite</td>
+</tr>
+<tr>
+<td>fee_symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Fee currency, e.g., ETH</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>Yes</td>
+<td>Fee</td>
+</tr>
+<tr>
+<td>real_fee</td>
+<td>String</td>
+<td>Yes</td>
+<td>Actual fee consumed</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>String</td>
+<td>Yes</td>
+<td>Creation timestamp</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>String</td>
+<td>Yes</td>
+<td>Modification timestamp</td>
+</tr>
+<tr>
+<td>address_from</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction source address</td>
+</tr>
+<tr>
+<td>address_to</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transaction destination address</td>
+</tr>
+<tr>
+<td>interactive_contract</td>
+<td>String</td>
+<td>Yes</td>
+<td>Interactive contract</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Confirmations</td>
+</tr>
+<tr>
+<td>input_data</td>
+<td>String</td>
+<td>Yes</td>
+<td>Hexadecimal data for contract transaction</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed</td>
+</tr>
+<tr>
+<td>trans_source</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Transaction type: 1. App, 2. Open API</td>
+</tr>
+</tbody></table>
 <h1 id='transaction-notification'>Transaction Notification</h1><h2 id='overview-2'>Overview</h2>
 <p><code>POST /user callback notification address</code></p>
 
@@ -1854,7 +2619,7 @@
 </tbody></table>
 <h4 id='common-response'>Common Response</h4>
 <p>Return string: <code>SUCCESS</code> means SUCCESS, <code>FAILURE</code> means FAILURE (note that the return parameter does not need to be encrypted here)</p>
-<h2 id='transfer-notification'>Transfer Notification</h2><h4 id='decrypted-request-parameters-13'>Decrypted Request Parameters</h4>
+<h2 id='transfer-notification'>Transfer Notification</h2><h4 id='decrypted-request-parameters-12'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1873,7 +2638,7 @@
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Notification type, receive notification: <code>receive</code>, transfer notification: <code>transfer</code></td>
+<td style="text-align: left">Notification type: Receive notification: <code>deposit</code>, Transfer notification: <code>withdraw</code>, Web3 transaction notification: <code>web3-trans</code></td>
 </tr>
 <tr>
 <td style="text-align: left">notify_time</td>
@@ -1933,13 +2698,13 @@
 <td style="text-align: left">created_at</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Created time timestamp</td>
+<td style="text-align: left">Created time timestamp, example: 2006-01-02 15:04:05</td>
 </tr>
 <tr>
 <td style="text-align: left">updated_at</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Modified time timestamp</td>
+<td style="text-align: left">Modified time timestamp, example: 2006-01-02 15:04:05</td>
 </tr>
 <tr>
 <td style="text-align: left">address_from</td>
@@ -1996,7 +2761,7 @@
 <td style="text-align: left">transfer coin&#39;s contract address</td>
 </tr>
 </tbody></table>
-<h2 id='receive-notification'>Receive Notification</h2><h4 id='decrypted-request-parameters-14'>Decrypted Request Parameters</h4>
+<h2 id='receive-notification'>Receive Notification</h2><h4 id='decrypted-request-parameters-13'>Decrypted Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2015,7 +2780,7 @@
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Notification type, receive notification: <code>receive</code>, transfer notification: <code>transfer</code></td>
+<td style="text-align: left">Notification type: Receive notification: <code>deposit</code>, Transfer notification: <code>withdraw</code>, Web3 transaction notification: <code>web3-trans</code></td>
 </tr>
 <tr>
 <td style="text-align: left">notify_time</td>
@@ -2051,13 +2816,13 @@
 <td style="text-align: left">created_at</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Created time timestamp</td>
+<td style="text-align: left">Created time timestamp, example: 2006-01-02 15:04:05</td>
 </tr>
 <tr>
 <td style="text-align: left">updated_at</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">Modified time timestamp</td>
+<td style="text-align: left">Modified time timestamp, example: 2006-01-02 15:04:05</td>
 </tr>
 <tr>
 <td style="text-align: left">address_from</td>
@@ -2108,6 +2873,166 @@
 <td style="text-align: left">received coin&#39;s contract address</td>
 </tr>
 </tbody></table>
+<h2 id='web3-transaction-notification'>Web3 Transaction Notification</h2><h4 id='request-parameters-7'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">charset</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Character encoding format. Use <code>utf-8</code> unless specified otherwise.</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Notification type: Receive notification: <code>deposit</code>, Transfer notification: <code>withdraw</code>, Web3 transaction notification: <code>web3-trans</code></td>
+</tr>
+<tr>
+<td style="text-align: left">notify_time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Notification time in the format: &quot;YYYY-MM-DD HH:mm:ss&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Deposit ID</td>
+</tr>
+<tr>
+<td style="text-align: left">request_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier for the transfer</td>
+</tr>
+<tr>
+<td style="text-align: left">sub_wallet_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Sub-wallet ID</td>
+</tr>
+<tr>
+<td style="text-align: left">main_chain_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Main chain coin symbol (unique identifier), e.g., ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Currency symbol (unique identifier), e.g., USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transaction amount</td>
+</tr>
+<tr>
+<td style="text-align: left">created_at</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Creation time in the format: &quot;YYYY-MM-DD HH:mm:ss&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">updated_at</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Modification time in the format: &quot;YYYY-MM-DD HH:mm:ss&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">address_from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Sender address</td>
+</tr>
+<tr>
+<td style="text-align: left">address_to</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Recipient address</td>
+</tr>
+<tr>
+<td style="text-align: left">txid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transaction hash</td>
+</tr>
+<tr>
+<td style="text-align: left">confirmations</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Number of confirmations</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transfer status: 1000: Not approved, 1100: Approved, waiting for signature, 1200: Payment in progress, 2000: Payment completed, 2100: Approval rejected, 2200: Rejected, 2300: Transaction dropped, 2400: Payment failed</td>
+</tr>
+<tr>
+<td style="text-align: left">interactive_contract</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Interactive contract</td>
+</tr>
+<tr>
+<td style="text-align: left">fee_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Fee currency symbol, e.g., ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Fee amount</td>
+</tr>
+<tr>
+<td style="text-align: left">real_fee</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Actual fee consumed</td>
+</tr>
+<tr>
+<td style="text-align: left">input_data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Hexadecimal data representing the parameters of the contract transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">trans_type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transaction type: 0: Authorization transaction, 1: Transfer transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">dapp_img</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Dapp image</td>
+</tr>
+<tr>
+<td style="text-align: left">dapp_name</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Dapp name</td>
+</tr>
+<tr>
+<td style="text-align: left">dapp_url</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Dapp access URL</td>
+</tr>
+</tbody></table>
 <h1 id='co-signer'>Co-signer</h1><h2 id='overview-3'>Overview</h2>
 <p>Co-Signer can help you quickly connect to the <strong>API</strong>, but you need to deploy it on the server separately. Co-Signer needs to bind the <strong>shard private key</strong> of your wallet to create addresses and transaction signatures.</p>
 
@@ -2122,8 +3047,8 @@
 <p>In order to ensure the security of the transaction, you need to configure a callback address of the business system in Co-Signer to authorize before the transaction is signed.</p>
 
 <p>The authorized transaction data transmits in <strong>clear text (no encryption)</strong>, you need to ensure the communication security between the business system and Co-Signer in the application service.</p>
-<h4 id='http-request-14'>HTTP Request</h4>
-<p><code>POST /{url}</code></p>
+<h4 id='http-request-19'>HTTP Request</h4>
+<p>POST /{url}</p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
 
@@ -2205,6 +3130,111 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The unique identifier of the coin, example: USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">txid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Transaction hash. Returned when the signature is successful.</td>
+</tr>
+</tbody></table>
+<h3 id='web3-transaction-callback'>Web3 Transaction Callback</h3><h4 id='http-request-20'>HTTP Request</h4>
+<p>POST /{url}</p>
+
+<p><code>Content-Type: application/json;charset=UTF-8</code></p>
+
+<blockquote>
+<p>Callback Parameter Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">POST</span><span class="w"> </span><span class="err">/callback/example</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sign_start"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pending_round"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x5EDc9177997Bf6B4db559A5C184051858B3B3704"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"input_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='callback-parameter-format'>Callback Parameter Format:</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Callback type: <code>sign_start</code> for signature initiation, <code>sign_success</code> for successful signature</td>
+</tr>
+<tr>
+<td style="text-align: left">trans_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transaction ID</td>
+</tr>
+<tr>
+<td style="text-align: left">request_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique identifier for the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">pending_round</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Acceleration status: <code>true</code> for accelerated transactions, <code>false</code> for regular transactions</td>
+</tr>
+<tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Sender address of the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">to</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Recipient address of the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">Decimal</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Transaction amount. Use <code>-1</code> for infinity</td>
+</tr>
+<tr>
+<td style="text-align: left">main_chain_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Main chain symbol (unique identifier), e.g., &quot;ETH&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">input_data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Input data for the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left">interactive_contract</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Interactive contract</td>
+</tr>
+<tr>
+<td style="text-align: left">txid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Transaction hash. Returned when the signature is successful</td>
 </tr>
 </tbody></table>
 <h4 id='common-response-for-callback'>Common Response for Callback</h4>
@@ -2327,6 +3357,14 @@
 <tr>
 <td>3040006</td>
 <td>Cannot Transfer to Yourself</td>
+</tr>
+<tr>
+<td>200071</td>
+<td>Acceleration is not supported on this main chain.</td>
+</tr>
+<tr>
+<td>200072</td>
+<td>Transaction type is not supported by the sub-wallet type.</td>
 </tr>
 </tbody></table>
 
