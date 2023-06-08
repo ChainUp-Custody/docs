@@ -495,6 +495,9 @@
                     <a href="#co-signer-callback" class="toc-h2 toc-link" data-title="Co-signer Callback">Co-signer Callback</a>
                       <ul class="toc-list-h3">
                           <li>
+                            <a href="#transfer-withdrawal-callback" class="toc-h3 toc-link" data-title="Transfer(Withdrawal) Callback">Transfer(Withdrawal) Callback</a>
+                          </li>
+                          <li>
                             <a href="#web3-transaction-callback" class="toc-h3 toc-link" data-title="Web3 Transaction Callback">Web3 Transaction Callback</a>
                           </li>
                       </ul>
@@ -3047,7 +3050,7 @@
 <p>In order to ensure the security of the transaction, you need to configure a callback address of the business system in Co-Signer to authorize before the transaction is signed.</p>
 
 <p>The authorized transaction data transmits in <strong>clear text (no encryption)</strong>, you need to ensure the communication security between the business system and Co-Signer in the application service.</p>
-<h4 id='http-request-19'>HTTP Request</h4>
+<h3 id='transfer-withdrawal-callback'>Transfer(Withdrawal) Callback</h3><h4 id='http-request-19'>HTTP Request</h4>
 <p>POST /{url}</p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
