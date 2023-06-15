@@ -976,7 +976,7 @@ Create a Web3 transaction.
 | sub_wallet_id      | Integer | Yes      | Sub-wallet ID                             |
 | interactive_contract | String | Yes      | Interactive contract                      |
 | amount             | String  | Yes      | Transaction amount (-1 for infinite)      |
-| gas_price          | String  | Yes      | Gas fee                                  |
+| gas_price          | String  | Yes      | Gas fee，unit：Gwei                       |
 | gas_limit          | String  | Yes      | Gas limit fee                            |
 | input_data         | String  | Yes      | Hexadecimal data for contract transaction |
 | trans_type         | Integer | Yes      | 0: Authorization transaction, 1: Other transaction. If 0, the amount field is invalid. |
@@ -1015,7 +1015,7 @@ When a transfer is signed but has not been confirmed on the blockchain for a lon
 | Param | Type   | Required | Description        |
 | ----------- | ------ | -------- | ------------------ |
 | trans_id    | Integer| Yes      | Web3 transaction ID |
-| gas_price   | String | Yes      | Gas price          |
+| gas_price   | String | Yes      | Gas price, unit：Gwei  |
 | gas_limit   | String | Yes      | Gas limit          |
 
 
