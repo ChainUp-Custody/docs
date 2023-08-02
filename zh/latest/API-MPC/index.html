@@ -2173,7 +2173,7 @@
 <td style="text-align: left">amount</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">交易金额，-1:表示无穷大</td>
+<td style="text-align: left">交易金额，-1:表示无穷大, 该金额表示主链币使用金额, 传参时使用满精度</td>
 </tr>
 <tr>
 <td style="text-align: left">gas_price</td>
@@ -2197,7 +2197,7 @@
 <td style="text-align: left">trans_type</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">0:授权交易，1：其他交易。为0是，amount设置金额无效</td>
+<td style="text-align: left">0:授权交易，1：其他交易。为0时，amount设置金额无效</td>
 </tr>
 <tr>
 <td style="text-align: left">dapp_name</td>
