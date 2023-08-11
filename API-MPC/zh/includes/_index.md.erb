@@ -1211,6 +1211,56 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
+## NFT
+
+### 获取NFT信息
+
+获取NFT图片，名称等数据
+
+#### HTTP请求
+
+`POST /api/nft/info`
+
+
+
+#### 请求参数数据结构 
+
+| Param | 类型   | 是否必须 | 说明                                      |
+| :---- | :----- | :------- | :---------------------------------------- |
+|base_symbol        |String  | 是       | 主链币          |
+|contract_address   |String  | 是       | NFT合约地址      |
+|token_id           |String  | 是       | NFT token id	 |
+
+
+> 响应结果示例
+
+```json
+{
+     "base_symbol": "bsc",
+     "contract_address": "0xC2A19349D5f451071C3085B90f531D19F190FF21",
+     "token_id": "75000000000000000281",
+     "nft_name": "#75000000000000000281",
+     "image": "https://ipfs.io/ipfs/QmXCaMVmRWviaFtRpEH7dJXrJav8dsJdGcsj7M8NpgAgPW",
+     "image_type": "bsc",
+     "is_video": false,
+}
+```
+
+
+
+#### 响应参数数据结构
+
+| Param            | 类型    | 是否必须 | 说明                                                         |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| base_symbol         | String | 是    | 主链币 |
+| contract_address    | String | 是    | NFT合约地址 |
+| token_id            | String | 是    | NFT token id |
+| nft_name            | String | 是    | NFT 名称, 不存在时, 使用 "# + tokenId", 如: #1000001 |
+| image               | String | 是    | nft图片或视频url, 或图片base64 |
+| image_type          | String | 是    | nft图片或视频类型, 如：".png", ".mp4" |
+| is_video            | bool   | 是    | 是否是视频, true: image是视屏, 反之不是视频 |
+
+
 # 交易通知
 
 ## 统一说明
