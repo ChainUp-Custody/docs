@@ -1168,6 +1168,52 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |
 
 
+
+## NFT
+
+### Get NFT Information
+
+Retrieve NFT data such as images and names.
+
+#### HTTP Request
+
+`POST /api/nft/info`
+
+#### Request Data Parameter
+| Param            | Type   | Required | Description                                 |
+| :--------------- | :----- | :------- | :------------------------------------------ |
+| base_symbol      | String | Yes      | Base chain symbol                           |
+| contract_address | String | Yes      | NFT contract address                        |
+| token_id         | String | Yes      | NFT token ID                                |
+
+> Response Example
+
+```json
+{
+     "base_symbol": "bsc",
+     "contract_address": "0xC2A19349D5f451071C3085B90f531D19F190FF21",
+     "token_id": "75000000000000000281",
+     "nft_name": "#75000000000000000281",
+     "image": "https://ipfs.io/ipfs/QmXCaMVmRWviaFtRpEH7dJXrJav8dsJdGcsj7M8NpgAgPW",
+     "image_type": ".svg",
+     "is_video": false,
+}
+```
+
+#### Response Parameter
+
+| Param         | Type    | Required | Description                                |
+| :------------ | :------ | :------- | :----------------------------------------- |
+| base_symbol   | String  | Yes      | Base chain symbol                         |
+| contract_address | String | Yes    | NFT contract address                      |
+| token_id         | String | Yes    | NFT token ID                              |
+| nft_name         | String | Yes    | NFT name, when absent, use "# + tokenId"  |
+| image            | String | Yes    | URL or base64 of NFT image or video       |
+| image_type       | String | Yes    | NFT image or video type, e.g., ".png", ".mp4" |
+| is_video         | bool   | Yes    | Indicates if it's a video. `true` if it's a video, `false` otherwise |
+
+
+
 # Transaction Notification
 
 ## Overview
