@@ -463,6 +463,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#nft" class="toc-h2 toc-link" data-title="NFT">NFT</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-nft-information" class="toc-h3 toc-link" data-title="Get NFT Information">Get NFT Information</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2591,6 +2599,103 @@
 <td>Transaction type: 1. App, 2. Open API</td>
 </tr>
 </tbody></table>
+<h2 id='nft'>NFT</h2><h3 id='get-nft-information'>Get NFT Information</h3>
+<p>Retrieve NFT data such as images and names.</p>
+<h4 id='http-request-19'>HTTP Request</h4>
+<p><code>POST /api/nft/info</code></p>
+<h4 id='request-data-parameter'>Request Data Parameter</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">base_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Base chain symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">contract_address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT contract address</td>
+</tr>
+<tr>
+<td style="text-align: left">token_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT token ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bsc"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xC2A19349D5f451071C3085B90f531D19F190FF21"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"token_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75000000000000000281"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"nft_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#75000000000000000281"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ipfs.io/ipfs/QmXCaMVmRWviaFtRpEH7dJXrJav8dsJdGcsj7M8NpgAgPW"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"image_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">".svg"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"is_video"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-parameter'>Response Parameter</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">base_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Base chain symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">contract_address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT contract address</td>
+</tr>
+<tr>
+<td style="text-align: left">token_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT token ID</td>
+</tr>
+<tr>
+<td style="text-align: left">nft_name</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT name, when absent, use &quot;# + tokenId&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">URL or base64 of NFT image or video</td>
+</tr>
+<tr>
+<td style="text-align: left">image_type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">NFT image or video type, e.g., &quot;.png&quot;, &quot;.mp4&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">is_video</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Indicates if it&#39;s a video. <code>true</code> if it&#39;s a video, <code>false</code> otherwise</td>
+</tr>
+</tbody></table>
 <h1 id='transaction-notification'>Transaction Notification</h1><h2 id='overview-2'>Overview</h2>
 <p><code>POST /user callback notification address</code></p>
 
@@ -3050,7 +3155,7 @@
 <p>In order to ensure the security of the transaction, you need to configure a callback address of the business system in Co-Signer to authorize before the transaction is signed.</p>
 
 <p>The authorized transaction data transmits in <strong>clear text (no encryption)</strong>, you need to ensure the communication security between the business system and Co-Signer in the application service.</p>
-<h3 id='transfer-withdrawal-callback'>Transfer(Withdrawal) Callback</h3><h4 id='http-request-19'>HTTP Request</h4>
+<h3 id='transfer-withdrawal-callback'>Transfer(Withdrawal) Callback</h3><h4 id='http-request-20'>HTTP Request</h4>
 <p>POST /{url}</p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
@@ -3141,7 +3246,7 @@
 <td style="text-align: left">Transaction hash. Returned when the signature is successful.</td>
 </tr>
 </tbody></table>
-<h3 id='web3-transaction-callback'>Web3 Transaction Callback</h3><h4 id='http-request-20'>HTTP Request</h4>
+<h3 id='web3-transaction-callback'>Web3 Transaction Callback</h3><h4 id='http-request-21'>HTTP Request</h4>
 <p>POST /{url}</p>
 
 <p><code>Content-Type: application/json;charset=UTF-8</code></p>
