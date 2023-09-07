@@ -250,42 +250,43 @@ The values of the request parameter DATA and the response field DATA are both en
 
 
 
-
 ## Wallet
 
-### Get the main chain of wallet
+### Get Supported Main Chains
 
-Get the main chain and coins supported by ChainUp Custody.
+Get the supported MPC main chain coins and the MPC main chain coins opened in ChainUp Custody.
 
 #### HTTP Request
 
 `GET /api/mpc/wallet/open_coin`
 
+#### Request Parameters
+
+| Param    | Type   | Required | Description       |
+| :------- | :----- | :------- | :---------------- |
+| time     | long   | Yes      | Current timestamp |
+| charset  | String | Yes      | Encoding format, typically "utf-8" |
 
 
-#### Decrypted Request Parameters 
-
-None
-
-
-
-> Response
+> Response：
 
 ```json
 {
-    "open_main_chain":[
+    "open_main_chain": [
         {
-            "coin_net":"BTC",
-            "symbol":"BTC",
-            "symbol_alias":"BTC"
+            "coin_net": "BTC",
+            "symbol": "BTC",
+            "symbol_alias": "BTC",
+            "support_acceleration": false
         }
     ],
-    "support_main_chain":[
+    "support_main_chain": [
         {
-            "coin_net":"BTC",
-            "if_open_chain":true,
-            "symbol":"BTC",
-            "symbol_alias":"BTC"
+            "coin_net": "BTC",
+            "if_open_chain": true,
+            "symbol": "BTC",
+            "symbol_alias": "BTC",
+            "support_acceleration": false
         }
     ]
 }
@@ -293,20 +294,94 @@ None
 
 #### Response Data Parameters 
 
-| Param              | Type    | Required | Description                                                  |
-| :----------------- | :------ | :------- | :----------------------------------------------------------- |
-| open_main_chain    | Array   | No       | The main chain opened by the wallet                          |
-| symbol             | String  | Yes      | The unique identifier of the coin, used when transferring, for example: USDTERC20 |
-| symbol_alias       | String  | No       | The real name of the coin, for example: USDT                 |
-| support_main_chain | Array   | No       | Main chain supported by MPC wallet                           |
-| coin_net           | String  | No       | Coin network, for example: ETH                               |
-| if_open_chain      | Boolean | Yes      | Whether to open the main chain: ` false`,not opened; `true`,opened. |
+| Param              | Type    | Required | Description                                           |
+| :----------------- | :------ | :------- | :---------------------------------------------------- |
+| open_main_chain    | Array   | No       | Opened main chains in the wallet                       |
+| coin_net           | String  | No       | Coin network, e.g., ETH                               |
+| symbol             | String  | Yes      | Unique identifier for the coin, used for transfers     |
+| symbol_alias       | String  | No       | Real name of the coin, e.g., USDT                      |
+| support_acceleration | Boolean | Yes      | Indicates if acceleration is supported (true/false)      |
+| support_main_chain | Array   | No       | Supported main chains in MPC                           |
+| coin_net           | String  | No       | Coin network, e.g., ETH                               |
+| symbol             | String  | Yes      | Unique identifier for the coin, used for transfers     |
+| symbol_alias       | String  | No       | Real name of the coin, e.g., USDT                      |
+| if_open_chain      | Boolean | Yes      | Indicates if the main chain is opened (false/true)     |
+| support_acceleration | Boolean | Yes      | Indicates if acceleration is supported (true/false)      |
+
+
+### Get MPC Coin Details
+
+Get the details of MPC wallet main chain coins and tokens supported by ChainUp Custody
+
+#### HTTP Request
+
+`GET /api/mpc/coin_list`
+
+#### Request Parameters
+
+| Param         | Type   | Required | Description                 |
+| :------------ | :----- | :------- | :-------------------------- |
+| time          | long   | Yes      | Current timestamp           |
+| charset       | String | Yes      | Encoding format, typically "utf-8" |
+| symbol        | String | No       | Unique identifier for the coin, used for transfers, e.g., USDTERC20 |
+| base_symbol   | String | No       | Unique identifier for the base coin of the main chain, used for transfers, e.g., ETH |
+
+
+> Response：
+
+```json
+[
+    {
+        "address_regex":".*",
+        "address_tag_regex":"",
+        "base_symbol":"BSC",
+        "coin_net":"BSC",
+        "contract_address":"0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals":"18",
+        "deposit_confirmation":"1",
+        "explorer":"https://www.bscscan.com/address/",
+        "icon":"",
+        "if_open_chain":true,
+        "name":"BUSD Token;BSC;BUSD",
+        "real_symbol":"BUSD",
+        "support_memo":"0",
+        "support_token":"0",
+        "symbol":"BUSD",
+        "symbol_alias":"BUSD",
+        "support_acceleration": true
+    }
+]
+```
+
+#### Response Data Parameters 
+
+| Param                | Type     | Required | Description                                      |
+| :------------------- | :------- | :------- | :----------------------------------------------- |
+| symbol               | String   | Yes      | Unique identifier of the coin, used for transfers, e.g., BUSD |
+| symbol_alias         | String   | Yes      | Alias of the coin in Custody                      |
+| real_symbol          | String   | Yes      | Name of the coin on the blockchain                |
+| base_symbol          | String   | Yes      | Unique identifier of the base coin of the main chain, used for transfers, e.g., BSC |
+| coin_net             | String   | No       | Coin network                                      |
+| contract_address     | String   | No       | Contract address supported by MPC main chain       |
+| deposit_confirmation | String   | Yes      | Number of confirmations for deposits               |
+| explorer             | String   | No       | Blockchain explorer URL                           |
+| icon                 | String   | Yes      | Coin icon                                         |
+| if_open_chain        | Boolean  | Yes      | Indicates if the main chain is open (false/true)   |
+| decimals             | String   | Yes      | Coin precision                                   |
+| support_memo         | String   | Yes      | Indicates if memo is supported (0:not supported, 1:supported) |
+| support_token        | String   | Yes      | Indicates if token coins are supported (0:not supported, 1:supported for main chain coins, empty for tokens) |
+| address_tag_regex    | String   | Yes      | Address tag regex pattern                         |
+| address_regex        | String   | Yes      | Address regex pattern                             |
+| support_acceleration | Boolean  | Yes      | Indicates if acceleration is supported            |
 
 
 
 
 
 ## Sub-wallet (user)
+
+
+
 
 ### Create a sub-wallet
 
@@ -360,7 +435,7 @@ Obtain the receiving address under the specified sub-wallet and coin
 
 | Param         | Type   | Requried | Description                                           |
 | :------------ | :----- | :------- | :---------------------------------------------------- |
-| sub_wallet_id | String | Yes      | Sub wallet id                                         |
+| sub_wallet_id | Integer | Yes      | Sub wallet id      |
 | symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20 |
 
 > Response
@@ -396,7 +471,7 @@ Get the account assets under the specified sub-wallet and coin.
 | Param         | Type   | Requried | Description                                           |
 | :------------ | :----- | :------- | :---------------------------------------------------- |
 | symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20 |
-| sub_wallet_id | String | Yes      | Sub wallet id                                         |
+| sub_wallet_id | Integer | Yes      | Sub wallet id                                         |
 
 > Response
 
@@ -472,16 +547,20 @@ None
 
 | Param         | Type   | Requried | Description                                                  |
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
-| sub_wallet_id | String | Yes      | Sub wallet id                                                |
+| sub_wallet_id | Integer | Yes      | Sub wallet id                                                |
 | symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20        |
 | address_to    | String | Yes      | transfer address                                             |
 | memo          | String | No       | transfer address memo, Memo type can be filled in if available,  example: 123321 |
 | amount        | String | Yes      | transfer amount                                              |
 | request_id    | String | Yes      | The unique identifier for transferring coins                 |
 | remark        | String | No       | transfer remarks                                             |
-| gas_price     | String | No       | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
-| gas_limit     | String | No       | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to 0 . |
-| fee           | String | No       | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to 0; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is 0, the other is not 0; |
+| fee_rate      | String | No       | Fee rate for BTC series; Note: Do not pass along with other series parameters |
+| size          | String | No       | Size in bytes for BTC series; Note: Do not pass along with other series parameters |
+| gas_price     | String | No       | Gas recommended price for ETH series; Note: Do not pass along with other series parameters |
+| gas_limit     | String | No       | Gas limit for ETH series; Note: Do not pass along with other series parameters |
+| fee           | String | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM) |
+
+
 
 > Response
 
@@ -539,16 +618,20 @@ Obtain the estimated miner fee required for transfer.
 
 #### Response Data Parameters 
 
-| Param      | Type   | Requried | Description                                      |
-| :--------- | :----- | :------- | :----------------------------------------------- |
-| gas_price1 | String | Yes      | The first recommended unit price of the gas fee  |
-| gas_price2 | String | Yes      | The second recommended unit price of the gas fee |
-| gas_price3 | String | Yes      | The third recommended unit price of the gas fee  |
-| gas_limit  | Long   | Yes      | Gas fee limit                                    |
-| fee_unit   | String | Yes      | Gas fee unit                                     |
-| fee        | String | Yes      | The recommended value of the gas fee             |
 
-
+| Param     | Type    | Required | Description                                     |
+|----------------|---------|----------|-------------------------------------------------|
+| fee_unit       | String  | Yes      | Fee unit, e.g., Gwei                            |
+| fee_rate1      | String  | No       | Fee rate tier 1 for BTC series                   |
+| fee_rate2      | String  | No       | Fee rate tier 2 for BTC series                   |
+| fee_rate3      | String  | No       | Fee rate tier 3 for BTC series                   |
+| size           | Long    | Yes      | Size in bytes for BTC series (parameter value cannot be modified) |
+| gas_limit      | Long    | No       | Gas limit for ETH series (also available for some other series like ATOM) |
+| gas_price1     | Long    | No       | Gas recommended price tier 1 for ETH series      |
+| gas_price2     | Long    | No       | Gas recommended price tier 2 for ETH series      |
+| gas_price3     | Long    | No       | Gas recommended price tier 3 for ETH series      |
+| fee            | String  | No       | Fee for other series such as DOT and TRX, using the 'fee' field for transaction fees |
+| fee_changeable | Boolean | No       | For other series such as DOT and TRX, indicates whether the 'fee' parameter value can be changed. Set to true for modifiable and false for non-modifiable values |
 
 
 
@@ -561,19 +644,20 @@ After the transfer signature is completed, if the transaction fee has not been p
 
 #### HTTP Request
 
-`POST /api/mpc/billing/transfer_pending`
+`POST /api/mpc/billing/withdraw_pending`
 
 
 
 #### Decrypted Request Parameters 
 
-| Param       | Type   | Requried | Description                                                  |
-| :---------- | :----- | :------- | :----------------------------------------------------------- |
-| transfer_id | String | Yes      | transfer id, example: 12345                                  |
-| gas_price   | String | Yes      | when custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, and the value greater than or equal to `0` is filled in fee and gas_price, one of which is 0, and the other is not 0; |
-| gas_limit   | String | Yes      | The custom miner fee is passed in, and the reference value is obtained through the `estimated miner fee interface`, fill in a value greater than or equal to `0` . |
-| fee         | String | Yes      | Custom miner fee is passed in, get the reference value through `estimated miner fee interface`, fill in a value greater than or equal to `0`; whether it is a real miner fee, no precision, you need to pay attention to choosing one of fee and gas_price when filling in is `0`, the other is not 0; |
-
+| Param   | Type    | Required | Description                                          |
+|---------------|---------|----------|------------------------------------------------------|
+| withdraw_id   | Integer | Yes      | Transfer ID                                          |
+| fee_rate      | String  | No       | Fee rate for BTC series; Note: Do not pass along with other series parameters |
+| size          | String  | No       | Size in bytes for BTC series; Note: Do not pass along with other series parameters |
+| gas_price     | String  | No       | Gas recommended price for ETH series; Note: Do not pass along with other series parameters |
+| gas_limit     | String  | No       | Gas limit for ETH series; Note: Do not pass along with other series parameters |
+| fee           | String  | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM) |
 
 
 #### Response Data Parameters 
@@ -593,7 +677,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 #### HTTP Request
 
-`GET /api/mpc/billing/transfer_list`
+`GET /api/mpc/billing/withdraw_list`
 
 
 
@@ -638,7 +722,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | id               | Integer | Yes      | transfer id                                                  |
-| request_id       | String  | Yes      | The unique identifier for transferring coins                 |
+| request_id       | Integer  | Yes      | The unique identifier for transferring coins                 |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin                            |
 | amount           | String  | Yes      | transfer amount                                              |
@@ -771,7 +855,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
         "memo": "123321",
-      "created_at":1672107533000,
+        "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
         "contract_address":"",
@@ -814,7 +898,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 
 #### HTTP Request
 
-`GET /api/mpc/billing/sync_receive_list`
+`GET /api/mpc/billing/sync_deposit_list`
 
 
 
@@ -835,7 +919,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
         "memo": "123321",
-      "created_at":1672107533000,
+        "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
         "contract_address":"",
@@ -871,7 +955,262 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 | contract_address | String  | No       | received coin's contract address                             |
 
 
+## Web3 Transaction
 
+### Create Web3 Transaction
+
+Create a Web3 transaction.
+
+#### HTTP Request
+
+`POST /api/mpc/web3/trans/create`
+
+
+
+#### Request Parameters
+
+| Param          | Type    | Required | Description                              |
+| ------------------ | ------- | -------- | ---------------------------------------- |
+| request_id         | String  | Yes      | Unique identifier for the transaction     |
+| main_chain_symbol  | String  | Yes      | Main chain coin symbol (unique identifier) |
+| sub_wallet_id      | Integer | Yes      | Sub-wallet ID                             |
+| interactive_contract | String | Yes      | Interactive contract                      |
+| amount             | String  | Yes      | Transaction amount (-1 for infinite)      |
+| gas_price          | String  | Yes      | Gas fee，unit：Gwei                       |
+| gas_limit          | String  | Yes      | Gas limit fee                            |
+| input_data         | String  | Yes      | Hexadecimal data for contract transaction |
+| trans_type         | Integer | Yes      | 0: Authorization transaction, 1: Other transaction. If 0, the amount field is invalid. |
+| dapp_name          | String  | No       | Dapp name                                 |
+| dapp_url           | String  | No       | Dapp URL                                  |
+| dapp_img           | String  | No       | Dapp image                                |
+
+> Response 
+
+```json
+{
+     "trans_id": 198012
+}
+```
+
+#### Response Data Parameters 
+
+| Parameter         | Type    | Required | Description               |
+| ----------------- | ------- | -------- | ------------------------- |
+| trans_id          | Integer | Yes      | Web3 transaction ID       |
+
+
+
+### Web3 Transaction Acceleration
+
+When a transfer is signed but has not been confirmed on the blockchain for a long time due to insufficient fees, it can be accelerated by specifying a higher fee.
+
+#### HTTP Request
+
+`POST /api/mpc/web3/pending`
+
+
+
+#### Request Parameters
+
+| Param | Type   | Required | Description        |
+| ----------- | ------ | -------- | ------------------ |
+| trans_id    | Integer| Yes      | Web3 transaction ID |
+| gas_price   | String | Yes      | Gas price, unit：Gwei  |
+| gas_limit   | String | Yes      | Gas limit          |
+
+
+#### Response Data Parameters 
+
+None
+
+
+
+### Get Web3 Transaction Records
+
+Get all Web3 transaction records under a wallet, maximum of 100 records.
+
+#### HTTP Request
+
+`GET /api/mpc/web3/trans_list`
+
+
+
+#### Request Parameters
+
+| Param   | Type   | Required | Description                  |
+| ----------- | ------ | -------- | ---------------------------- |
+| ids         | String | Yes      | Comma-separated `request_id` strings |
+
+> Response 
+
+```json
+[
+    {
+        "id":435,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+        "status":2400,
+        "trans_source":2
+    }
+]
+```
+
+
+
+#### Response Data Parameters 
+
+| Parameter            | Type    | Required | Description                  |
+| -------------------- | ------- | -------- | ---------------------------- |
+| id                   | Integer | Yes      | Web3 transaction ID          |
+| request_id           | String  | Yes      | Unique identifier for the transaction |
+| sub_wallet_id        | Integer | Yes      | Sub-wallet ID                |
+| txid                 | String  | No       | Transaction hash             |
+| symbol               | String  | No       | Transaction currency         |
+| main_chain_symbol    | String  | Yes      | Main chain coin symbol (unique identifier), e.g., ETH |
+| amount               | String  | Yes      | Transaction amount. -1 indicates infinite |
+| fee_symbol           | String  | Yes      | Fee currency, e.g., ETH      |
+| fee                  | String  | Yes      | Fee                          |
+| real_fee             | String  | Yes      | Actual fee consumed          |
+| created_at           | String  | Yes      | Creation timestamp           |
+| updated_at           | String  | Yes      | Modification timestamp       |
+| address_from         | String  | Yes      | Transaction source address   |
+| address_to           | String  | Yes      |
+
+ Transaction destination address |
+| interactive_contract | String  | Yes      | Interactive contract         |
+| confirmations        | Integer | Yes      | Confirmations                |
+| input_data           | String  | Yes      | Hexadecimal data for contract transaction |
+| status               | Integer | Yes      | Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed |
+| trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |
+
+### Sync Web3 Transaction Records
+
+Get all Web3 transaction records under a wallet, maximum of 100 records.
+
+#### HTTP Request
+
+`GET /api/mpc/web3/sync_trans_list`
+
+
+
+#### Request Parameters
+
+| Parameter   | Type   | Required | Description                  |
+| ----------- | ------ | -------- | ---------------------------- |
+| max_id      | String | Yes      | Starting ID of Web3 transactions |
+
+> Response
+
+```json
+[
+    {
+        "id":435,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
+        "address_to":"",
+        "input_data":"0xca718c65",
+        "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+        "confirmations":4,
+        "status":2400,
+        "trans_source":2
+    }
+]
+```
+
+
+
+####  Response Data Parameters 
+
+| Parameter            | Type    | Required | Description                  |
+| -------------------- | ------- | -------- | ---------------------------- |
+| id                   | Integer | Yes      | Web3 transaction ID          |
+| request_id           | String  | Yes      | Unique identifier for the transaction |
+| sub_wallet_id        | Integer | Yes      | Sub-wallet ID                |
+| txid                 | String  | No       | Transaction hash             |
+| symbol               | String  | No       | Transaction currency         |
+| main_chain_symbol    | String  | Yes      | Main chain coin symbol (unique identifier), e.g., ETH |
+| amount               | String  | Yes      | Transaction amount. -1 indicates infinite |
+| fee_symbol           | String  | Yes      | Fee currency, e.g., ETH      |
+| fee                  | String  | Yes      | Fee                          |
+| real_fee             | String  | Yes      | Actual fee consumed          |
+| created_at           | String  | Yes      | Creation timestamp           |
+| updated_at           | String  | Yes      | Modification timestamp       |
+| address_from         | String  | Yes      | Transaction source address   |
+| address_to           | String  | Yes      | Transaction destination address |
+| interactive_contract | String  | Yes      | Interactive contract         |
+| confirmations        | Integer | Yes      | Confirmations                |
+| input_data           | String  | Yes      | Hexadecimal data for contract transaction |
+| status               | Integer | Yes      | Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed |
+| trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |
+
+
+
+## NFT
+
+### Get NFT Information
+
+Retrieve NFT data such as images and names.
+
+#### HTTP Request
+
+`POST /api/nft/info`
+
+#### Request Data Parameter
+| Param            | Type   | Required | Description                                 |
+| :--------------- | :----- | :------- | :------------------------------------------ |
+| base_symbol      | String | Yes      | Base chain symbol                           |
+| contract_address | String | Yes      | NFT contract address                        |
+| token_id         | String | Yes      | NFT token ID                                |
+
+> Response Example
+
+```json
+{
+     "base_symbol": "bsc",
+     "contract_address": "0xC2A19349D5f451071C3085B90f531D19F190FF21",
+     "token_id": "75000000000000000281",
+     "nft_name": "#75000000000000000281",
+     "image": "https://ipfs.io/ipfs/QmXCaMVmRWviaFtRpEH7dJXrJav8dsJdGcsj7M8NpgAgPW",
+     "image_type": ".svg",
+     "is_video": false,
+}
+```
+
+#### Response Parameter
+
+| Param         | Type    | Required | Description                                |
+| :------------ | :------ | :------- | :----------------------------------------- |
+| base_symbol   | String  | Yes      | Base chain symbol                         |
+| contract_address | String | Yes    | NFT contract address                      |
+| token_id         | String | Yes    | NFT token ID                              |
+| nft_name         | String | Yes    | NFT name, when absent, use "# + tokenId"  |
+| image            | String | Yes    | URL or base64 of NFT image or video       |
+| image_type       | String | Yes    | NFT image or video type, e.g., ".png", ".mp4" |
+| is_video         | bool   | Yes    | Indicates if it's a video. `true` if it's a video, `false` otherwise |
 
 
 
@@ -907,8 +1246,6 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 
 
 
-
-
 ## Transfer Notification
 
 #### Decrypted Request Parameters 
@@ -916,7 +1253,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
-| side             | String  | Yes      | Notification type, receive notification: `receive`, transfer notification: `transfer` |
+| side             | String  | Yes      |Notification type: Receive notification: `deposit`, Transfer notification: `withdraw`, Web3 transaction notification: `web3-trans`|
 | notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
 | id               | String  | Yes      | transfer id, example: 12345                                  |
 | request_id       | String  | Yes      | The unique identifier for transferring coins                 |
@@ -926,8 +1263,8 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | fee_symbol       | String  | Yes      | gas fee coins，example：ETH                                  |
 | fee              | String  | Yes      | gas fee，example：0.00123                                    |
 | real_fee         | String  | Yes      | The actual gas fee consumed，example：0.00111                |
-| created_at       | Long    | Yes      | Created time timestamp                                       |
-| updated_at       | Long    | Yes      | Modified time timestamp                                      |
+| created_at       | Long    | Yes      | Created time timestamp, example: 2006-01-02 15:04:05                                       |
+| updated_at       | Long    | Yes      | Modified time timestamp, example: 2006-01-02 15:04:05                                      |
 | address_from     | String  | Yes      | from account address                                         |
 | address_to       | String  | Yes      | to account address                                           |
 | memo             | String  | No       | to account address memo，example：123321                     |
@@ -948,14 +1285,14 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | charset          | String  | Yes      | Encoding format, no special circumstances, pass parameter `utf-8` |
-| side             | String  | Yes      | Notification type, receive notification: `receive`, transfer notification: `transfer` |
+| side             | String  | Yes      | Notification type: Receive notification: `deposit`, Transfer notification: `withdraw`, Web3 transaction notification: `web3-trans` |
 | notify_time      | String  | Yes      | Notification time，example：2022-11-02 11:04:05              |
 | id               | String  | Yes      | receiving id                                                 |
 | sub_wallet_id    | String  | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
 | amount           | String  | Yes      | receiving amount                                             |
-| created_at       | Long    | Yes      | Created time timestamp                                       |
-| updated_at       | Long    | Yes      | Modified time timestamp                                      |
+| created_at       | Long    | Yes      | Created time timestamp, example: 2006-01-02 15:04:05         |
+| updated_at       | Long    | Yes      | Modified time timestamp, example: 2006-01-02 15:04:05        |
 | address_from     | String  | Yes      | from account address                                         |
 | address_to       | String  | Yes      | to account address                                           |
 | memo             | String  | No       | to account address memo，example：123321                     |
@@ -965,6 +1302,39 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
 | contract_address | String  | No       | received coin's contract address                             |
 
+
+
+## Web3 Transaction Notification
+
+#### Request Parameters
+
+| Param            | Type   | Required | Description                                                  |
+| :--------------- | :----- | :------- | :----------------------------------------------------------- |
+| charset          | String | Yes      | Character encoding format. Use `utf-8` unless specified otherwise. |
+| side             | String | Yes      | Notification type: Receive notification: `deposit`, Transfer notification: `withdraw`, Web3 transaction notification: `web3-trans` |
+| notify_time      | String | Yes      | Notification time in the format: "YYYY-MM-DD HH:mm:ss"        |
+| id               | String | Yes      | Deposit ID                                                   |
+| request_id       | String | Yes      | Unique identifier for the transfer                            |
+| sub_wallet_id    | String | Yes      | Sub-wallet ID                                                |
+| main_chain_symbol| String | Yes      | Main chain coin symbol (unique identifier), e.g., ETH        |
+| symbol           | String | No       | Currency symbol (unique identifier), e.g., USDTERC20          |
+| amount           | String | Yes      | Transaction amount                                            |
+| created_at       | String | Yes      | Creation time in the format: "YYYY-MM-DD HH:mm:ss"            |
+| updated_at       | String | Yes      | Modification time in the format: "YYYY-MM-DD HH:mm:ss"        |
+| address_from     | String | Yes      | Sender address                                               |
+| address_to       | String | Yes      | Recipient address                                            |
+| txid             | String | Yes      | Transaction hash                                             |
+| confirmations    | String | Yes      | Number of confirmations                                      |
+| status           | String | Yes      | Transfer status: 1000: Not approved, 1100: Approved, waiting for signature, 1200: Payment in progress, 2000: Payment completed, 2100: Approval rejected, 2200: Rejected, 2300: Transaction dropped, 2400: Payment failed |
+| interactive_contract | String | Yes   | Interactive contract                                         |
+| fee_symbol       | String | Yes      | Fee currency symbol, e.g., ETH                                |
+| fee              | String | Yes      | Fee amount                                                   |
+| real_fee         | String | Yes      | Actual fee consumed                                          |
+| input_data       | String | Yes      | Hexadecimal data representing the parameters of the contract transaction |
+| trans_type       | String | Yes      | Transaction type: 0: Authorization transaction, 1: Transfer transaction |
+| dapp_img         | String | Yes      | Dapp image                                                   |
+| dapp_name        | String | Yes      | Dapp name                                                    |
+| dapp_url         | String | Yes      | Dapp access URL                                              |
 
 
 # Co-signer
@@ -1009,11 +1379,11 @@ The authorized transaction data transmits in **clear text (no encryption)**, you
 
 
 
-
+### Transfer(Withdrawal) Callback
 
 #### HTTP Request
 
-`POST /{url}`
+POST /{url}
 
 `Content-Type application/json;charset=UTF-8`
 
@@ -1051,9 +1421,54 @@ POST /callback/example
 | memo          | String  | No       | to account address memo，example：123321                     |
 | amount        | Decimal | Yes      | Transaction amount                                           |
 | symbol        | String  | Yes      | The unique identifier of the coin, example: USDTERC20        |
+| txid          | String  | No       | Transaction hash. Returned when the signature is successful. |
 
 
 
+### Web3 Transaction Callback
+
+#### HTTP Request
+
+POST /{url}
+
+`Content-Type: application/json;charset=UTF-8`
+
+
+> Callback Parameter Example
+
+```json
+POST /callback/example
+
+{
+    "type": "sign_start",
+    "trans_id": 432,
+    "request_id": "0000000003",
+    "pending_round": false,
+    "from": "0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+    "to": "0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+    "amount": 0,
+    "main_chain_symbol": "HECO",
+    "input_data": "0xca718c65",
+    "interactive_contract": "0xe012F3957226894B1a2a44b3ef5070417a069dC2",
+    "txid": ""
+}
+```
+
+#### Callback Parameter Format:
+
+| Param                | Type    | Required | Description                                         |
+| :------------------- | :------ | :------- | :-------------------------------------------------- |
+| type                 | String  | Yes      | Callback type: `sign_start` for signature initiation, `sign_success` for successful signature |
+| trans_id             | Integer | Yes      | Transaction ID                                      |
+| request_id           | String  | Yes      | Unique identifier for the transaction                |
+| pending_round        | Boolean | Yes      | Acceleration status: `true` for accelerated transactions, `false` for regular transactions |
+| from                 | String  | Yes      | Sender address of the transaction                    |
+| to                   | String  | Yes      | Recipient address of the transaction                 |
+| amount               | Decimal | Yes      | Transaction amount. Use `-1` for infinity            |
+| main_chain_symbol    | String  | Yes      | Main chain symbol (unique identifier), e.g., "ETH"   |
+| input_data           | String  | Yes      | Input data for the transaction                       |
+| interactive_contract | String  | Yes      | Interactive contract                                 |
+| txid                 | String  | No       | Transaction hash. Returned when the signature is successful  |
 
 
 #### Common Response for Callback
@@ -1098,6 +1513,8 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 | 200067  | Name Exceeds Maximum Length       |
 | 210003  | Order Does Not Exist             |
 | 3040006 | Cannot Transfer to Yourself       |
+| 200071 | Acceleration is not supported on this main chain. |
+| 200072 | Transaction type is not supported by the sub-wallet type. |
 
 
 
@@ -1105,4 +1522,3 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 
 
 
- 
