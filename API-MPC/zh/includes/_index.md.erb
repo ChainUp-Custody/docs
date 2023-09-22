@@ -396,7 +396,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "support_token":"0",
         "symbol":"BUSD",
         "symbol_alias":"BUSD",
-        "support_acceleration": true
+        "support_acceleration": true,
+        "support_multi_addr" : false
     }
 ]
 ```
@@ -423,6 +424,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | address_tag_regex      | String   | 是       | 地址正则                                        |
 | address_regex          | String   | 是       | tag正则                                        |
 | support_acceleration   | Boolean  | 是       | 是否支持加速                                     |
+|support_multi_addr      | Boolean  |  是      | 是否支持多地址
 
 
 
@@ -465,10 +467,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-
-
-
-
 ### 获取子钱包地址
 
 获取指定子钱包及币种下的收款地址
@@ -502,6 +500,83 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
+### 子钱包创建地址
+
+    当/api/mpc/coin_list 接口字段：can_create_multi_addr为ture的币种可创建多个地址
+
+#### HTTP请求
+
+`POST /api/mpc/sub_wallet/create/address`
+
+
+
+#### 请求参数数据结构
+
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :----------------------- |
+| sub_wallet_id | Integer | 是      | 子钱包id      |
+| symbol        | String  | 是      | 币种唯一标识，例：USDTERC20 |
+
+
+> 响应结果示例
+
+```json
+{ 
+    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+}
+```
+
+#### 响应参数数据结构
+
+| Param   | 类型   | 是否必须 | 说明         |
+| :------ | :----- | :------- | :----------- |
+| address | String | 是       | 创建的地址 |
+
+
+
+### 子钱包地址查询
+
+    子钱包地址列表
+
+#### HTTP请求
+
+`POST /api/mpc/sub_wallet/get/address/list`
+
+
+
+#### 请求参数数据结构
+
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :----------------------- |
+| sub_wallet_id | Integer | 是      | 子钱包id      |
+| symbol        | String  | 是      | 币种唯一标识，例：USDTERC20 |
+| max_id        | Integer  | 是     | 地址起始id, 默认0 |
+
+
+> 响应结果示例
+
+```json
+[
+    { 
+        "address":"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac",
+        "addr_type": 1,
+    },
+    { 
+        "address":"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr",
+        "addr_type": 2,
+    }
+]
+```
+
+#### 响应参数数据结构
+
+| Param   | 类型   | 是否必须 | 说明         |
+| :------ | :----- | :------- | :----------- |
+| address   | String  | 是       | 创建的地址 |
+| addr_type | Integer | 是       | 地址类型，1：普通地址，2：找零地址 |
+
+
+
 
 ### 获取子钱包资产
 
@@ -525,7 +600,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 ```json
 {
     "normal_balance":"1.23",
-    "deposit_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
     "lock_balance":"0.77"
 }
 ```
@@ -534,7 +608,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param           | 类型   | 是否必须 | 说明               |
 | :-------------- | :----- | :------- | :----------------- |
-| deposit_address | String | 是       | 收款到账地址       |
 | normal_balance  | String | 是       | 可用余额           |
 | lock_balance    | String | 是       | 冻结余额，例：0.77 |
 
@@ -637,11 +710,12 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param  | 类型   | 是否必须 | 说明                                       |
 | :----- | :----- | :------- | :----------------------------------------- |
-| from   | String | 是       | 出币地址                                   |
-| to     | String | 是       | 到账地址                                   |
-| memo   | String | 否       | 转账到账地址memo，Memo类型转账时如有可填入 |
-| symbol | String | 是       | 币种唯一标识，例：USDTERC20                |
-| amount | String | 是       | 金额                                       |
+| from           | String | 否     | 出币地址, from和sub_wallet_id两者必传一个    |
+| sub_wallet_id  | Integer | 否      | UTXO多地址出金时, 该参数必传                |
+| to             | String | 是       | 到账地址                                   |
+| memo           | String | 否       | 转账到账地址memo，Memo类型转账时如有可填入     |
+| symbol         | String | 是       | 币种唯一标识，例：USDTERC20                 |
+| amount         | String | 是       | 金额                                     |
 
 > 响应结果示例
 
@@ -1562,12 +1636,7 @@ POST /callback/example
 | 3040006 | 不能给自己转账             |
 | 200071  | 该主链不支持加速           |
 | 200072  | 子钱包类型不支持该类型交易   |
-
-
-
-
-
-
-
-
-
+| 200073  | 多签地址不存在,请检查输入是否正确   |
+| 200074  | 该地址并不是您参与的多签钱包，请检查后再次操作   |
+| 200075  | 预估手续费失败   |
+| 200076  | 暂不支持该交易   |
