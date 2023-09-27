@@ -408,6 +408,12 @@
                             <a href="#get-sub-wallet-address" class="toc-h3 toc-link" data-title="Get sub-wallet address">Get sub-wallet address</a>
                           </li>
                           <li>
+                            <a href="#create-sub-wallet-address" class="toc-h3 toc-link" data-title="Create Sub-Wallet Address">Create Sub-Wallet Address</a>
+                          </li>
+                          <li>
+                            <a href="#query-sub-wallet-address" class="toc-h3 toc-link" data-title="Query Sub-Wallet Address">Query Sub-Wallet Address</a>
+                          </li>
+                          <li>
                             <a href="#get-sub-wallet-assets" class="toc-h3 toc-link" data-title="Get sub-wallet assets">Get sub-wallet assets</a>
                           </li>
                           <li>
@@ -934,7 +940,8 @@
         </span><span class="nl">"support_token"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_multi_addr"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='response-data-parameters-2'>Response Data Parameters</h4>
@@ -1042,6 +1049,12 @@
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Indicates if acceleration is supported</td>
 </tr>
+<tr>
+<td style="text-align: left">support_multi_addr</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Support for multiple addresses, true: supported, false: not supported</td>
+</tr>
 </tbody></table>
 <h2 id='sub-wallet-user'>Sub-wallet (user)</h2><h3 id='create-a-sub-wallet'>Create a sub-wallet</h3>
 <p>Pass in the specified sub-wallet name to create a new sub-wallet for the wallet</p>
@@ -1141,9 +1154,126 @@
 <td style="text-align: left">receiving address</td>
 </tr>
 </tbody></table>
+<h3 id='create-sub-wallet-address'>Create Sub-Wallet Address</h3>
+<p>For coins where the <code>can_create_multi_addr</code> field is <code>true</code> in the <code>/api/mpc/coin_list</code> interface, multiple addresses can be created.</p>
+<h4 id='http-request-6'>HTTP Request</h4>
+<p><code>POST /api/mpc/sub_wallet/create/address</code></p>
+<h4 id='request-parameters-3'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">sub_wallet_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Sub-wallet id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique coin identifier, e.g., USDTERC20</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-5'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Created address</td>
+</tr>
+</tbody></table>
+<h3 id='query-sub-wallet-address'>Query Sub-Wallet Address</h3>
+<p>List of sub-wallet addresses</p>
+<h4 id='http-request-7'>HTTP Request</h4>
+<p><code>POST /api/mpc/sub_wallet/get/address/list</code></p>
+<h4 id='request-parameters-4'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">sub_wallet_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Sub-wallet id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Unique coin identifier, e.g., USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">max_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Starting address id, default is 0</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='response-data-parameters-6'>Response Data Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Created address</td>
+</tr>
+<tr>
+<td style="text-align: left">addr_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Address type, 1: regular address, 2: change address ( occurs when a user uses an input that is worth more than the transaction cost, the extra funds are sent back to the users as change through a newly generated address.)</td>
+</tr>
+</tbody></table>
 <h3 id='get-sub-wallet-assets'>Get sub-wallet assets</h3>
 <p>Get the account assets under the specified sub-wallet and coin.</p>
-<h4 id='http-request-6'>HTTP Request</h4>
+<h4 id='http-request-8'>HTTP Request</h4>
 <p><code>GET /api/mpc/sub_wallet/assets</code></p>
 <h4 id='decrypted-request-parameters-3'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1173,10 +1303,9 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"normal_balance"</span><span class="p">:</span><span class="s2">"1.23"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"receive_address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0.77"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-5'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-7'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1185,12 +1314,6 @@
 <th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td style="text-align: left">receiving_address</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">receiving address</td>
-</tr>
 <tr>
 <td style="text-align: left">normal_balance</td>
 <td style="text-align: left">String</td>
@@ -1206,7 +1329,7 @@
 </tbody></table>
 <h3 id='modify-the-display-status'>Modify the Display Status</h3>
 <p>Specify the display status of the sub-wallet on the APP client, if it is not displayed, the transaction cannot be initiated on the APP.</p>
-<h4 id='http-request-7'>HTTP Request</h4>
+<h4 id='http-request-9'>HTTP Request</h4>
 <p><code>POST /api/mpc/sub_wallet/change_show_status</code></p>
 <h4 id='decrypted-request-parameters-4'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1230,9 +1353,9 @@
 <td style="text-align: left"><code>1</code> show ,<code>2</code> don&#39;t show</td>
 </tr>
 </tbody></table>
-<h4 id='response-data-parameters-6'>Response Data Parameters</h4>
+<h4 id='response-data-parameters-8'>Response Data Parameters</h4>
 <p>None</p>
-<h2 id='transfer'>Transfer</h2><h3 id='initiate-a-transfer'>Initiate a transfer</h3><h4 id='http-request-8'>HTTP Request</h4>
+<h2 id='transfer'>Transfer</h2><h3 id='initiate-a-transfer'>Initiate a transfer</h3><h4 id='http-request-10'>HTTP Request</h4>
 <p><code>POST /api/mpc/billing/transfer</code></p>
 <h4 id='decrypted-request-parameters-5'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1323,7 +1446,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"transfer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-7'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-9'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1341,7 +1464,7 @@
 </tbody></table>
 <h3 id='estimated-gas-fee'>Estimated Gas Fee</h3>
 <p>Obtain the estimated miner fee required for transfer. </p>
-<h4 id='http-request-9'>HTTP Request</h4>
+<h4 id='http-request-11'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/gas_estimate</code></p>
 <h4 id='decrypted-request-parameters-6'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1355,32 +1478,38 @@
 <tr>
 <td style="text-align: left">from</td>
 <td style="text-align: left">String</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">from account address</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Withdrawal address, either &#39;from&#39; or &#39;sub_wallet_id&#39; must be passed</td>
+</tr>
+<tr>
+<td style="text-align: left">sub_wallet_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">When withdrawing from multiple UTXO addresses, this parameter must be passed</td>
 </tr>
 <tr>
 <td style="text-align: left">to</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">to  account address</td>
+<td style="text-align: left">Destination address (to  account address)</td>
 </tr>
 <tr>
 <td style="text-align: left">memo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">to  account address memo, Memo type can be filled in if available,  example: 123321</td>
+<td style="text-align: left">Memo for the destination address, should be filled in when the transfer type is Memo</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">The unique identifier of the coin, example: USDTERC20</td>
+<td style="text-align: left">Unique coin identifier, e.g., USDTERC20</td>
 </tr>
 <tr>
 <td style="text-align: left">amount</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">amount</td>
+<td style="text-align: left">Amount</td>
 </tr>
 </tbody></table>
 
@@ -1395,7 +1524,7 @@
     </span><span class="nl">"gas_price2"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gas_price3"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-8'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-10'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th>Param</th>
@@ -1473,7 +1602,7 @@
 </tbody></table>
 <h3 id='speed-up-transfer'>Speed Up transfer</h3>
 <p>After the transfer signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.</p>
-<h4 id='http-request-10'>HTTP Request</h4>
+<h4 id='http-request-12'>HTTP Request</h4>
 <p><code>POST /api/mpc/billing/withdraw_pending</code></p>
 <h4 id='decrypted-request-parameters-7'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1521,11 +1650,11 @@
 <td>Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM)</td>
 </tr>
 </tbody></table>
-<h4 id='response-data-parameters-9'>Response Data Parameters</h4>
+<h4 id='response-data-parameters-11'>Response Data Parameters</h4>
 <p>None</p>
 <h3 id='get-transfer-records'>Get transfer records</h3>
 <p>Get all sub-wallet transfer records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-11'>HTTP Request</h4>
+<h4 id='http-request-13'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/withdraw_list</code></p>
 <h4 id='decrypted-request-parameters-8'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1570,7 +1699,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-10'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-12'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1696,7 +1825,7 @@
 </tbody></table>
 <h3 id='synchronize-transfer-records'>Synchronize transfer records</h3>
 <p>Get all sub-wallet transfer records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-12'>HTTP Request</h4>
+<h4 id='http-request-14'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/sync_transfer_list</code></p>
 <h4 id='decrypted-request-parameters-9'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1741,7 +1870,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-11'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-13'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -1867,7 +1996,7 @@
 </tbody></table>
 <h2 id='received'>Received</h2><h3 id='get-receiving-records'>Get Receiving records</h3>
 <p>Get all sub-wallet receiving records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-13'>HTTP Request</h4>
+<h4 id='http-request-15'>HTTP Request</h4>
 <p><code>GET/api/mpc/billing/receive_list</code></p>
 <h4 id='decrypted-request-parameters-10'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -1907,7 +2036,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-12'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-14'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2003,7 +2132,7 @@
 </tbody></table>
 <h3 id='synchronous-receiving-record'>Synchronous Receiving record</h3>
 <p>Get all sub-wallet receiving records under the main wallet, and return up to 100 records</p>
-<h4 id='http-request-14'>HTTP Request</h4>
+<h4 id='http-request-16'>HTTP Request</h4>
 <p><code>GET /api/mpc/billing/sync_deposit_list</code></p>
 <h4 id='decrypted-request-parameters-11'>Decrypted Request Parameters</h4>
 <table><thead>
@@ -2043,7 +2172,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-13'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-15'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2139,9 +2268,9 @@
 </tbody></table>
 <h2 id='web3-transaction'>Web3 Transaction</h2><h3 id='create-web3-transaction'>Create Web3 Transaction</h3>
 <p>Create a Web3 transaction.</p>
-<h4 id='http-request-15'>HTTP Request</h4>
+<h4 id='http-request-17'>HTTP Request</h4>
 <p><code>POST /api/mpc/web3/trans/create</code></p>
-<h4 id='request-parameters-3'>Request Parameters</h4>
+<h4 id='request-parameters-5'>Request Parameters</h4>
 <table><thead>
 <tr>
 <th>Param</th>
@@ -2230,7 +2359,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
      </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198012</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-14'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-16'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2248,9 +2377,9 @@
 </tbody></table>
 <h3 id='web3-transaction-acceleration'>Web3 Transaction Acceleration</h3>
 <p>When a transfer is signed but has not been confirmed on the blockchain for a long time due to insufficient fees, it can be accelerated by specifying a higher fee.</p>
-<h4 id='http-request-16'>HTTP Request</h4>
+<h4 id='http-request-18'>HTTP Request</h4>
 <p><code>POST /api/mpc/web3/pending</code></p>
-<h4 id='request-parameters-4'>Request Parameters</h4>
+<h4 id='request-parameters-6'>Request Parameters</h4>
 <table><thead>
 <tr>
 <th>Param</th>
@@ -2278,13 +2407,13 @@
 <td>Gas limit</td>
 </tr>
 </tbody></table>
-<h4 id='response-data-parameters-15'>Response Data Parameters</h4>
+<h4 id='response-data-parameters-17'>Response Data Parameters</h4>
 <p>None</p>
 <h3 id='get-web3-transaction-records'>Get Web3 Transaction Records</h3>
 <p>Get all Web3 transaction records under a wallet, maximum of 100 records.</p>
-<h4 id='http-request-17'>HTTP Request</h4>
+<h4 id='http-request-19'>HTTP Request</h4>
 <p><code>GET /api/mpc/web3/trans_list</code></p>
-<h4 id='request-parameters-5'>Request Parameters</h4>
+<h4 id='request-parameters-7'>Request Parameters</h4>
 <table><thead>
 <tr>
 <th>Param</th>
@@ -2327,7 +2456,7 @@
         </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-16'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-18'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2430,9 +2559,9 @@
 | trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |</p>
 <h3 id='sync-web3-transaction-records'>Sync Web3 Transaction Records</h3>
 <p>Get all Web3 transaction records under a wallet, maximum of 100 records.</p>
-<h4 id='http-request-18'>HTTP Request</h4>
+<h4 id='http-request-20'>HTTP Request</h4>
 <p><code>GET /api/mpc/web3/sync_trans_list</code></p>
-<h4 id='request-parameters-6'>Request Parameters</h4>
+<h4 id='request-parameters-8'>Request Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2475,7 +2604,7 @@
         </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='response-data-parameters-17'>Response Data Parameters</h4>
+</span></code></pre></div><h4 id='response-data-parameters-19'>Response Data Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2601,7 +2730,7 @@
 </tbody></table>
 <h2 id='nft'>NFT</h2><h3 id='get-nft-information'>Get NFT Information</h3>
 <p>Retrieve NFT data such as images and names.</p>
-<h4 id='http-request-19'>HTTP Request</h4>
+<h4 id='http-request-21'>HTTP Request</h4>
 <p><code>POST /api/nft/info</code></p>
 <h4 id='request-data-parameter'>Request Data Parameter</h4>
 <table><thead>
@@ -2981,7 +3110,7 @@
 <td style="text-align: left">received coin&#39;s contract address</td>
 </tr>
 </tbody></table>
-<h2 id='web3-transaction-notification'>Web3 Transaction Notification</h2><h4 id='request-parameters-7'>Request Parameters</h4>
+<h2 id='web3-transaction-notification'>Web3 Transaction Notification</h2><h4 id='request-parameters-9'>Request Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3155,7 +3284,7 @@
 <p>In order to ensure the security of the transaction, you need to configure a callback address of the business system in Co-Signer to authorize before the transaction is signed.</p>
 
 <p>The authorized transaction data transmits in <strong>clear text (no encryption)</strong>, you need to ensure the communication security between the business system and Co-Signer in the application service.</p>
-<h3 id='transfer-withdrawal-callback'>Transfer(Withdrawal) Callback</h3><h4 id='http-request-20'>HTTP Request</h4>
+<h3 id='transfer-withdrawal-callback'>Transfer(Withdrawal) Callback</h3><h4 id='http-request-22'>HTTP Request</h4>
 <p>POST /{url}</p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
@@ -3246,7 +3375,7 @@
 <td style="text-align: left">Transaction hash. Returned when the signature is successful.</td>
 </tr>
 </tbody></table>
-<h3 id='web3-transaction-callback'>Web3 Transaction Callback</h3><h4 id='http-request-21'>HTTP Request</h4>
+<h3 id='web3-transaction-callback'>Web3 Transaction Callback</h3><h4 id='http-request-23'>HTTP Request</h4>
 <p>POST /{url}</p>
 
 <p><code>Content-Type: application/json;charset=UTF-8</code></p>
@@ -3473,6 +3602,22 @@
 <tr>
 <td>200072</td>
 <td>Transaction type is not supported by the sub-wallet type.</td>
+</tr>
+<tr>
+<td>200073</td>
+<td>Multisig address does not exist, please check your input</td>
+</tr>
+<tr>
+<td>200074</td>
+<td>This address is not a multisig wallet you are part of, please check and operate again</td>
+</tr>
+<tr>
+<td>200075</td>
+<td>Failed to estimate transaction fee</td>
+</tr>
+<tr>
+<td>200076</td>
+<td>This transaction is currently not supported</td>
 </tr>
 </tbody></table>
 
