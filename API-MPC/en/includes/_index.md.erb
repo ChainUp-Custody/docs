@@ -348,7 +348,8 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
         "support_token":"0",
         "symbol":"BUSD",
         "symbol_alias":"BUSD",
-        "support_acceleration": true
+        "support_acceleration": true,
+        "support_multi_addr" : false
     }
 ]
 ```
@@ -373,7 +374,7 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
 | address_tag_regex    | String   | Yes      | Address tag regex pattern                         |
 | address_regex        | String   | Yes      | Address regex pattern                             |
 | support_acceleration | Boolean  | Yes      | Indicates if acceleration is supported            |
-
+| support_multi_addr   | Boolean | Yes      | Support for multiple addresses, true: supported, false: not supported |
 
 
 
@@ -453,6 +454,73 @@ Obtain the receiving address under the specified sub-wallet and coin
 | address | String | Yes      | receiving address |
 
 
+### Create Sub-Wallet Address
+
+For coins where the `can_create_multi_addr` field is `true` in the `/api/mpc/coin_list` interface, multiple addresses can be created.
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/create/address`
+
+#### Request Parameters 
+
+| Param         | Type    | Required | Description                             |
+| :------------ | :------ | :------- | :-------------------------------------- |
+| sub_wallet_id | Integer | Yes      | Sub-wallet id                           |
+| symbol        | String  | Yes      | Unique coin identifier, e.g., USDTERC20 |
+
+> Response Example
+
+```json
+{ 
+    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+}
+```
+
+#### Response Data Parameters 
+
+| Param   | Type   | Required | Description   |
+| :------ | :----- | :------- | :------------ |
+| address | String | Yes      | Created address|
+
+
+### Query Sub-Wallet Address
+
+List of sub-wallet addresses
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/get/address/list`
+
+#### Request Parameters 
+
+| Param         | Type    | Required | Description                             |
+| :------------ | :------ | :------- | :-------------------------------------- |
+| sub_wallet_id | Integer | Yes      | Sub-wallet id                           |
+| symbol        | String  | Yes      | Unique coin identifier, e.g., USDTERC20 |
+| max_id        | Integer | Yes      | Starting address id, default is 0       |
+
+> Response Example
+
+```json
+[
+    { 
+        "address":"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac",
+        "addr_type": 1,
+    },
+    { 
+        "address":"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr",
+        "addr_type": 2,
+    }
+]
+```
+
+#### Response Data Parameters 
+
+| Param     | Type    | Required | Description                      |
+| :-------- | :------ | :------- | :------------------------------- |
+| address   | String  | Yes      | Created address                  |
+| addr_type | Integer | Yes      | Address type, 1: regular address, 2: change address ( occurs when a user uses an input that is worth more than the transaction cost, the extra funds are sent back to the users as change through a newly generated address.)|
 
 
 
@@ -478,7 +546,6 @@ Get the account assets under the specified sub-wallet and coin.
 ```json
 {
     "normal_balance":"1.23",
-    "receive_address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
     "lock_balance":"0.77"
 }
 ```
@@ -487,7 +554,6 @@ Get the account assets under the specified sub-wallet and coin.
 
 | Param             | Type   | Requried | Description       |
 | :---------------- | :----- | :------- | :---------------- |
-| receiving_address | String | Yes      | receiving address |
 | normal_balance    | String | Yes      | Available balance |
 | lock_balance      | String | Yes      | Freeze balance    |
 
@@ -595,11 +661,12 @@ Obtain the estimated miner fee required for transfer.
 
 | Param  | Type   | Requried | Description                                                  |
 | :----- | :----- | :------- | :----------------------------------------------------------- |
-| from   | String | Yes      | from account address                                         |
-| to     | String | Yes      | to  account address                                          |
-| memo   | String | No       | to  account address memo, Memo type can be filled in if available,  example: 123321 |
-| symbol | String | Yes      | The unique identifier of the coin, example: USDTERC20        |
-| amount | String | Yes      | amount                                                       |
+| from           | String  | No       | Withdrawal address, either 'from' or 'sub_wallet_id' must be passed |
+| sub_wallet_id  | Integer | No       | When withdrawing from multiple UTXO addresses, this parameter must be passed |
+| to             | String  | Yes      | Destination address (to  account address)|
+| memo           | String  | No       | Memo for the destination address, should be filled in when the transfer type is Memo |
+| symbol         | String  | Yes      | Unique coin identifier, e.g., USDTERC20 |
+| amount         | String  | Yes      | Amount |
 
 > Response
 
@@ -1515,7 +1582,10 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 | 3040006 | Cannot Transfer to Yourself       |
 | 200071 | Acceleration is not supported on this main chain. |
 | 200072 | Transaction type is not supported by the sub-wallet type. |
-
+| 200073  | Multisig address does not exist, please check your input |
+| 200074  | This address is not a multisig wallet you are part of, please check and operate again |
+| 200075  | Failed to estimate transaction fee |
+| 200076  | This transaction is currently not supported |
 
 
 
