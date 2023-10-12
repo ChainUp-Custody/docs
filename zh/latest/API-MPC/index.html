@@ -880,6 +880,12 @@
 <td style="text-align: left">是</td>
 <td style="text-align: left">true：支持加速，false：不支持加速</td>
 </tr>
+<tr>
+<td style="text-align: left">coin_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">所属主链币类型，0 账户类型, 1 utxo类型主链, 2 memo类型</td>
+</tr>
 </tbody></table>
 <h3 id='mpc-3'>获取MPC币种详情</h3>
 <p>获取ChainUp Custody支持的MPC主链币及代币</p>
@@ -1441,6 +1447,12 @@
 <td style="text-align: left">否</td>
 <td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM）</td>
 </tr>
+<tr>
+<td style="text-align: left">sign</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;sub_wallet_id&quot;, &quot;symbol&quot;, &quot;address_to&quot;, &quot;amount&quot;, &quot;memo&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amp;amount=1.0001&amp;sub_wallet_id=1&amp;symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1482,13 +1494,13 @@
 <td style="text-align: left">from</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">出币地址, from和sub_wallet_id两者必传一个</td>
+<td style="text-align: left">出币地址, /api/mpc/coin_list 接口coin_type != 1时, 该参数必传</td>
 </tr>
 <tr>
 <td style="text-align: left">sub_wallet_id</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">UTXO多地址出金时, 该参数必传</td>
+<td style="text-align: left">UTXO多地址出金时, 该参数必传, 指定from无效</td>
 </tr>
 <tr>
 <td style="text-align: left">to</td>
@@ -2121,6 +2133,18 @@
 <td style="text-align: left">收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常</td>
 </tr>
 <tr>
+<td style="text-align: left">deposit_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">充值类型，1: 普通币种充值,  2：NFT充值</td>
+</tr>
+<tr>
+<td style="text-align: left">token_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">NFT充值的tokenId, 当: deposit_type=2时, 该值不为空</td>
+</tr>
+<tr>
 <td style="text-align: left">base_symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
@@ -2301,6 +2325,12 @@
 <td style="text-align: left">子钱包ID</td>
 </tr>
 <tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">交易发起地址，子钱包存在多地址时, 可指定交易地址, 不指定时默认使用子钱包“常用地址“</td>
+</tr>
+<tr>
 <td style="text-align: left">interactive_contract</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
@@ -2353,6 +2383,12 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">dapp 图片</td>
+</tr>
+<tr>
+<td style="text-align: left">sign</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;sub_wallet_id&quot;, &quot;main_chain_symbol&quot;, &quot;interactive_contract&quot;, &quot;amount&quot;, &quot;input_data&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
 </tr>
 </tbody></table>
 
