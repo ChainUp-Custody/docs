@@ -594,7 +594,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
-| sub_wallet_id | Integer | 是       | 子钱包id      |
+| sub_wallet_id | Integer | 是      | 子钱包id      |
+| address       | String | 否       | 如果address为空,获取总资产,address不为空,获取地址资产。UTXO系列主链只支持获取总资产,指定address参数无效 |
 
 > 响应结果示例
 
