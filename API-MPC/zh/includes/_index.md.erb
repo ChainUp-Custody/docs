@@ -677,7 +677,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
 | fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
-| sign          | String | 否       | 用户私用自己的私钥进行签名, 参数签名的参数: "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign          | String | 否       | 用户私用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
 
 
 > 响应结果示例
@@ -1103,7 +1103,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |dapp_name          | String | 否       | dapp名称	|
 |dapp_url           | String | 否      | dapp 访问url	|
 |dapp_img           | String | 否      | dapp 图片	|
-| sign              | String | 否      | 用户私用自己的私钥进行签名, 参数签名的参数: "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign              | String | 否      | 用户私用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
 
 
 > 响应结果示例
