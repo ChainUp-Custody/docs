@@ -1457,7 +1457,7 @@
 <td style="text-align: left">sign</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;sub_wallet_id&quot;, &quot;symbol&quot;, &quot;address_to&quot;, &quot;amount&quot;, &quot;memo&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amp;amount=1.0001&amp;sub_wallet_id=1&amp;symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
+<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;symbol&quot;, &quot;address_to&quot;, &quot;amount&quot;, &quot;memo&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amp;amount=1.0001&amp;sub_wallet_id=1&amp;symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
 </tr>
 </tbody></table>
 
@@ -2394,7 +2394,7 @@
 <td style="text-align: left">sign</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;sub_wallet_id&quot;, &quot;main_chain_symbol&quot;, &quot;interactive_contract&quot;, &quot;amount&quot;, &quot;input_data&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
+<td style="text-align: left">用户私用自己的私钥进行签名, 参数签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;main_chain_symbol&quot;, &quot;interactive_contract&quot;, &quot;amount&quot;, &quot;input_data&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确</td>
 </tr>
 </tbody></table>
 
