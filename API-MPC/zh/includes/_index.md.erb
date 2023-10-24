@@ -677,7 +677,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
 | fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
-| sign          | String | 否       | 用户私用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign          | String | 否       | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
 
 
 > 响应结果示例
@@ -745,11 +745,13 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | fee_rate3      | String | 否       | BTC类型系列，费率三档          |
 | size           | Long   | 是       | BTC类型系列，字节大小，该参数值不可修改 |
 | gas_limit      | Long   | 否       | ETH类型系列（部分其他系列币种如ATOM也有此参数值），gas限制 |
-| gas_price1     | Long   | 否       | ETH类型系列，gas推荐单价一档 | 
-| gas_price2     | Long   | 否       | ETH类型系列，gas推荐单价二档 | 
-| gas_price3     | Long   | 否       | ETH类型系列，gas推荐单价三档 | 
-| fee            | String | 否  | 其他系列，如DOT\TRX，使用fee字段做手续费 | 
+| gas_price1     | String  | 否      | ETH类型系列，gas推荐单价一档 |
+| gas_price2     | String  | 否      | ETH类型系列，gas推荐单价二档 |
+| gas_price3     | String  | 否      | ETH类型系列，gas推荐单价三档 |
+| gas_decimals   | Integer | 否      | ETH类型系列，用于计算主币手续费，计算式： (gas_price/10^gas_decimals)*gas_limit|
+| fee            | String | 否  | 其他系列，如DOT\TRX，使用fee字段做手续费 |
 | fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改| 
+| trans_fee      | String | 否  | 交易手续费，单位是主币|
 
 
 
@@ -1074,6 +1076,76 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
+## 归集
+
+### 同步归集记录
+
+获取钱包下所有子钱包归集记录，最多返回100条
+
+#### HTTP请求
+
+`GET /api/mpc/billing/sync_auto_collect_list`
+
+
+
+#### 请求参数数据结构
+
+| Param  | 类型   | 是否必须 | 说明                      |
+| :----- | :----- | :------- | :------------------------ |
+| max_id | String | 是       | 归集记录起始id|
+
+> 响应结果示例
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "trans_type":10,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "123321",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "status":1200
+    }
+]
+```
+
+#### 响应参数数据结构
+
+| Param            | 类型    | 是否必须 | 说明                                                         |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | 是       | 归集id                                                       |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
+| symbol           | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20                      |
+| amount           | String  | 是       | 归集金额                                                     |
+| fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
+| fee              | String  | 是       | 手续费，例：0.00123                                          |
+| real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
+| created_at       | Long    | 是       | 创建时间时间戳                                               |
+| updated_at       | Long    | 是       | 修改时间时间戳                                               |
+| address_from     | String  | 是       | 出币地址                                                     |
+| address_to       | String  | 是       | 归集地址                                                     |
+| memo             | String  | 否       | 归集到账地址memo                                             |
+| txid             | String  | 是       | 交易hash                                                     |
+| confirmations    | Integer | 是       | 区块确认数，例：10                                           |
+| status           | Integer | 是       | 归集状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| trans_type       | Integer | 是       | 归集类型： 10.归集交易, 11.归集加油交易                       |
+| base_symbol      | String  | 否       | 归集币种主链唯一标识，例：ETH                                |
+| contract_address | String  | 否       | 归集币种合约地址                                             |
+
+
+
 ## Web3交易
 
 ### 创建Web3交易
@@ -1103,7 +1175,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |dapp_name          | String | 否       | dapp名称	|
 |dapp_url           | String | 否      | dapp 访问url	|
 |dapp_img           | String | 否      | dapp 图片	|
-| sign              | String | 否      | 用户私用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign              | String | 否      | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
 
 
 > 响应结果示例
