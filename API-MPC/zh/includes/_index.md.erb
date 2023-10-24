@@ -1139,7 +1139,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | memo             | String  | 否       | 归集到账地址memo                                             |
 | txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
-| status           | Integer | 是       | 归集状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
+| status           | Integer | 是       | 归集状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2202 自动取消，2300 交易丢弃，2400 支付失败 |
 | trans_type       | Integer | 是       | 归集类型： 10.归集交易, 11.归集加油交易                       |
 | base_symbol      | String  | 否       | 归集币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 归集币种合约地址                                             |
