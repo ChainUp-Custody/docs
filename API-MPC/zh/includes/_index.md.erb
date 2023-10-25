@@ -311,7 +311,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| time        | long   |是      | 当前时间戳      |
+| time        | Long   |是      | 当前时间戳      |
 | charset     | String |是      | 编码格式，无特殊情况，传参数utf-8 |
 
 > 响应结果示例
@@ -371,7 +371,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| time        | long   |是      | 当前时间戳      |
+| time        | Long   |是      | 当前时间戳      |
 | charset     | String |是      | 编码格式，无特殊情况，传参数utf-8 |
 | symbol        | String |否      | 币种唯一标识，转账时使用，例：USDTERC20      |
 | base_symbol   | String |否      | 主链币种名称，币种唯一标识，转账时使用，例：ETH |
@@ -428,6 +428,36 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | support_multi_addr     | Boolean  |  是      | 是否支持多地址，true:支持, false:不支持       |
 
 
+### 获取主链最新块高
+
+获取指定主链的区块最新块高
+
+#### HTTP请求
+
+`GET /api/mpc/chain_height`
+
+
+
+#### 请求参数数据结构
+
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| base_symbol        | String | 是       | 币种唯一标识，例：ETH |
+
+> 响应结果示例
+
+```json
+{
+    "height": 10023412
+}
+```
+
+#### 响应参数数据结构
+
+| Param           | 类型   | 是否必须 | 说明               |
+| :-------------- | :----- | :------- | :-----------------     |
+| height   | Long | 是       | 主链最新区块高度 |
+
 
 ## 子钱包（用户）
 
@@ -465,39 +495,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param         | 类型    | 是否必须 | 说明                   |
 | :------------ | :------ | :------- | :--------------------- |
 | sub_wallet_id | Integer | 是       | 子钱包id |
-
-
-
-### 获取子钱包地址
-
-获取指定子钱包及币种下的收款地址
-
-#### HTTP请求
-
-`POST /api/mpc/sub_wallet/get_address`
-
-
-
-#### 请求参数数据结构
-
-| Param         | 类型   | 是否必须 | 说明                        |
-| :------------ | :----- | :------- | :-------------------------- |
-| sub_wallet_id | Integer | 是       | 子钱包id      |
-| symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
-
-> 响应结果示例
-
-```json
-{ 
-    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
-}
-```
-
-#### 响应参数数据结构
-
-| Param   | 类型   | 是否必须 | 说明         |
-| :------ | :----- | :------- | :----------- |
-| address | String | 是       | 收款到账地址 |
 
 
 
@@ -574,7 +571,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param   | 类型   | 是否必须 | 说明         |
 | :------ | :----- | :------- | :----------- |
 | address   | String  | 是       | 创建的地址 |
-| addr_type | Integer | 是       | 地址类型，1：普通地址，2：找零地址。“找零地址”不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
+| addr_type | Integer | 是       | 地址类型，1：普通地址，2：归集(找零)地址。`归集(找零)地址`不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
+| memo     | String   | 否       |  |
 
 
 
@@ -595,7 +593,6 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | :------------ | :----- | :------- | :-------------------------- |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20 |
 | sub_wallet_id | Integer | 是      | 子钱包id      |
-| address       | String | 否       | 如果address为空,获取总资产,address不为空,获取地址资产。UTXO系列主链只支持获取总资产,指定address参数无效 |
 
 > 响应结果示例
 
@@ -609,9 +606,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 #### 响应参数数据结构
 
 | Param           | 类型   | 是否必须 | 说明               |
-| :-------------- | :----- | :------- | :----------------- |
-| normal_balance  | String | 是       | 可用余额           |
-| lock_balance    | String | 是       | 冻结余额，例：0.77 |
+| :-------------- | :----- | :------- | :-----------------     |
+| total_balance   | String | 是       | 汇总余额，含待归集余额 |
+| normal_balance  | String | 是       | 可用余额，已归集余额；非归集子钱包，和汇总余额一致 |
+| lock_balance    | String | 是       | 冻结余额     |
 
 
 
@@ -677,7 +675,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
 | fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
-| sign          | String | 否       | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign          | String | 否       | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确|
 
 
 > 响应结果示例
@@ -1078,6 +1076,41 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ## 归集
 
+### 获取归集子钱包
+
+获取当前归集子钱包及加油子钱包
+
+#### HTTP请求
+
+`GET /api/mpc/auto_collect/sub_wallets`
+
+
+
+#### 请求参数数据结构
+
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| time          | Long   | 是       | 当前时间戳 |
+| charset       | String | 是       | 编码格式，无特殊情况，传参数utf-8  |
+
+> 响应结果示例
+
+```json
+{
+    "collect_sub_wallet_id":10241,
+    "fueling_sub_wallet_id":20482
+}
+```
+
+#### 响应参数数据结构
+
+| Param                   | 类型   | 是否必须 | 说明               |
+| :--------------         | :----- | :------- | :-----------------     |
+| collect_sub_wallet_id   | Integer | 否       | 归集子钱包，配置成功后才能获取 |
+| fueling_sub_wallet_id  | Integer | 否       | 加油子钱包，配置成功后才能获取 |
+
+
+
 ### 同步归集记录
 
 获取钱包下所有子钱包归集记录，最多返回100条
@@ -1175,7 +1208,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |dapp_name          | String | 否       | dapp名称	|
 |dapp_url           | String | 否      | dapp 访问url	|
 |dapp_img           | String | 否      | dapp 图片	|
-| sign              | String | 否      | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据书否正确|
+| sign              | String | 否      | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确|
 
 
 > 响应结果示例
@@ -1476,6 +1509,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | withdraw_source  | String | 是       | 转账类型： `1`app, `2`openapi                                |
 | base_symbol      | String | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 转账币种合约地址                                             |
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1503,6 +1537,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | status           | String | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 收款币种合约地址                                             |
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1537,6 +1572,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | dapp_img                 | String | 是       | dapp 图片		       |
 | dapp_name                | String | 是       | dapp名称	     |
 | dapp_url                 | String | 是       | dapp 访问url	 |
+| tx_height                | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
