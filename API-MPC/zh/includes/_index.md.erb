@@ -478,7 +478,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param            | 类型        | 是否必须 | 说明                                                                     |
 | ---------------- | ----------- | --------- | ---------------------------------------------------------------------- |
 | sub_wallet_name  | string      | 是        | 子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池 |
-| sub_wallet_type  | Integer     | 否        | 子钱包类型，1：资产子钱包，2：web3子钱包（不传时，默认创建该类型子钱包） |
+| app_show_status  | String      | 否        | 创建后app和web端是否展示该子钱包，`1`展示,  `2`不展示；默认不展示              |
 
 > 响应结果示例：
 
@@ -1078,7 +1078,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### 获取归集子钱包
 
-获取当前归集子钱包及加油子钱包
+获取币种的归集子钱包及加油子钱包
 
 #### HTTP请求
 
@@ -1090,8 +1090,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| time          | Long   | 是       | 当前时间戳 |
-| charset       | String | 是       | 编码格式，无特殊情况，传参数utf-8  |
+| symbol          | String   | 是       | 币种 |
 
 > 响应结果示例
 
@@ -1106,8 +1105,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param                   | 类型   | 是否必须 | 说明               |
 | :--------------         | :----- | :------- | :-----------------     |
-| collect_sub_wallet_id   | Integer | 否       | 归集子钱包，配置成功后才能获取 |
-| fueling_sub_wallet_id  | Integer | 否       | 加油子钱包，配置成功后才能获取 |
+| collect_sub_wallet_id   | Integer | 否       | 归集子钱包，币种配置后获取 |
+| fueling_sub_wallet_id  | Integer | 否       | 加油子钱包，币种配置后获取 |
 
 
 
