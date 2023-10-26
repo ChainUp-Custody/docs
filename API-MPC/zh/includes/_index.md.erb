@@ -375,6 +375,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | charset     | String |是      | 编码格式，无特殊情况，传参数utf-8 |
 | symbol        | String |否      | 币种唯一标识，转账时使用，例：USDTERC20      |
 | base_symbol   | String |否      | 主链币种名称，币种唯一标识，转账时使用，例：ETH |
+| open_chain   | Boolean |否      | 主链开通币种，默认获取全部，`true`获取开通币种，`false`获取未开通币种 |
 
 > 响应结果示例
 
@@ -1090,7 +1091,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
-| symbol          | String   | 是       | 币种 |
+| symbol          | String   | 是       | 币种唯一标识，例：USDTERC20  |
 
 > 响应结果示例
 
@@ -1107,6 +1108,41 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | :--------------         | :----- | :------- | :-----------------     |
 | collect_sub_wallet_id   | Integer | 否       | 归集子钱包，币种配置后获取 |
 | fueling_sub_wallet_id  | Integer | 否       | 加油子钱包，币种配置后获取 |
+
+
+
+
+### 归集币种设置
+
+设置币种的最小归集金额、以及加油的最大矿工费
+
+#### HTTP请求
+
+`GET /api/mpc/auto_collect/symbol/set`
+
+
+#### 请求参数数据结构
+
+| Param         | 类型   | 是否必须 | 说明                        |
+| :------------ | :----- | :------- | :-------------------------- |
+| symbol          | String   | 是       | 币种唯一标识，例：USDTERC20   |
+| collect_min     | String   | 是       | 归集最小币种金额；最大6位小数精度，不超过9999999999999999 |
+| fueling_limit   | String   | 是       | 归集最多消耗矿工费金额；最大6位小数精度，不超过9999999999999999 |
+
+> 响应结果示例
+
+```json
+{
+    "symbol":"USDTERC20"
+}
+```
+
+#### 响应参数数据结构
+
+| Param                   | 类型   | 是否必须 | 说明               |
+| :--------------         | :----- | :------- | :-----------------     |
+| symbol                 | String | 是       | 配置完成币种唯一标识 |
+
 
 
 
