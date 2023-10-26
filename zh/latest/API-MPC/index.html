@@ -450,6 +450,9 @@
                             <a href="#3a3fc5a4bd" class="toc-h3 toc-link" data-title="获取归集子钱包">获取归集子钱包</a>
                           </li>
                           <li>
+                            <a href="#9f7855b215" class="toc-h3 toc-link" data-title="归集币种设置">归集币种设置</a>
+                          </li>
+                          <li>
                             <a href="#fcaea9ef7d" class="toc-h3 toc-link" data-title="同步归集记录">同步归集记录</a>
                           </li>
                       </ul>
@@ -934,6 +937,12 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">主链币种名称，币种唯一标识，转账时使用，例：ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">open_chain</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">主链开通币种，默认获取全部，<code>true</code>获取开通币种，<code>false</code>获取未开通币种</td>
 </tr>
 </tbody></table>
 
@@ -2339,7 +2348,7 @@
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">币种</td>
+<td style="text-align: left">币种唯一标识，例：USDTERC20</td>
 </tr>
 </tbody></table>
 
@@ -2372,11 +2381,66 @@
 <td style="text-align: left">加油子钱包，币种配置后获取</td>
 </tr>
 </tbody></table>
+<h3 id='9f7855b215'>归集币种设置</h3>
+<p>设置币种的最小归集金额、以及加油的最大矿工费</p>
+<h4 id='http-17'>HTTP请求</h4>
+<p><code>GET /api/mpc/auto_collect/symbol/set</code></p>
+<h4 id='79428c1686-17'>请求参数数据结构</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">币种唯一标识，例：USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">collect_min</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">归集最小币种金额；最大6位小数精度，不超过9999999999999999</td>
+</tr>
+<tr>
+<td style="text-align: left">fueling_limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">归集最多消耗矿工费金额；最大6位小数精度，不超过9999999999999999</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"USDTERC20"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='e00f5e7845-17'>响应参数数据结构</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">配置完成币种唯一标识</td>
+</tr>
+</tbody></table>
 <h3 id='fcaea9ef7d'>同步归集记录</h3>
 <p>获取钱包下所有子钱包归集记录，最多返回100条</p>
-<h4 id='http-17'>HTTP请求</h4>
+<h4 id='http-18'>HTTP请求</h4>
 <p><code>GET /api/mpc/billing/sync_auto_collect_list</code></p>
-<h4 id='79428c1686-17'>请求参数数据结构</h4>
+<h4 id='79428c1686-18'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2418,7 +2482,7 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='e00f5e7845-17'>响应参数数据结构</h4>
+</span></code></pre></div><h4 id='e00f5e7845-18'>响应参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2538,9 +2602,9 @@
 </tbody></table>
 <h2 id='web3'>Web3交易</h2><h3 id='web3-2'>创建Web3交易</h3>
 <p>创建一笔Web3交易</p>
-<h4 id='http-18'>HTTP请求</h4>
+<h4 id='http-19'>HTTP请求</h4>
 <p><code>POST /api/mpc/web3/trans/create</code></p>
-<h4 id='79428c1686-18'>请求参数数据结构</h4>
+<h4 id='79428c1686-19'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2641,7 +2705,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
      </span><span class="nl">"trans_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198012</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='e00f5e7845-18'>响应参数数据结构</h4>
+</span></code></pre></div><h4 id='e00f5e7845-19'>响应参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2659,9 +2723,9 @@
 </tbody></table>
 <h3 id='web3-3'>Web3交易加速</h3>
 <p>转账签名完成后，由于手续费不足而长时间未上链的时候，可以重新指定更高额的手续费加速上链</p>
-<h4 id='http-19'>HTTP请求</h4>
+<h4 id='http-20'>HTTP请求</h4>
 <p><code>POST /api/mpc/web3/pending</code></p>
-<h4 id='79428c1686-19'>请求参数数据结构</h4>
+<h4 id='79428c1686-20'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2689,13 +2753,13 @@
 <td style="text-align: left">gas limit</td>
 </tr>
 </tbody></table>
-<h4 id='e00f5e7845-19'>响应参数数据结构</h4>
+<h4 id='e00f5e7845-20'>响应参数数据结构</h4>
 <p>无</p>
 <h3 id='web3-4'>获取web3交易记录</h3>
 <p>获取钱包下所有子钱包Web3交易记录，最多返回100条</p>
-<h4 id='http-20'>HTTP请求</h4>
+<h4 id='http-21'>HTTP请求</h4>
 <p><code>GET /api/mpc/web3/trans_list</code></p>
-<h4 id='79428c1686-20'>请求参数数据结构</h4>
+<h4 id='79428c1686-21'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -2734,177 +2798,6 @@
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div><h4 id='e00f5e7845-20'>响应参数数据结构</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Param</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">是否必须</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">id</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">Web3交易ID</td>
-</tr>
-<tr>
-<td style="text-align: left">request_id</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易唯一标识</td>
-</tr>
-<tr>
-<td style="text-align: left">sub_wallet_id</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">子钱包ID</td>
-</tr>
-<tr>
-<td style="text-align: left">txid</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">否</td>
-<td style="text-align: left">交易hash</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">否</td>
-<td style="text-align: left">交易币种</td>
-</tr>
-<tr>
-<td style="text-align: left">main_chain_symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">主链币币名（唯一标识），例：ETH</td>
-</tr>
-<tr>
-<td style="text-align: left">amount</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易金额。-1表示无穷大</td>
-</tr>
-<tr>
-<td style="text-align: left">fee_symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">手续费币种，例：ETH</td>
-</tr>
-<tr>
-<td style="text-align: left">fee</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">手续费</td>
-</tr>
-<tr>
-<td style="text-align: left">real_fee</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">真实消耗的手续费</td>
-</tr>
-<tr>
-<td style="text-align: left">created_at</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">创建时间时间戳</td>
-</tr>
-<tr>
-<td style="text-align: left">updated_at</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">修改时间时间戳</td>
-</tr>
-<tr>
-<td style="text-align: left">address_from</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易from地址</td>
-</tr>
-<tr>
-<td style="text-align: left">address_to</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易to地址</td>
-</tr>
-<tr>
-<td style="text-align: left">interactive_contract</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交互合约</td>
-</tr>
-<tr>
-<td style="text-align: left">confirmations</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">确认数</td>
-</tr>
-<tr>
-<td style="text-align: left">input_data</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">合约交易的方法参数组成的16进制数据</td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败</td>
-</tr>
-<tr>
-<td style="text-align: left">trans_source</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">交易类型： 1.app, 2.open-api</td>
-</tr>
-</tbody></table>
-<h3 id='web3-5'>同步web3交易记录</h3>
-<p>获取钱包下所有子钱包Web3交易记录，最多返回100条</p>
-<h4 id='http-21'>HTTP请求</h4>
-<p><code>GET /api/mpc/web3/sync_trans_list</code></p>
-<h4 id='79428c1686-21'>请求参数数据结构</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Param</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">是否必须</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">max_id</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">Web3交易记录起始id</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>响应结果示例</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">435</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
         </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3033,11 +2926,182 @@
 <td style="text-align: left">交易类型： 1.app, 2.open-api</td>
 </tr>
 </tbody></table>
+<h3 id='web3-5'>同步web3交易记录</h3>
+<p>获取钱包下所有子钱包Web3交易记录，最多返回100条</p>
+<h4 id='http-22'>HTTP请求</h4>
+<p><code>GET /api/mpc/web3/sync_trans_list</code></p>
+<h4 id='79428c1686-22'>请求参数数据结构</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">max_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">Web3交易记录起始id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应结果示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">435</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='e00f5e7845-22'>响应参数数据结构</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">Web3交易ID</td>
+</tr>
+<tr>
+<td style="text-align: left">request_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易唯一标识</td>
+</tr>
+<tr>
+<td style="text-align: left">sub_wallet_id</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">子钱包ID</td>
+</tr>
+<tr>
+<td style="text-align: left">txid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">交易hash</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">交易币种</td>
+</tr>
+<tr>
+<td style="text-align: left">main_chain_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">主链币币名（唯一标识），例：ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易金额。-1表示无穷大</td>
+</tr>
+<tr>
+<td style="text-align: left">fee_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">手续费币种，例：ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">real_fee</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">真实消耗的手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">created_at</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">创建时间时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">updated_at</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">修改时间时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">address_from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易from地址</td>
+</tr>
+<tr>
+<td style="text-align: left">address_to</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易to地址</td>
+</tr>
+<tr>
+<td style="text-align: left">interactive_contract</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交互合约</td>
+</tr>
+<tr>
+<td style="text-align: left">confirmations</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">确认数</td>
+</tr>
+<tr>
+<td style="text-align: left">input_data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">合约交易的方法参数组成的16进制数据</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败</td>
+</tr>
+<tr>
+<td style="text-align: left">trans_source</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易类型： 1.app, 2.open-api</td>
+</tr>
+</tbody></table>
 <h2 id='nft'>NFT</h2><h3 id='nft-2'>获取NFT信息</h3>
 <p>获取NFT图片，名称等数据</p>
-<h4 id='http-22'>HTTP请求</h4>
+<h4 id='http-23'>HTTP请求</h4>
 <p><code>POST /api/nft/info</code></p>
-<h4 id='79428c1686-22'>请求参数数据结构</h4>
+<h4 id='79428c1686-23'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3078,7 +3142,7 @@
      </span><span class="nl">"image_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">".svg"</span><span class="p">,</span><span class="w">
      </span><span class="nl">"is_video"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='e00f5e7845-22'>响应参数数据结构</h4>
+</span></code></pre></div><h4 id='e00f5e7845-23'>响应参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3161,7 +3225,7 @@
 </tbody></table>
 <h4 id='b0599f2134'>交易通知响应参数统一格式</h4>
 <p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败 （注意此处返回参数无需进行加密）</p>
-<h2 id='dfc61c2b64'>转账通知</h2><h4 id='79428c1686-23'>请求参数数据结构</h4>
+<h2 id='dfc61c2b64'>转账通知</h2><h4 id='79428c1686-24'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3309,7 +3373,7 @@
 <td style="text-align: left">交易完成的区块高度</td>
 </tr>
 </tbody></table>
-<h2 id='807c7acbae'>收款通知</h2><h4 id='79428c1686-24'>请求参数数据结构</h4>
+<h2 id='807c7acbae'>收款通知</h2><h4 id='79428c1686-25'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3427,7 +3491,7 @@
 <td style="text-align: left">交易完成的区块高度</td>
 </tr>
 </tbody></table>
-<h2 id='web3-6'>Web3交易通知</h2><h4 id='79428c1686-25'>请求参数数据结构</h4>
+<h2 id='web3-6'>Web3交易通知</h2><h4 id='79428c1686-26'>请求参数数据结构</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Param</th>
@@ -3607,7 +3671,7 @@
 <p>为了保证交易的安全，您需要在Co-Signer中配置一个业务系统的回调地址，在交易签名之前授权。</p>
 
 <p>授权交易数据<strong>采用明文传输</strong>，您需要在应用服务中保证业务系统和Co-Signer之间的通信安全。</p>
-<h3 id='7e6d26686e'>提现回调</h3><h4 id='http-23'>HTTP请求</h4>
+<h3 id='7e6d26686e'>提现回调</h3><h4 id='http-24'>HTTP请求</h4>
 <p><code>POST /{url}</code></p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
@@ -3700,7 +3764,7 @@
 </tbody></table>
 <h4 id='2dda1c9689'>回调响应参数统一格式</h4>
 <p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败 </p>
-<h3 id='web3-7'>Web3交易回调</h3><h4 id='http-24'>HTTP请求</h4>
+<h3 id='web3-7'>Web3交易回调</h3><h4 id='http-25'>HTTP请求</h4>
 <p><code>POST /{url}</code></p>
 
 <p><code>Content-Type application/json;charset=UTF-8</code></p>
