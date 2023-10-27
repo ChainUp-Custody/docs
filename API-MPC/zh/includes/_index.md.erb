@@ -22,7 +22,7 @@
 
 
 
-请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。 
+请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-# 接入指引 
+# 接入指引
 
 
 您需要按照以下流程进行接入ChainUp Custody - MPC 钱包
@@ -80,9 +80,9 @@
 
 - 主钱包可用于公司总资产的统计；子钱包分配给不同的业务部门使用。
 
-  
 
-**私钥密码**用于**加解密私钥分片**，**非常重要**，为了您的资产安全**请务必及时备份**。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。 
+
+**私钥密码**用于**加解密私钥分片**，**非常重要**，为了您的资产安全**请务必及时备份**。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。
 
 - **ChainUp Custody** 采用的是**3-3的签名策略**，其中2个私钥分片加密存储在ChainUp HSM，另外1个私钥分片在**用户本地**；
 - **用户对资产有100%的控制权：**ChainUp Custody **仅协助**用户管理资产，在没有用户私钥分片签名情况下，无法触碰用户资产。因此用户需要及时将**本地私钥分片进行备份并妥善保管**；
@@ -96,7 +96,7 @@
 
 ### 获取API 信息
 
-请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。 
+请联系**商务经理**或**发邮件**至 <custody@chainup.com> 获取**API** 信息。
 
 
 
@@ -104,7 +104,7 @@
 
 
 
-## 开发前准备 
+## 开发前准备
 
 
 
@@ -307,7 +307,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
@@ -367,7 +367,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
@@ -474,7 +474,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param            | 类型        | 是否必须 | 说明                                                                     |
 | ---------------- | ----------- | --------- | ---------------------------------------------------------------------- |
@@ -520,8 +520,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 > 响应结果示例
 
 ```json
-{ 
+{
     "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+    "addr_type":1,
+    "memo":"12512"
 }
 ```
 
@@ -530,6 +532,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param   | 类型   | 是否必须 | 说明         |
 | :------ | :----- | :------- | :----------- |
 | address | String | 是       | 创建的地址 |
+| addr_type | Integer | 是       | 地址类型，1：用户地址，2：系统地址(包括归集地址、找零地址)。`系统地址`不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
+| memo     | String   | 否       |  |
 
 
 
@@ -556,11 +560,11 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ```json
 [
-    { 
+    {
         "address":"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac",
         "addr_type": 1,
     },
-    { 
+    {
         "address":"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr",
         "addr_type": 2,
     }
@@ -572,7 +576,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param   | 类型   | 是否必须 | 说明         |
 | :------ | :----- | :------- | :----------- |
 | address   | String  | 是       | 创建的地址 |
-| addr_type | Integer | 是       | 地址类型，1：普通地址，2：归集(找零)地址。`归集(找零)地址`不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
+| addr_type | Integer | 是       | 地址类型，1：用户地址，2：系统地址(包括归集地址、找零地址)。`系统地址`不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
 | memo     | String   | 否       |  |
 
 
@@ -588,7 +592,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param         | 类型   | 是否必须 | 说明                        |
 | :------------ | :----- | :------- | :-------------------------- |
@@ -599,6 +603,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ```json
 {
+    "total_balance":"3.23",
     "normal_balance":"1.23",
     "lock_balance":"0.77"
 }
@@ -628,7 +633,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param           | 类型   | 是否必须 | 说明                               |
 | :-------------- | :----- | :------- | :--------------------------------- |
@@ -660,7 +665,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param         | 类型   | 是否必须 | 说明                                                         |
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
@@ -708,7 +713,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param  | 类型   | 是否必须 | 说明                                       |
 | :----- | :----- | :------- | :----------------------------------------- |
@@ -749,7 +754,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | gas_price3     | String  | 否      | ETH类型系列，gas推荐单价三档 |
 | gas_decimals   | Integer | 否      | ETH类型系列，用于计算主币手续费，计算式： (gas_price/10^gas_decimals)*gas_limit|
 | fee            | String | 否  | 其他系列，如DOT\TRX，使用fee字段做手续费 |
-| fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改| 
+| fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改|
 | trans_fee      | String | 否  | 交易手续费，单位是主币|
 
 
@@ -769,7 +774,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param       | 类型   | 是否必须 | 说明                                                         |
 | :----------   | :----- | :------- | :----------------------------------------------------------- |
@@ -801,7 +806,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                                         |
 | :---- | :----- | :------- | :----------------------------------------------------------- |
@@ -831,7 +836,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "base_symbol":"",
         "id":242,
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
-        "status":1200
+        "status":1200,
+        "tx_height":3120013
     }
 ]
 ```
@@ -860,6 +866,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi                                  |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 转账币种合约地址 |
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -878,7 +885,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param  | 类型   | 是否必须 | 说明                      |
 | :----- | :----- | :------- | :------------------------ |
@@ -907,7 +914,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "base_symbol":"",
         "id":242,
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
-        "status":1200
+        "status":1200,
+        "tx_height":3120013
     }
 ]
 ```
@@ -935,6 +943,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi                                  |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 转账币种合约地址                                             |
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -955,7 +964,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -980,7 +989,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "updated_at":1672323030000,
         "base_symbol":"",
         "id":43,
-        "status":2000
+        "status":2000,
+        "tx_height":3120013
     }
 ]
 ```
@@ -1006,7 +1016,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | token_id         | String  | 否       | NFT充值的tokenId, 当: deposit_type=2时, 该值不为空             |
 | base_symbol      | String  | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 收款币种合约地址                                             |
-
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1021,7 +1031,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param  | 类型   | 是否必须 | 说明                    |
 | :----- | :----- | :------- | :---------------------- |
@@ -1047,7 +1057,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "updated_at":1672323030000,
         "base_symbol":"",
         "id":43,
-        "status":2000
+        "status":2000,
+        "tx_height":3120013
     }
 ]
 ```
@@ -1072,6 +1083,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | status           | Integer | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String  | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 收款币种合约地址                                             |
+| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1226,7 +1238,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -1274,7 +1286,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -1299,7 +1311,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -1328,7 +1340,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "input_data":"0xca718c65",
         "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
         "status":2400,
-        "trans_source":2
+        "trans_source":2,
+        "tx_height":3120013
     }
 ]
 ```
@@ -1358,6 +1371,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |input_data           | String     | 是      |合约交易的方法参数组成的16进制数据	  |
 |status               | Integer     | 是      |交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败	  |
 |trans_source         | Integer     | 是      |交易类型： 1.app, 2.open-api	  |
+|tx_height           | Long   | 是       | 交易完成的区块高度                  |
 
 
 
@@ -1371,7 +1385,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -1400,7 +1414,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
         "confirmations":4,
         "status":2400,
-        "trans_source":2
+        "trans_source":2,
+        "tx_height":3120013
     }
 ]
 ```
@@ -1430,6 +1445,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |input_data           | String     | 是      |合约交易的方法参数组成的16进制数据	  |
 |status               | Integer     | 是      |交易状态: 1100 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败	  |
 |trans_source         | Integer     | 是      |交易类型： 1.app, 2.open-api	  |
+|tx_height          | Long    | 是       | 交易完成的区块高度                         |
 
 
 
@@ -1445,7 +1461,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param | 类型   | 是否必须 | 说明                                      |
 | :---- | :----- | :------- | :---------------------------------------- |
@@ -1518,7 +1534,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ## 转账通知
 
-#### 请求参数数据结构 
+#### 请求参数数据结构
 
 | Param            | 类型   | 是否必须 | 说明                                                         |
 | :--------------- | :----- | :------- | :----------------------------------------------------------- |
@@ -1696,7 +1712,7 @@ POST /callback/example
 
 #### 回调响应参数统一格式
 
-返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 
+返回字符串：`SUCCES`表示成功，`FAILURE`表示失败
 
 
 ### Web3交易回调
@@ -1748,10 +1764,10 @@ POST /callback/example
 
 #### 回调响应参数统一格式
 
-返回字符串：`SUCCES`表示成功，`FAILURE`表示失败 
+返回字符串：`SUCCES`表示成功，`FAILURE`表示失败
 
 
-# 错误码 
+# 错误码
 
 接口错误码表 - 表格
 
