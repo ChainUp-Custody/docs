@@ -346,13 +346,13 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | coin_net           | String  | 否       | 币种网络，例：ETH                                |
 | symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20             |
 | symbol_alias       | String  | 否       | 币种真实币名，例：USDT                            |
-| support_acceleration| boole   | 是       | true：支持加速，false：不支持加速                 |
+| support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                 |
 | support_main_chain | Array   | 否       | MPC支持的主链                                    |
 | coin_net           | String  | 否       | 币种网络，例：ETH                                 |
 | symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20              |
 | symbol_alias       | String  | 否       | 币种真实币名，例：USDT                             |
 | if_open_chain      | Boolean | 是       | 是否开通主链,  `false`未开通，`true`:已开通         |
-| support_acceleration| boole   | 是       | true：支持加速，false：不支持加速                  |
+| support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                  |
 | coin_type          | Integer |  是      |所属主链币类型，0 账户类型, 1 utxo类型主链, 2 memo类型 |
 
 
@@ -478,7 +478,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param            | 类型        | 是否必须 | 说明                                                                     |
 | ---------------- | ----------- | --------- | ---------------------------------------------------------------------- |
-| sub_wallet_name  | string      | 是        | 子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池 |
+| sub_wallet_name  | String      | 是        | 子钱包名称，最大支持50个字符，同一钱包下子钱包不能重名，例：mpc矿池 |
 | app_show_status  | String      | 否        | 创建后app和web端是否展示该子钱包，`1`展示,  `2`不展示；默认不展示              |
 
 > 响应结果示例：
@@ -1496,7 +1496,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | nft_name            | String | 是    | NFT 名称, 不存在时, 使用 "# + tokenId", 如: #1000001 |
 | image               | String | 是    | nft图片或视频url, 或图片base64 |
 | image_type          | String | 是    | nft图片或视频类型, 如：".png", ".mp4" |
-| is_video            | bool   | 是    | 是否是视频, true: image是视屏, 反之不是视频 |
+| is_video            | Boolean| 是    | 是否是视频, true: image是视屏, 反之不是视频 |
 
 
 # 交易通知
@@ -1560,7 +1560,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | withdraw_source  | String | 是       | 转账类型： `1`app, `2`openapi                                |
 | base_symbol      | String | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 转账币种合约地址                                             |
-| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
+| tx_height        | String | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1588,7 +1588,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | status           | String | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
 | base_symbol      | String | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 收款币种合约地址                                             |
-| tx_height        | Long   | 是       | 交易完成的区块高度                                             |
+| tx_height        | String | 是       | 交易完成的区块高度                                             |
 
 
 
@@ -1623,7 +1623,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | dapp_img                 | String | 是       | dapp 图片		       |
 | dapp_name                | String | 是       | dapp名称	     |
 | dapp_url                 | String | 是       | dapp 访问url	 |
-| tx_height                | Long   | 是       | 交易完成的区块高度                                             |
+| tx_height                | String | 是       | 交易完成的区块高度                                             |
 
 
 
