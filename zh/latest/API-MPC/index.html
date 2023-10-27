@@ -546,7 +546,7 @@
 <li>获取所有交易的记录详情</li>
 </ul>
 
-<p>请联系<strong>商务经理</strong>或<strong>发邮件</strong>至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 获取<strong>API</strong> 信息。 </p>
+<p>请联系<strong>商务经理</strong>或<strong>发邮件</strong>至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 获取<strong>API</strong> 信息。</p>
 <h1 id='4b55c33f0b'>接入指引</h1>
 <p>您需要按照以下流程进行接入ChainUp Custody - MPC 钱包</p>
 
@@ -569,7 +569,7 @@
 <li><p>主钱包可用于公司总资产的统计；子钱包分配给不同的业务部门使用。</p></li>
 </ul>
 
-<p><strong>私钥密码</strong>用于<strong>加解密私钥分片</strong>，<strong>非常重要</strong>，为了您的资产安全<strong>请务必及时备份</strong>。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。 </p>
+<p><strong>私钥密码</strong>用于<strong>加解密私钥分片</strong>，<strong>非常重要</strong>，为了您的资产安全<strong>请务必及时备份</strong>。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。</p>
 
 <ul>
 <li><strong>ChainUp Custody</strong> 采用的是<strong>3-3的签名策略</strong>，其中2个私钥分片加密存储在ChainUp HSM，另外1个私钥分片在<strong>用户本地</strong>；</li>
@@ -579,7 +579,7 @@
 
 <p>若钱包配置不满足您的需求，可联系商务经理或发邮件至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 获取支持。</p>
 <h3 id='api-2'>获取API 信息</h3>
-<p>请联系<strong>商务经理</strong>或<strong>发邮件</strong>至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 获取<strong>API</strong> 信息。 </p>
+<p>请联系<strong>商务经理</strong>或<strong>发邮件</strong>至 <a href="mailto:custody@chainup.com">custody@chainup.com</a> 获取<strong>API</strong> 信息。</p>
 <h2 id='f3b134a5ca'>开发前准备</h2><h3 id='72706ccb1b'>开发须知</h3><h4 id='api-3'>两对公私钥作用（API方式）</h4>
 <p><strong>第一对公私钥：</strong> 开发者在开通MPC钱包时，需提前生成一对公私钥，其中公钥（rsa_third_pub）提供给平台，私钥自己保管，私钥为第三方应用调用钱包服务的唯一凭证，请勿透露给任何人。第三方在请求钱包服务时，通过私钥来加密请求参数，平台接受到请求时，通过提供的公钥（rsa_third_pub）来解密请求数据。</p>
 
@@ -1205,8 +1205,10 @@
 <blockquote>
 <p>响应结果示例</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="w">
+    </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"memo"</span><span class="p">:</span><span class="s2">"12512"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-5'>响应参数数据结构</h4>
 <table><thead>
@@ -1222,6 +1224,18 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">创建的地址</td>
+</tr>
+<tr>
+<td style="text-align: left">addr_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">地址类型，1：用户地址，2：系统地址(包括归集地址、找零地址)。<code>系统地址</code>不可给分配给用户使用, UTXO交易的找零都会找零到找零地址</td>
+</tr>
+<tr>
+<td style="text-align: left">memo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left"></td>
 </tr>
 </tbody></table>
 <h3 id='fcc00c1132'>子钱包地址查询</h3>
@@ -1261,11 +1275,11 @@
 <p>响应结果示例</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
         </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
         </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1289,7 +1303,7 @@
 <td style="text-align: left">addr_type</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">地址类型，1：普通地址，2：归集(找零)地址。<code>归集(找零)地址</code>不可给分配给用户使用, UTXO交易的找零都会找零到找零地址</td>
+<td style="text-align: left">地址类型，1：用户地址，2：系统地址(包括归集地址、找零地址)。<code>系统地址</code>不可给分配给用户使用, UTXO交易的找零都会找零到找零地址</td>
 </tr>
 <tr>
 <td style="text-align: left">memo</td>
@@ -1329,6 +1343,7 @@
 <p>响应结果示例</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="s2">"3.23"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"normal_balance"</span><span class="p">:</span><span class="s2">"1.23"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0.77"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1749,7 +1764,8 @@
         </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">242</span><span class="p">,</span><span class="w">
         </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-12'>响应参数数据结构</h4>
@@ -1875,6 +1891,12 @@
 <td style="text-align: left">否</td>
 <td style="text-align: left">转账币种合约地址</td>
 </tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
+</tr>
 </tbody></table>
 <h3 id='047e3c04bb'>同步转账记录</h3>
 <p>获取钱包下所有子钱包转账记录，最多返回100条</p>
@@ -1920,7 +1942,8 @@
         </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">242</span><span class="p">,</span><span class="w">
         </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-13'>响应参数数据结构</h4>
@@ -2046,6 +2069,12 @@
 <td style="text-align: left">否</td>
 <td style="text-align: left">转账币种合约地址</td>
 </tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
+</tr>
 </tbody></table>
 <h2 id='6caa437239'>收款</h2><h3 id='2ff0c13261'>获取收款记录</h3>
 <p>获取钱包下所有子钱包收款记录，最多返回100条</p>
@@ -2086,7 +2115,8 @@
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-14'>响应参数数据结构</h4>
@@ -2194,6 +2224,12 @@
 <td style="text-align: left">否</td>
 <td style="text-align: left">收款币种合约地址</td>
 </tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
+</tr>
 </tbody></table>
 <h3 id='cced267cb5'>同步收款记录</h3>
 <p>获取钱包下所有子钱包收款记录，最多返回100条</p>
@@ -2234,7 +2270,8 @@
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-15'>响应参数数据结构</h4>
@@ -2329,6 +2366,12 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">收款币种合约地址</td>
+</tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
 </tr>
 </tbody></table>
 <h2 id='f10b914aa2'>归集</h2><h3 id='3a3fc5a4bd'>获取归集子钱包</h3>
@@ -2799,7 +2842,8 @@
         </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-21'>响应参数数据结构</h4>
@@ -2925,6 +2969,12 @@
 <td style="text-align: left">是</td>
 <td style="text-align: left">交易类型： 1.app, 2.open-api</td>
 </tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
+</tr>
 </tbody></table>
 <h3 id='web3-5'>同步web3交易记录</h3>
 <p>获取钱包下所有子钱包Web3交易记录，最多返回100条</p>
@@ -2970,7 +3020,8 @@
         </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-22'>响应参数数据结构</h4>
@@ -3095,6 +3146,12 @@
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">交易类型： 1.app, 2.open-api</td>
+</tr>
+<tr>
+<td style="text-align: left">tx_height</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易完成的区块高度</td>
 </tr>
 </tbody></table>
 <h2 id='nft'>NFT</h2><h3 id='nft-2'>获取NFT信息</h3>
@@ -3763,7 +3820,7 @@
 </tr>
 </tbody></table>
 <h4 id='2dda1c9689'>回调响应参数统一格式</h4>
-<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败 </p>
+<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败</p>
 <h3 id='web3-7'>Web3交易回调</h3><h4 id='http-25'>HTTP请求</h4>
 <p><code>POST /{url}</code></p>
 
@@ -3864,7 +3921,7 @@
 </tr>
 </tbody></table>
 <h4 id='2dda1c9689-2'>回调响应参数统一格式</h4>
-<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败 </p>
+<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败</p>
 <h1 id='e08c1d4f9a'>错误码</h1>
 <p>接口错误码表 - 表格</p>
 
