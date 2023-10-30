@@ -1343,7 +1343,7 @@
 <p>响应结果示例</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="s2">"3.23"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collecting_balance"</span><span class="p">:</span><span class="s2">"3.23"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"normal_balance"</span><span class="p">:</span><span class="s2">"1.23"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lock_balance"</span><span class="p">:</span><span class="s2">"0.77"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1357,22 +1357,22 @@
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">total_balance</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">汇总余额，含待归集余额</td>
-</tr>
-<tr>
 <td style="text-align: left">normal_balance</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">可用余额，已归集余额；非归集子钱包，和汇总余额一致</td>
+<td style="text-align: left">可用余额</td>
 </tr>
 <tr>
 <td style="text-align: left">lock_balance</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">冻结余额</td>
+</tr>
+<tr>
+<td style="text-align: left">collecting_balance</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">待归集余额</td>
 </tr>
 </tbody></table>
 <h3 id='2cb22f2779'>修改子钱包状态</h3>
