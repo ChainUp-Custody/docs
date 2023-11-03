@@ -417,7 +417,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | coin_net               | String   | 否       | 币种网络                                       |
 | contract_address       | String   | 否       | MPC支持的主链                                   |
 | deposit_confirmation   | String   | 是       | 充值确认数                                      |
-| explorer               | String   | 否       | 区块浏览器                                       |
+| address_link           | String   | 否       | 地址查询链接                                       |
+| txid_link              | String   | 否       | 交易查询链接                                       |
 | icon                   | String   | 是       | 币种icon                                        |
 | if_open_chain          | Boolean  | 是       | 是否开通主链,  `false`未开通，`true`:已开通         |
 | decimals               | String   | 是       | 币种精度                                         |
@@ -427,6 +428,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | address_regex          | String   | 是       | tag正则                                        |
 | support_acceleration   | Boolean  | 是       | 是否支持加速                                     |
 | support_multi_addr     | Boolean  |  是      | 是否支持多地址，true:支持, false:不支持       |
+| merge_address_symbol   | String  |  否      | 合并地址主链币，币种唯一标识       |
 
 
 ### 获取主链最新块高
@@ -460,7 +462,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | height   | Long | 是       | 主链最新区块高度 |
 
 
-## 子钱包（用户）
+## 子钱包
 
 
 
@@ -671,6 +673,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
 | sub_wallet_id | Integer | 是       | 子钱包id                                                     |
 | symbol        | String | 是       | 币种唯一标识，例：USDTERC20                                  |
+| from          | String | 否       | 指定出币地址                                                 |
 | address_to    | String | 是       | 转账到账地址                                                 |
 | memo          | String | 否       | 转账到账地址memo，Memo类型转账时如有可填入                   |
 | amount        | String | 是       | 转账金额                                                     |
@@ -1505,7 +1508,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-`POST /用户回调通知地址`
+`POST /客户回调通知地址`
 
 > 交易通知请求接口示例
 
