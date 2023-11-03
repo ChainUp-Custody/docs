@@ -393,7 +393,7 @@
                       </ul>
                   </li>
                   <li>
-                    <a href="#2e850048f0" class="toc-h2 toc-link" data-title="子钱包（用户）">子钱包（用户）</a>
+                    <a href="#88f0e7b5b9" class="toc-h2 toc-link" data-title="子钱包">子钱包</a>
                       <ul class="toc-list-h3">
                           <li>
                             <a href="#5aea6fa68a" class="toc-h3 toc-link" data-title="创建子钱包">创建子钱包</a>
@@ -1023,10 +1023,16 @@
 <td style="text-align: left">充值确认数</td>
 </tr>
 <tr>
-<td style="text-align: left">explorer</td>
+<td style="text-align: left">address_link</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">区块浏览器</td>
+<td style="text-align: left">地址查询链接</td>
+</tr>
+<tr>
+<td style="text-align: left">txid_link</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">交易查询链接</td>
 </tr>
 <tr>
 <td style="text-align: left">icon</td>
@@ -1082,6 +1088,12 @@
 <td style="text-align: left">是</td>
 <td style="text-align: left">是否支持多地址，true:支持, false:不支持</td>
 </tr>
+<tr>
+<td style="text-align: left">merge_address_symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">合并地址主链币，币种唯一标识</td>
+</tr>
 </tbody></table>
 <h3 id='325ba9dcf1'>获取主链最新块高</h3>
 <p>获取指定主链的区块最新块高</p>
@@ -1126,7 +1138,7 @@
 <td style="text-align: left">主链最新区块高度</td>
 </tr>
 </tbody></table>
-<h2 id='2e850048f0'>子钱包（用户）</h2><h3 id='5aea6fa68a'>创建子钱包</h3>
+<h2 id='88f0e7b5b9'>子钱包</h2><h3 id='5aea6fa68a'>创建子钱包</h3>
 <p>传入指定的子钱包名称，为钱包创建一个新的子钱包</p>
 <h4 id='http-4'>HTTP请求</h4>
 <p><code>POST /api/mpc/sub_wallet/create</code></p>
@@ -1427,6 +1439,12 @@
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">币种唯一标识，例：USDTERC20</td>
+</tr>
+<tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">指定出币地址</td>
 </tr>
 <tr>
 <td style="text-align: left">address_to</td>
@@ -3252,7 +3270,7 @@
 </tr>
 </tbody></table>
 <h1 id='7503be5a41'>交易通知</h1><h2 id='ada01d8c4e-2'>统一说明</h2>
-<p><code>POST /用户回调通知地址</code></p>
+<p><code>POST /客户回调通知地址</code></p>
 
 <blockquote>
 <p>交易通知请求接口示例</p>
