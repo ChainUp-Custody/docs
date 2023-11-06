@@ -522,7 +522,7 @@
                       </ul>
                   </li>
                   <li>
-                    <a href="#co-signer-3" class="toc-h2 toc-link" data-title="Co-Signer交易签名验证"><em>Co-Signer交易签名验证</em></a>
+                    <a href="#co-signer-3" class="toc-h2 toc-link" data-title="Co-Signer交易签名验证"><strong>Co-Signer交易签名验证</strong></a>
                   </li>
               </ul>
           </li>
@@ -4133,7 +4133,7 @@
 </tbody></table>
 <h4 id='2dda1c9689-2'>回调响应参数统一格式</h4>
 <p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败</p>
-<h2 id='co-signer-3'><em>Co-Signer交易签名验证</em></h2>
+<h2 id='co-signer-3'><strong>Co-Signer交易签名验证</strong></h2>
 <p>Co-Signer为交易提供更安全的双重验证功能。</p>
 
 <p>除Co-Signer回调机制外，客户可以在发起交易时，同时传入sign字段，Co-Signer将额外验证sign是否合法。</p>
@@ -4141,6 +4141,8 @@
 <p>具体签名规则如下：</p>
 
 <aside class="notice">
+<br/>
+<br/>
 1）参数按照`k1=v1&k2=v2`拼接方式签名，k按照`ASCII升序`排序；参数为空不参与签名
 <br/>
 <br/>
