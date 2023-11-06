@@ -221,14 +221,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param  | 类型   | 是否必须 | 说明                                                      |
 | :----- | :----- | :------- | :-------------------------------------------------------- |
 | app_id | String | 必须     | 商户唯一标识                                              |
-| data   | String | 可选     | 加密之后的字符串，具体加密信息见各接口 `请求参数数据结构` |
-
-
-
-#### 请求接口示例：
-
-`POST /api/mpc/sub_wallet/assets`
-
+| data   | String | 可选     | 加密之后的字符串；客户的RSA私钥加密，具体加密信息见各接口 `请求参数数据结构` |
 
 
 
@@ -240,7 +233,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param | 类型   | 是否必须 | 说明                                                      |
 | :---- | :----- | :------- | :-------------------------------------------------------- |
-| data  | String | 必须     | 加密之后的字符串，具体加密信息见 `响应结果data解密后格式` |
+| data  | String | 必须     | 加密之后的字符串；Custody的RSA私钥加密，具体加密信息见 `响应结果data解密后格式` |
 
 
 
@@ -324,6 +317,12 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
             "symbol":"BTC",
             "symbol_alias":"BTC",
             "support_acceleration" : false
+        },
+        {
+            "coin_net":"ETH",
+            "symbol":"ETH",
+            "symbol_alias":"ETH",
+            "support_acceleration" : true
         }
     ],
     "support_main_chain":[
@@ -333,6 +332,13 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
             "symbol":"BTC",
             "symbol_alias":"BTC",
             "support_acceleration" : false
+        },
+        {
+            "coin_net":"ETH",
+            "if_open_chain":false,
+            "symbol":"ETH",
+            "symbol_alias":"ETH",
+            "support_acceleration" : true
         }
     ]
 }
@@ -343,17 +349,16 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param              | 类型    | 是否必须 | 说明                                             |
 | :----------------- | :------ | :------- | :---------------------------------------------|
 | open_main_chain    | Array   | 否       | 钱包开通的主链                                   |
-| coin_net           | String  | 否       | 币种网络，例：ETH                                |
-| symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20             |
-| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                            |
-| support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                 |
+| > coin_net           | String  | 否       | 币种网络，例：ETH                                |
+| > symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20             |
+| > symbol_alias       | String  | 否       | 币种真实币名，例：USDT                            |
+| > support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                 |
 | support_main_chain | Array   | 否       | MPC支持的主链                                    |
 | coin_net           | String  | 否       | 币种网络，例：ETH                                 |
-| symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20              |
-| symbol_alias       | String  | 否       | 币种真实币名，例：USDT                             |
-| if_open_chain      | Boolean | 是       | 是否开通主链,  `false`未开通，`true`:已开通         |
-| support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                  |
-| coin_type          | Integer |  是      |所属主链币类型，0 账户类型, 1 utxo类型主链, 2 memo类型 |
+| > symbol             | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20              |
+| > symbol_alias       | String  | 否       | 币种真实币名，例：USDT                             |
+| > if_open_chain      | Boolean | 是       | 是否开通主链,  `false`未开通，`true`:已开通         |
+| > support_acceleration| Boolean   | 是       | true：支持加速，false：不支持加速                  |
 
 
 
@@ -389,7 +394,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "contract_address":"0xe9e7cea3dedca5984780bafc599bd69add087d56",
         "decimals":"18",
         "deposit_confirmation":"1",
-        "explorer":"https://www.bscscan.com/address/",
+        "address_link":"https://www.bscscan.com/address/",
+        "tx_link":"https://www.bscscan.com/tx/",
         "icon":"",
         "if_open_chain":true,
         "name":"BUSD Token;BSC;BUSD",
@@ -399,7 +405,28 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "symbol":"BUSD",
         "symbol_alias":"BUSD",
         "support_acceleration": true,
-        "support_multi_addr" : false
+        "support_multi_addr" : true
+    },
+    {
+        "address_regex":".*",
+        "address_tag_regex":"",
+        "base_symbol":"ETH",
+        "coin_net":"ETH",
+        "contract_address":"0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals":"18",
+        "deposit_confirmation":"1",
+        "address_link":"https://etherscan.io/address/",
+        "tx_link":"https://etherscan.io/tx/",
+        "icon":"",
+        "if_open_chain":false,
+        "name":"USDTERC20;ETH;USDT",
+        "real_symbol":"USDTERC20",
+        "support_memo":"0",
+        "support_token":"0",
+        "symbol":"USDTERC20",
+        "symbol_alias":"USDT",
+        "support_acceleration": true,
+        "support_multi_addr" : true
     }
 ]
 ```
@@ -428,6 +455,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | address_regex          | String   | 是       | tag正则                                        |
 | support_acceleration   | Boolean  | 是       | 是否支持加速                                     |
 | support_multi_addr     | Boolean  |  是      | 是否支持多地址，true:支持, false:不支持       |
+| coin_type              | Integer |  是      |所属主链币类型，0 账户类型, 1 utxo类型主链, 2 Memo类型 |
 | merge_address_symbol   | String  |  否      | 合并地址主链币，币种唯一标识       |
 
 
@@ -503,7 +531,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### 子钱包创建地址
 
-    当/api/mpc/coin_list 接口字段：can_create_multi_addr为ture的币种可创建多个地址
+    为指定子钱包及币种创建地址；同一个子钱包可以创建多个地址，Memo类型会创建多个memo
 
 #### HTTP请求
 
@@ -525,7 +553,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 {
     "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
     "addr_type":1,
-    "memo":"12512"
+    "memo":""
 }
 ```
 
@@ -535,7 +563,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | :------ | :----- | :------- | :----------- |
 | address | String | 是       | 创建的地址 |
 | addr_type | Integer | 是       | 地址类型，1：用户地址，2：系统地址(包括归集地址、找零地址)。`系统地址`不可给分配给用户使用, UTXO交易的找零都会找零到找零地址 |
-| memo     | String   | 否       |  |
+| memo     | String   | 否       | Memo主链下币种时分配 |
 
 
 
@@ -555,7 +583,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | :------------ | :----- | :------- | :----------------------- |
 | sub_wallet_id | Integer | 是      | 子钱包id      |
 | symbol        | String  | 是      | 币种唯一标识，例：USDTERC20 |
-| max_id        | Integer  | 是     | 地址起始id, 默认0 |
+| max_id        | Integer  | 是     | 地址起始id, Memo类型币种起始id为memo，默认0|
 
 
 > 响应结果示例
@@ -565,10 +593,12 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
     {
         "address":"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac",
         "addr_type": 1,
+        "memo": ""
     },
     {
         "address":"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr",
         "addr_type": 2,
+        "memo": ""
     }
 ]
 ```
@@ -627,7 +657,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### 修改子钱包状态
 
-指定子钱包在app客户端的展示情况，不展示无法在app发起交易
+指定子钱包在app、web客户端的展示情况，不展示无法在app发起交易
 
 #### HTTP请求
 
@@ -683,8 +713,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | size          | String | 否       | BTC类型系列，字节大小；注意：不要和其他系列参数一起传入   |
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
-| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
-| sign          | String | 否       | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amount=1.0001&sub_wallet_id=1&symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确|
+| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入`gas_limit除外，如ATOM`|
+| sign          | String | 否       | 使用RSA私钥签名, 参与签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则详见`Co-Signer交易签名验证`|
 
 
 > 响应结果示例
@@ -737,7 +767,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
     "gas_price1":"0",
     "fee":"0.00159",
     "gas_price2":"0",
-    "gas_price3":"0"
+    "gas_price3":"0",
+    "trans_fee":"0.00159"
 }
 ```
 
@@ -755,10 +786,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | gas_price1     | String  | 否      | ETH类型系列，gas推荐单价一档 |
 | gas_price2     | String  | 否      | ETH类型系列，gas推荐单价二档 |
 | gas_price3     | String  | 否      | ETH类型系列，gas推荐单价三档 |
-| gas_decimals   | Integer | 否      | ETH类型系列，用于计算主币手续费，计算式： (gas_price/10^gas_decimals)*gas_limit|
+| gas_decimals   | Integer | 否      | ETH类型系列，用于计算主币手续费，计算式： `(gas_price/10^gas_decimals)*gas_limit`|
 | fee            | String | 否  | 其他系列，如DOT\TRX，使用fee字段做手续费 |
-| fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改|
-| trans_fee      | String | 否  | 交易手续费，单位是主币|
+| fee_changeable | Boolean | 否 | 其他系列，如DOT\TRX，使用fee参数值是否可更改，`true`可修改，`false`不可修改|
+| trans_fee      | String | 否  | 参考交易手续费，单位是主链币|
 
 
 
@@ -786,7 +817,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | size          | String | 否       | BTC类型系列，字节大小；注意：不要和其他系列参数一起传入   |
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
-| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM） |
+| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入，`gas_limit除外，如ATOM` |
 
 
 
@@ -824,10 +855,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "symbol":"ETH",
         "amount":"0.0000111",
         "real_fee":"0",
-        "wihdraw_source":2,
+        "withdraw_source":2,
         "fee":"0.0002782353",
         "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672304978000,
         "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
         "confirmations":0,
@@ -841,6 +872,28 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
         "status":1200,
         "tx_height":3120013
+    },
+    {
+        "symbol":"TRX",
+        "amount":"0.001",
+        "real_fee":"0",
+        "withdraw_source":1,
+        "fee":"27.4",
+        "address_to":"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ",
+        "fee_symbol":"TRX",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":2000,
+        "tx_height":56207376
     }
 ]
 ```
@@ -865,8 +918,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | memo             | String  | 否       | 转账到账地址memo                                 |
 | txid             | String  | 是       | 交易hash|
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
-| status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi                                  |
+| status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败 |
+| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi, 3.web                                 |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 转账币种合约地址 |
 | tx_height        | Long   | 是       | 交易完成的区块高度                                             |
@@ -902,10 +955,10 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "symbol":"ETH",
         "amount":"0.0000111",
         "real_fee":"0",
-        "wihdraw_source":2,
+        "withdraw_source":2,
         "fee":"0.0002782353",
         "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672304978000,
         "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
         "confirmations":0,
@@ -919,33 +972,55 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
         "status":1200,
         "tx_height":3120013
+    },
+    {
+        "symbol":"TRX",
+        "amount":"0.001",
+        "real_fee":"0",
+        "withdraw_source":1,
+        "fee":"27.4",
+        "address_to":"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ",
+        "fee_symbol":"TRX",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":2000,
+        "tx_height":56207376
     }
 ]
 ```
 
 #### 响应参数数据结构
 
-| Param            | 类型    | 是否必须 | 说明                                                         |
-| :--------------- | :------ | :------- | :----------------------------------------------------------- |
-| id               | Integer | 是       | 转账id                                                       |
-| request_id       | String  | 是       | 转账唯一标识                                                 |
-| sub_wallet_id    | Integer | 是       | 子钱包id                                                     |
+| Param              | 类型    | 是否必须 | 说明                                                         |
+| :----------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | 是       | 转账id                                           |
+| request_id       | Integer  | 是       | 转账唯一标识       |
+| sub_wallet_id    | Integer | 是       | 子钱包id                                       |
 | symbol           | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20                      |
-| amount           | String  | 是       | 转账金额                                                     |
+| amount           | String  | 是       | 转账金额                                           |
 | fee_symbol       | String  | 是       | 手续费币种，例：ETH                                          |
 | fee              | String  | 是       | 手续费，例：0.00123                                          |
 | real_fee         | String  | 是       | 真实消耗的手续费，例：0.00111                                |
-| created_at       | Long    | 是       | 创建时间时间戳                                               |
-| updated_at       | Long    | 是       | 修改时间时间戳                                               |
-| address_from     | String  | 是       | 出币地址                                                     |
-| address_to       | String  | 是       | 到账地址                                                     |
-| memo             | String  | 否       | 转账到账地址memo                                             |
-| txid             | String  | 是       | 交易hash                                                     |
+| created_at       | Long    | 是       | 创建时间时间戳                            |
+| updated_at       | Long    | 是       | 修改时间时间戳                            |
+| address_from     | String  | 是       | 出币地址     |
+| address_to       | String  | 是       | 到账地址     |
+| memo             | String  | 否       | 转账到账地址memo                                 |
+| txid             | String  | 是       | 交易hash|
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
-| status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi                                  |
+| status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败 |
+| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi, 3.web                                 |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
-| contract_address | String  | 否       | 转账币种合约地址                                             |
+| contract_address | String  | 否       | 转账币种合约地址 |
 | tx_height        | Long   | 是       | 交易完成的区块高度                                             |
 
 
@@ -982,7 +1057,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "symbol":"ETH",
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
@@ -990,10 +1065,27 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "sub_wallet_id":"123",
         "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
         "updated_at":1672323030000,
-        "base_symbol":"",
+        "base_symbol":"ETH",
         "id":43,
         "status":2000,
         "tx_height":3120013
+    },
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x525208dd0b56c27bd10703bd675fca0509a17154",
+        "memo": "",
+        "created_at":1672107533000,
+        "txid":"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb",
+        "confirmations":5,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4",
+        "updated_at":1672323030000,
+        "base_symbol":"ETH",
+        "id":45,
+        "status":2000,
+        "tx_height":13238654
     }
 ]
 ```
@@ -1050,7 +1142,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "symbol":"ETH",
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
@@ -1058,10 +1150,27 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "sub_wallet_id":"123",
         "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
         "updated_at":1672323030000,
-        "base_symbol":"",
+        "base_symbol":"ETH",
         "id":43,
         "status":2000,
         "tx_height":3120013
+    },
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x525208dd0b56c27bd10703bd675fca0509a17154",
+        "memo": "",
+        "created_at":1672107533000,
+        "txid":"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb",
+        "confirmations":5,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4",
+        "updated_at":1672323030000,
+        "base_symbol":"ETH",
+        "id":45,
+        "status":2000,
+        "tx_height":13238654
     }
 ]
 ```
@@ -1084,6 +1193,8 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String  | 是       | 交易hash                                                     |
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常 |
+| deposit_type     | Integer | 是       | 充值类型，1: 普通币种充值,  2：NFT充值                          |
+| token_id         | String  | 否       | NFT充值的tokenId, 当: deposit_type=2时, 该值不为空             |
 | base_symbol      | String  | 否       | 收款币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 收款币种合约地址                                             |
 | tx_height        | Long   | 是       | 交易完成的区块高度                                             |
@@ -1188,7 +1299,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "trans_type":10,
         "fee":"0.0002782353",
         "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672304978000,
         "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
         "confirmations":0,
@@ -1200,6 +1311,26 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "base_symbol":"",
         "id":242,
         "status":1200
+    },
+    {
+        "symbol":"HECO",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "trans_type":11,
+        "fee":"0.0024040607337957",
+        "address_to":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123975",
+        "address_from":"0xE76a3d30dAc35C4b9A17E690cd250d8Bec649b65",
+        "fee_symbol":"HECO",
+        "updated_at":1672318660000,
+        "base_symbol":"HECO",
+        "id":315,
+        "status":2400
     }
 ]
 ```
@@ -1258,7 +1389,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 |dapp_name          | String | 否       | dapp名称	|
 |dapp_url           | String | 否      | dapp 访问url	|
 |dapp_img           | String | 否      | dapp 图片	|
-| sign              | String | 否      | 用户使用自己的私钥进行签名, 参数签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确|
+| sign              | String | 否      | 使用RSA私钥签名, 参与签名的参数: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data"。签名规则详见`Co-Signer交易签名验证`|
 
 
 > 响应结果示例
@@ -1345,6 +1476,28 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "status":2400,
         "trans_source":2,
         "tx_height":3120013
+    },
+    {
+        "id":436,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "status":2400,
+        "trans_source":2,
+        "tx_height":3120113
     }
 ]
 ```
@@ -1413,12 +1566,34 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
         "updated_at":1684222558000,
         "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
         "address_to":"",
+        "confirmations":4,
         "input_data":"0xca718c65",
         "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
-        "confirmations":4,
         "status":2400,
         "trans_source":2,
         "tx_height":3120013
+    },
+    {
+        "id":436,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "status":2400,
+        "trans_source":2,
+        "tx_height":3120113
     }
 ]
 ```
@@ -1715,7 +1890,7 @@ POST /callback/example
 
 #### 回调响应参数统一格式
 
-返回字符串：`SUCCES`表示成功，`FAILURE`表示失败
+返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败
 
 
 ### Web3交易回调
@@ -1767,7 +1942,29 @@ POST /callback/example
 
 #### 回调响应参数统一格式
 
-返回字符串：`SUCCES`表示成功，`FAILURE`表示失败
+返回字符串：`SUCCESS`表示成功，`FAILURE`表示失败
+
+
+## *Co-Signer交易签名验证*
+
+Co-Signer为交易提供更安全的双重验证功能。
+
+除Co-Signer回调机制外，客户可以在发起交易时，同时传入sign字段，Co-Signer将额外验证sign是否合法。
+
+具体签名规则如下：
+
+<aside class="notice">
+1）参数按照`k1=v1&k2=v2`拼接方式签名，k按照`ASCII升序`排序；参数为空不参与签名
+<br/>
+<br/>
+2）参与签名的数字不得以数字0为结尾，如`1.0001000`，请使用`1.0001`参与签名
+<br/>
+<br/>
+3）参数拼接后，转小写然后使用MD5加密，如加密前参数为`address_to=0x5edc9177997bf6b4db559a5c184051858b3b3704&amount=1.0001`，MD5加密后为`c10c47a46b616526e739985ce1c7f15d`
+<br/>
+<br/>
+4）对MD5数据使用`SHA256`算法进行RSA签名，然后进行`BASE64`编码，得到最终的签名数据
+</aside>
 
 
 # 错误码
