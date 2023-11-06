@@ -521,6 +521,9 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#co-signer-3" class="toc-h2 toc-link" data-title="Co-Signer交易签名验证"><em>Co-Signer交易签名验证</em></a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -693,11 +696,9 @@
 <td style="text-align: left">data</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">可选</td>
-<td style="text-align: left">加密之后的字符串，具体加密信息见各接口 <code>请求参数数据结构</code></td>
+<td style="text-align: left">加密之后的字符串；客户的RSA私钥加密，具体加密信息见各接口 <code>请求参数数据结构</code></td>
 </tr>
 </tbody></table>
-<h4 id='837f556275'>请求接口示例：</h4>
-<p><code>POST /api/mpc/sub_wallet/assets</code></p>
 <h3 id='680b2bbba1'>响应参数统一格式</h3>
 <table><thead>
 <tr>
@@ -711,7 +712,7 @@
 <td style="text-align: left">data</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">必须</td>
-<td style="text-align: left">加密之后的字符串，具体加密信息见 <code>响应结果data解密后格式</code></td>
+<td style="text-align: left">加密之后的字符串；Custody的RSA私钥加密，具体加密信息见 <code>响应结果data解密后格式</code></td>
 </tr>
 </tbody></table>
 
@@ -807,6 +808,12 @@
             </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"support_acceleration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"support_acceleration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"support_main_chain"</span><span class="p">:[</span><span class="w">
@@ -816,6 +823,13 @@
             </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"support_acceleration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"support_acceleration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -835,25 +849,25 @@
 <td style="text-align: left">钱包开通的主链</td>
 </tr>
 <tr>
-<td style="text-align: left">coin_net</td>
+<td style="text-align: left">&gt; coin_net</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">币种网络，例：ETH</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
+<td style="text-align: left">&gt; symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">币种唯一标识，转账时使用，例：USDTERC20</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol_alias</td>
+<td style="text-align: left">&gt; symbol_alias</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">币种真实币名，例：USDT</td>
 </tr>
 <tr>
-<td style="text-align: left">support_acceleration</td>
+<td style="text-align: left">&gt; support_acceleration</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">true：支持加速，false：不支持加速</td>
@@ -871,34 +885,28 @@
 <td style="text-align: left">币种网络，例：ETH</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
+<td style="text-align: left">&gt; symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">币种唯一标识，转账时使用，例：USDTERC20</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol_alias</td>
+<td style="text-align: left">&gt; symbol_alias</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
 <td style="text-align: left">币种真实币名，例：USDT</td>
 </tr>
 <tr>
-<td style="text-align: left">if_open_chain</td>
+<td style="text-align: left">&gt; if_open_chain</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">是否开通主链,  <code>false</code>未开通，<code>true</code>:已开通</td>
 </tr>
 <tr>
-<td style="text-align: left">support_acceleration</td>
+<td style="text-align: left">&gt; support_acceleration</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">true：支持加速，false：不支持加速</td>
-</tr>
-<tr>
-<td style="text-align: left">coin_type</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">所属主链币类型，0 账户类型, 1 utxo类型主链, 2 memo类型</td>
 </tr>
 </tbody></table>
 <h3 id='mpc-3'>获取MPC币种详情</h3>
@@ -958,7 +966,8 @@
         </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">"0xe9e7cea3dedca5984780bafc599bd69add087d56"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"decimals"</span><span class="p">:</span><span class="s2">"18"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_confirmation"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"explorer"</span><span class="p">:</span><span class="s2">"https://www.bscscan.com/address/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_link"</span><span class="p">:</span><span class="s2">"https://www.bscscan.com/address/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_link"</span><span class="p">:</span><span class="s2">"https://www.bscscan.com/tx/"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"icon"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"BUSD Token;BSC;BUSD"</span><span class="p">,</span><span class="w">
@@ -968,7 +977,28 @@
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"BUSD"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"support_multi_addr"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"support_multi_addr"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address_regex"</span><span class="p">:</span><span class="s2">".*"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_tag_regex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coin_net"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">"0xdac17f958d2ee523a2206206994597c13d831ec7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"decimals"</span><span class="p">:</span><span class="s2">"18"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_confirmation"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_link"</span><span class="p">:</span><span class="s2">"https://etherscan.io/address/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_link"</span><span class="p">:</span><span class="s2">"https://etherscan.io/tx/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"icon"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"if_open_chain"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"USDTERC20;ETH;USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_symbol"</span><span class="p">:</span><span class="s2">"USDTERC20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_memo"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_token"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"USDTERC20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol_alias"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_acceleration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"support_multi_addr"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-2'>响应参数数据结构</h4>
@@ -1089,6 +1119,12 @@
 <td style="text-align: left">是否支持多地址，true:支持, false:不支持</td>
 </tr>
 <tr>
+<td style="text-align: left">coin_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">所属主链币类型，0 账户类型, 1 utxo类型主链, 2 Memo类型</td>
+</tr>
+<tr>
 <td style="text-align: left">merge_address_symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
@@ -1188,7 +1224,7 @@
 </tr>
 </tbody></table>
 <h3 id='fed41bf9ce'>子钱包创建地址</h3>
-<p>当/api/mpc/coin_list 接口字段：can_create_multi_addr为ture的币种可创建多个地址</p>
+<p>为指定子钱包及币种创建地址；同一个子钱包可以创建多个地址，Memo类型会创建多个memo</p>
 <h4 id='http-5'>HTTP请求</h4>
 <p><code>POST /api/mpc/sub_wallet/create/address</code></p>
 <h4 id='79428c1686-5'>请求参数数据结构</h4>
@@ -1220,7 +1256,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"</span><span class="w">
     </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"memo"</span><span class="p">:</span><span class="s2">"12512"</span><span class="w">
+    </span><span class="nl">"memo"</span><span class="p">:</span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-5'>响应参数数据结构</h4>
 <table><thead>
@@ -1247,7 +1283,7 @@
 <td style="text-align: left">memo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">Memo主链下币种时分配</td>
 </tr>
 </tbody></table>
 <h3 id='fcc00c1132'>子钱包地址查询</h3>
@@ -1279,7 +1315,7 @@
 <td style="text-align: left">max_id</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">地址起始id, 默认0</td>
+<td style="text-align: left">地址起始id, Memo类型币种起始id为memo，默认0</td>
 </tr>
 </tbody></table>
 
@@ -1290,10 +1326,12 @@
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"address"</span><span class="p">:</span><span class="s2">"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addr_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-6'>响应参数数据结构</h4>
@@ -1388,7 +1426,7 @@
 </tr>
 </tbody></table>
 <h3 id='2cb22f2779'>修改子钱包状态</h3>
-<p>指定子钱包在app客户端的展示情况，不展示无法在app发起交易</p>
+<p>指定子钱包在app、web客户端的展示情况，不展示无法在app发起交易</p>
 <h4 id='http-8'>HTTP请求</h4>
 <p><code>POST /api/mpc/sub_wallet/change_show_status</code></p>
 <h4 id='79428c1686-8'>请求参数数据结构</h4>
@@ -1504,13 +1542,13 @@
 <td style="text-align: left">fee</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM）</td>
+<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入<code>gas_limit除外，如ATOM</code></td>
 </tr>
 <tr>
 <td style="text-align: left">sign</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">用户使用自己的私钥进行签名, 参数签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;symbol&quot;, &quot;address_to&quot;, &quot;amount&quot;, &quot;memo&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。MD5前的数据如:address_to=abcdefg&amp;amount=1.0001&amp;sub_wallet_id=1&amp;symbol=eth。 当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确</td>
+<td style="text-align: left">使用RSA私钥签名, 参与签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;symbol&quot;, &quot;address_to&quot;, &quot;amount&quot;, &quot;memo&quot;。签名规则详见<code>Co-Signer交易签名验证</code></td>
 </tr>
 </tbody></table>
 
@@ -1596,7 +1634,8 @@
     </span><span class="nl">"gas_price1"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00159"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gas_price2"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gas_price3"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="nl">"gas_price3"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trans_fee"</span><span class="p">:</span><span class="s2">"0.00159"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-10'>响应参数数据结构</h4>
 <table><thead>
@@ -1665,7 +1704,7 @@
 <td style="text-align: left">gas_decimals</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">ETH类型系列，用于计算主币手续费，计算式： (gas_price/10^gas_decimals)*gas_limit</td>
+<td style="text-align: left">ETH类型系列，用于计算主币手续费，计算式： <code>(gas_price/10^gas_decimals)*gas_limit</code></td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
@@ -1677,13 +1716,13 @@
 <td style="text-align: left">fee_changeable</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">其他系列，如DOT\TRX，使用fee参数值是否可更改，true可修改，false不可修改</td>
+<td style="text-align: left">其他系列，如DOT\TRX，使用fee参数值是否可更改，<code>true</code>可修改，<code>false</code>不可修改</td>
 </tr>
 <tr>
 <td style="text-align: left">trans_fee</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">交易手续费，单位是主币</td>
+<td style="text-align: left">参考交易手续费，单位是主链币</td>
 </tr>
 </tbody></table>
 <h3 id='80f61e9281'>转账加速</h3>
@@ -1733,7 +1772,7 @@
 <td style="text-align: left">fee</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入（gas_limit除外，如ATOM）</td>
+<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入，<code>gas_limit除外，如ATOM</code></td>
 </tr>
 </tbody></table>
 <h4 id='e00f5e7845-11'>响应参数数据结构</h4>
@@ -1767,10 +1806,10 @@
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0000111"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"wihdraw_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"withdraw_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0002782353"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1784,6 +1823,28 @@
         </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"TRX"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"withdraw_source"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"27.4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"TRX"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672318660000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">242</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">56207376</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-12'>响应参数数据结构</h4>
@@ -1889,13 +1950,13 @@
 <td style="text-align: left">status</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败</td>
+<td style="text-align: left">转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败</td>
 </tr>
 <tr>
 <td style="text-align: left">withdraw_source</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账类型： 1.app, 2.openapi</td>
+<td style="text-align: left">转账类型： 1.app, 2.openapi, 3.web</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -1945,10 +2006,10 @@
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0000111"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"wihdraw_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"withdraw_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0002782353"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1962,6 +2023,28 @@
         </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"TRX"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"withdraw_source"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"27.4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"TRX"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672318660000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">242</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"57fdc296-1e14-47fa-a99d-5e86f8e51008"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">56207376</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-13'>响应参数数据结构</h4>
@@ -1981,7 +2064,7 @@
 </tr>
 <tr>
 <td style="text-align: left">request_id</td>
-<td style="text-align: left">String</td>
+<td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">转账唯一标识</td>
 </tr>
@@ -2067,13 +2150,13 @@
 <td style="text-align: left">status</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败</td>
+<td style="text-align: left">转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败</td>
 </tr>
 <tr>
 <td style="text-align: left">withdraw_source</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账类型： 1.app, 2.openapi</td>
+<td style="text-align: left">转账类型： 1.app, 2.openapi, 3.web</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -2123,7 +2206,7 @@
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x33648fACAD6CECA85cf717841Ddd87c40B12438F"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
@@ -2131,10 +2214,27 @@
         </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x525208dd0b56c27bd10703bd675fca0509a17154"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">13238654</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-14'>响应参数数据结构</h4>
@@ -2278,7 +2378,7 @@
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x33648fACAD6CECA85cf717841Ddd87c40B12438F"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
@@ -2286,10 +2386,27 @@
         </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x525208dd0b56c27bd10703bd675fca0509a17154"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672107533000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672323030000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">13238654</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-15'>响应参数数据结构</h4>
@@ -2372,6 +2489,18 @@
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">收款状态: 1000 未确认，1100 已确认（交易区块已确认）, 2000 已完成（上账已完成），3000 异常</td>
+</tr>
+<tr>
+<td style="text-align: left">deposit_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">充值类型，1: 普通币种充值,  2：NFT充值</td>
+</tr>
+<tr>
+<td style="text-align: left">token_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">NFT充值的tokenId, 当: deposit_type=2时, 该值不为空</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -2529,7 +2658,7 @@
         </span><span class="nl">"trans_type"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0002782353"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2541,6 +2670,26 @@
         </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">242</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">1200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.0000111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_type"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0024040607337957"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"memo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1672304978000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contract_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="s2">"123975"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xE76a3d30dAc35C4b9A17E690cd250d8Bec649b65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1672318660000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">315</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-18'>响应参数数据结构</h4>
@@ -2756,7 +2905,7 @@
 <td style="text-align: left">sign</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">用户使用自己的私钥进行签名, 参数签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;main_chain_symbol&quot;, &quot;interactive_contract&quot;, &quot;amount&quot;, &quot;input_data&quot;。签名规则:（1）参数为空不参与签名; (2) amount表示提现金额, 参与签名时, 如1.0001000, 使用1.0001; (3) 参数使用k1=v1&amp;k2=v2的方式拼接; (4)参数按照ASCII升序排序, 转小写后使用MD5加密。当Co-signer使用不回调方式启动时, 将校验该sign数据是否正确</td>
+<td style="text-align: left">使用RSA私钥签名, 参与签名的参数: &quot;request_id&quot;, &quot;sub_wallet_id&quot;, &quot;main_chain_symbol&quot;, &quot;interactive_contract&quot;, &quot;amount&quot;, &quot;input_data&quot;。签名规则详见<code>Co-Signer交易签名验证</code></td>
 </tr>
 </tbody></table>
 
@@ -2862,6 +3011,28 @@
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
         </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">436</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120113</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-21'>响应参数数据结构</h4>
@@ -3034,12 +3205,34 @@
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0xe012F3957226894B1a2a44b3ef5070417a069dC2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
         </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120013</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">436</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"request_id"</span><span class="p">:</span><span class="s2">"0000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_wallet_id"</span><span class="p">:</span><span class="mi">1000895</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="s2">"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"main_chain_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_symbol"</span><span class="p">:</span><span class="s2">"HECO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.00018"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_fee"</span><span class="p">:</span><span class="s2">"0.000107277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1684220373000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1684222558000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_from"</span><span class="p">:</span><span class="s2">"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_to"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"input_data"</span><span class="p">:</span><span class="s2">"0xca718c65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interactive_contract"</span><span class="p">:</span><span class="s2">"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trans_source"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_height"</span><span class="p">:</span><span class="mi">3120113</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='e00f5e7845-22'>响应参数数据结构</h4>
@@ -3838,7 +4031,7 @@
 </tr>
 </tbody></table>
 <h4 id='2dda1c9689'>回调响应参数统一格式</h4>
-<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败</p>
+<p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败</p>
 <h3 id='web3-7'>Web3交易回调</h3><h4 id='http-25'>HTTP请求</h4>
 <p><code>POST /{url}</code></p>
 
@@ -3939,7 +4132,26 @@
 </tr>
 </tbody></table>
 <h4 id='2dda1c9689-2'>回调响应参数统一格式</h4>
-<p>返回字符串：<code>SUCCES</code>表示成功，<code>FAILURE</code>表示失败</p>
+<p>返回字符串：<code>SUCCESS</code>表示成功，<code>FAILURE</code>表示失败</p>
+<h2 id='co-signer-3'><em>Co-Signer交易签名验证</em></h2>
+<p>Co-Signer为交易提供更安全的双重验证功能。</p>
+
+<p>除Co-Signer回调机制外，客户可以在发起交易时，同时传入sign字段，Co-Signer将额外验证sign是否合法。</p>
+
+<p>具体签名规则如下：</p>
+
+<aside class="notice">
+1）参数按照`k1=v1&k2=v2`拼接方式签名，k按照`ASCII升序`排序；参数为空不参与签名
+<br/>
+<br/>
+2）参与签名的数字不得以数字0为结尾，如`1.0001000`，请使用`1.0001`参与签名
+<br/>
+<br/>
+3）参数拼接后，转小写然后使用MD5加密，如加密前参数为`address_to=0x5edc9177997bf6b4db559a5c184051858b3b3704&amount=1.0001`，MD5加密后为`c10c47a46b616526e739985ce1c7f15d`
+<br/>
+<br/>
+4）对MD5数据使用`SHA256`算法进行RSA签名，然后进行`BASE64`编码，得到最终的签名数据
+</aside>
 <h1 id='e08c1d4f9a'>错误码</h1>
 <p>接口错误码表 - 表格</p>
 
