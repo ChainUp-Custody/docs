@@ -49,21 +49,19 @@
 
 用户可通过以下方式获取APP
 
-方式一：手机浏览器访问官方网站（https://custody.chainup.com/download）或使用手机扫描二维码；
+方式一：手机浏览器访问官方网站（<https://custody.chainup.com/download>）或使用手机扫描二维码；
 
-<%= image_tag "qr_code_new.png"%>
+<%= image_tag "qr_code_new.png", style:"width: 200px" %>
 
 方式二：应用市场下载
 
-- 安卓系统可在谷歌应用市场搜索：ChainUp Custody；
-> 若您所在国家及地区访问谷歌应用市场受限，您可通过官网下载安装。
+- 安卓系统可在谷歌应用市场搜索：ChainUp Custody；若您所在国家及地区访问谷歌应用市场受限，您可通过官网下载安装。
 
-<%= image_tag "download1.png"%>
+<%= image_tag "download1.png", style:"width: 250px" %>
 
-- 苹果系统可在AppStore搜索：ChainUp Custody；
-> 由于政策原因，部分国家及地区的AppStore暂未上架（例如，中国大陆），您可通过其它国家地区的苹果账号获取。
+- 苹果系统可在AppStore搜索：ChainUp Custody；由于政策原因，部分国家及地区的AppStore暂未上架（例如，中国大陆），您可通过其它国家地区的苹果账号获取。
 
-<%= image_tag "download2.png"%>
+<%= image_tag "download2.png", style:"width: 250px" %>
 
 
 ### 注册登录
@@ -80,8 +78,7 @@
 
 目前系统支持`手动抄写`、`上传云服务器`两种备份方式。
 
-
-> 钱包分为**主钱包**、**子钱包**两个类型；一个主钱包可以创建多个子钱包；
+钱包分为**主钱包**、**子钱包**两个类型；一个主钱包可以创建多个子钱包；
 
 
 
@@ -150,9 +147,9 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 
 #### 关于回调通知
 
-> 目前系统支持三种业务类型回调服务；`交易状态回调`、`签名回调`、`交易审批回调`
+目前系统支持三种业务类型回调服务；`交易状态回调`、`签名回调`、`交易审批回调`
 
-> 其中`交易状态回调`地址、`签名回调`是由客户在ChainUp平台配置，且由ChainUp主动触发，`交易审批回调`地址由客户在Co-Signer程序内配置，且由Co-Signer主动触发
+其中`交易状态回调`地址、`签名回调`是由客户在ChainUp平台配置，且由ChainUp主动触发，`交易审批回调`地址由客户在Co-Signer程序内配置，且由Co-Signer主动触发
 
 `交易状态回调`：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，`创建API`页面配置【交易状态通知地址】
 
@@ -176,13 +173,13 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 - 若配置回调处理程序（安全级别：高）
 
-> Co-Signer 会对 OpenAPI 发起的交易请求到业务服务器进行二次审核，仅当业务服务器审核通过后方可进行签名操作；
+  Co-Signer 会对 OpenAPI 发起的交易请求到业务服务器进行二次审核，仅当业务服务器审核通过后方可进行签名操作；
 
-> 创建地址、资金归集、加油等交易不会回调
+  创建地址、资金归集、加油等交易不会回调
 
 - 若未配置回调处理程序（安全级别：较高）
 
-> API Co-Signer 会验证交易签名，并签署所有 OpenAPI 发起的交易请求；
+  API Co-Signer 会验证交易签名，并签署所有 OpenAPI 发起的交易请求；
 
 - [查看Co-Signer配置教程](https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C)
 
@@ -215,13 +212,13 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 - 钱包成员（`任意角色`）设置资金归集到账钱包及加油钱包；
 
-> 仅支持选择在APP端显示的子钱包；为了保证资金效率建议`归集钱包`与`加油钱包`设置为不同的钱包（由于账户类型的主链出金是单笔执行，若配置成相同钱包，在为地址补充矿工费时，出金交易会等待直到补充矿工费完成。）
+  仅支持选择在APP端显示的子钱包；为了保证资金效率建议`归集钱包`与`加油钱包`设置为不同的钱包（由于账户类型的主链出金是单笔执行，若配置成相同钱包，在为地址补充矿工费时，出金交易会等待直到补充矿工费完成。）
 
 <%= image_tag "auto_collect1.png"%>
 
 - `钱包创建者`在APP审批签名；通过钱包私钥对设置的钱包进行加密，确保资金归集的地址正确。
 
-<%= image_tag "auto_collect2.png"%>
+<%= image_tag "auto_collect2.png", style:"width: 250px" %>
 
 - 钱包成员（`任意角色`）配置子钱包归集、加油应用范围，币种归集、加油规则等信息
 
@@ -299,9 +296,9 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 - 签名完成，ChainUp将交易向区块链广播并监控状态
 
-> 若交易矿工费过低，可对该笔交易进行加速，以便快速上链；用户可在控制台或使用API操作；`/api/mpc/billing/withdraw_pending`
+  若交易矿工费过低，可对该笔交易进行加速，以便快速上链；用户可在控制台或使用API操作；`/api/mpc/billing/withdraw_pending`
 
-> 可通过接口获取支持加速的主链：`/api/mpc/wallet/open_coin`
+  可通过接口获取支持加速的主链：`/api/mpc/wallet/open_coin`
 
 - 交易被区块链确认后，回调通知客户业务系统转账通知（客户系统主动获取`/api/mpc/billing/sync_withdraw_list`）
 
@@ -320,9 +317,9 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 ## 统一说明
 
 
-### 域名及API密钥（API方式）
+### 域名及API密钥
 
-| 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>                     |
+| 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>  <https://custody.chainup.com/>     |
 | :---------------------------- | ------------------------------------------------- |
 | app_id:                       | 请创建钱包后获取                                  |
 | rsa_wallet_pub:               | Custody系统公钥；请创建钱包后从Custody系统获取    |
@@ -857,7 +854,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | size          | String | 否       | BTC类型系列，字节大小；注意：不要和其他系列参数一起传入   |
 | gas_price     | String | 否       | ETH类型系列，gas推荐单价；注意：不要和其他系列参数一起传入 |
 | gas_limit     | String | 否       | ETH类型系列，gas限制；注意：不要和其他系列参数一起传入|
-| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入`gas_limit除外，如ATOM`|
+| fee           | String | 否       | 其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入；`gas_limit除外，如ATOM`|
 | sign          | String | 否       | 使用RSA私钥签名, 参与签名的参数: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo"。签名规则详见`Co-Signer交易签名验证`|
 
 
@@ -894,7 +891,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 | Param  | 类型   | 是否必须 | 说明                                       |
 | :----- | :----- | :------- | :----------------------------------------- |
-| from           | String  | 否       | 出币地址, /api/mpc/coin_list 接口coin_type != 1时, 该参数必传 |
+| from           | String  | 否       | 出币地址, `/api/mpc/coin_list` 接口coin_type != 1时, 该参数必传 |
 | sub_wallet_id  | Integer | 否       | UTXO多地址出金时, 该参数必传, 指定from无效      |
 | to             | String  | 是       | 到账地址                                   |
 | memo           | String  | 否       | 转账到账地址memo，Memo类型转账时如有可填入     |
@@ -1063,7 +1060,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String  | 是       | 交易hash|
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi, 3.web                                 |
+| withdraw_source  | Integer | 是       | 转账类型： `1`app, `2`openapi, `3`web                                |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 转账币种合约地址 |
 | tx_height        | Long   | 是       | 交易完成的区块高度                                             |
@@ -1162,7 +1159,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String  | 是       | 交易hash|
 | confirmations    | Integer | 是       | 区块确认数，例：10                                           |
 | status           | Integer | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2201 系统拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | Integer | 是       | 转账类型： 1.app, 2.openapi, 3.web                                 |
+| withdraw_source  | Integer | 是       | 转账类型：  `1`app, `2`openapi, `3`web                                 |
 | base_symbol      | String  | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String  | 否       | 转账币种合约地址 |
 | tx_height        | Long   | 是       | 交易完成的区块高度                                             |
@@ -1879,7 +1876,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | txid             | String | 是       | 交易hash                                                     |
 | confirmations    | String | 是       | 区块确认数，例：10                                           |
 | status           | String | 是       | 转账状态: 1000 未审批, 1100 审批通过, 待签名，1200 支付中，2000 支付完成，2100 审批拒绝，2200 拒绝，2300 交易丢弃，2400 支付失败 |
-| withdraw_source  | String | 是       | 转账类型： `1`app, `2`openapi                                |
+| withdraw_source  | String | 是       | 转账类型： `1`app, `2`openapi, `3`web                           |
 | base_symbol      | String | 否       | 转账币种主链唯一标识，例：ETH                                |
 | contract_address | String | 否       | 转账币种合约地址                                             |
 | tx_height        | String | 是       | 交易完成的区块高度                                             |
@@ -1954,9 +1951,11 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ## **概述**
 
-Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上。Co-Signer需要绑定您钱包的分片私钥，用于创建地址和交易签名。
+Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上。Co-Signer需要绑定您钱包的分片私钥，用于`创建地址`和`交易签名`。
 
-Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。
+- Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。
+
+- 归集交易在app端签名授权后，将不会回调客户系统
 
 
 
@@ -1976,8 +1975,6 @@ Co-Signer主要实现了两个功能：创建地址和自动签名，具体流�
 
 <%= image_tag "sign.png"%>
 
-
-> 自动归集配置时客户签名，Co-Signer不会回调客户系统
 
 
 
