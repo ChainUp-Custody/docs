@@ -630,7 +630,7 @@
 <h2 id='82171488eb'>功能配置</h2>
 <p>在系统开发前，需要对钱包完成以下准备工作</p>
 <h3 id='api-2'>创建API</h3>
-<p>请<strong>钱包创建者</strong>登录ChainUp控制台系统，在<strong>API管理</strong>页面创建API；</p>
+<p>请<strong>钱包创建者</strong>登录<a href="https://custody.chainup.com/">ChainUp控制台系统</a>，在<strong>API管理</strong>页面创建API；</p>
 
 <p><img src="images/api1-6e366240.png" alt="" /></p>
 <h4 id='rsa'>关于RSA公钥</h4>
@@ -638,8 +638,8 @@
 <h4 id='rsa-2'>RSA公私钥对的说明</h4>
 <ul>
 <li><p>第一对RSA公私钥：创建 API 后，ChainUp Custody会默认生成，其中 <code>RSA公钥</code> 会给到开发者，开发者用于<code>响应参数解密</code></p></li>
-<li><p>第二对RSA公私钥：开发者生成，客户业务系统请求 API 前对参数加密，并将 <code>RSA公钥</code> 给到ChainUp Custody用于<code>请求参数解密</code></p></li>
-<li><p>第三对RSA公私钥：开发者生成，Co-Signer请求 API 前对参数加密，并将 <code>RSA公钥</code> 给到ChainUp Custody用于<code>请求参数解密</code></p></li>
+<li><p>第二对RSA公私钥：开发者生成，客户业务系统请求 API 前对参数加密，并将 <code>RSA公钥</code> 配置到ChainUp Custody用于<code>请求参数解密</code></p></li>
+<li><p>第三对RSA公私钥：开发者生成，Co-Signer请求 API 前对参数加密，并将 <code>RSA公钥</code> 配置到ChainUp Custody用于<code>请求参数解密</code></p></li>
 <li><p>第四对RSA公私钥（<code>可选</code>）：开发者生成，主要用于Co-Signer<code>未配置回调通知</code>时<code>验证交易签名</code>，该份公私钥由客户生成并保存，ChainUp Custody不持有</p></li>
 </ul>
 
@@ -657,15 +657,15 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 
 <p>其中<code>交易状态回调</code>地址、<code>签名回调</code>是由客户在ChainUp平台配置，且由ChainUp主动触发，<code>交易审批回调</code>地址由客户在Co-Signer程序内配置，且由Co-Signer主动触发</p>
 
-<p><code>交易状态回调</code>：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，<code>创建API</code>页面配置【交易状态通知地址】</p>
-
-<p><code>签名回调</code>：在API发起创建地址或为Co-Signer生成私钥片段时，ChainUp会回调Co-Signer进行签名操作；该回调地址由客户在ChainUp平台内，<code>创建API</code>页面配置【Co-Signer接口地址】</p>
-
-<p><code>交易审批回调地址</code>：请参考Co-Signer配置</p>
+<ul>
+<li><p><code>交易状态回调</code>：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，<code>创建API</code>页面配置【交易状态通知地址】</p></li>
+<li><p><code>签名回调</code>：在API发起创建地址或为Co-Signer生成私钥片段时，ChainUp会回调Co-Signer进行签名操作；该回调地址由客户在ChainUp平台内，<code>创建API</code>页面配置【Co-Signer接口地址】</p></li>
+<li><p><code>交易审批回调地址</code>：请参考Co-Signer配置</p></li>
+</ul>
 <h3 id='co-signer'>配置Co-Signer</h3>
 <p>Co-Signer 常用于自动化签名 OpenAPI 发起的、以及自动归集交易</p>
 <h4 id='co-signer-2'>Co-Signer服务器选择</h4>
-<p>Co-Signer支持部署在普通服务器或 <code>支持SGX</code> 的服务器，为了安全起见，建议使用带有 SGX 的服务器；推荐微软云服务商；查看Co-Signer服务器配置要求</p>
+<p>Co-Signer支持部署在普通服务器或 <code>支持SGX</code> 的服务器，为了安全起见，建议使用带有 SGX 的服务器；推荐微软云服务商；<a href="https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C">查看Co-Signer服务器配置要求</a></p>
 <h4 id='co-signer-3'>Co-Signer配置</h4>
 <p>Co-Signer 提供了回调处理程序，该程序属于可选组件；</p>
 
@@ -735,9 +735,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li>策略配置完成，系统自动运行，可在设置的钱包内查看资产变动情况。</li>
 </ul>
 
-<blockquote>
 <p>建议客户配置<code>矿工费不足报警</code>通知，及时补充，避免影响用户出币</p>
-</blockquote>
 <h2 id='929800ba16'>对接测试</h2>
 <p>为了让客户更便捷、快速的对接系统，ChainUp基于过往客户的对接经验，梳理了核心流程【获取充币地址】【用户充币】【用户提币】的对接方案。具体如下：</p>
 <h3 id='263e170b4c'>获取充币地址</h3>
@@ -748,9 +746,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li><p>签名成功返回币种创建的地址</p></li>
 </ul>
 
-<blockquote>
 <p>地址支持两种类型：系统地址、用户地址；<code>系统地址</code>用于资金归集或找零，<code>不可分配</code>给用户；</p>
-</blockquote>
 
 <p><img src="images/get_address-dbfc8059.png" alt="" /></p>
 <h3 id='3a86198eeb'>用户充币</h3>
@@ -788,7 +784,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <table><thead>
 <tr>
 <th style="text-align: left">生产环境域名(不支持测试环境):</th>
-<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip/</a>  <a href="https://custody.chainup.com/">https://custody.chainup.com/</a></th>
+<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip/</a></th>
 </tr>
 </thead><tbody>
 <tr>
@@ -816,7 +812,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td>Co-Signer公钥；使用Co-Signer生成，或自主生成；请创建钱包后配置到Custody系统</td>
 </tr>
 </tbody></table>
-
+<h4 id='rsa-3'>RSA公私钥格式</h4>
 <p><a href="http://www.metools.info/code/c80.html">RSA 公私钥生成地址</a></p>
 
 <p>密码长度：2048</p>
@@ -4103,13 +4099,20 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <ul>
 <li><p>Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。</p></li>
 <li><p>归集交易在app端签名授权后，将不会回调客户系统</p></li>
+<li><p><a href="https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C">查看Co-Signer部署文档</a></p></li>
 </ul>
 <h2 id='ae5b009f16'><strong>对接流程</strong></h2>
-<p>Co-Signer主要实现了两个功能：创建地址和自动签名，具体流程如下图：</p>
-<h4 id='8d32a28e9d'>创建地址流程：</h4>
-<p><img src="images/createaddress-4034e617.png" alt="" /></p>
-<h4 id='76b23b2e5e'>自动签名流程：</h4>
-<p><img src="images/sign-d7a24ba1.png" alt="" /></p>
+<p>Co-Signer主要实现了两个功能：创建地址和自动签名，调用关系如下图：</p>
+<h4 id='c7087995fc'>创建地址：</h4>
+<p><img src="images/create_address-05f0ecb9.png" alt="" /></p>
+<h4 id='78742dec0b'>自动签名（回调方式）：</h4>
+<p><img src="images/withdraw_call_back-ef9f5dbb.png" alt="" /></p>
+<h4 id='sign'>自动签名（签名sign验证方式）：</h4>
+<p><img src="images/withdraw_sign-4f3c4c5a.png" alt="" /></p>
+
+<ul>
+<li>回调方式、和签名sign验证方式可以并存，但是至少需要一种验证，开发者可以按照需要选择验证方式</li>
+</ul>
 <h2 id='co-signer-6'><strong>Co-Signer回调</strong></h2>
 <p>为了保证交易的安全，您需要在Co-Signer中配置一个业务系统的回调地址，在交易签名之前授权。</p>
 
