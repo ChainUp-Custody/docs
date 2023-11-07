@@ -90,7 +90,7 @@
 
 
 
-**私钥密码**用于**加解密私钥分片**，**非常重要**，为了您的资产安全**请务必及时备份**。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。
+  **私钥密码**用于**加解密私钥分片**，**非常重要**，为了您的资产安全**请务必及时备份**。 未备份私钥分片和密码将限制您MPC 钱包功能的使用。
 
 - **ChainUp Custody** 采用的是**3-3的签名策略**，其中2个私钥分片分别加密存储在微软云服务商和亚马逊云服务商，另外1个私钥分片在**用户本地**；
 - **用户对资产有100%的控制权：**ChainUp Custody **仅协助**用户管理资产，在没有用户私钥分片签名情况下，无法触碰用户资产。因此用户需要及时将**本地私钥分片进行备份并妥善保管**；
@@ -112,7 +112,7 @@
 
 ###  创建API
 
-请**钱包创建者**登录ChainUp控制台系统，在**API管理**页面创建API；
+请**钱包创建者**登录[ChainUp控制台系统](https://custody.chainup.com/)，在**API管理**页面创建API；
 
 
 <%= image_tag "api1.png"%>
@@ -128,9 +128,9 @@
 
 - 第一对RSA公私钥：创建 API 后，ChainUp Custody会默认生成，其中 `RSA公钥` 会给到开发者，开发者用于`响应参数解密`
 
-- 第二对RSA公私钥：开发者生成，客户业务系统请求 API 前对参数加密，并将 `RSA公钥` 给到ChainUp Custody用于`请求参数解密`
+- 第二对RSA公私钥：开发者生成，客户业务系统请求 API 前对参数加密，并将 `RSA公钥` 配置到ChainUp Custody用于`请求参数解密`
 
-- 第三对RSA公私钥：开发者生成，Co-Signer请求 API 前对参数加密，并将 `RSA公钥` 给到ChainUp Custody用于`请求参数解密`
+- 第三对RSA公私钥：开发者生成，Co-Signer请求 API 前对参数加密，并将 `RSA公钥` 配置到ChainUp Custody用于`请求参数解密`
 
 - 第四对RSA公私钥（`可选`）：开发者生成，主要用于Co-Signer`未配置回调通知`时`验证交易签名`，该份公私钥由客户生成并保存，ChainUp Custody不持有
 
@@ -151,11 +151,11 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 
 其中`交易状态回调`地址、`签名回调`是由客户在ChainUp平台配置，且由ChainUp主动触发，`交易审批回调`地址由客户在Co-Signer程序内配置，且由Co-Signer主动触发
 
-`交易状态回调`：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，`创建API`页面配置【交易状态通知地址】
+- `交易状态回调`：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，`创建API`页面配置【交易状态通知地址】
 
-`签名回调`：在API发起创建地址或为Co-Signer生成私钥片段时，ChainUp会回调Co-Signer进行签名操作；该回调地址由客户在ChainUp平台内，`创建API`页面配置【Co-Signer接口地址】
+- `签名回调`：在API发起创建地址或为Co-Signer生成私钥片段时，ChainUp会回调Co-Signer进行签名操作；该回调地址由客户在ChainUp平台内，`创建API`页面配置【Co-Signer接口地址】
 
-`交易审批回调地址`：请参考Co-Signer配置
+- `交易审批回调地址`：请参考Co-Signer配置
 
 
 ### 配置Co-Signer
@@ -164,7 +164,7 @@ Co-Signer 常用于自动化签名 OpenAPI 发起的、以及自动归集交易
 
 #### Co-Signer服务器选择
 
-Co-Signer支持部署在普通服务器或 `支持SGX` 的服务器，为了安全起见，建议使用带有 SGX 的服务器；推荐微软云服务商；查看Co-Signer服务器配置要求
+Co-Signer支持部署在普通服务器或 `支持SGX` 的服务器，为了安全起见，建议使用带有 SGX 的服务器；推荐微软云服务商；[查看Co-Signer服务器配置要求](https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C)
 
 
 #### Co-Signer配置
@@ -240,7 +240,7 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 - 策略配置完成，系统自动运行，可在设置的钱包内查看资产变动情况。
 
-> 建议客户配置`矿工费不足报警`通知，及时补充，避免影响用户出币
+  建议客户配置`矿工费不足报警`通知，及时补充，避免影响用户出币
 
 
 
@@ -259,7 +259,7 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 - 签名成功返回币种创建的地址
 
-> 地址支持两种类型：系统地址、用户地址；`系统地址`用于资金归集或找零，`不可分配`给用户；
+  地址支持两种类型：系统地址、用户地址；`系统地址`用于资金归集或找零，`不可分配`给用户；
 
 <%= image_tag "get_address.png"%>
 
@@ -319,7 +319,7 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 
 ### 域名及API密钥
 
-| 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>  <https://custody.chainup.com/>     |
+| 生产环境域名(不支持测试环境): | <https://openapi.hicoin.vip/>    |
 | :---------------------------- | ------------------------------------------------- |
 | app_id:                       | 请创建钱包后获取                                  |
 | rsa_wallet_pub:               | Custody系统公钥；请创建钱包后从Custody系统获取    |
@@ -328,6 +328,7 @@ Co-Signer 提供了回调处理程序，该程序属于可选组件；
 | rsa_co_signer_pri:            | Co-Signer私钥；使用Co-Signer生成，或自主生成、保存    |
 | rsa_co_signer_pub:            | Co-Signer公钥；使用Co-Signer生成，或自主生成；请创建钱包后配置到Custody系统 |
 
+#### RSA公私钥格式
 
 [RSA 公私钥生成地址](http://www.metools.info/code/c80.html)
 
@@ -1957,24 +1958,31 @@ Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上�
 
 - 归集交易在app端签名授权后，将不会回调客户系统
 
+- [查看Co-Signer部署文档](https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C)
+
 
 
 ## **对接流程**
 
-Co-Signer主要实现了两个功能：创建地址和自动签名，具体流程如下图：
+Co-Signer主要实现了两个功能：创建地址和自动签名，调用关系如下图：
 
 
 
-#### 创建地址流程：
+#### 创建地址：
 
-<%= image_tag "createaddress.png" %>
+<%= image_tag "create_address.png" %>
 
 
 
-#### 自动签名流程：
+#### 自动签名（回调方式）：
 
-<%= image_tag "sign.png"%>
+<%= image_tag "withdraw_call_back.png"%>
 
+#### 自动签名（签名sign验证方式）：
+
+<%= image_tag "withdraw_sign.png"%>
+
+- 回调方式、和签名sign验证方式可以并存，但是至少需要一种验证，开发者可以按照需要选择验证方式
 
 
 
