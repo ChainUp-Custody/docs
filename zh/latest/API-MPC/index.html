@@ -388,7 +388,7 @@
                     <a href="#ada01d8c4e" class="toc-h2 toc-link" data-title="统一说明">统一说明</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#api-api" class="toc-h3 toc-link" data-title="域名及API密钥（API方式）">域名及API密钥（API方式）</a>
+                            <a href="#api-4" class="toc-h3 toc-link" data-title="域名及API密钥">域名及API密钥</a>
                           </li>
                           <li>
                             <a href="#cb6baa1bd8" class="toc-h3 toc-link" data-title="接口规则">接口规则</a>
@@ -579,31 +579,29 @@
 <h1 id='4b55c33f0b'>接入指引</h1>
 <p>开发者可以根据下述流程快速完成ChainUp Custody - MPC钱包API的接入工作</p>
 
-<p><img src="images/process_cn_new-a85a9c28.png" alt="" /></p>
+<p><img src="images/process_cn_new-8503bbe4.png" alt="" /></p>
 <h2 id='a04c702b49'>开通账户</h2>
 <p>使用ChainUp MPC钱包需要开设一个账号，客户可自助完成开户操作</p>
 <h3 id='app'>下载APP</h3>
 <p>用户可通过以下方式获取APP</p>
 
-<p>方式一：手机浏览器访问官方网站（https://custody.chainup.com/download）或使用手机扫描二维码；</p>
+<p>方式一：手机浏览器访问官方网站（<a href="https://custody.chainup.com/download">https://custody.chainup.com/download</a>）或使用手机扫描二维码；</p>
 
-<p><img src="images/qr_code_new-d5a44680.png" alt="" /></p>
+<p><img src="images/qr_code_new-d5a44680.png" style="width: 200px" alt="" /></p>
 
 <p>方式二：应用市场下载</p>
 
 <ul>
-<li>安卓系统可在谷歌应用市场搜索：ChainUp Custody；
-&gt; 若您所在国家及地区访问谷歌应用市场受限，您可通过官网下载安装。</li>
+<li>安卓系统可在谷歌应用市场搜索：ChainUp Custody；若您所在国家及地区访问谷歌应用市场受限，您可通过官网下载安装。</li>
 </ul>
 
-<p><img src="images/download1-5bada9c5.png" alt="" /></p>
+<p><img src="images/download1-5bada9c5.png" style="width: 250px" alt="" /></p>
 
 <ul>
-<li>苹果系统可在AppStore搜索：ChainUp Custody；
-&gt; 由于政策原因，部分国家及地区的AppStore暂未上架（例如，中国大陆），您可通过其它国家地区的苹果账号获取。</li>
+<li>苹果系统可在AppStore搜索：ChainUp Custody；由于政策原因，部分国家及地区的AppStore暂未上架（例如，中国大陆），您可通过其它国家地区的苹果账号获取。</li>
 </ul>
 
-<p><img src="images/download2-c5737817.png" alt="" /></p>
+<p><img src="images/download2-c5737817.png" style="width: 250px" alt="" /></p>
 <h3 id='c190bff577'>注册登录</h3>
 <p>系统支持邮箱、手机号两种方式注册登录；注册与登录功能合二为一，首次登录会自动完成注册；</p>
 
@@ -613,9 +611,7 @@
 
 <p>目前系统支持<code>手动抄写</code>、<code>上传云服务器</code>两种备份方式。</p>
 
-<blockquote>
 <p>钱包分为<strong>主钱包</strong>、<strong>子钱包</strong>两个类型；一个主钱包可以创建多个子钱包；</p>
-</blockquote>
 <h4 id='ec2469f83f'>应用场景：</h4>
 <ul>
 <li><p>主钱包可用于某个业务线的资产统计；子钱包分配给不同的用户使用。</p></li>
@@ -657,11 +653,9 @@ Co-Signer RSA公钥除了对接口数据进行加密外，也参与对Co-Signer�
 Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Signer配置
 </aside>
 <h4 id='a197ee2310'>关于回调通知</h4>
-<blockquote>
 <p>目前系统支持三种业务类型回调服务；<code>交易状态回调</code>、<code>签名回调</code>、<code>交易审批回调</code></p>
 
 <p>其中<code>交易状态回调</code>地址、<code>签名回调</code>是由客户在ChainUp平台配置，且由ChainUp主动触发，<code>交易审批回调</code>地址由客户在Co-Signer程序内配置，且由Co-Signer主动触发</p>
-</blockquote>
 
 <p><code>交易状态回调</code>：在交易订单处理完成时（如充值、提现订单），ChainUp会回调客户通知订单最新状态，该回调地址由客户在ChainUp平台内，<code>创建API</code>页面配置【交易状态通知地址】</p>
 
@@ -679,19 +673,15 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li>若配置回调处理程序（安全级别：高）</li>
 </ul>
 
-<blockquote>
 <p>Co-Signer 会对 OpenAPI 发起的交易请求到业务服务器进行二次审核，仅当业务服务器审核通过后方可进行签名操作；</p>
 
 <p>创建地址、资金归集、加油等交易不会回调</p>
-</blockquote>
 
 <ul>
 <li>若未配置回调处理程序（安全级别：较高）</li>
 </ul>
 
-<blockquote>
 <p>API Co-Signer 会验证交易签名，并签署所有 OpenAPI 发起的交易请求；</p>
-</blockquote>
 
 <ul>
 <li><a href="https://custodysupport.chainup.com/hc/zh-cn/articles/23757099700889-Co-Signer-%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C">查看Co-Signer配置教程</a></li>
@@ -719,9 +709,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li>钱包成员（<code>任意角色</code>）设置资金归集到账钱包及加油钱包；</li>
 </ul>
 
-<blockquote>
 <p>仅支持选择在APP端显示的子钱包；为了保证资金效率建议<code>归集钱包</code>与<code>加油钱包</code>设置为不同的钱包（由于账户类型的主链出金是单笔执行，若配置成相同钱包，在为地址补充矿工费时，出金交易会等待直到补充矿工费完成。）</p>
-</blockquote>
 
 <p><img src="images/auto_collect1-4456dfc2.png" alt="" /></p>
 
@@ -729,7 +717,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li><code>钱包创建者</code>在APP审批签名；通过钱包私钥对设置的钱包进行加密，确保资金归集的地址正确。</li>
 </ul>
 
-<p><img src="images/auto_collect2-38630216.png" alt="" /></p>
+<p><img src="images/auto_collect2-38630216.png" style="width: 250px" alt="" /></p>
 
 <ul>
 <li>钱包成员（<code>任意角色</code>）配置子钱包归集、加油应用范围，币种归集、加油规则等信息</li>
@@ -785,11 +773,9 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <li><p>签名完成，ChainUp将交易向区块链广播并监控状态</p></li>
 </ul>
 
-<blockquote>
 <p>若交易矿工费过低，可对该笔交易进行加速，以便快速上链；用户可在控制台或使用API操作；<code>/api/mpc/billing/withdraw_pending</code></p>
 
 <p>可通过接口获取支持加速的主链：<code>/api/mpc/wallet/open_coin</code></p>
-</blockquote>
 
 <ul>
 <li><p>交易被区块链确认后，回调通知客户业务系统转账通知（客户系统主动获取<code>/api/mpc/billing/sync_withdraw_list</code>）</p></li>
@@ -798,11 +784,11 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 </ul>
 
 <p><img src="images/user_withdraw-ebc38b32.png" alt="" /></p>
-<h1 id='api-3'>API接口</h1><h2 id='ada01d8c4e'>统一说明</h2><h3 id='api-api'>域名及API密钥（API方式）</h3>
+<h1 id='api-3'>API接口</h1><h2 id='ada01d8c4e'>统一说明</h2><h3 id='api-4'>域名及API密钥</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">生产环境域名(不支持测试环境):</th>
-<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip/</a></th>
+<th><a href="https://openapi.hicoin.vip/">https://openapi.hicoin.vip/</a>  <a href="https://custody.chainup.com/">https://custody.chainup.com/</a></th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1728,7 +1714,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td style="text-align: left">fee</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入<code>gas_limit除外，如ATOM</code></td>
+<td style="text-align: left">其他系列，如DOT\TRX，使用fee；注意：不要和其他系列参数一起传入；<code>gas_limit除外，如ATOM</code></td>
 </tr>
 <tr>
 <td style="text-align: left">sign</td>
@@ -1777,7 +1763,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td style="text-align: left">from</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">否</td>
-<td style="text-align: left">出币地址, /api/mpc/coin_list 接口coin_type != 1时, 该参数必传</td>
+<td style="text-align: left">出币地址, <code>/api/mpc/coin_list</code> 接口coin_type != 1时, 该参数必传</td>
 </tr>
 <tr>
 <td style="text-align: left">sub_wallet_id</td>
@@ -2142,7 +2128,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td style="text-align: left">withdraw_source</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账类型： 1.app, 2.openapi, 3.web</td>
+<td style="text-align: left">转账类型： <code>1</code>app, <code>2</code>openapi, <code>3</code>web</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -2342,7 +2328,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td style="text-align: left">withdraw_source</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账类型： 1.app, 2.openapi, 3.web</td>
+<td style="text-align: left">转账类型：  <code>1</code>app, <code>2</code>openapi, <code>3</code>web</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -3806,7 +3792,7 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 <td style="text-align: left">withdraw_source</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
-<td style="text-align: left">转账类型： <code>1</code>app, <code>2</code>openapi</td>
+<td style="text-align: left">转账类型： <code>1</code>app, <code>2</code>openapi, <code>3</code>web</td>
 </tr>
 <tr>
 <td style="text-align: left">base_symbol</td>
@@ -4112,19 +4098,18 @@ Co-Signer内置生成RSA公私钥命令，仅限Co-Signer使用，请参考Co-Si
 </tr>
 </tbody></table>
 <h1 id='co-signer-5'>Co-Signer</h1><h2 id='b122105296'><strong>概述</strong></h2>
-<p>Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上。Co-Signer需要绑定您钱包的分片私钥，用于创建地址和交易签名。</p>
+<p>Co-Signer可以帮助您快速对接API，需要您单独部署在服务器上。Co-Signer需要绑定您钱包的分片私钥，用于<code>创建地址</code>和<code>交易签名</code>。</p>
 
-<p>Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。</p>
+<ul>
+<li><p>Co-Signer在交易签名前会回调您的业务系统，得到授权通过后才能发起签名，否则无法进行交易。</p></li>
+<li><p>归集交易在app端签名授权后，将不会回调客户系统</p></li>
+</ul>
 <h2 id='ae5b009f16'><strong>对接流程</strong></h2>
 <p>Co-Signer主要实现了两个功能：创建地址和自动签名，具体流程如下图：</p>
 <h4 id='8d32a28e9d'>创建地址流程：</h4>
 <p><img src="images/createaddress-4034e617.png" alt="" /></p>
 <h4 id='76b23b2e5e'>自动签名流程：</h4>
 <p><img src="images/sign-d7a24ba1.png" alt="" /></p>
-
-<blockquote>
-<p>自动归集配置时客户签名，Co-Signer不会回调客户系统</p>
-</blockquote>
 <h2 id='co-signer-6'><strong>Co-Signer回调</strong></h2>
 <p>为了保证交易的安全，您需要在Co-Signer中配置一个业务系统的回调地址，在交易签名之前授权。</p>
 
