@@ -1,175 +1,288 @@
 # ChainUp MPC Wallet
 
-**ChainUp Custody's** implementation of the **MPC technology** ensures that users' investment assets are under the protection of the highest security level in the market. User's private key will be managed jointly by the user and ChainUp Custody, and the user will have complete control over assets and may use them at any time without limitation. MPC technology not only makes recovery easier but also increases security by **removing the single point of failure of a private key.**
+**ChainUp Custody** ensures the overall implementation and application of **MPC** technology, providing the highest level of market security for your investment assets. User private keys are jointly managed by users and ChainUp Custody, granting you complete control over your assets without limitations of time and location. This technology facilitates easy backup and recovery of assets, eliminating single-point failures in private key management and enhancing the security of self-managed assets.
 
+The nature of the **MPC** protocol allows users to know which private key shares participate in signing without requiring participants to disclose their identities externally. This ensures the confidentiality of each party's input. Additionally, MPC guarantees that the signature generation party remains private and invisible on the network, ensuring personal data privacy while maintaining the trustworthiness of multi-party cooperation and transactions.
 
+**ChainUp Custody MPC** provides a simple and efficient integration component and API, enabling developers to quickly connect to the system. This allows you to automate the management of your wallet and transaction processes. Furthermore, we offer transaction message notifications to promptly alert you of events.
 
-**MPC** allows each co-signing component to audit which of the keys participated in the signing but the nature of the MPC protocol does not require participants to reveal their secret share to others, which means that every party’s input is kept private. In addition, the signature-generating parties are not exposed or visible over the network. MPC addresses the problem of enabling collaboration between different parties while providing trustworthy records and preserving the privacy of their individual data.
-
-
-
-#### API mainly provides the following functions:
+#### The API primarily offers the following functions:
 
 - Manage sub-wallets and view assets
-- Get an estimated gas fee for initiating a transaction
-- Initiate a transaction and receive notification of the final status of the transaction
-- Complete automatic signature and address generation through **Co-Signer** provided by ChainUp Custody
-- Get record details of all transactions
-
-
+- Obtain estimated transaction fees required for initiating transactions
+- Initiate transactions and receive notifications of the final transaction status
+- Automatically sign transactions and generate addresses through the Co-Signer provided by ChainUp Custody
+- Retrieve detailed records of all transactions
 
 Please contact your dedicated **Business Manager** or **email** to <custody@chainup.com> for **API** information.
 
-# Getting Started
+# Integration Guide
 
-## Access
+Developers can quickly integrate the ChainUp Custody - MPC Wallet API according to the following process.
 
-Follow the instructions below to access ChainUp Custody
+<%= image_tag "process_en_new.png"%>
 
-<%= image_tag "ejieruzhiyin.png" %>
+## Open an Account
 
+To use the ChainUp MPC Wallet, you need to open an account. Clients can complete the account opening process independently.
 
+### Download the App
 
-### Create Account
+Users can obtain the app through the following methods:
 
-#### Download MPC Wallet
+Method 1: Visit the official website (<https://custody.chainup.com/download>) using a mobile browser or scan the QR code with a mobile device.
 
-Method 1：Open the link in your mobile browser：https://custody.chainup.com/download
+<%= image_tag "qr_code_new.png", style:"width: 200px" %>
 
-Method 2： scan the QR code for download:
+Method 2: Download from the App Store
 
-<%= image_tag "qrCode.png", style:"width: 150px" %>
+- For Android, search for "ChainUp Custody" on the Google Play Store. If access to the Google Play Store is restricted in your country or region, you can download and install it from the official website.
 
+<%= image_tag "download1.png", style:"width: 250px" %>
 
+- For iOS, search for "ChainUp Custody" on the App Store. Due to policy reasons, the app may not be available in some countries or regions (e.g., mainland China), so you can obtain it through an Apple account from another country or region.
 
-#### Register MPC Wallet Account
+<%= image_tag "download2en.png", style:"width: 250px" %>
 
-Open the app and register a new account using email OR mobile phone number.
+### Register and Login
+
+The system supports registration and login via email or mobile number. Registration and login are combined into one function. The first login will automatically complete the registration.
 
 <%= image_tag "elogin.png", style:"width: 250px" %>
 
+### Create a Wallet
 
+After logging in, switch to MPC and create a wallet for your team in the app. The wallet creation will generate one private key share locally in the app. It is crucial to promptly back up the private key share, as some functions will be unavailable without it.
 
-### Build MPC Wallet
+Currently, there are two backup methods: "Manual Copy" and "Upload to Cloud Server."
 
-- There are 2 types of **MPC** wallets: **main wallet** and **sub-wallet**; one main wallet can create multiple sub-wallets;
+Wallets include both a **Main Wallet** and **Sub Wallets**. A main wallet can create multiple sub-wallets.
 
-  
-#### Application scenario:
+#### Use Cases:
 
-- The main wallet can be used for asset overview of a certain line of business; sub-wallets are assigned to different users of that business line. 
-- The main wallet can be used to view and analysis the company's total assets; the sub-wallets are allocated to different business departments.
-  
-  
-  
+- The main wallet can be used for asset statistics for a specific business line, while sub-wallets are assigned to different users.
+- The main wallet can be used for overall company asset statistics, with sub-wallets assigned to different business departments.
 
-**Private key password** is used to encrypt and decrypt private key shards. It is very important. For the safety of your assets, please make sure to back it up in time. Failure to back up private key shards and passwords will limit the use of your **MPC wallet** functions.
+The **Private Key Password** is used for **encrypting and decrypting private key shares** and is crucial for your asset security. Please ensure timely backup. The backup methods and password are essential for the secure use of the MPC wallet.
 
-Your **private key password** is essential for encrypting and decrypting private key shards. It's crucial to ensure its **timely backup** to safeguard your assets. Failure to back up private key shards and passwords may restrict the use of your MPC wallet functions.
+- **ChainUp Custody** uses a **3-3 signature strategy**, with two private key shares encrypted and stored on Microsoft and Amazon cloud services, and one private key share stored **locally on the user's device**.
+- Users have **100% control over their assets**: ChainUp Custody only assists users in managing assets and cannot access user assets without the user's private key share signature. Therefore, users need to promptly back up and securely store the **local private key share**.
+- For user convenience, the private key share exists in the form of a **recovery phrases**.
 
-- **ChainUp Custody** utilizes a **3-3 signature strategy**. The wallet has a total of 3 private key shards, 2 of which are encrypted and stored in ChainUp HSM, and the other 1 private key shard is stored in the **user's local device**. 
-
-- **You have 100% control over assets**: ChainUp Custody solely provides assistance in managing assets and cannot access user assets. Therefore, it is **crucial** for you to **backup you local private key shard in a timely and secure manner**.
-
-- Private key shards exist in the form of **recovery phrases** for practical reasons.
-
-  
-
-If the wallet function does not meet your needs, please contact your dedicated **Business Manager** or **email** to <custody@chainup.com> for upgrading package. 
-
-
-
+If the wallet configuration does not meet your requirements, please contact your dedicated **Business Manager** or  **email** to <custody@chainup.com> for support.
 
 
 ## Preparation
 
+Before system development, the wallet needs to complete the following preparations.
+
+### Create API
+
+The **wallet creator** should log in to the [ChainUp Console System](https://custody.chainup.com/) and create an API on the **API Management** page.
+
+<%= image_tag "api1en.png"%>
+
+#### About RSA Public Key
+
+To ensure secure data transmission, ChainUp uses the **RSA-2048 PKCS#8** key format for asymmetric encryption of API request and response data. The public key is used to decrypt request data and needs to be uploaded to ChainUp, while the private key is used to encrypt data and is configured by the client on the corresponding server and securely stored.
+
+#### Explanation of RSA Public-Private Key Pairs
+
+- First pair of RSA public-private keys: After creating the API, ChainUp Custody will generate a default pair. The `RSA public key` will be provided to the developer for `decrypting response parameters`.
+
+- Second pair of RSA public-private keys: Generated by the developer, used for encrypting parameters before API requests from the client's business system. The `RSA public key` is configured in ChainUp Custody for `decrypting request parameters`.
+
+- Third pair of RSA public-private keys: Generated by the developer, used by Co-Signer for encrypting parameters before API requests. The `RSA public key` is configured in ChainUp Custody for `decrypting request parameters`.
+
+- Fourth pair of RSA public-private keys (`optional`): Generated by the developer, mainly used for `verifying transaction signatures` when Co-Signer does `not configure callback notifications`. This pair of public-private keys is generated and saved by the client, and ChainUp Custody does not retain it.
+
+<aside class="notice">
+*Brief explanation of Co-Signer, please refer to Co-Signer for details.*
+<br/>
+<br/>
+In addition to encrypting interface data, the Co-Signer RSA public key is also involved in the encryption process of Co-Signer private key shares. For security reasons, it is recommended to set the Co-Signer RSA public key different from the business service RSA public key.
+<br/>
+<br/>
+Co-Signer has a built-in command for generating RSA public-private keys, which is limited to Co-Signer's use. Please refer to Co-Signer configuration.
+</aside>
+
+#### Callback Notifications
+
+The system currently supports three types of callback services: `Transaction Status Callback`, `Signature Callback`, and `Transaction Approval Callback`.
+
+- `Transaction Status Callback`: ChainUp will notify the client of the latest status of an order when processing is completed (e.g. receiving, transfer orders). The client configures this callback address on the ChainUp platform on the **Create API** page under **Transaction Status Notification Address**.
+
+- `Signature Callback`: ChainUp will callback Co-Signer for signature operations when creating an address or generating private key shares for Co-Signer. The client configures this callback address on the ChainUp platform on the **Create API** page under **Co-Signer Interface Address**.
+
+- `Transaction Approval Callback Address`: Please refer to the Co-Signer configuration.
+
+### Configure Co-Signer
+
+Co-Signer is commonly used for automated signing of OpenAPI-initiated transactions and automatic consolidation of transactions.
+
+#### Co-Signer Server Selection
+
+Co-Signer supports deployment on a regular server or `supports SGX` server. For security reasons, it is recommended to use a server with SGX support, preferably from Microsoft cloud services. [View Co-Signer Server Configuration Requirements](https://custodysupport.chainup.com/hc/en-us/articles/23757099700889-Setting-Up-Co-Signer)
+
+#### Co-Signer Configuration
+
+Co-Signer provides a callback handler, which is an optional component:
+
+- If configuring the callback handler (Security Level: High):
+  Co-Signer will perform a secondary review of transaction requests initiated by OpenAPI to the business server. Signing operations will only proceed when the business server's review is successful. Transactions like creating addresses, assets consolidation, and refueling will not trigger callbacks.
+
+- If not configuring the callback handler (Security Level: Higher):
+  API Co-Signer will verify transaction signatures and sign all transaction requests initiated by OpenAPI.
+
+- [View Co-Signer Configuration Tutorial](https://custodysupport.chainup.com/hc/en-us/articles/23757099700889-Setting-Up-Co-Signer)
+
+### Create Co-Signer Private Key Shares
+
+After configuring API and Co-Signer programs, create private key shares for Co-Signer in the app.
+
+The **wallet creator** can create Co-Signer private key shares on the MPC Wallet **Security** - **Co-Signer** page. The created Co-Signer private key shares will be encrypted and synchronized to the Co-Signer server using the Co-Signer RSA public key configured by the client on the ChainUp platform.
+
+<aside class="notice">
+*Notes*
+<br/>
+<br/>
+1) Ensure that the APPID is in an enabled state when creating. Co-Signer services are normal.
+<br/>
+<br/>
+2) If Co-Signer private key shares are lost or leaked, new private key shares can be refreshed or Co-Signer private key shares can be deleted. For security reasons, the original Co-Signer private key shares are not usable after refreshing or deleting.
+</aside>
+
+### Enable Automatic Consolidation
+
+To enhance assets security and utilization, some main chains need to be configured for consolidation and refueling functions. ChainUp provides a set of automated consolidation solutions for clients. The specific operation process is as follows:
+
+Login to the [ChainUp management platform](https://custody.chainup.com/) and create it on the Co-Signer page;
+
+- Wallet members (`any role`) set the assets consolidation to the receiving wallet and refueling wallet.
+  Only sub-wallets displayed in the app can be selected. For efficient assets use, it is recommended to set the `consolidation wallet` and `refueling wallet` to different wallets (due to the nature of single-execution transfer for account-type main chains, if configured with the same wallet, the withdrawal transaction(transfer) will wait until the miner fee is supplemented when supplementing the miner fee for the address).
+
+<%= image_tag "auto_collect1en.png"%>
+
+- The **wallet creator** approves the signature in the app.
+  Encrypt the set wallets with the wallet's private key to ensure the correct address for assets consolidation.
+
+<%= image_tag "auto_collect2en.png", style:"width: 250px" %>
+
+- Wallet members (`any role`) configure sub-wallet consolidation, refueling application scope, coin consolidation, refueling rules, and other information.
+
+<%= image_tag "auto_collect3en.png"%>
+
+#### Application Consolidation Scope
+
+Configure the sub-wallets for which assets consolidation should be performed.
+
+#### Consolidation Strategy
+
+Configure the currencies for which assets consolidation should be performed, along with the consolidation threshold. Assets consolidation will be automatically triggered when the threshold is exceeded and the miner fee is set below the configured level. Users can customize the consolidation threshold and maximum miner fee through the `Console` or `API`.
+
+#### Refueling Strategy
+
+Configure the replenishment of miner fees for the consolidated currencies. Since token consolidation requires the use of the main coin as a miner fee, when the token in the address meets the consolidation strategy and the address does not have the main coin, replenishment of miner fees will be triggered from the refueling wallet to the address to be consolidated. The quantity of replenished miner fees can be customized, and it is essential to ensure that the replenished miner fee is lower than the consolidation threshold.
+
+- Once the strategy is configured, the system runs automatically, and users can view asset changes in the set wallet.
+
+  It is recommended for clients to configure `insufficient miner fee alerts` to replenish in a timely manner and avoid affecting user transfers (withdrawals).
+
+## Integration Testing
+
+To facilitate clients in quickly and conveniently integrating the system, ChainUp has outlined the core processes based on past client integration experiences, focusing on the integration solutions for [Get Receiving(Deposit) Address] , [User Receiving(Deposit)] and [User Transfer (Withdrawal]. The details are as follows:
+
+### Get Receiving Address
+
+- Create a sub-wallet `/api/mpc/sub_wallet/create`
+
+- Create a coin address for the sub-wallet `/api/mpc/sub_wallet/create/address`
+
+- ChainUp callbacks Co-Signer for signing, and Co-Signer collaborates with ChainUp node to complete the signing
+
+- Successfully signed, return the address created for the coin
+
+  Addresses support two types: system addresses and user addresses. The `system address` is used for assets consolidation or change, and cannot be assigned to users.
+
+<%= image_tag "get_addressen.png"%>
+
+### User Receiving (Deposit)
+
+- Users complete registration within the client system.
+
+- When users view the coin receiving address in the frontend, the client system assigns a coin address to the user.
+
+- Users deposits assets to the assigned address.
+
+- ChainUp monitors the blockchain address for incoming transactions. After detecting a deposit, ChainUp notifies the client's business system of the receiving notification (the client's system actively retrieves `/api/mpc/billing/sync_deposit_list`).
+
+- The client obtains the current block height of the corresponding blockchain for the coin (`/api/mpc/chain_height`).
+
+- The client system credits the user's account after confirming the required number of secure confirmations.
+
+- User receives the coin (deposits successful).
+
+<%= image_tag "user_depositen.png"%>
 
 
-### Development Instructions
+### User Transfer (Withdrawal)
+
+- Users initiate a transfer in the client system.
+
+- After the client system approves the Transfer, it initiates a Transfer request to the ChainUp system via API `/api/mpc/billing/withdraw`.
+
+- Co-Signer periodically retrieves withdrawal transactions. If Co-Signer has configured a callback program, it confirms with the client's business system. If Co-Signer has configured signature verification, it verifies the signature and collaborates with the ChainUp node to sign.
+
+- Once signed, ChainUp broadcasts the transaction to the blockchain and monitors its status.
+
+  If the transaction miner fee is too low, the transaction can be accelerated for quick confirmation. Users can perform this operation through the console or use the API `/api/mpc/billing/withdraw_pending`.
+
+  Supported blockchains for acceleration can be obtained through the API `/api/mpc/wallet/open_coin`.
+
+- After blockchain confirmation, ChainUp notifies the client's business system of the transfer notification (the client's system actively retrieves `/api/mpc/billing/sync_withdraw_list`).
+
+- The client system updates the order status.
+
+- User transfer out successful.
+
+<%= image_tag "user_withdrawen.png"%>
+
+# API Interface
+
+## Overview
 
 
+### Domain and API Key
 
-#### Two pairs of public and private key functions (API mode）
+| Production Environment Domain (Not applicable to the testing environment): | <https://openapi.hicoin.vip/>    |
+| :------------------------------------------------------------------------ | ------------------------------------------------- |
+| app_id:                                                                   | Obtain after creating a wallet                                  |
+| rsa_wallet_pub:                                                           | Custody system public key; Obtain from Custody system after creating a wallet    |
+| rsa_third_prv:                                                            | Client private key; Generated and saved independently                          |
+| rsa_third_pub:                                                            | Client public key; Generated independently; Configure in Custody system after creating a wallet |
+| rsa_co_signer_pri:                                                        | Co-Signer private key; Generated using Co-Signer or generated and saved independently    |
+| rsa_co_signer_pub:                                                        | Co-Signer public key; Generated using Co-Signer or generated independently; Configure in Custody system after creating a wallet |
 
-**The first pair of public and private keys**： The developer shall generate a pair of public and private keys in advance when opening the **MPC Wallet** account. The public key (rsa_third_pub) is provided to the platform and the private key is kept by itself. The private key is the only proof for the third-party application to call the wallet service and shall not be disclosed to anyone. When the third party requests the wallet service, the private key is used to encrypt the request parameters. When the platform receives the request, the public key (rsa_third_pub) is used to decrypt the request data.
+#### RSA Public-Private Key Format
 
-**The second pair of public and private keys**： After the developer opens the asset management account, the platform will provide the wallet public key (rsa_wallet_pub) to the developer. When the third-party application receives the response data or asynchronous notification of the wallet, it needs to use the public key to decrypt.
+[RSA Public-Private Key Generator](http://www.metools.info/code/c80.html)
 
+Password Length: 2048
 
-
-#### Domain name and API key (API mode)
-
-| Production domain name(test environment not supported): | [https://openapi.hicoin.vip](https://openapi.hicoin.vip/)    |
-| :------------------------------------------------------ | ------------------------------------------------------------ |
-| `app_id`                                                | Please get it after creating the wallet                      |
-| `rsa_wallet_pub`                                        | Custody system public key; Please create the wallet and get it from the Custody system |
-| `rsa_third_prv`                                         | Client private key; Independent generation and preservation  |
-| `rsa_third_pub`                                         | Client public key; Autonomous generation; Please create the wallet and configure it to the Custody system |
-
-
-
-**RSA public/private key generated address** http://www.metools.info/code/c80.html
-
-Recommended password length：2048
-
-Recommended key format：PKCS#8
-
-Description：
-
-1. Rsa_third_prv is a private key for third-party applications and is used primarily to encrypt request parameters. In a production environment, rsa_third_prv is generated by the developer and the corresponding public key is provided to the platform. To simplify the docking process for developers, a set of third-party public and private keys is directly provided here to facilitate quick docking for developers.
-2. Test environment docking is not supported at present, please register to create a wallet according to **Access Guidelines** , and get the API related information of the production environment.
-
-### Account preparation
-
-**The developer prepares the following information：**
-
-1）Generate a pair of public and private keys and provide the public key to the platform;
-
-2）IP of **third-party** application server and Co-Signer server;
-
-3）**Receiving** and **Transfer** callback notification address;
-
-4）Domain name of the **Co-signer Server**
-
-
-
-Contact relevant personnel of the platform to provide the above information. The platform prepares an asset management account for you and provides you with the following information:
-
-1）Unique identification of the merchant：`app_id`；
-
-2）The wallet public key：`rsa_wallet_pub`.
-
-
-
-### Interface Process
-
-Documentation is the interface that the wallet service provides to third-party applications.
-
-
-
-The interface providers in the following documents are referred to as **wallet services**，and the interface callers are referred to as **third-party applications**. When the third-party application requests the wallet service, it encrypts the request parameters through the **RSA** algorithm and decrypts the response data after receiving the wallet service
-
+Key Format: PKCS#8
 
 
 ### Interface Rules
 
-
-| Transfer mode:               | https(HTTP is temporarily used in the test environment)      |
-| :--------------------------- | ------------------------------------------------------------ |
-| Signature field:             | All Required fields, except the Sign field, need to be signed |
-| The response status code is: | 0, indicating successful processing, and non-0 indicates request error or system exception |
-| Request address:             | domain name + interface address                              |
-| Encryption algorithm:        | RSA                                                          |
+| Transmission Method: | https (temporary use of http in the testing environment)                           |
+| :--------------------- | ------------------------------------------------------ |
+| Response Status Code: | `0` indicates processing `success`, non-0 indicates **request error** or **system exception** |
+| Request Address:     | Domain + Interface Address                                          |
+| Encryption Algorithm: | RSA                                                   |
 
 
 
-
-
-# API list
-
-## Overview 
-
-> Request Example
+> Request Example:
 
 ```java
 POST /api/mpc/sub_wallet/assets
@@ -177,27 +290,12 @@ POST /api/mpc/sub_wallet/assets
 app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI
 ```
 
-
 ### Common Request Parameters
 
-| Param  | Type   | Required | Description                                                  |
-| ------ | ------ | -------- | ------------------------------------------------------------ |
-| app_id | String | optional | merchant unique identifier                                   |
-| data   | String | optional | encrypted String, decrypted format is defined as `Decrypted Request Parameters` |
-
-
-
-### Request Example
-
-
-#### HTTP Request
-
-`POST/api/mpc/sub_wallet/assets`
-
-
-
-
-
+| Param  | Type   | Required | Description                                               |
+| :----- | :----- | :------- | :-------------------------------------------------------- |
+| app_id | String | Required | Merchant unique identifier                                |
+| data   | String | Optional | Encrypted string; encrypted with the Client's RSA private key, specific encryption information is described in the `Request Parameter Data Structure` of each interface |
 
 
 
@@ -205,47 +303,57 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 ### Common Response Parameters
 
-| Param | Type   | Required | Description                                                  |
-| ----- | ------ | -------- | ------------------------------------------------------------ |
-| data  | String | optional | encrypted String decrypted format is defined as `Decrypted Response Parameters` |
+| Param | Type   | Required | Description                                               |
+| :---- | :----- | :------- | :-------------------------------------------------------- |
+| data  | String | Required | Encrypted string; encrypted with Custody's RSA private key, specific encryption information is described in the `Response Result Data Decryption Format` |
 
 
 
-> Response Example
+> Response Result Example:
 
 ```java
 {
-    "data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov-7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA_NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2_u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ_H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzkaHXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"
+    "data": "SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOsImMTe41UaqAoYI2ZghmaphXHov
+        -7hsRsVmOhyPqC-JFuRGvonJKFd2Jirxv6Vn_8V40r_MMYTkhqcviQbZWYW5xX8Ai8CIpqas9fIWVDIYA
+        _NKBl0UCJpwGxscxLNpjq5Z8-BTyIYDsVBquM9zEQGBCfcA7szD9n2fN_loSkoexlwqV8wg9HIZO5yQ6utZ_
+        Kt0lNDQQb8zn8BwfAvsEsbJlOINUAqhxh1vV_AJ4bXn2uYx8TaYcBht-n_ZcBdxIDt975dbOFUiH-
+        oCzIuDi1oLDtb4EylfCvhU5E4ozel_lQ-6cyIG0Dqiiyx0RFFOCJzPSXIoV031pvoa8pTCpkWklh8mRw1rylBgeZtqSxpnJO2
+        _u2RIlXq6Hs8Yly9CmhIXaSrUgPir0h6xVxlf4VC6PFVCkiiTlp0kZ
+        _H_UbKm0nUis3v3U2sflWJ2C449waSrikhuxVrFAQ6PQmrFVCAE6MYXNrFXJQuam2HAIQNSGbFQjspw8b_
+        bXyfyZMGZ3K2oBC4I_v3eETTdPe0pfSNJb-5g37K0tOAr_UFbWK8pkC8yl56fSjn8tcR3yCRWwoi8jxTcUBiswTtvXZtzgG4dyzka
+        HXjsZjSGiywXSqP76VZWlyOmAx6IDSViLcPLPISdU3ruCI"
 }
 
 ```
 
+#### Decrypted Response Parameters
 
 
 
-
-### Decrypted Response Parameters
-
-| Param | Type   | Required | Description                                                  |
-| ----- | ------ | -------- | ------------------------------------------------------------ |
-| code  | String | Required | status code                                                  |
-| msg   | String | Required | description of the response result                           |
-| data  | String | optional | the specific response data, the data structure is defined as `Response Data Parameters` |
+| Param | Type   | Required | Description                                               |
+| :---- | :----- | :------- | :-------------------------------------------------------- |
+| code  | String | Yes      | Status code, e.g., 100002                                |
+| msg   | String | Yes      | Explanation of the response result, e.g., Request parameter error |
+| data  | String | No       | Specific response data; data structure defined in the `Response Parameter Data Structure` of each interface |
 
 
 
-### Encryption and Decryption Mode
+### Encryption and Decryption Method
 
-The values of the request parameter DATA and the response field DATA are both encrypted by RSA and encrypted by **base64urlsafe**
+
+
+The values of the request parameter data and the response field data are both encrypted with RSA and then encrypted with **base64urlsafe**.
+
+
 
 <aside class="notice">
-*Matters needing attention*
+*Note*
 <br/>
 <br/>
-1. There are two symbols + and/that are escaped directly by URL in Base64 traditional encoding. Therefore, if we want to transfer these encoded strings through URL, we need to do traditional Base64 encoding first, then replace + and/with two characters - _ respectively, and do the opposite action decoding at the receiving end. 
+1) In traditional base64 encoding, there are two symbols, + and /, which will be directly escaped by the URL. Therefore, if you want to transmit these encoded strings via URL, you need to do traditional base64 encoding first, and then replace + and / with - _ respectively. On the receiving end, do the opposite decoding action.
 <br/>
 <br/>
-2. RSA encryption and decryption using segmented encryption
+2) RSA encryption and decryption use segmented encryption.
 </aside>
 
 
@@ -272,27 +380,40 @@ Get the supported MPC main chain coins and the MPC main chain coins opened in Ch
 
 ```json
 {
-    "open_main_chain": [
+    "open_main_chain":[
         {
-            "coin_net": "BTC",
-            "symbol": "BTC",
-            "symbol_alias": "BTC",
-            "support_acceleration": false
+            "coin_net":"BTC",
+            "symbol":"BTC",
+            "symbol_alias":"BTC",
+            "support_acceleration" : false
+        },
+        {
+            "coin_net":"ETH",
+            "symbol":"ETH",
+            "symbol_alias":"ETH",
+            "support_acceleration" : true
         }
     ],
-    "support_main_chain": [
+    "support_main_chain":[
         {
-            "coin_net": "BTC",
-            "if_open_chain": true,
-            "symbol": "BTC",
-            "symbol_alias": "BTC",
-            "support_acceleration": false
+            "coin_net":"BTC",
+            "if_open_chain":true,
+            "symbol":"BTC",
+            "symbol_alias":"BTC",
+            "support_acceleration" : false
+        },
+        {
+            "coin_net":"ETH",
+            "if_open_chain":false,
+            "symbol":"ETH",
+            "symbol_alias":"ETH",
+            "support_acceleration" : true
         }
     ]
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param              | Type    | Required | Description                                           |
 | :----------------- | :------ | :------- | :---------------------------------------------------- |
@@ -318,13 +439,14 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
 `GET /api/mpc/coin_list`
 
 #### Request Parameters
+| Param         | Type    | Required | Description                                     |
+| :------------ | :------ | :------- | :---------------------------------------------- |
+| time          | Long    | Yes      | Current timestamp                               |
+| charset       | String  | Yes      | Encoding format, pass utf-8 in general cases    |
+| coin_symbol   | String  | No       | Unique identifier for the coin, used in transfers, e.g., USDTERC20   |
+| base_coin     | String  | No       | Name of the base coin on the main chain, unique identifier for the coin, used in transfers, e.g., ETH |
+| open_chain    | Boolean | No       | Main chain coin, default to getting all, `true` to get opened coins, `false` to get unopened coins |
 
-| Param         | Type   | Required | Description                 |
-| :------------ | :----- | :------- | :-------------------------- |
-| time          | long   | Yes      | Current timestamp           |
-| charset       | String | Yes      | Encoding format, typically "utf-8" |
-| symbol        | String | No       | Unique identifier for the coin, used for transfers, e.g., USDTERC20 |
-| base_symbol   | String | No       | Unique identifier for the base coin of the main chain, used for transfers, e.g., ETH |
 
 
 > Response：
@@ -339,7 +461,8 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
         "contract_address":"0xe9e7cea3dedca5984780bafc599bd69add087d56",
         "decimals":"18",
         "deposit_confirmation":"1",
-        "explorer":"https://www.bscscan.com/address/",
+        "address_link":"https://www.bscscan.com/address/",
+        "tx_link":"https://www.bscscan.com/tx/",
         "icon":"",
         "if_open_chain":true,
         "name":"BUSD Token;BSC;BUSD",
@@ -349,12 +472,34 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
         "symbol":"BUSD",
         "symbol_alias":"BUSD",
         "support_acceleration": true,
-        "support_multi_addr" : false
+        "support_multi_addr" : true
+    },
+    {
+        "address_regex":".*",
+        "address_tag_regex":"",
+        "base_symbol":"ETH",
+        "coin_net":"ETH",
+        "contract_address":"0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals":"18",
+        "deposit_confirmation":"1",
+        "address_link":"https://etherscan.io/address/",
+        "tx_link":"https://etherscan.io/tx/",
+        "icon":"",
+        "if_open_chain":false,
+        "name":"USDTERC20;ETH;USDT",
+        "real_symbol":"USDTERC20",
+        "support_memo":"0",
+        "support_token":"0",
+        "symbol":"USDTERC20",
+        "symbol_alias":"USDT",
+        "support_acceleration": true,
+        "support_multi_addr" : true
     }
 ]
 ```
 
-#### Response Data Parameters 
+
+#### Response Data Parameters
 
 | Param                | Type     | Required | Description                                      |
 | :------------------- | :------- | :------- | :----------------------------------------------- |
@@ -375,18 +520,45 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
 | address_regex        | String   | Yes      | Address regex pattern                             |
 | support_acceleration | Boolean  | Yes      | Indicates if acceleration is supported            |
 | support_multi_addr   | Boolean | Yes      | Support for multiple addresses, true: supported, false: not supported |
+| merge_address_symbol   | String   | No       | Merged address main chain coin, unique identifier for the coin |
+
+### Get Main Chain Latest Block Height
+
+Get the latest block height of the specified main chain.
+
+#### HTTP Request
+
+`GET /api/mpc/chain_height`
+
+#### Request Parameters
+
+| Param         | Type   | Required | Description                        |
+| :------------ | :----- | :------- | :---------------------------------- |
+| base_symbol   | String | Yes      | Unique identifier for the coin, e.g., ETH |
+
+> Response Example
+
+```json
+{
+    "height": 10023412
+}
+```
+#### Response Data Parameters
+
+| Param   | Type   | Required | Description               |
+| :------ | :----- | :------- | :------------------------- |
+| height  | Long   | Yes      | Latest block height of the main chain |
 
 
 
-
-## Sub-wallet (user)
+## Sub-wallet
 
 
 
 
 ### Create a sub-wallet
 
-Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
+Pass in the specified sub-wallet name to create a new sub-wallet for the main wallet
 
 #### HTTP Request
 
@@ -394,7 +566,7 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param           | Type   | Requried | Description                                                  |
 | :-------------- | :----- | :------- | :----------------------------------------------------------- |
@@ -410,7 +582,7 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
 ```
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param         | Type    | Requried | Description   |
 | :------------ | :------ | :------- | :------------ |
@@ -419,6 +591,39 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the wallet
 
 
 
+
+### Sub-Wallet Address Creation
+
+Create an address for a specified sub-wallet and coin; the same sub-wallet can have multiple addresses, and Memo types may create multiple memos.
+
+#### HTTP Request
+
+`POST /api/mpc/sub_wallet/create/address`
+
+#### Request Parameters Data Structure
+
+| Param         | Type    | Required | Description                |
+| :------------ | :------ | :------- | :------------------------- |
+| sub_wallet_id | Integer | Yes      | Sub-wallet ID              |
+| symbol        | String  | Yes      | coin unique identifier, e.g., USDTERC20 |
+
+> Response Example
+
+```json
+{
+    "address": "0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86",
+    "addr_type": 1,
+    "memo": ""
+}
+```
+
+#### Response Data Parameters
+
+| Param     | Type    | Required | Description                                                                                   |
+| :-------- | :------ | :------- | :-------------------------------------------------------------------------------------------- |
+| address   | String  | Yes      | Created address                                                                               |
+| addr_type | Integer | Yes      | Address type, 1: User address, 2: System address (including Consolidation address, change address). `System addresses` cannot be assigned to users for use; change in UTXO transactions will be directed to the change address |
+| memo      | String  | No       | Memo assigned for Memo types under the main chain                                             |
 
 
 
@@ -442,12 +647,12 @@ Obtain the receiving address under the specified sub-wallet and coin
 > Response
 
 ```json
-{ 
+{
     "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param   | Type   | Requried | Description       |
 | :------ | :----- | :------- | :---------------- |
@@ -456,13 +661,13 @@ Obtain the receiving address under the specified sub-wallet and coin
 
 ### Create Sub-Wallet Address
 
-For coins where the `can_create_multi_addr` field is `true` in the `/api/mpc/coin_list` interface, multiple addresses can be created.
+Create an address for a specified sub-wallet and coins; the same sub-wallet can have multiple addresses, and Memo types may create multiple memos.
 
 #### HTTP Request
 
 `POST /api/mpc/sub_wallet/create/address`
 
-#### Request Parameters 
+#### Request Parameters
 
 | Param         | Type    | Required | Description                             |
 | :------------ | :------ | :------- | :-------------------------------------- |
@@ -472,17 +677,21 @@ For coins where the `can_create_multi_addr` field is `true` in the `/api/mpc/coi
 > Response Example
 
 ```json
-{ 
+{
     "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
+    "addr_type":1,
+    "memo":""
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
-| Param   | Type   | Required | Description   |
-| :------ | :----- | :------- | :------------ |
-| address | String | Yes      | Created address|
 
+| Param   | Type   | Required | Description |
+| :------ | :----- | :------- | :---------- |
+| address | String | Yes      | Created address |
+| addr_type | Integer | Yes   | Address type, 1: User address, 2: System address (including consolidation address, change address). `System address` cannot be assigned to users for use, and the change in UTXO transactions will be sent to the change address. |
+| memo     | String   | No     | Assigned when the coin under Memo is allocated |
 
 ### Query Sub-Wallet Address
 
@@ -492,7 +701,7 @@ List of sub-wallet addresses
 
 `POST /api/mpc/sub_wallet/get/address/list`
 
-#### Request Parameters 
+#### Request Parameters
 
 | Param         | Type    | Required | Description                             |
 | :------------ | :------ | :------- | :-------------------------------------- |
@@ -504,23 +713,26 @@ List of sub-wallet addresses
 
 ```json
 [
-    { 
+    {
         "address":"12ZzzA48sYnE12fdkmKmaxkR3Rz5j7Gjac",
         "addr_type": 1,
+        "memo": ""
     },
-    { 
+    {
         "address":"139cRprA9siBDbScbjtCZTcESUgZ1rm9fr",
         "addr_type": 2,
+        "memo": ""
     }
 ]
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param     | Type    | Required | Description                      |
 | :-------- | :------ | :------- | :------------------------------- |
 | address   | String  | Yes      | Created address                  |
 | addr_type | Integer | Yes      | Address type, 1: regular address, 2: change address ( occurs when a user uses an input that is worth more than the transaction cost, the extra funds are sent back to the users as change through a newly generated address.)|
+| memo     | String   | No      |  |
 
 
 
@@ -534,7 +746,7 @@ Get the account assets under the specified sub-wallet and coin.
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param         | Type   | Requried | Description                                           |
 | :------------ | :----- | :------- | :---------------------------------------------------- |
@@ -545,28 +757,28 @@ Get the account assets under the specified sub-wallet and coin.
 
 ```json
 {
+    "collecting_balance":"3.23",
     "normal_balance":"1.23",
     "lock_balance":"0.77"
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param             | Type   | Requried | Description       |
 | :---------------- | :----- | :------- | :---------------- |
 | normal_balance    | String | Yes      | Available balance |
 | lock_balance      | String | Yes      | Freeze balance    |
+| collecting_balance | String | Yes   | Balance for awaiting consolidation assets |
 
 
 
 
 
 
+### Modify the Display Status for Sub-wallet
 
-### Modify the Display Status
-
-Specify the display status of the sub-wallet on the APP client, if it is not displayed, the transaction cannot be initiated on the APP.
-
+The display of the specified sub-wallet in the App and web portal is essential for initiating transactions. If it is not displayed, transactions cannot be initiated in the app.
 
 
 #### HTTP Request
@@ -575,7 +787,7 @@ Specify the display status of the sub-wallet on the APP client, if it is not dis
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param           | Type   | Requried | Description                                              |
 | :-------------- | :----- | :------- | :------------------------------------------------------- |
@@ -584,7 +796,7 @@ Specify the display status of the sub-wallet on the APP client, if it is not dis
 
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 
 None
@@ -593,7 +805,7 @@ None
 
 
 
-## Transfer
+## Transfer (Withdrawal)
 
 
 
@@ -605,11 +817,11 @@ None
 
 #### HTTP Request
 
-`POST /api/mpc/billing/transfer`
+`POST /api/mpc/billing/withdraw`
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param         | Type   | Requried | Description                                                  |
 | :------------ | :----- | :------- | :----------------------------------------------------------- |
@@ -624,32 +836,32 @@ None
 | size          | String | No       | Size in bytes for BTC series; Note: Do not pass along with other series parameters |
 | gas_price     | String | No       | Gas recommended price for ETH series; Note: Do not pass along with other series parameters |
 | gas_limit     | String | No       | Gas limit for ETH series; Note: Do not pass along with other series parameters |
-| fee           | String | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM) |
-
+| fee           | String | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters ;`except for gas_limit, e.g., ATOM`` |
+| sign  | String | No       | RSA private key signature. Parameters involved in the signature: "request_id", "sub_wallet_id", "symbol", "address_to", "amount", "memo". For signature rules, refer to `Co-Signer Transaction Signature Verification`. |
 
 
 > Response
-
+>
 ```json
 {
-    "transfer_id": 12345
+    "withdraw_id": 12345
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param       | Type    | Requried | Description |
 | :---------- | :------ | :------- | :---------- |
-| transfer_id | Integer | Yes      | transfer id |
+| withdraw_id  | Integer | Yes      | transfer id |
 
 
 
 
 
 
-### Estimated Gas Fee
+### Estimated Gas Fee (Miner fee)
 
-Obtain the estimated miner fee required for transfer. 
+Obtain the estimated miner fee required for transfer.
 
 
 
@@ -657,7 +869,7 @@ Obtain the estimated miner fee required for transfer.
 
 `GET /api/mpc/billing/gas_estimate`
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param  | Type   | Requried | Description                                                  |
 | :----- | :----- | :------- | :----------------------------------------------------------- |
@@ -671,6 +883,7 @@ Obtain the estimated miner fee required for transfer.
 > Response
 
 
+
 ```json
 {
     "gas_limit":0,
@@ -679,11 +892,13 @@ Obtain the estimated miner fee required for transfer.
     "fee":"0.00159",
     "gas_price2":"0",
     "gas_price3":"0",
+    "trans_fee":"0.00159"
 }
 ```
 
 
-#### Response Data Parameters 
+
+#### Response Data Parameters
 
 
 | Param     | Type    | Required | Description                                     |
@@ -699,6 +914,7 @@ Obtain the estimated miner fee required for transfer.
 | gas_price3     | Long    | No       | Gas recommended price tier 3 for ETH series      |
 | fee            | String  | No       | Fee for other series such as DOT and TRX, using the 'fee' field for transaction fees |
 | fee_changeable | Boolean | No       | For other series such as DOT and TRX, indicates whether the 'fee' parameter value can be changed. Set to true for modifiable and false for non-modifiable values |
+| trans_fee | String | No | Reference transaction fee, unit is the base coin of the main chain |
 
 
 
@@ -715,7 +931,7 @@ After the transfer signature is completed, if the transaction fee has not been p
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param   | Type    | Required | Description                                          |
 |---------------|---------|----------|------------------------------------------------------|
@@ -724,10 +940,10 @@ After the transfer signature is completed, if the transaction fee has not been p
 | size          | String  | No       | Size in bytes for BTC series; Note: Do not pass along with other series parameters |
 | gas_price     | String  | No       | Gas recommended price for ETH series; Note: Do not pass along with other series parameters |
 | gas_limit     | String  | No       | Gas limit for ETH series; Note: Do not pass along with other series parameters |
-| fee           | String  | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters (except for gas_limit, e.g., ATOM) |
+| fee           | String  | No       | Fee for other series such as DOT and TRX; Note: Do not pass along with other series parameters `except for gas_limit, e.g., ATOM`|
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 
 
@@ -748,7 +964,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param | Type   | Requried | Description                                  |
 | :---- | :----- | :------- | :------------------------------------------- |
@@ -763,10 +979,10 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
         "symbol":"ETH",
         "amount":"0.0000111",
         "real_fee":"0",
-        "wihdraw_source":2,
+        "withdraw_source":2,
         "fee":"0.0002782353",
         "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672304978000,
         "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
         "confirmations":0,
@@ -778,13 +994,36 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
         "base_symbol":"",
         "id":242,
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
-        "status":1200
+        "status":1200,
+        "tx_height":3120013
+    },
+    {
+        "symbol":"TRX",
+        "amount":"0.001",
+        "real_fee":"0",
+        "withdraw_source":1,
+        "fee":"27.4",
+        "address_to":"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ",
+        "fee_symbol":"TRX",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":2000,
+        "tx_height":56207376
     }
 ]
 ```
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
@@ -807,11 +1046,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 | transfer_source  | Integer | Yes      | transfer Type： `1`app, `2`openapi                           |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
 | contract_address | String  | No       | transfer coin's  contract address                            |
-
-
-
-
-
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
 
@@ -823,11 +1058,12 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 #### HTTP Request
 
-`GET /api/mpc/billing/sync_transfer_list`
+`GET /api/mpc/billing/sync_withdraw_list`
 
 
 
-#### Decrypted Request Parameters 
+
+#### Decrypted Request Parameters
 
 | Param  | Type   | Requried | Description                                |
 | :----- | :----- | :------- | :----------------------------------------- |
@@ -841,10 +1077,10 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
         "symbol":"ETH",
         "amount":"0.0000111",
         "real_fee":"0",
-        "wihdraw_source":2,
+        "withdraw_source":2,
         "fee":"0.0002782353",
         "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672304978000,
         "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
         "confirmations":0,
@@ -856,12 +1092,35 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
         "base_symbol":"",
         "id":242,
         "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
-        "status":1200
+        "status":1200,
+        "tx_height":3120013
+    },
+    {
+        "symbol":"TRX",
+        "amount":"0.001",
+        "real_fee":"0",
+        "withdraw_source":1,
+        "fee":"27.4",
+        "address_to":"TYQJcpoH2zeZ2pnpRokwBeRZ16yqyNZPR4",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"dee604ca778aee55ef0d17260ee4a96d69dfbc965228288598dce0cf9c829542",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"TC1rbTinyRyNC5sBJdxGcADbVXh9xcHwwQ",
+        "fee_symbol":"TRX",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "request_id":"57fdc296-1e14-47fa-a99d-5e86f8e51008",
+        "status":2000,
+        "tx_height":56207376
     }
 ]
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
@@ -884,6 +1143,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 | transfer_source  | Integer | Yes      | transfer Type： `1`app, `2`openapi                           |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
 | contract_address | String  | No       | transfer coin's  contract address                            |
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
 
@@ -891,8 +1151,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 
 
-
-## Received
+## Receiving (Deposit) Assets
 
 ### Get Receiving records
 
@@ -902,11 +1161,11 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 
 #### HTTP Request
 
-`GET/api/mpc/billing/receive_list`
+`GET /api/mpc/billing/deposit_list`
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param | Type   | Requried | Description                                                  |
 | :---- | :----- | :------- | :----------------------------------------------------------- |
@@ -921,7 +1180,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
         "symbol":"ETH",
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
@@ -929,15 +1188,34 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
         "sub_wallet_id":"123",
         "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
         "updated_at":1672323030000,
-        "base_symbol":"",
+        "base_symbol":"ETH",
         "id":43,
-        "status":2000
+        "status":2000,
+        "tx_height":3120013
+    },
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x525208dd0b56c27bd10703bd675fca0509a17154",
+        "memo": "",
+        "created_at":1672107533000,
+        "txid":"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb",
+        "confirmations":5,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4",
+        "updated_at":1672323030000,
+        "base_symbol":"ETH",
+        "id":45,
+        "status":2000,
+        "tx_height":13238654
     }
 ]
 ```
 
 
-#### Response Data Parameters 
+
+#### Response Data Parameters
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
@@ -955,7 +1233,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 | status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
 | contract_address | String  | No       | received coin's contract address                             |
-
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
 
@@ -969,7 +1247,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 
 
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param  | Type   | Requried | Description                               |
 | :----- | :----- | :------- | :---------------------------------------- |
@@ -979,13 +1257,14 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 
 > Response
 
+
 ```json
 [
     {
         "symbol":"ETH",
         "amount":"1",
         "address_to":"0x33648fACAD6CECA85cf717841Ddd87c40B12438F",
-        "memo": "123321",
+        "memo": "",
         "created_at":1672107533000,
         "txid":"0xfd0b04024bd1d849ba69e301733194154cb42a05c1dd32065367d8c6336af711",
         "confirmations":20,
@@ -993,15 +1272,33 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
         "sub_wallet_id":"123",
         "address_from":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
         "updated_at":1672323030000,
-        "base_symbol":"",
+        "base_symbol":"ETH",
         "id":43,
-        "status":2000
+        "status":2000,
+        "tx_height":3120013
+    },
+    {
+        "symbol":"ETH",
+        "amount":"1",
+        "address_to":"0x525208dd0b56c27bd10703bd675fca0509a17154",
+        "memo": "",
+        "created_at":1672107533000,
+        "txid":"0x97cccb68595182d8df439fe17d33376d4bb69abf49d56e08d46fa5f281e095fb",
+        "confirmations":5,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0xe897Fd38f319cB343ffD03Ba2f7426BA99bb97c4",
+        "updated_at":1672323030000,
+        "base_symbol":"ETH",
+        "id":45,
+        "status":2000,
+        "tx_height":13238654
     }
 ]
 ```
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 
 | Param            | Type    | Requried | Description                                                  |
@@ -1020,7 +1317,155 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 | status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
 | contract_address | String  | No       | received coin's contract address                             |
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
+## Auto-Consolidation
+
+### Get Auto-Consolidation Sub-Wallets
+
+Retrieve the auto-consolidation sub-wallet and refueling sub-wallet for a specific coin.
+
+#### HTTP Request
+
+`GET /api/mpc/auto_collect/sub_wallets`
+
+#### Request Data Parameters
+
+| Param  | Type   | Required | Description               |
+| :----- | :----- | :------- | :------------------------ |
+| symbol | String | Yes      | Unique identifier for the coin, e.g., USDTERC20 |
+
+> Response Example
+
+```json
+{
+    "collect_sub_wallet_id": 10241,
+    "fueling_sub_wallet_id": 20482
+}
+
+```
+
+#### Response Data Parameters
+
+| Param                   | Type   | Required | Description               |
+| :--------------         | :----- | :------- | :-----------------     |
+| collect_sub_wallet_id   | Integer | No       | Auto-consolidation sub-wallet, obtained after configuring the coin|
+| fueling_sub_wallet_id   | Integer | No       | Refueling sub-wallet, obtained after configuring the coin|
+
+
+### Configure Auto-Consolidation for a coin
+
+Set the minimum auto-consolidation amount and the maximum miner fee for refueling.
+
+#### HTTP Request
+
+`GET /api/mpc/auto_collect/symbol/set`
+
+#### Request Parameters
+
+| Param            | Type   | Required | Description                                         |
+| :--------------- | :----- | :------- | :--------------------------------------------------- |
+| symbol           | String | Yes      | Unique identifier for the coin, e.g., USDTERC20             |
+| collect_min   | String | Yes      | Minimum amount for auto-consolidation; up to 6 decimal places, not exceeding 9999999999999999 |
+| fueling_limit    | String | Yes      | Maximum miner fee amount for auto-consolidation; up to 6 decimal places, not exceeding 9999999999999999 |
+
+> Response Example
+
+```json
+{
+    "symbol": "USDTERC20  "
+}
+
+```
+#### Response Parameter
+
+| Param                   | Type   | Required | Description             |
+| :---------------------- | :----- | :------- | :----------------------- |
+| symbol                 | String | Yes      | Unique identifier for the configured coin |
+
+### Synchronize Consolidation Records
+
+Retrieve up to 100 consolidation records for all sub-wallets under a wallet.
+
+#### HTTP Request
+
+`GET /api/mpc/billing/sync_auto_collect_list`
+
+#### Request Parameter Data Structure
+
+| Param  | Type   | Required | Description                 |
+| :----- | :----- | :------- | :--------------------------- |
+| max_id | String | Yes      | Starting ID for consolidation records |
+
+> Response Example
+
+
+```json
+[
+    {
+        "symbol":"ETH",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "trans_type":10,
+        "fee":"0.0002782353",
+        "address_to":"0xc70d1eebb7c687ec8d56bead73f104d41e6e0bda",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"0x8e6beba81b90835fc9fcd40a2bdca33243c7c3b81ac765c240837d4810874a55",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123",
+        "address_from":"0x5EDc9177997Bf6B4db559A5C184051858B3B3704",
+        "fee_symbol":"ETH",
+        "updated_at":1672318660000,
+        "base_symbol":"",
+        "id":242,
+        "status":1200
+    },
+    {
+        "symbol":"HECO",
+        "amount":"0.0000111",
+        "real_fee":"0",
+        "trans_type":11,
+        "fee":"0.0024040607337957",
+        "address_to":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "memo": "",
+        "created_at":1672304978000,
+        "txid":"",
+        "confirmations":0,
+        "contract_address":"",
+        "sub_wallet_id":"123975",
+        "address_from":"0xE76a3d30dAc35C4b9A17E690cd250d8Bec649b65",
+        "fee_symbol":"HECO",
+        "updated_at":1672318660000,
+        "base_symbol":"HECO",
+        "id":315,
+        "status":2400
+    }
+]
+```
+#### Response Parameter Data Structure
+
+| Param            | Type    | Required | Description                                                  |
+| :--------------- | :------ | :------- | :----------------------------------------------------------- |
+| id               | Integer | Yes      | Consolidation ID                                             |
+| sub_wallet_id    | Integer | Yes      | Sub-wallet ID                                                |
+| symbol           | String  | Yes      | Unique identifier for the coin, used during transfers, e.g., USDTERC20 |
+| amount           | String  | Yes      | Consolidation amount                                         |
+| fee_symbol       | String  | Yes      | Fee currency, e.g., ETH                                      |
+| fee              | String  | Yes      | Fee amount, e.g., 0.00123                                    |
+| real_fee         | String  | Yes      | Actual consumed fee, e.g., 0.00111                           |
+| created_at       | Long    | Yes      | Creation timestamp                                          |
+| updated_at       | Long    | Yes      | Modification timestamp                                      |
+| address_from     | String  | Yes      | Sender's address                                             |
+| address_to       | String  | Yes      | Consolidation address                                        |
+| memo             | String  | No       | Memo for the receiving address during consolidation           |
+| txid             | String  | Yes      | Transaction hash                                             |
+| confirmations    | Integer | Yes      | Number of block confirmations, e.g., 10                      |
+| status           | Integer | Yes      | Consolidation status: 1000 Unapproved, 1100 Approved, Pending Signature, 1200 In Progress, 2000 Completed, 2100 Rejected, 2200 Rejected, 2201 System Rejected, 2202 Auto Cancelled, 2300 Transaction Discarded, 2400 Payment Failed |
+| trans_type       | Integer | Yes      | Consolidation type: 10. Consolidation Transaction, 11. Consolidation Gas Transaction |
+| base_symbol      | String  | No       | Base currency unique identifier on the main chain, e.g., ETH |
+| contract_address | String  | No       | Contract address for the consolidation currency               |
 
 ## Web3 Transaction
 
@@ -1050,8 +1495,9 @@ Create a Web3 transaction.
 | dapp_name          | String  | No       | Dapp name                                 |
 | dapp_url           | String  | No       | Dapp URL                                  |
 | dapp_img           | String  | No       | Dapp image                                |
+| sign              | String | No      | RSA private key signature. Parameters involved in the signature: "request_id", "sub_wallet_id", "main_chain_symbol", "interactive_contract", "amount", "input_data". Refer to `Co-Signer Transaction Signature Verification` for detailed signing rules. |
 
-> Response 
+> Response
 
 ```json
 {
@@ -1059,7 +1505,7 @@ Create a Web3 transaction.
 }
 ```
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Parameter         | Type    | Required | Description               |
 | ----------------- | ------- | -------- | ------------------------- |
@@ -1086,7 +1532,7 @@ When a transfer is signed but has not been confirmed on the blockchain for a lon
 | gas_limit   | String | Yes      | Gas limit          |
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 None
 
@@ -1108,7 +1554,8 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | ----------- | ------ | -------- | ---------------------------- |
 | ids         | String | Yes      | Comma-separated `request_id` strings |
 
-> Response 
+> Response
+
 
 ```json
 [
@@ -1131,14 +1578,37 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
         "input_data":"0xca718c65",
         "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
         "status":2400,
-        "trans_source":2
+        "trans_source":2,
+        "tx_height":3120013
+    },
+    {
+        "id":436,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "status":2400,
+        "trans_source":2,
+        "tx_height":3120113
     }
 ]
 ```
 
 
 
-#### Response Data Parameters 
+#### Response Data Parameters
 
 | Parameter            | Type    | Required | Description                  |
 | -------------------- | ------- | -------- | ---------------------------- |
@@ -1146,7 +1616,7 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | request_id           | String  | Yes      | Unique identifier for the transaction |
 | sub_wallet_id        | Integer | Yes      | Sub-wallet ID                |
 | txid                 | String  | No       | Transaction hash             |
-| symbol               | String  | No       | Transaction currency         |
+| symbol               | String  | No       | Transaction coin         |
 | main_chain_symbol    | String  | Yes      | Main chain coin symbol (unique identifier), e.g., ETH |
 | amount               | String  | Yes      | Transaction amount. -1 indicates infinite |
 | fee_symbol           | String  | Yes      | Fee currency, e.g., ETH      |
@@ -1155,14 +1625,13 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | created_at           | String  | Yes      | Creation timestamp           |
 | updated_at           | String  | Yes      | Modification timestamp       |
 | address_from         | String  | Yes      | Transaction source address   |
-| address_to           | String  | Yes      |
-
- Transaction destination address |
+| address_to           | String  | Yes      | Transaction destination address |
 | interactive_contract | String  | Yes      | Interactive contract         |
 | confirmations        | Integer | Yes      | Confirmations                |
 | input_data           | String  | Yes      | Hexadecimal data for contract transaction |
 | status               | Integer | Yes      | Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed |
 | trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 ### Sync Web3 Transaction Records
 
@@ -1181,7 +1650,6 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | max_id      | String | Yes      | Starting ID of Web3 transactions |
 
 > Response
-
 ```json
 [
     {
@@ -1199,18 +1667,42 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
         "updated_at":1684222558000,
         "address_from":"0xd5c2d98BF2d205039F62ee40c9A7ab1B36125d6d",
         "address_to":"",
+        "confirmations":4,
         "input_data":"0xca718c65",
         "interactive_contract":"0xe012F3957226894B1a2a44b3ef5070417a069dC2",
-        "confirmations":4,
         "status":2400,
-        "trans_source":2
+        "trans_source":2,
+        "tx_height":3120013
+    },
+    {
+        "id":436,
+        "request_id":"0000000003",
+        "sub_wallet_id":1000895,
+        "txid":"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438",
+        "symbol":"",
+        "main_chain_symbol":"HECO",
+        "amount":"0",
+        "fee_symbol":"HECO",
+        "fee":"0.00018",
+        "real_fee":"0.000107277",
+        "created_at":1684220373000,
+        "updated_at":1684222558000,
+        "address_from":"0xBDeBecf1fEDc622Cc50dE2F2aD6925D1EE15fCf9",
+        "address_to":"",
+        "confirmations":4,
+        "input_data":"0xca718c65",
+        "interactive_contract":"0x0AabA82E4ba9c2Fdf80B9F8E1AcE885f092B64F0",
+        "status":2400,
+        "trans_source":2,
+        "tx_height":3120113
     }
 ]
 ```
 
 
 
-####  Response Data Parameters 
+
+####  Response Data Parameters
 
 | Parameter            | Type    | Required | Description                  |
 | -------------------- | ------- | -------- | ---------------------------- |
@@ -1218,10 +1710,10 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | request_id           | String  | Yes      | Unique identifier for the transaction |
 | sub_wallet_id        | Integer | Yes      | Sub-wallet ID                |
 | txid                 | String  | No       | Transaction hash             |
-| symbol               | String  | No       | Transaction currency         |
+| symbol               | String  | No       | Transaction coin         |
 | main_chain_symbol    | String  | Yes      | Main chain coin symbol (unique identifier), e.g., ETH |
 | amount               | String  | Yes      | Transaction amount. -1 indicates infinite |
-| fee_symbol           | String  | Yes      | Fee currency, e.g., ETH      |
+| fee_symbol           | String  | Yes      | Fee coin, e.g., ETH      |
 | fee                  | String  | Yes      | Fee                          |
 | real_fee             | String  | Yes      | Actual fee consumed          |
 | created_at           | String  | Yes      | Creation timestamp           |
@@ -1233,7 +1725,7 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | input_data           | String  | Yes      | Hexadecimal data for contract transaction |
 | status               | Integer | Yes      | Transaction status: 1100 Pending Signature, 1200 Payment Processing, 2000 Payment Complete, 2100 Approval Rejected, 2200 Rejected, 2300 Transaction Discarded, 2400 Payment Failed |
 | trans_source         | Integer | Yes      | Transaction type: 1. App, 2. Open API |
-
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
 ## NFT
@@ -1280,7 +1772,6 @@ Retrieve NFT data such as images and names.
 | is_video         | bool   | Yes    | Indicates if it's a video. `true` if it's a video, `false` otherwise |
 
 
-
 # Transaction Notification
 
 ## Overview
@@ -1313,9 +1804,9 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 
 
 
-## Transfer Notification
+## Transfer (Withdrawal) Notification
 
-#### Decrypted Request Parameters 
+#### Decrypted Request Parameters
 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
@@ -1341,10 +1832,10 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | transfer_source  | Integer | Yes      | transfer Type：`1`app, `2`openapi                            |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be transferred, for example: ETH |
 | contract_address | String  | No       | transfer coin's contract address                             |
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
-
-## Receive Notification
+## Receiving (Deposit) Notification
 
 #### Decrypted Request Parameters
 
@@ -1368,7 +1859,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | status           | Integer | Yes      | receiving status: `1000` unconfirmed, `1100` confirmed (transaction block confirmed), `2000` completed (shown at account), `3000` abnormal |
 | base_symbol      | String  | No       | The unique identifier of the main chain of the coin to be received, example：ETH |
 | contract_address | String  | No       | received coin's contract address                             |
-
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
 ## Web3 Transaction Notification
@@ -1384,7 +1875,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | request_id       | String | Yes      | Unique identifier for the transfer                            |
 | sub_wallet_id    | String | Yes      | Sub-wallet ID                                                |
 | main_chain_symbol| String | Yes      | Main chain coin symbol (unique identifier), e.g., ETH        |
-| symbol           | String | No       | Currency symbol (unique identifier), e.g., USDTERC20          |
+| symbol           | String | No       | coin symbol (unique identifier), e.g., USDTERC20          |
 | amount           | String | Yes      | Transaction amount                                            |
 | created_at       | String | Yes      | Creation time in the format: "YYYY-MM-DD HH:mm:ss"            |
 | updated_at       | String | Yes      | Modification time in the format: "YYYY-MM-DD HH:mm:ss"        |
@@ -1402,48 +1893,46 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | dapp_img         | String | Yes      | Dapp image                                                   |
 | dapp_name        | String | Yes      | Dapp name                                                    |
 | dapp_url         | String | Yes      | Dapp access URL                                              |
+| tx_height        | Long   |Yes   | Block height at which the transaction is completed |
+
+# Co-Signer
+
+## **Overview**
+
+Co-Signer can help you quickly integrate with the API and needs to be deployed separately on a server. Co-Signer needs to bind the shard private key of your wallet for `creating addresses` and `signing transactions`.
+
+- Before signing a transaction, Co-Signer will callback to your business system. It can initiate the signature only after authorization is obtained; otherwise, the transaction cannot proceed.
+
+- After the app-side signature authorization for the consolidation transaction, it will not callback to the Client system.
+
+- [View Co-Signer Deployment Documentation](https://custodysupport.chainup.com/hc/en-us/articles/23757099700889-Setting-Up-Co-Signer)
 
 
-# Co-signer
+## **Integration Process**
 
+Co-Signer mainly implements two functions: creating addresses and automatic signing. The calling relationship is as shown in the following diagram:
 
+#### Creating an Address:
 
-## Overview
+<%= image_tag "create_addressen.png" %>
 
-Co-Signer can help you quickly connect to the **API**, but you need to deploy it on the server separately. Co-Signer needs to bind the **shard private key** of your wallet to create addresses and transaction signatures.
+#### Automatic Signature (Callback Method):
 
+<%= image_tag "withdraw_call_backen.png"%>
 
+#### Automatic Signature (Signature Sign Verification Method):
 
-**Co-Signer** will call back your business system before the transaction is signed, and the signature can only be initiated after the authorization is passed, otherwise the transaction cannot be carried out.
+<%= image_tag "withdraw_signen.png"%>
 
-
-
-
-
-## Docking Process
-
-Co-Signer mainly implements two functions: creating addresses and automatic signatures. The specific process is as follows:
-
-#### Create address:
-
-<%= image_tag "ecreateaddress.png", style:"width: 350px" %>
-
-#### Automated Signature:
-
-<%= image_tag "esign.png", style:"width: 350px" %>
-
-
-
-
-
-## Co-signer Callback
+- Both callback and signature sign verification methods can coexist, but at least one verification method is required. Developers can choose the verification method according to their needs.
 
 
 
-In order to ensure the security of the transaction, you need to configure a callback address of the business system in Co-Signer to authorize before the transaction is signed.
+## **Co-Signer Callback**
 
-The authorized transaction data transmits in **clear text (no encryption)**, you need to ensure the communication security between the business system and Co-Signer in the application service.
+To ensure the security of transactions, you need to configure a callback address for the business system in Co-Signer and authorize it before transaction signing.
 
+The authorized transaction data is transmitted **in plaintext**, and you need to ensure the communication security between the business system and Co-Signer in the application service.
 
 
 ### Transfer(Withdrawal) Callback
@@ -1455,7 +1944,7 @@ POST /{url}
 `Content-Type application/json;charset=UTF-8`
 
 
-> Request 
+> Request
 
 ```json
 POST /callback/example
@@ -1542,10 +2031,27 @@ POST /callback/example
 
 Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 
+## **Co-Signer Transaction Signature Verification**
 
+Co-Signer provides a more secure dual-verification feature for transactions.
 
+In addition to the Co-Signer callback mechanism, Clients can simultaneously pass the `sign` field when initiating a transaction. Co-Signer will additionally verify whether the `sign` is legal.
 
-
+<aside class="notice">
+*Specific signature rules are as follows:*
+<br/>
+<br/>
+1）Sign the parameters in the format k1=v1&k2=v2, and sort k in ASCII ascending order; parameters with empty values are not included in the signature.
+<br/>
+<br/>
+2）The digits involved in the signature must not end with the digit 0, for example, 1.0001000, please use 1.0001 for the signature.
+<br/>
+<br/>
+3）After concatenating the parameters, convert to lowercase and then use MD5 encryption. For example, if the parameters before encryption are address_to=0x5edc9177997bf6b4db559a5c184051858b3b3704&amount=1.0001, the MD5 encryption result is c10c47a46b616526e739985ce1c7f15d.
+<br/>
+<br/>
+4）Use the SHA256 algorithm to sign the MD5 data with RSA, and then encode it with BASE64 to obtain the final signature data.
+</aside>
 
 
 # Error Code
@@ -1564,14 +2070,14 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 | 110088  | Duplicate Request                |
 | 110160  | Registration Failed              |
 | 110161  | Exceeded Maximum Precision       |
-| 110227  | Transfer Suspended for Currency  |
-| 120202  | Unsupported Currency             |
+| 110227  | Transfer Suspended for coin  |
+| 120202  | Unsupported coin             |
 | 120204  | Failed to Build Transaction      |
 | 200004  | No Permission to Perform Action  |
 | 200005  | Wallet Does Not Exist            |
 | 200007  | Creating Sub-wallet, Please Wait |
 | 200008  | Exceeded Maximum Number of Sub-wallets |
-| 200011  | Currency Address Already Exists  |
+| 200011  | coin Address Already Exists  |
 | 200013  | Node Configuration Error, Please Contact Customer Service |
 | 200015  | Signature Failed                 |
 | 200025  | Processing, Please Wait          |
@@ -1586,6 +2092,8 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE
 | 200074  | This address is not a multisig wallet you are part of, please check and operate again |
 | 200075  | Failed to estimate transaction fee |
 | 200076  | This transaction is currently not supported |
+
+
 
 
 
