@@ -338,7 +338,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 
 
-### Encryption and Decryption Method
+### Encryption and Decryption
 
 
 
@@ -522,7 +522,7 @@ Get the details of MPC wallet main chain coins and tokens supported by ChainUp C
 | support_multi_addr   | Boolean | Yes      | Support for multiple addresses, true: supported, false: not supported |
 | merge_address_symbol   | String   | No       | Merged address main chain coin, unique identifier for the coin |
 
-### Get Main Chain Latest Block Height
+### Get Latest Block Height
 
 Get the latest block height of the specified main chain.
 
@@ -536,7 +536,7 @@ Get the latest block height of the specified main chain.
 | :------------ | :----- | :------- | :---------------------------------- |
 | base_symbol   | String | Yes      | Unique identifier for the coin, e.g., ETH |
 
-> Response Example
+> Response
 
 ```json
 {
@@ -556,7 +556,7 @@ Get the latest block height of the specified main chain.
 
 
 
-### Create a sub-wallet
+### Create a Sub-wallet
 
 Pass in the specified sub-wallet name to create a new sub-wallet for the main wallet
 
@@ -592,7 +592,7 @@ Pass in the specified sub-wallet name to create a new sub-wallet for the main wa
 
 
 
-### Sub-Wallet Address Creation
+### Sub-wallet Address Creation
 
 Create an address for a specified sub-wallet and coin; the same sub-wallet can have multiple addresses, and Memo types may create multiple memos.
 
@@ -607,7 +607,7 @@ Create an address for a specified sub-wallet and coin; the same sub-wallet can h
 | sub_wallet_id | Integer | Yes      | Sub-wallet ID              |
 | symbol        | String  | Yes      | coin unique identifier, e.g., USDTERC20 |
 
-> Response Example
+> Response
 
 ```json
 {
@@ -627,72 +627,6 @@ Create an address for a specified sub-wallet and coin; the same sub-wallet can h
 
 
 
-### Get sub-wallet address
-
-Obtain the receiving address under the specified sub-wallet and coin
-
-#### HTTP Request
-
-`POST /api/mpc/sub_wallet/get_address`
-
-
-
-#### Decrypted Request Parameters
-
-| Param         | Type   | Requried | Description                                           |
-| :------------ | :----- | :------- | :---------------------------------------------------- |
-| sub_wallet_id | Integer | Yes      | Sub wallet id      |
-| symbol        | String | Yes      | The unique identifier of the coin, example: USDTERC20 |
-
-> Response
-
-```json
-{
-    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
-}
-```
-
-#### Response Data Parameters
-
-| Param   | Type   | Requried | Description       |
-| :------ | :----- | :------- | :---------------- |
-| address | String | Yes      | receiving address |
-
-
-### Create Sub-Wallet Address
-
-Create an address for a specified sub-wallet and coins; the same sub-wallet can have multiple addresses, and Memo types may create multiple memos.
-
-#### HTTP Request
-
-`POST /api/mpc/sub_wallet/create/address`
-
-#### Request Parameters
-
-| Param         | Type    | Required | Description                             |
-| :------------ | :------ | :------- | :-------------------------------------- |
-| sub_wallet_id | Integer | Yes      | Sub-wallet id                           |
-| symbol        | String  | Yes      | Unique coin identifier, e.g., USDTERC20 |
-
-> Response Example
-
-```json
-{
-    "address":"0xd5b688639ef10ac7fb8ad0156eb0ae025dd03b86"
-    "addr_type":1,
-    "memo":""
-}
-```
-
-#### Response Data Parameters
-
-
-| Param   | Type   | Required | Description |
-| :------ | :----- | :------- | :---------- |
-| address | String | Yes      | Created address |
-| addr_type | Integer | Yes   | Address type, 1: User address, 2: System address (including consolidation address, change address). `System address` cannot be assigned to users for use, and the change in UTXO transactions will be sent to the change address. |
-| memo     | String   | No     | Assigned when the coin under Memo is allocated |
-
 ### Query Sub-Wallet Address
 
 List of sub-wallet addresses
@@ -709,7 +643,7 @@ List of sub-wallet addresses
 | symbol        | String  | Yes      | Unique coin identifier, e.g., USDTERC20 |
 | max_id        | Integer | Yes      | Starting address id, default is 0       |
 
-> Response Example
+> Response
 
 ```json
 [
@@ -736,7 +670,7 @@ List of sub-wallet addresses
 
 
 
-### Get sub-wallet assets
+### Get Sub-wallet Assets
 
 Get the account assets under the specified sub-wallet and coin.
 
@@ -776,7 +710,7 @@ Get the account assets under the specified sub-wallet and coin.
 
 
 
-### Modify the Display Status for Sub-wallet
+### Modify the Display Status
 
 The display of the specified sub-wallet in the App and web portal is essential for initiating transactions. If it is not displayed, transactions cannot be initiated in the app.
 
@@ -807,11 +741,7 @@ None
 
 ## Transfer (Withdrawal)
 
-
-
-
-
-### Initiate a transfer
+### Initiate a Transfer
 
 
 
@@ -841,7 +771,6 @@ None
 
 
 > Response
->
 ```json
 {
     "withdraw_id": 12345
@@ -859,7 +788,7 @@ None
 
 
 
-### Estimated Gas Fee (Miner fee)
+### Estimated Gas Fee
 
 Obtain the estimated miner fee required for transfer.
 
@@ -919,7 +848,7 @@ Obtain the estimated miner fee required for transfer.
 
 
 
-### Speed Up transfer
+### Speed Up Transfer
 
 After the transfer signature is completed, if the transaction fee has not been process on the chain for a long time due to insufficient gas fee, you can re-specify a higher gas fee to speed up the process on the blockchain.
 
@@ -952,7 +881,7 @@ None
 
 
 
-### Get transfer records
+### Get Transfer Records
 
 Get all sub-wallet transfer records under the main wallet, and return up to 100 records
 
@@ -1050,7 +979,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 
 
-### Synchronize transfer records
+### Synchronize Transfer Records
 
 Get all sub-wallet transfer records under the main wallet, and return up to 100 records
 
@@ -1151,7 +1080,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 
 
 
-## Receiving (Deposit) Assets
+## Receiving (Deposit)
 
 ### Get Receiving records
 
@@ -1237,7 +1166,7 @@ Get all sub-wallet receiving records under the main wallet, and return up to 100
 
 
 
-### Synchronous Receiving record
+### Sync Receiving record
 
 Get all sub-wallet receiving records under the main wallet, and return up to 100 records
 
@@ -1335,7 +1264,7 @@ Retrieve the auto-consolidation sub-wallet and refueling sub-wallet for a specif
 | :----- | :----- | :------- | :------------------------ |
 | symbol | String | Yes      | Unique identifier for the coin, e.g., USDTERC20 |
 
-> Response Example
+> Response
 
 ```json
 {
@@ -1353,7 +1282,7 @@ Retrieve the auto-consolidation sub-wallet and refueling sub-wallet for a specif
 | fueling_sub_wallet_id   | Integer | No       | Refueling sub-wallet, obtained after configuring the coin|
 
 
-### Configure Auto-Consolidation for a coin
+### Configure Auto-Consolidation for Coin
 
 Set the minimum auto-consolidation amount and the maximum miner fee for refueling.
 
@@ -1369,7 +1298,7 @@ Set the minimum auto-consolidation amount and the maximum miner fee for refuelin
 | collect_min   | String | Yes      | Minimum amount for auto-consolidation; up to 6 decimal places, not exceeding 9999999999999999 |
 | fueling_limit    | String | Yes      | Maximum miner fee amount for auto-consolidation; up to 6 decimal places, not exceeding 9999999999999999 |
 
-> Response Example
+> Response
 
 ```json
 {
@@ -1383,7 +1312,7 @@ Set the minimum auto-consolidation amount and the maximum miner fee for refuelin
 | :---------------------- | :----- | :------- | :----------------------- |
 | symbol                 | String | Yes      | Unique identifier for the configured coin |
 
-### Synchronize Consolidation Records
+### Sync Consolidation Records
 
 Retrieve up to 100 consolidation records for all sub-wallets under a wallet.
 
@@ -1397,7 +1326,7 @@ Retrieve up to 100 consolidation records for all sub-wallets under a wallet.
 | :----- | :----- | :------- | :--------------------------- |
 | max_id | String | Yes      | Starting ID for consolidation records |
 
-> Response Example
+> Response
 
 
 ```json
@@ -1650,10 +1579,11 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
 | max_id      | String | Yes      | Starting ID of Web3 transactions |
 
 > Response
+
 ```json
 [
     {
-        "id":435,
+        "id":437,
         "request_id":"0000000003",
         "sub_wallet_id":1000895,
         "txid":"0xbc87e486d28df91fe715436415bab38cc1cf5e4b23fbb8497ff688b823c08ba7",
@@ -1675,7 +1605,7 @@ Get all Web3 transaction records under a wallet, maximum of 100 records.
         "tx_height":3120013
     },
     {
-        "id":436,
+        "id":438,
         "request_id":"0000000003",
         "sub_wallet_id":1000895,
         "txid":"0xeab40bf0072c25514bc61fe58e5e36cc082ea7f50ae33f33013dd365beba9438",
@@ -1745,7 +1675,7 @@ Retrieve NFT data such as images and names.
 | contract_address | String | Yes      | NFT contract address                        |
 | token_id         | String | Yes      | NFT token ID                                |
 
-> Response Example
+> Response
 
 ```json
 {
@@ -1804,7 +1734,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 
 
 
-## Transfer (Withdrawal) Notification
+## Transfer (Withdrawal)
 
 #### Decrypted Request Parameters
 
@@ -1835,7 +1765,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
-## Receiving (Deposit) Notification
+## Receiving (Deposit)
 
 #### Decrypted Request Parameters
 
@@ -1862,7 +1792,7 @@ Return string: `SUCCESS` means SUCCESS, `FAILURE` means FAILURE (note that the r
 | tx_height        | Long   |Yes   | Block height at which the transaction is completed |
 
 
-## Web3 Transaction Notification
+## Web3 Transaction
 
 #### Request Parameters
 
