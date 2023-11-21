@@ -1046,7 +1046,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param              | 类型    | 是否必须 | 说明                                                         |
 | :----------------- | :------ | :------- | :----------------------------------------------------------- |
 | id               | Integer | 是       | 转账id                                           |
-| request_id       | Integer  | 是       | 转账唯一标识       |
+| request_id       | String  | 是       | 转账唯一标识       |
 | sub_wallet_id    | Integer | 是       | 子钱包id                                       |
 | symbol           | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20                      |
 | amount           | String  | 是       | 转账金额                                           |
@@ -1145,7 +1145,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 | Param              | 类型    | 是否必须 | 说明                                                         |
 | :----------------- | :------ | :------- | :----------------------------------------------------------- |
 | id               | Integer | 是       | 转账id                                           |
-| request_id       | Integer  | 是       | 转账唯一标识       |
+| request_id       | String  | 是       | 转账唯一标识       |
 | sub_wallet_id    | Integer | 是       | 子钱包id                                       |
 | symbol           | String  | 是       | 币种唯一标识，转账时使用，例：USDTERC20                      |
 | amount           | String  | 是       | 转账金额                                           |
@@ -1386,7 +1386,7 @@ app_id=2128eb8de9e932a4376909f3d69424cc&data=SWYYr-LBVAmaS0eq8n-CUT_nHkM3OBxyWOs
 
 #### HTTP请求
 
-`GET /api/mpc/auto_collect/symbol/set`
+`POST /api/mpc/auto_collect/symbol/set`
 
 
 #### 请求参数数据结构

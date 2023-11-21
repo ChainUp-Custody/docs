@@ -958,7 +958,7 @@ Get all sub-wallet transfer records under the main wallet, and return up to 100 
 | Param            | Type    | Requried | Description                                                  |
 | :--------------- | :------ | :------- | :----------------------------------------------------------- |
 | id               | Integer | Yes      | transfer id                                                  |
-| request_id       | Integer  | Yes      | The unique identifier for transferring coins                 |
+| request_id       | String  | Yes      | The unique identifier for transferring coins                 |
 | sub_wallet_id    | Integer | Yes      | Sub wallet id                                                |
 | symbol           | String  | Yes      | The unique identifier of the coin                            |
 | amount           | String  | Yes      | transfer amount                                              |
@@ -1289,7 +1289,7 @@ Set the minimum auto-consolidation amount and the maximum miner fee for refuelin
 
 #### HTTP Request
 
-`GET /api/mpc/auto_collect/symbol/set`
+`POST /api/mpc/auto_collect/symbol/set`
 
 #### Request Parameters
 
