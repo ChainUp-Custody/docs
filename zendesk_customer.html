@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<script>
+  sessionStorage.setItem('ZD-widgetOpen','true')
+  document.getElementsByClassName()
+</script>
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=1cc85b32-f91a-4dec-a061-beac208ffa03"></script>
+<script>
+  const timer = setInterval(() => {
+    let frame = window.frames
+    if (frame && frame.length >= 2 && frame[1] && frame[1].document) {
+      const button = frame[1].document.querySelectorAll('[data-garden-id="buttons.icon_button"]')
+      if (button.length > 0) {
+        button[0].style.display = 'none'
+        clearInterval(timer)
+      }
+    }
+  }, 500)
+</script>
+</body>
+</html>
